@@ -8,6 +8,9 @@ body {
 
 pre {
     overflow: auto;
+    background-color: grey;
+    padding: .5em;
+    color: white;
 }
 
 code {

@@ -5,6 +5,7 @@
     </head>
     <body>
             
+
 <div class="post">
     <h1>Django comment&#8217;s fields</h1>
 
@@ -76,11 +77,298 @@ Has OIDs: no
 <p>The django comments provide a spam-fighting technique by default, in the form of a <a href="http://docs.djangoproject.com/en/dev/ref/contrib/comments/#notes-on-the-comment-form">honeypot</a> (though I wonder how effective that is) as well as other extras. There are rumours that some sort of captcha system (some say <a href="http://recaptcha.net/">reCaptcha</a> ) will be integrated in the django comments framework.</p>
 
 <p>Take more risks! Live more dangerously!</p>
+    <br />
 </div>
 <div class="post">
-    <h1><span class="caps">CACA</span>!!!!!!</h1>
+    <h2>testing a django blog&#8217;s models</h2>
 
-<p>mumu</p>
+<h3>25 September 2008 &#8211; Bucharest</h3>
+
+<p>This post is a continuation of <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2/">this post</a> and I&#8217;ll be using that schema to write tests on top of. Here it is, for easy reference:</p>
+
+<pre lang="python">
+from django.db import models
+
+<p>class Category(models.Model):<br />
+    nume = models.CharField(max_length=20)</p>
+
+<p>class Post(models.Model):<br />
+    title = models.CharField(max_length=50)<br />
+    body = models.TextField()<br />
+    category = models.ForeignKey(Category)<br />
+    published = models.BooleanField()<br />
+    creation_time = models.DateTimeField(auto_now_add=True)<br />
+    modified_time = models.DateTimeField(auto_now=True)</p>
+
+<p>class Commentator(models.Model):<br />
+    name = models.CharField(max_length=50, unique=True)<br />
+    email = models.EmailField(max_length=50, unique=True)<br />
+    website = models.URLField(verify_exists=True)</p>
+
+<p>class Comment(models.Model):<br />
+    body = models.TextField()<br />
+    post = models.ForeignKey(Post)<br />
+    author = models.ForeignKey(Commentator)<br />
+    approved = models.BooleanField()<br />
+    creation_time = models.DateTimeField(auto_now_add=True)<br />
+</pre></p>
+
+<p>Ok, so here&#8217;s what we&#8217;re testing: our model&#8212;the emphasis is on <i>our</i>, because we&#8217;re only testing our code. And mostly, we&#8217;re actually testing that the code in models.py corresponds with what&#8217;s in the database. All test methods must begin with the word <i>test</i>.</p>
+
+<p>One of the most annoying things which took me a while to figure out was that the <strong>setUp</strong> method is run <i>every time</i> before one of the other methods is run. That means that if you want to test for uniqueness, you <i>have to</i> build a <strong>tearDown</strong> method if you want to run any other independent tests. This is why snippet A won&#8217;t work, but snippet B will.<br />
+Here&#8217;s the model:</p>
+
+<pre lang="python">
+class Category(models.Model):
+    name = models.CharField(max_length=20, unique=True)
+</pre>
+
+<h4>snippet A</h4>
+
+<pre lang="python">
+class CategoryTest(unittest.TestCase):
+def setUp(self):
+    self.cat1 = Category.objects.create(name="cat1")
+def testexist(self):
+    # make sure they get to the database
+    self.assertEquals(self.cat1.name, "cat1")
+def testunique(self): 
+    self.assertRaises(IntegrityError, Category.objects.create, name="cat1")
+</pre>
+
+<h4>snippet B</h4>
+
+<pre lang="python">
+class CategoryTest(unittest.TestCase):
+def setUp(self):
+    self.cat1 = Category.objects.create(name="cat1")
+def testexist(self):
+    # make sure they get to the database
+    self.assertEquals(self.cat1.name, "cat1")
+    self.assertRaises(IntegrityError, Category.objects.create, name="cat1")
+</pre>
+
+<p>The second snippet only calls the <strong>setUp</strong> method once because there is only one other method. But that&#8217;s not very nice. Ideally we&#8217;d to be able to run each test individually, so maybe we can write a <strong>tearDown</strong> method to be run after each other method, to restore the database.</p>
+
+<p>However, there is an easier way to not have to write a <strong>tearDown</strong> method and that is using the <strong>django.test</strong> module which is an extention to unittest. All you have to do is <strong>import django.test</strong> instead of <strong>unittest</strong> and make every test object a sublclass of <strong>django.test.TestCase</strong> instead of <strong>unittest.TestCase</strong>.<br />
+Here is what it looks like now:</p>
+
+<pre lang="python">
+class CategoryTest(django.test.TestCase):
+    def setUp(self):
+        self.cat1 = Category.objects.create(name="cat1")
+        self.cat2 = Category.objects.create(name="cat2")
+    def testexist(self):
+        # make sure they get to the database
+        self.assertEquals(self.cat1.name, "cat1")
+        self.assertEquals(self.cat2.name, "cat2")
+    def testunique(self):
+        self.assertRaises(IntegrityError, Category.objects.create, name="cat1")
+</pre>
+
+<p>Now, let&#8217;s test the <strong>Post class</strong>:</p>
+
+<pre lang="python">
+class Post(models.Model):
+    title = models.CharField(max_length=50)
+    body = models.TextField()
+    category = models.ForeignKey(Category)
+    published = models.BooleanField()
+    creation_time = models.DateTimeField(auto_now_add=True)
+    modified_time = models.DateTimeField(auto_now=True)
+</pre>
+
+<p>There&#8217;s a bunch more stuff to test here, like the fact that everything gets to the database (title, body, category) and that everything has it&#8217;s right type/class.<br />
+We setUp a post, but also a category, since the test will be independent, but needs a Category to generate a Post.</p>
+
+<pre lang="python">
+class PostTest(django.test.TestCase):
+    def setUp(self):
+        self.cat1 = Category.objects.create(name="cat1")
+        self.post1 = Post.objects.create(title="name",body="trala lala",
+                category=Category.objects.all()[0])
+</pre>
+
+<p>Next, we need to do a bit of a <i>trivial</i> test to check that the title, the body and the right category get to the db</p>
+
+<pre lang="python">
+def testtrivial(self):
+        self.assertEquals(self.post1.title, "name")
+        self.assertEquals(self.post1.body, "trala lala")
+        self.assertEquals(self.post1.category, Category.objects.all()[0])
+</pre>
+
+<p>I think this is a good way to test that the creation_time and modified_time are newly generated datetime.datetime objects:</p>
+
+<pre lang="python">
+def testtime(self):
+    self.assertEquals(self.post1.creation_time.hour, datetime.now().hour)
+</pre>
+
+<p>No, wait. I think this looks a bit more professional:</p>
+
+<pre lang="python">
+def testtime(self):
+        delta = datetime.now() - self.post1.creation_time
+        self.assert_(delta.seconds < 10)
+        delta_modified = datetime.now() - self.post1.modified_time
+        self.assert_(delta_modified.seconds < 10)
+</pre>
+
+<p>So now, we&#8217;re looking for datetime objects that were generated less than 10 seconds ago. That&#8217;s really very generous since the time it takes to run the test from the time the <i>setUp</i> method is run is in the range of microseconds.<br />
+This test doesn&#8217;t show the true difference between modified and creation time. Modification time is changed every time the object is <i>saved</i> to the database while creation time is not. So let&#8217;s write a new test based on that knowledge:</p>
+
+<pre  lang="python">
+ def testModifiedVsCreation(self):
+        modified = self.post1.modified_time
+        created = self.post1.creation_time
+        self.post1.save()
+        self.assertNotEqual(modified, self.post1.modified_time)
+        self.assertEqual(created, self.post1.creation_time)
+</pre>
+
+<p>Testing for a boolean value is really easy:</p>
+
+<pre lang="python">
+ def testpublished(self): 
+        self.assertEquals(self.post1.published, False)
+</pre>
+
+<p>And then there&#8217;s more than one way I can think of to test the Category ForeignKey:</p>
+
+<pre lang="python">
+def testcategory(self):
+        self.assertEquals(self.cat1.__class__, self.post1.category.__class__)
+        self.assertRaises(ValueError, Post.objects.create, name="name",
+                body="tralaalal", category="ooopsie!")
+</pre>
+
+<p>In the end, I&#8217;ll go for the more general one, even though the second one is more excentric. So:</p>
+
+<pre lang="python">
+def testcategory(self):
+        self.assertEquals(self.cat1.__class__, self.post1.category.__class__)
+        self.assertRaises(ValueError, Post.objects.create, name="name",
+                body="tralaalal", category="ooopsie!")
+</pre>
+
+<p>Btw, if you don&#8217;t know the errors (like ValueError&#8212;I didn&#8217;t know it), you can always drop to a <i>manage.py console</i> and try to <code>Post.object.create(name=&#8220;name&#8221;,body=&#8220;tralaalal&#8221;, category=&#8220;ooopsie!&#8221;)</code> and see if you get lucky.</p>
+
+<p>Ok, passing on to the Commentator class:</p>
+
+<pre lang="python">
+class Commentator(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(max_length=50, unique=True)
+    website = models.URLField(verify_exists=True, blank=True)
+</pre>
+
+<p>We&#8217;re only going to test that the data gets to the database and that the <i>name</i> and <i>email</i> fields are unique. At this stage we can&#8217;t test the validation of the <i>email</i> and <i>website</i> fields. We&#8217;ll be doing that later, when we write the <a href="http://docs.djangoproject.com/en/dev/ref/forms/validation/">forms</a>.<br />
+This should seem trivial by now:</p>
+
+<pre lang="python">
+class CommentatorTest(django.test.TestCase):
+    def setUp(self):
+        self.comtor = Commentator.objects.create(name="hacketyhack",
+                email="hackety@example.com", website="example.com")
+    def testExist(self):
+        self.assertEquals(self.comtor.name, "hacketyhack")
+        self.assertEquals(self.comtor.email, "hackety@example.com")
+        self.assertEquals(self.comtor.website, "example.com")
+     def testUnique(self):
+        self.assertRaises(IntegrityError, Commentator.objects.create, 
+                name="hacketyhack", email="new@example.com", 
+                website="example.com")
+        self.assertRaises(IntegrityError, Commentator.objects.create,
+                name="nothackety", email="hackety@example.com",
+                website="example.com")
+</pre>
+
+<p>Now, let&#8217;s get to testing the Comment class:</p>
+
+<pre lang="python">
+class Comment(models.Model):
+    body = models.TextField()
+    post = models.ForeignKey(Post)
+    author = models.ForeignKey(Commentator)
+    approved = models.BooleanField()
+    creation_time = models.DateTimeField(auto_now_add=True)
+</pre>
+
+<p>There won&#8217;t be anything new here. And this is when and why testing is <i>boring</i>. But, hey! A man&#8217;s gotta do, what a man&#8217;s gotta do.</p>
+
+<pre lang="python">
+class CommentTest(django.test.TestCase):
+    def setUp(self):
+        self.cat = Category.objects.create(name="cat1")
+        self.post = Post.objects.create(title="name",body="trala lala",
+                category=Category.objects.all()[0])
+        self.comtor = Commentator.objects.create(name="hacketyhack",
+                email="hackety@example.com", website="example.com")
+        self.com = Comment.objects.create(body="If the implementation is 
+        easy to explain, it may be a good idea.", 
+        post=Post.objects.all()[0], author=Commentator.objects.all()[0])
+
+<p>def testExist(self):<br />
+        self.assertEquals(self.com.body, &#8220;If the implementation is <br />
+        easy to explain, it may be a good idea.&#8221;)<br />
+        self.assertEquals(self.com.post, Post.objects.all()<sup class="footnote"><a href="#fn0">0</a></sup>)<br />
+        self.assertEquals(self.com.author, Commentator.objects.all()<sup class="footnote"><a href="#fn0">0</a></sup>)<br />
+        self.assertEquals(self.com.approved, False)</p>
+
+<p>def testTime(self):<br />
+        delta_creation = datetime.now() &#8211; self.comm.creation_time<br />
+        self.assert_(delta_creation.seconds < 7)</p>
+
+<p>def testCreationTime(self):<br />
+        # what if it&#8217;s a modification_time instead?<br />
+        created = self.com.creation_time<br />
+        self.com.save()<br />
+        self.assertEqual(created, self.com.creation_time)<br />
+</pre></p>
+
+<p>Now that we&#8217;ve written all the tests we have to make sure that they&#8217;re run against the actual database. Or better yet, a backup copy of it. Otherwise, the tests are useless, since django creates a new database <strong>based on the schema defined in models.py</strong> every time <i>models.py test</i> is run.</p>
+
+<p>First, you&#8217;ll need to make a copy of django.test.simple (put it in your project&#8217;s directory for example). Then comment these lines:</p>
+
+<pre lang="python">
+# old_name = settings.DATABASE_NAME
+# from django.db import connection
+# connection.creation.create_test_db(verbosity, autoclobber=not interactive)
+result = unittest.TextTestRunner(verbosity=verbosity).run(suite)
+# connection.creation.destroy_test_db(old_name, verbosity)
+</pre>
+
+<p>And now, add this to your settings.py file:</p>
+
+<pre lang="python">
+TEST_RUNNER = 'myproject.simple.run_tests'
+</pre>
+
+<p>Be careful now. All the data in your database <strong>will</strong> be lost when you run <i>manage.py test</i> the next time. So back it up! First create a new database, say <i>backup</i> and then:</p>
+
+<pre lang="bash">
+mysqldump -u DB_USER --password=DB_PASS DB_NAME|mysql -u DB_USER --password=DB_PASSWD -h localhost backup
+</pre>
+
+<p>You can reverse that when you&#8217;re done.</p>
+
+<p>Here&#8217;s to show that it works (after I&#8217;ve made a little modification to the model, but not the database):</p>
+
+<pre lang="bash">
+$ python manage.py test
+..EEE..EEEEEE................
+
+<p><small>> lots of tracebacks <</small></p>
+
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br />
+Ran 29 tests in 10.149s</p>
+
+<p><span class="caps">FAILED</span> (errors=9)<br />
+</pre></p>
+
+<p>Ok, so that should provide a pretty good test coverage for now. Let&#8217;s go get breakfast!</p>
+    <br />
 </div>
 
     </body>
