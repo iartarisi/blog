@@ -1,0 +1,13 @@
+<%inherit file="layout.html" />
+<h1>Archives<h1>
+        <hr />
+% for month in months:
+<h2>${month}</h2>
+<ul>
+    % for post in months[month]:
+    <li>
+        <a href="${post.slug}">${post.slug}</a>
+    </li>
+    % endfor 
+</ul>
+% endfor
