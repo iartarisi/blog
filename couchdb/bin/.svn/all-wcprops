@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/asf/!svn/ver/712250/incubator/couchdb/trunk/bin
+END
+couchjs.tpl.in
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/asf/!svn/ver/686712/incubator/couchdb/trunk/bin/couchjs.tpl.in
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/asf/!svn/ver/707861/incubator/couchdb/trunk/bin/Makefile.am
+END
+couchpw.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/asf/!svn/ver/710064/incubator/couchdb/trunk/bin/couchpw.c
+END
+couchdb.tpl.in
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/asf/!svn/ver/707480/incubator/couchdb/trunk/bin/couchdb.tpl.in
+END

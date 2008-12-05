@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/repos/asf/!svn/ver/722364/incubator/couchdb/trunk
+END
+BUGS
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/repos/asf/!svn/ver/642965/incubator/couchdb/trunk/BUGS
+END
+NOTICE
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/asf/!svn/ver/686781/incubator/couchdb/trunk/NOTICE
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/asf/!svn/ver/690590/incubator/couchdb/trunk/LICENSE
+END
+configure.ac
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/asf/!svn/ver/712295/incubator/couchdb/trunk/configure.ac
+END
+authors.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/asf/!svn/ver/642660/incubator/couchdb/trunk/authors.xml
+END
+AUTHORS
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/asf/!svn/ver/700806/incubator/couchdb/trunk/AUTHORS
+END
+THANKS
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/asf/!svn/ver/713914/incubator/couchdb/trunk/THANKS
+END
+CHANGES
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/asf/!svn/ver/694433/incubator/couchdb/trunk/CHANGES
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/asf/!svn/ver/709882/incubator/couchdb/trunk/Makefile.am
+END
+acinclude.m4.in
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/asf/!svn/ver/686385/incubator/couchdb/trunk/acinclude.m4.in
+END
+NEWS
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/repos/asf/!svn/ver/686385/incubator/couchdb/trunk/NEWS
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/repos/asf/!svn/ver/706817/incubator/couchdb/trunk/README
+END
+bootstrap
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/asf/!svn/ver/707867/incubator/couchdb/trunk/bootstrap
+END

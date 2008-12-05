@@ -1,0 +1,15 @@
+body {
+    width: 40em;
+    text-align: justify;
+    margin: 3em auto;
+    font-family: sans-serif;
+    overflow: auto;
+}
+
+pre {
+    overflow: auto;
+}
+
+code {
+    font-family: monospace;
+}

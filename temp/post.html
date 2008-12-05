@@ -1,0 +1,9 @@
+<%inherit file="layout.html" />
+
+<%def name='post()'>
+% for post in posts:
+<div class="post">
+    ${post.entry}
+</div>
+% endfor
+</%def>

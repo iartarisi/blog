@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/asf/!svn/ver/700767/incubator/couchdb/trunk/share/www/browse
+END
+document.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/asf/!svn/ver/690590/incubator/couchdb/trunk/share/www/browse/document.html
+END
+_delete_document.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/asf/!svn/ver/642432/incubator/couchdb/trunk/share/www/browse/_delete_document.html
+END
+_create_document.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/asf/!svn/ver/642432/incubator/couchdb/trunk/share/www/browse/_create_document.html
+END
+database.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/asf/!svn/ver/700767/incubator/couchdb/trunk/share/www/browse/database.html
+END
+_delete_database.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/asf/!svn/ver/642432/incubator/couchdb/trunk/share/www/browse/_delete_database.html
+END
+_create_database.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/asf/!svn/ver/642432/incubator/couchdb/trunk/share/www/browse/_create_database.html
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/asf/!svn/ver/690297/incubator/couchdb/trunk/share/www/browse/index.html
+END
+_compact_database.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/asf/!svn/ver/646734/incubator/couchdb/trunk/share/www/browse/_compact_database.html
+END
+_save_view_as.html
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/asf/!svn/ver/642432/incubator/couchdb/trunk/share/www/browse/_save_view_as.html
+END
+_upload_attachment.html
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/repos/asf/!svn/ver/690590/incubator/couchdb/trunk/share/www/browse/_upload_attachment.html
+END

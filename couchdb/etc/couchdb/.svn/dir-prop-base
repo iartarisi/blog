@@ -1,0 +1,10 @@
+K 10
+svn:ignore
+V 65
+Makefile
+Makefile.in
+default.ini
+default_dev.ini
+default.ini.tpl
+
+END

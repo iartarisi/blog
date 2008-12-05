@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/asf/!svn/ver/686712/incubator/couchdb/trunk/etc/launchd
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/asf/!svn/ver/642445/incubator/couchdb/trunk/etc/launchd/Makefile.am
+END
+org.apache.couchdb.plist.tpl.in
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/repos/asf/!svn/ver/686712/incubator/couchdb/trunk/etc/launchd/org.apache.couchdb.plist.tpl.in
+END

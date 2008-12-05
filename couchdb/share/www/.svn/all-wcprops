@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/asf/!svn/ver/722364/incubator/couchdb/trunk/share/www
+END
+couch_tests.html
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/asf/!svn/ver/718409/incubator/couchdb/trunk/share/www/couch_tests.html
+END
+replicator.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/asf/!svn/ver/700399/incubator/couchdb/trunk/share/www/replicator.html
+END
+config.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/asf/!svn/ver/700399/incubator/couchdb/trunk/share/www/config.html
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/asf/!svn/ver/718409/incubator/couchdb/trunk/share/www/index.html
+END
+favicon.ico
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/asf/!svn/ver/642432/incubator/couchdb/trunk/share/www/favicon.ico
+END
