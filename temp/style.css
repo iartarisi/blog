@@ -1,18 +1,65 @@
 body {
-    width: 40em;
+    padding: 0;
+    width: 46em;
     text-align: justify;
-    margin: 3em auto;
+    background-color: #050; 
+    margin: 0 auto 0;
     font-family: sans-serif;
     overflow: auto;
+    color: #606060;
 }
 
+a {
+    color: #008800;
+}
+
+
+h2 a {
+    color: #005500;
+}
+
+a:visited, a:hover {
+    color: #004400;
+}
+h3 {
+    font-size: .8em;
+    color: #225522;
+    margin-bottom: 1em;
+}
 pre {
+    color: black;
     overflow: auto;
-    background-color: grey;
-    padding: .5em;
-    color: white;
+    padding: .7em;
+    border: 1px groove #ddd;
+    margin: .7em;
+    background-color: #efe;
 }
 
-code {
-    font-family: monospace;
+#header {
+    margin: .5em 0 .4em;
+    text-align: left;
+}
+#header a {
+    color: #005500;
+    padding: 0 1em 0 0;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: serif;
+}
+
+#content {
+    border-top: groove 1em #050;
+    background-color: white;
+    padding: .5em 2em 2em 2em;
+}
+
+.post {
+    margin-top: 4em;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style: none;
 }

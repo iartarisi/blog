@@ -1,5 +1,6 @@
 import sys
 import os
+from datetime import datetime
 
 from blog import Blog
 from post import Post
@@ -7,9 +8,9 @@ from post import Post
 blog = Blog()
 if __name__ == '__main__':
     if len(sys.argv) == 3 and sys.argv[1] == 'post':
-            post = Post(sys.argv[2])
-            post.write()
-            blog.update()
+        post = Post(sys.argv[2])
+        post.write()
+        blog.update()
     elif len(sys.argv) == 2:
         if sys.argv[1] == 'index':
             blog.update()

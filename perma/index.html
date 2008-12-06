@@ -1,369 +1,337 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../temp/style.css">
+        <link rel="stylesheet" type="text/css" href="../temp/pygments.css">
         <title>Ulugha</title>
     </head>
     <body>
+        <div id="content">
+            <div id="header">
+                <a href="index.html">home</a>
+                <a href="archive.html">archive</a>
+                <a href="about.html">about</a>
+            </div>
             
-
-<div class="post">
-    <h2>Django comments fields</h2>
-    <p>Upon reading the nice <a href="http://docs.djangoproject.com/en/dev/ref/contrib/comments/#module-django.contrib.comments">documentation</a> for the new comment framework in django 1.0, one might wonder what are the fields attached to the comment entity which you are to iterate against:</p>
-
-<pre lang="python"><code>
-{% for comment in comment_list %}
-     ...
-{% endfor %}
-</code></pre>
-
+    <div class="post">
+        <h2><a href="django-comments-fields.html">Django comments fields</a></h2>
+        <h3>19 October 2008</h2>
+        <div class="entry">
+            <p>Upon reading the nice <a href="http://docs.djangoproject.com/en/dev/ref/contrib/comments/#module-django.contrib.comments">documentation</a> for the new comment framework in django 1.0, one might wonder what are the fields attached to the comment entity which you are to iterate against:</p>
+<div class="Python"><div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comment_list</span> <span class="o">%</span><span class="p">}</span>
+     <span class="o">...</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
 <p>There&#8217;s something wrong in that code. The ellipsis!<br />
 So what should you write in there? There&#8217;s no mention of the comment fields in the docs, so I put on my rubber boots and got down to my dbshell so you don&#8217;t have to.</p>
-
-<pre lang="mysql"><code>
-revolution=> \d+ django_comments
-                                             Table "public.django_comments"
-     Column      |           Type           |                          Modifiers                           | Description 
------------------+--------------------------+--------------------------------------------------------------+-------------
- id              | integer                  | not null default nextval('django_comments_id_seq'::regclass) | 
- content_type_id | integer                  | not null                                                     | 
- object_pk       | text                     | not null                                                     | 
- site_id         | integer                  | not null                                                     | 
- user_id         | integer                  |                                                              | 
- user_name       | character varying(50)    | not null                                                     | 
- user_email      | character varying(75)    | not null                                                     | 
- user_url        | character varying(200)   | not null                                                     | 
- comment         | text                     | not null                                                     | 
- submit_date     | timestamp with time zone | not null                                                     | 
- ip_address      | inet                     |                                                              | 
- is_public       | boolean                  | not null                                                     | 
- is_removed      | boolean                  | not null                                                     | 
-Indexes:
-    "django_comments_pkey" PRIMARY KEY, btree (id)
-    "django_comments_content_type_id" btree (content_type_id)
-    "django_comments_site_id" btree (site_id)
-    "django_comments_user_id" btree (user_id)
-Foreign-key constraints:
-    "django_comments_content_type_id_fkey" FOREIGN KEY (content_type_id) REFERENCES django_content_type(id) DEFERRABLE INITIALLY DEFERRED
-    "django_comments_site_id_fkey" FOREIGN KEY (site_id) REFERENCES django_site(id) DEFERRABLE INITIALLY DEFERRED
-    "django_comments_user_id_fkey" FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED
-Has OIDs: no
-</code></pre>
-
+<div class="MySQL"><div class="highlight"><pre><span class="n">revolution</span><span class="o">=&gt;</span> <span class="err">\</span><span class="n">d</span><span class="o">+</span> <span class="n">django_comments</span>
+                                             <span class="k">Table</span> <span class="s2">&quot;public.django_comments&quot;</span>
+     <span class="k">Column</span>      <span class="o">|</span>           <span class="n">Type</span>           <span class="o">|</span>                          <span class="n">Modifiers</span>                           <span class="o">|</span> <span class="n">Description</span> 
+<span class="o">-----------------+--------------------------+--------------------------------------------------------------+-----------</span><span class="c1">--</span>
+<span class="c1"> id              | integer                  | not null default nextval(&#39;django_comments_id_seq&#39;::regclass) | </span>
+ <span class="n">content_type_id</span> <span class="o">|</span> <span class="kt">integer</span>                  <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">object_pk</span>       <span class="o">|</span> <span class="kt">text</span>                     <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">site_id</span>         <span class="o">|</span> <span class="kt">integer</span>                  <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">user_id</span>         <span class="o">|</span> <span class="kt">integer</span>                  <span class="o">|</span>                                                              <span class="o">|</span> 
+ <span class="n">user_name</span>       <span class="o">|</span> <span class="k">character</span> <span class="k">varying</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>    <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">user_email</span>      <span class="o">|</span> <span class="k">character</span> <span class="k">varying</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span>    <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">user_url</span>        <span class="o">|</span> <span class="k">character</span> <span class="k">varying</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>   <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">comment</span>         <span class="o">|</span> <span class="kt">text</span>                     <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">submit_date</span>     <span class="o">|</span> <span class="kt">timestamp</span> <span class="k">with</span> <span class="kt">time</span> <span class="n">zone</span> <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">ip_address</span>      <span class="o">|</span> <span class="n">inet</span>                     <span class="o">|</span>                                                              <span class="o">|</span> 
+ <span class="n">is_public</span>       <span class="o">|</span> <span class="n">boolean</span>                  <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">is_removed</span>      <span class="o">|</span> <span class="n">boolean</span>                  <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+<span class="n">Indexes</span><span class="p">:</span>
+    <span class="s2">&quot;django_comments_pkey&quot;</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="nf">btree</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
+    <span class="s2">&quot;django_comments_content_type_id&quot;</span> <span class="nf">btree</span> <span class="p">(</span><span class="n">content_type_id</span><span class="p">)</span>
+    <span class="s2">&quot;django_comments_site_id&quot;</span> <span class="nf">btree</span> <span class="p">(</span><span class="n">site_id</span><span class="p">)</span>
+    <span class="s2">&quot;django_comments_user_id&quot;</span> <span class="nf">btree</span> <span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="k">Foreign</span><span class="o">-</span><span class="k">key</span> <span class="n">constraints</span><span class="p">:</span>
+    <span class="s2">&quot;django_comments_content_type_id_fkey&quot;</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">content_type_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="nf">django_content_type</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">DEFERRABLE</span> <span class="n">INITIALLY</span> <span class="n">DEFERRED</span>
+    <span class="s2">&quot;django_comments_site_id_fkey&quot;</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">site_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="nf">django_site</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">DEFERRABLE</span> <span class="n">INITIALLY</span> <span class="n">DEFERRED</span>
+    <span class="s2">&quot;django_comments_user_id_fkey&quot;</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="nf">auth_user</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">DEFERRABLE</span> <span class="n">INITIALLY</span> <span class="n">DEFERRED</span>
+<span class="n">Has</span> <span class="n">OIDs</span><span class="p">:</span> <span class="n">no</span>
+</pre></div>
+</div>
 <p>So here&#8217;s how a simple django template with comments would look like, the relevant part:</p>
-
-<pre lang="python"><code>
-{% get_comment_count for post as comment_count %}
-{% get_comment_list for post as comment_list %}
-<h2>{{ post.title }}</h2>
-<div id="undertitle">{{ post.creation_time }}</div>
-{{ post.body }}
-<div id="comments"><p>{{ comment_count }}</p>
-    {% for comment in comment_list %}
-    <div id="comment">
-        <a href="{{ comment.user_url }}">{{ comment.user_name }}</a>
-        <h4>{{ comment.submit_date }}</h4>
-        {{ comment.comment }}
-    </div>
-    {% endfor %}
-    {% render_comment_form for post %}
+<div class="Python"><div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="n">get_comment_count</span> <span class="k">for</span> <span class="n">post</span> <span class="k">as</span> <span class="n">comment_count</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">get_comment_list</span> <span class="k">for</span> <span class="n">post</span> <span class="k">as</span> <span class="n">comment_list</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">post</span><span class="o">.</span><span class="n">title</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;undertitle&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">post</span><span class="o">.</span><span class="n">creation_time</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">{{</span> <span class="n">post</span><span class="o">.</span><span class="n">body</span> <span class="p">}}</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;comments&quot;</span><span class="o">&gt;&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">comment_count</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comment_list</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;comment&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;{{ comment.user_url }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">comment</span><span class="o">.</span><span class="n">user_name</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">comment</span><span class="o">.</span><span class="n">submit_date</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+        <span class="p">{{</span> <span class="n">comment</span><span class="o">.</span><span class="n">comment</span> <span class="p">}}</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">render_comment_form</span> <span class="k">for</span> <span class="n">post</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
 </div>
-</code></pre>
-
 <p>You can play with the <em>is_public</em> and <em>is_removed</em> fields in the admin site <del>and you can also modify any other fields in your users&#8217; posts</del>. You could also use the <em>ip_address</em> field to display <a href="http://coulix.net/blog/2006/aug/17/ip-country-flags-django-comments/">country flags in your comments</a> .</p>
-
 <p>The django comments provide a spam-fighting technique by default, in the form of a <a href="http://docs.djangoproject.com/en/dev/ref/contrib/comments/#notes-on-the-comment-form">honeypot</a> (though I wonder how effective that is) as well as other extras. There are rumours that some sort of captcha system (some say <a href="http://recaptcha.net/">reCaptcha</a> ) will be integrated in the django comments framework.</p>
-
 <p>Take more risks! Live more dangerously!</p>
-    <br />
+            <br />
+        </div>
+    </div>
+    <div class="post">
+        <h2><a href="testing-django-models.html">testing a django blog's models</a></h2>
+        <h3>25 September 2008</h2>
+        <div class="entry">
+            <p>This post is a continuation of <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2/">this post</a> and I&#8217;ll be using that schema to write tests on top of. Here it is, for easy reference:</p>
+<div class="Python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">nume</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">20</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">)</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Category</span><span class="p">)</span>
+    <span class="n">published</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+    <span class="n">creation_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">modified_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Commentator</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">website</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URLField</span><span class="p">(</span><span class="n">verify_exists</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Comment</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Commentator</span><span class="p">)</span>
+    <span class="n">approved</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+    <span class="n">creation_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="post">
-    <h2>testing a django blog's models</h2>
-    <p>This post is a continuation of <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2/">this post</a> and I&#8217;ll be using that schema to write tests on top of. Here it is, for easy reference:</p>
-
-<pre lang="python">
-from django.db import models
-
-<p>class Category(models.Model):<br />
-    nume = models.CharField(max_length=20)</p>
-
-<p>class Post(models.Model):<br />
-    title = models.CharField(max_length=50)<br />
-    body = models.TextField()<br />
-    category = models.ForeignKey(Category)<br />
-    published = models.BooleanField()<br />
-    creation_time = models.DateTimeField(auto_now_add=True)<br />
-    modified_time = models.DateTimeField(auto_now=True)</p>
-
-<p>class Commentator(models.Model):<br />
-    name = models.CharField(max_length=50, unique=True)<br />
-    email = models.EmailField(max_length=50, unique=True)<br />
-    website = models.URLField(verify_exists=True)</p>
-
-<p>class Comment(models.Model):<br />
-    body = models.TextField()<br />
-    post = models.ForeignKey(Post)<br />
-    author = models.ForeignKey(Commentator)<br />
-    approved = models.BooleanField()<br />
-    creation_time = models.DateTimeField(auto_now_add=True)<br />
-</pre></p>
-
 <p>Ok, so here&#8217;s what we&#8217;re testing: our model&#8212;the emphasis is on <i>our</i>, because we&#8217;re only testing our code. And mostly, we&#8217;re actually testing that the code in models.py corresponds with what&#8217;s in the database. All test methods must begin with the word <i>test</i>.</p>
-
 <p>One of the most annoying things which took me a while to figure out was that the <strong>setUp</strong> method is run <i>every time</i> before one of the other methods is run. That means that if you want to test for uniqueness, you <i>have to</i> build a <strong>tearDown</strong> method if you want to run any other independent tests. This is why snippet A won&#8217;t work, but snippet B will.<br />
 Here&#8217;s the model:</p>
-
-<pre lang="python">
-class Category(models.Model):
-    name = models.CharField(max_length=20, unique=True)
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">20</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
 <h4>snippet A</h4>
-
-<pre lang="python">
-class CategoryTest(unittest.TestCase):
-def setUp(self):
-    self.cat1 = Category.objects.create(name="cat1")
-def testexist(self):
-    # make sure they get to the database
-    self.assertEquals(self.cat1.name, "cat1")
-def testunique(self): 
-    self.assertRaises(IntegrityError, Category.objects.create, name="cat1")
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CategoryTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cat1</span> <span class="o">=</span> <span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">testexist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c"># make sure they get to the database</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cat1</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">testunique</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">IntegrityError</span><span class="p">,</span> <span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <h4>snippet B</h4>
-
-<pre lang="python">
-class CategoryTest(unittest.TestCase):
-def setUp(self):
-    self.cat1 = Category.objects.create(name="cat1")
-def testexist(self):
-    # make sure they get to the database
-    self.assertEquals(self.cat1.name, "cat1")
-    self.assertRaises(IntegrityError, Category.objects.create, name="cat1")
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CategoryTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cat1</span> <span class="o">=</span> <span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">testexist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c"># make sure they get to the database</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cat1</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">IntegrityError</span><span class="p">,</span> <span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>The second snippet only calls the <strong>setUp</strong> method once because there is only one other method. But that&#8217;s not very nice. Ideally we&#8217;d to be able to run each test individually, so maybe we can write a <strong>tearDown</strong> method to be run after each other method, to restore the database.</p>
-
 <p>However, there is an easier way to not have to write a <strong>tearDown</strong> method and that is using the <strong>django.test</strong> module which is an extention to unittest. All you have to do is <strong>import django.test</strong> instead of <strong>unittest</strong> and make every test object a sublclass of <strong>django.test.TestCase</strong> instead of <strong>unittest.TestCase</strong>.<br />
 Here is what it looks like now:</p>
-
-<pre lang="python">
-class CategoryTest(django.test.TestCase):
-    def setUp(self):
-        self.cat1 = Category.objects.create(name="cat1")
-        self.cat2 = Category.objects.create(name="cat2")
-    def testexist(self):
-        # make sure they get to the database
-        self.assertEquals(self.cat1.name, "cat1")
-        self.assertEquals(self.cat2.name, "cat2")
-    def testunique(self):
-        self.assertRaises(IntegrityError, Category.objects.create, name="cat1")
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CategoryTest</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cat1</span> <span class="o">=</span> <span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cat2</span> <span class="o">=</span> <span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;cat2&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">testexist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># make sure they get to the database</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cat1</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cat2</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;cat2&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">testunique</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">IntegrityError</span><span class="p">,</span> <span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Now, let&#8217;s test the <strong>Post class</strong>:</p>
-
-<pre lang="python">
-class Post(models.Model):
-    title = models.CharField(max_length=50)
-    body = models.TextField()
-    category = models.ForeignKey(Category)
-    published = models.BooleanField()
-    creation_time = models.DateTimeField(auto_now_add=True)
-    modified_time = models.DateTimeField(auto_now=True)
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">)</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Category</span><span class="p">)</span>
+    <span class="n">published</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+    <span class="n">creation_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">modified_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>There&#8217;s a bunch more stuff to test here, like the fact that everything gets to the database (title, body, category) and that everything has it&#8217;s right type/class.<br />
 We setUp a post, but also a category, since the test will be independent, but needs a Category to generate a Post.</p>
-
-<pre lang="python">
-class PostTest(django.test.TestCase):
-    def setUp(self):
-        self.cat1 = Category.objects.create(name="cat1")
-        self.post1 = Post.objects.create(title="name",body="trala lala",
-                category=Category.objects.all()[0])
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">PostTest</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cat1</span> <span class="o">=</span> <span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">post1</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="n">body</span><span class="o">=</span><span class="s">&quot;trala lala&quot;</span><span class="p">,</span>
+                <span class="n">category</span><span class="o">=</span><span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mf">0</span><span class="p">])</span>
+</pre></div>
+</div>
 <p>Next, we need to do a bit of a <i>trivial</i> test to check that the title, the body and the right category get to the db</p>
-
-<pre lang="python">
-def testtrivial(self):
-        self.assertEquals(self.post1.title, "name")
-        self.assertEquals(self.post1.body, "trala lala")
-        self.assertEquals(self.post1.category, Category.objects.all()[0])
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">testtrivial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="s">&quot;name&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="s">&quot;trala lala&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">category</span><span class="p">,</span> <span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mf">0</span><span class="p">])</span>
+</pre></div>
+</div>
 <p>I think this is a good way to test that the creation_time and modified_time are newly generated datetime.datetime objects:</p>
-
-<pre lang="python">
-def testtime(self):
-    self.assertEquals(self.post1.creation_time.hour, datetime.now().hour)
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">testtime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">creation_time</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>No, wait. I think this looks a bit more professional:</p>
-
-<pre lang="python">
-def testtime(self):
-        delta = datetime.now() - self.post1.creation_time
-        self.assert_(delta.seconds < 10)
-        delta_modified = datetime.now() - self.post1.modified_time
-        self.assert_(delta_modified.seconds < 10)
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">testtime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">creation_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_</span><span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">seconds</span> <span class="o">&lt;</span> <span class="mf">10</span><span class="p">)</span>
+        <span class="n">delta_modified</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">modified_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_</span><span class="p">(</span><span class="n">delta_modified</span><span class="o">.</span><span class="n">seconds</span> <span class="o">&lt;</span> <span class="mf">10</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>So now, we&#8217;re looking for datetime objects that were generated less than 10 seconds ago. That&#8217;s really very generous since the time it takes to run the test from the time the <i>setUp</i> method is run is in the range of microseconds.<br />
 This test doesn&#8217;t show the true difference between modified and creation time. Modification time is changed every time the object is <i>saved</i> to the database while creation time is not. So let&#8217;s write a new test based on that knowledge:</p>
-
-<pre  lang="python">
- def testModifiedVsCreation(self):
-        modified = self.post1.modified_time
-        created = self.post1.creation_time
-        self.post1.save()
-        self.assertNotEqual(modified, self.post1.modified_time)
-        self.assertEqual(created, self.post1.creation_time)
-</pre>
-
+<div class="Python"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">testModifiedVsCreation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">modified</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">modified_time</span>
+        <span class="n">created</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">creation_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotEqual</span><span class="p">(</span><span class="n">modified</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">modified_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">created</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">creation_time</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Testing for a boolean value is really easy:</p>
-
-<pre lang="python">
- def testpublished(self): 
-        self.assertEquals(self.post1.published, False)
-</pre>
-
+<div class="Python"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">testpublished</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">published</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>And then there&#8217;s more than one way I can think of to test the Category ForeignKey:</p>
-
-<pre lang="python">
-def testcategory(self):
-        self.assertEquals(self.cat1.__class__, self.post1.category.__class__)
-        self.assertRaises(ValueError, Post.objects.create, name="name",
-                body="tralaalal", category="ooopsie!")
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">testcategory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cat1</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">__class__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">,</span>
+                <span class="n">body</span><span class="o">=</span><span class="s">&quot;tralaalal&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s">&quot;ooopsie!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>In the end, I&#8217;ll go for the more general one, even though the second one is more excentric. So:</p>
-
-<pre lang="python">
-def testcategory(self):
-        self.assertEquals(self.cat1.__class__, self.post1.category.__class__)
-        self.assertRaises(ValueError, Post.objects.create, name="name",
-                body="tralaalal", category="ooopsie!")
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">testcategory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cat1</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">post1</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">__class__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">,</span>
+                <span class="n">body</span><span class="o">=</span><span class="s">&quot;tralaalal&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s">&quot;ooopsie!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Btw, if you don&#8217;t know the errors (like ValueError&#8212;I didn&#8217;t know it), you can always drop to a <i>manage.py console</i> and try to <code>Post.object.create(name=&#8220;name&#8221;,body=&#8220;tralaalal&#8221;, category=&#8220;ooopsie!&#8221;)</code> and see if you get lucky.</p>
-
 <p>Ok, passing on to the Commentator class:</p>
-
-<pre lang="python">
-class Commentator(models.Model):
-    name = models.CharField(max_length=50, unique=True)
-    email = models.EmailField(max_length=50, unique=True)
-    website = models.URLField(verify_exists=True, blank=True)
-</pre>
-
+<div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Commentator</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">website</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URLField</span><span class="p">(</span><span class="n">verify_exists</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>We&#8217;re only going to test that the data gets to the database and that the <i>name</i> and <i>email</i> fields are unique. At this stage we can&#8217;t test the validation of the <i>email</i> and <i>website</i> fields. We&#8217;ll be doing that later, when we write the <a href="http://docs.djangoproject.com/en/dev/ref/forms/validation/">forms</a>.<br />
 This should seem trivial by now:</p>
-
-<pre lang="python">
-class CommentatorTest(django.test.TestCase):
-    def setUp(self):
-        self.comtor = Commentator.objects.create(name="hacketyhack",
-                email="hackety@example.com", website="example.com")
-    def testExist(self):
-        self.assertEquals(self.comtor.name, "hacketyhack")
-        self.assertEquals(self.comtor.email, "hackety@example.com")
-        self.assertEquals(self.comtor.website, "example.com")
-     def testUnique(self):
-        self.assertRaises(IntegrityError, Commentator.objects.create, 
-                name="hacketyhack", email="new@example.com", 
-                website="example.com")
-        self.assertRaises(IntegrityError, Commentator.objects.create,
-                name="nothackety", email="hackety@example.com",
-                website="example.com")
-</pre>
-
-<p>Now, let&#8217;s get to testing the Comment class:</p>
-
-<pre lang="python">
-class Comment(models.Model):
-    body = models.TextField()
-    post = models.ForeignKey(Post)
-    author = models.ForeignKey(Commentator)
-    approved = models.BooleanField()
-    creation_time = models.DateTimeField(auto_now_add=True)
-</pre>
-
-<p>There won&#8217;t be anything new here. And this is when and why testing is <i>boring</i>. But, hey! A man&#8217;s gotta do, what a man&#8217;s gotta do.</p>
-
-<pre lang="python">
-class CommentTest(django.test.TestCase):
-    def setUp(self):
-        self.cat = Category.objects.create(name="cat1")
-        self.post = Post.objects.create(title="name",body="trala lala",
-                category=Category.objects.all()[0])
-        self.comtor = Commentator.objects.create(name="hacketyhack",
-                email="hackety@example.com", website="example.com")
-        self.com = Comment.objects.create(body="If the implementation is 
-        easy to explain, it may be a good idea.", 
-        post=Post.objects.all()[0], author=Commentator.objects.all()[0])
-
-<p>def testExist(self):<br />
-        self.assertEquals(self.com.body, &#8220;If the implementation is <br />
-        easy to explain, it may be a good idea.&#8221;)<br />
-        self.assertEquals(self.com.post, Post.objects.all()<sup class="footnote"><a href="#fn0">0</a></sup>)<br />
-        self.assertEquals(self.com.author, Commentator.objects.all()<sup class="footnote"><a href="#fn0">0</a></sup>)<br />
-        self.assertEquals(self.com.approved, False)</p>
-
-<p>def testTime(self):<br />
-        delta_creation = datetime.now() &#8211; self.comm.creation_time<br />
-        self.assert_(delta_creation.seconds < 7)</p>
-
-<p>def testCreationTime(self):<br />
-        # what if it&#8217;s a modification_time instead?<br />
-        created = self.com.creation_time<br />
-        self.com.save()<br />
-        self.assertEqual(created, self.com.creation_time)<br />
-</pre></p>
-
-<p>Now that we&#8217;ve written all the tests we have to make sure that they&#8217;re run against the actual database. Or better yet, a backup copy of it. Otherwise, the tests are useless, since django creates a new database <strong>based on the schema defined in models.py</strong> every time <i>models.py test</i> is run.</p>
-
-<p>First, you&#8217;ll need to make a copy of django.test.simple (put it in your project&#8217;s directory for example). Then comment these lines:</p>
-
-<pre lang="python">
-# old_name = settings.DATABASE_NAME
-# from django.db import connection
-# connection.creation.create_test_db(verbosity, autoclobber=not interactive)
-result = unittest.TextTestRunner(verbosity=verbosity).run(suite)
-# connection.creation.destroy_test_db(old_name, verbosity)
-</pre>
-
-<p>And now, add this to your settings.py file:</p>
-
-<pre lang="python">
-TEST_RUNNER = 'myproject.simple.run_tests'
-</pre>
-
-<p>Be careful now. All the data in your database <strong>will</strong> be lost when you run <i>manage.py test</i> the next time. So back it up! First create a new database, say <i>backup</i> and then:</p>
-
-<pre lang="bash">
-mysqldump -u DB_USER --password=DB_PASS DB_NAME|mysql -u DB_USER --password=DB_PASSWD -h localhost backup
-</pre>
-
-<p>You can reverse that when you&#8217;re done.</p>
-
-<p>Here&#8217;s to show that it works (after I&#8217;ve made a little modification to the model, but not the database):</p>
-
-<pre lang="bash">
-$ python manage.py test
-..EEE..EEEEEE................
-
-<p><small>> lots of tracebacks <</small></p>
-
-<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br />
-Ran 29 tests in 10.149s</p>
-
-<p><span class="caps">FAILED</span> (errors=9)<br />
-</pre></p>
-
-<p>Ok, so that should provide a pretty good test coverage for now. Let&#8217;s go get breakfast!</p>
-    <br />
+<div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CommentatorTest</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comtor</span> <span class="o">=</span> <span class="n">Commentator</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;hacketyhack&quot;</span><span class="p">,</span>
+                <span class="n">email</span><span class="o">=</span><span class="s">&quot;hackety@example.com&quot;</span><span class="p">,</span> <span class="n">website</span><span class="o">=</span><span class="s">&quot;example.com&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">testExist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comtor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;hacketyhack&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comtor</span><span class="o">.</span><span class="n">email</span><span class="p">,</span> <span class="s">&quot;hackety@example.com&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comtor</span><span class="o">.</span><span class="n">website</span><span class="p">,</span> <span class="s">&quot;example.com&quot;</span><span class="p">)</span>
+     <span class="k">def</span> <span class="nf">testUnique</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">IntegrityError</span><span class="p">,</span> <span class="n">Commentator</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">,</span> 
+                <span class="n">name</span><span class="o">=</span><span class="s">&quot;hacketyhack&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s">&quot;new@example.com&quot;</span><span class="p">,</span> 
+                <span class="n">website</span><span class="o">=</span><span class="s">&quot;example.com&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">IntegrityError</span><span class="p">,</span> <span class="n">Commentator</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s">&quot;nothackety&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s">&quot;hackety@example.com&quot;</span><span class="p">,</span>
+                <span class="n">website</span><span class="o">=</span><span class="s">&quot;example.com&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
+<p>Now, let&#8217;s get to testing the Comment class:</p>
+<div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Comment</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Commentator</span><span class="p">)</span>
+    <span class="n">approved</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+    <span class="n">creation_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There won&#8217;t be anything new here. And this is when and why testing is <i>boring</i>. But, hey! A man&#8217;s gotta do, what a man&#8217;s gotta do.</p>
+<div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CommentTest</span><span class="p">(</span><span class="n">django</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cat</span> <span class="o">=</span> <span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;cat1&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">post</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="n">body</span><span class="o">=</span><span class="s">&quot;trala lala&quot;</span><span class="p">,</span>
+                <span class="n">category</span><span class="o">=</span><span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mf">0</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comtor</span> <span class="o">=</span> <span class="n">Commentator</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;hacketyhack&quot;</span><span class="p">,</span>
+                <span class="n">email</span><span class="o">=</span><span class="s">&quot;hackety@example.com&quot;</span><span class="p">,</span> <span class="n">website</span><span class="o">=</span><span class="s">&quot;example.com&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">com</span> <span class="o">=</span> <span class="n">Comment</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="s">&quot;If the implementation is </span>
+        <span class="n">easy</span> <span class="n">to</span> <span class="n">explain</span><span class="p">,</span> <span class="n">it</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">good</span> <span class="n">idea</span><span class="o">.</span><span class="s">&quot;, </span>
+        <span class="n">post</span><span class="o">=</span><span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mf">0</span><span class="p">],</span> <span class="n">author</span><span class="o">=</span><span class="n">Commentator</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mf">0</span><span class="p">])</span>
+    <span class="k">def</span> <span class="nf">testExist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="s">&quot;If the implementation is </span>
+        <span class="n">easy</span> <span class="n">to</span> <span class="n">explain</span><span class="p">,</span> <span class="n">it</span> <span class="n">may</span> <span class="n">be</span> <span class="n">a</span> <span class="n">good</span> <span class="n">idea</span><span class="o">.</span><span class="s">&quot;)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">post</span><span class="p">,</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mf">0</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">author</span><span class="p">,</span> <span class="n">Commentator</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()[</span><span class="mf">0</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">approved</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">testTime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">delta_creation</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">creation_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_</span><span class="p">(</span><span class="n">delta_creation</span><span class="o">.</span><span class="n">seconds</span> <span class="o">&lt;</span> <span class="mf">7</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">testCreationTime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># what if it&#39;s a modification_time instead?</span>
+        <span class="n">created</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">creation_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">created</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">creation_time</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now that we&#8217;ve written all the tests we have to make sure that they&#8217;re run against the actual database. Or better yet, a backup copy of it. Otherwise, the tests are useless, since django creates a new database <strong>based on the schema defined in models.py</strong> every time <i>models.py test</i> is run.</p>
+<p>First, you&#8217;ll need to make a copy of django.test.simple (put it in your project&#8217;s directory for example). Then comment these lines:</p>
+<div class="Python"><div class="highlight"><pre><span class="c"># old_name = settings.DATABASE_NAME</span>
+<span class="c"># from django.db import connection</span>
+<span class="c"># connection.creation.create_test_db(verbosity, autoclobber=not interactive)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TextTestRunner</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">suite</span><span class="p">)</span>
+<span class="c"># connection.creation.destroy_test_db(old_name, verbosity)</span>
+</pre></div>
+</div>
+<p>And now, add this to your settings.py file:</p>
+<div class="Python"><div class="highlight"><pre><span class="n">TEST_RUNNER</span> <span class="o">=</span> <span class="s">&#39;myproject.simple.run_tests&#39;</span>
+</pre></div>
+</div>
+<p>Be careful now. All the data in your database <strong>will</strong> be lost when you run <i>manage.py test</i> the next time. So back it up! First create a new database, say <i>backup</i> and then:</p>
+<div class="Bash"><div class="highlight"><pre>mysqldump -u DB_USER --password<span class="o">=</span>DB_PASS DB_NAME|mysql -u DB_USER --password<span class="o">=</span>DB_PASSWD -h localhost backup
+</pre></div>
+</div>
+<p>You can reverse that when you&#8217;re done.</p>
+<p>Here&#8217;s to show that it works (after I&#8217;ve made a little modification to the model, but not the database):</p>
+<div class="Bash"><div class="highlight"><pre><span class="nv">$ </span>python manage.py <span class="nb">test</span>
+..EEE..EEEEEE................
+--&gt; lots of tracebacks &lt;--
+----------------------------------------------------------------------
+Ran 29 tests in 10.149s
+FAILED <span class="o">(</span><span class="nv">errors</span><span class="o">=</span>9<span class="o">)</span>
+</pre></div>
+</div>
+<p>Ok, so that should provide a pretty good test coverage for now. Let&#8217;s go get breakfast!</p>
+            <br />
+        </div>
+    </div>
+    <div class="post">
+        <h2><a href="eliminate-rails-caching-gap.html">Eliminate rails caching gap</a></h2>
+        <h3>23 September 2008</h2>
+        <div class="entry">
+            <p>Yesterday, while working on a soon-to-be <a href="http://en.wikipedia.org/wiki/Planet_(software)">planet</a> for my <span class="caps">LUG</span>, I came up with this ingenious way of eliminating the caching gap that the usual rails ActionController caches_page introduces when used with <a href="http://en.wikipedia.org/wiki/Cron">cron</a> to expire a page at a specified time interval. It&#8217;s amazingly simple. This works ideally for one-page systems (such as this planet), but can probably be extended for many pages.<br />
+While you would normally develop code like this to put in a cron job:</p>
+<div class="Bash"><div class="highlight"><pre>rm planet.html
+curl http://planet.example.com &gt; planet.html
+</pre></div>
+</div>
+<p>the caching gap is obvious here. Anyone who visits the site while curl (and the aggregating rails app in the back) is doing it&#8217;s job will have to wait for that process to be completed(which on my dev-server can take up to 17secs).</p>
+<p>In order to eliminate the gap <i>and</i> acquire the new page, this is what must be done:</p>
+<div class="Bash"><div class="highlight"><pre>mv planet.html oldplanet
+curl http://planet.example.com &gt; planet.html &amp;amp; mv oldplanet planet.html
+</pre></div>
+</div>
+<p>Notice how the old page is saved <i>and</i> deleted, so rails produces a brand new one for curl and immediately after curl has started, the old page will be put back in the cache so no visitors will notice. After curl finishes it&#8217;s background job, we&#8217;ll have an updated planet and everyone will be happy.</p>
+<p>I searched for days upon days to find the perfect (simplicity was my most important criteria here) caching method for this planet and finally here it is. Hope it helps.<br />
+This, together with something like rails&#8217;s <a href="http://feed-normalizer.rubyforge.org/">feed-normalizer</a> gem can make writing a rails planet aggregator a breeze.</p>
+            <br />
+        </div>
+    </div>
 
+        </div>
     </body>
 </html>

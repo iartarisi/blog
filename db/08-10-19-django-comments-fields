@@ -3,16 +3,16 @@ Django comments fields
 
 Upon reading the nice "documentation":http://docs.djangoproject.com/en/dev/ref/contrib/comments/#module-django.contrib.comments for the new comment framework in django 1.0, one might wonder what are the fields attached to the comment entity which you are to iterate against:
 
-<pre lang="python"><code>
+<pre lang="python">
 {% for comment in comment_list %}
      ...
 {% endfor %}
-</code></pre>
+</pre>
 
 There's something wrong in that code. The ellipsis!
 So what should you write in there? There's no mention of the comment fields in the docs, so I put on my rubber boots and got down to my dbshell so you don't have to.
 
-<pre lang="mysql"><code>
+<pre lang="mysql">
 revolution=> \d+ django_comments
                                              Table "public.django_comments"
      Column      |           Type           |                          Modifiers                           | Description 
@@ -40,11 +40,11 @@ Foreign-key constraints:
     "django_comments_site_id_fkey" FOREIGN KEY (site_id) REFERENCES django_site(id) DEFERRABLE INITIALLY DEFERRED
     "django_comments_user_id_fkey" FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED
 Has OIDs: no
-</code></pre>
+</pre>
 
 So here's how a simple django template with comments would look like, the relevant part:
 
-<pre lang="python"><code>
+<pre lang="python">
 {% get_comment_count for post as comment_count %}
 {% get_comment_list for post as comment_list %}
 <h2>{{ post.title }}</h2>
@@ -60,7 +60,7 @@ So here's how a simple django template with comments would look like, the releva
     {% endfor %}
     {% render_comment_form for post %}
 </div>
-</code></pre>
+</pre>
 
 You can play with the <em>is_public</em> and <em>is_removed</em> fields in the admin site <del>and you can also modify any other fields in your users' posts</del>. You could also use the <em>ip_address</em> field to display "country flags in your comments":http://coulix.net/blog/2006/aug/17/ip-country-flags-django-comments/ .
 

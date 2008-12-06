@@ -1,4 +1,6 @@
-<%inherit file="layout.html" />
+<%inherit file="base.html" />
+
+<%def name="content()">
 <h1>Archives<h1>
         <hr />
 % for month in months:
@@ -11,3 +13,4 @@
     % endfor 
 </ul>
 % endfor
+</%def>
