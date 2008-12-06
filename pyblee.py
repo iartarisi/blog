@@ -11,9 +11,14 @@ if __name__ == '__main__':
             post.write()
             blog.update()
     elif len(sys.argv) == 2:
-        if (sys.argv[1] == 'index' or sys.argv[1] == 'archive'):
-            blog.write(sys.argv[1])
+        if sys.argv[1] == 'index':
+            blog.update()
+        elif sys.argv[1] == 'archive':
+            blog.archive()
         elif (sys.argv[1] == 'update'):
             blog.update()
+        elif (sys.argv[1] == 'update_all'):
+            """Also processes the posts"""
+            blog.update_all()
     else:
         print 'you suck!' # help?

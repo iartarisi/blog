@@ -1,6 +1,5 @@
-h1. Django comment's fields
-
-h2. 19 October 2008 - Bucharest
+Django comments fields
+---
 
 Upon reading the nice "documentation":http://docs.djangoproject.com/en/dev/ref/contrib/comments/#module-django.contrib.comments for the new comment framework in django 1.0, one might wonder what are the fields attached to the comment entity which you are to iterate against:
 

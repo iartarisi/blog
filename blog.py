@@ -14,7 +14,7 @@ class Blog:
         self.temp_lookup = TemplateLookup(directories=[templatedir])
     
     def get_index(self, posts_no=0):
-        """Get entries from database and return a list of them (+textilize)"""
+        """Get posts from database and return a list of them (+textilize)"""
         files = os.listdir(datadir)
         files.sort(reverse=True)
         index = []
@@ -22,7 +22,6 @@ class Blog:
             files = files[:7]
         for file in files:
             post = Post(file)
-            post.entry = textile(post.entry)
             index.append(post)
         return index
 
@@ -32,17 +31,12 @@ class Blog:
                 posts = posts,
                 title = title)
 
-    def write(self, action):
-        """Write everything to a file"""
-        if action == 'index':
-            f = open(sitedir+'index.html','w')
-            f.write(self.templatize(self.get_index(posts_no)))
-            f.close()
-        elif action == 'archive':
-            f = open(sitedir+'archive.html','w')
-            f.write(self.archive())
-            f.close()
-
+    def index(self):
+        """Build the index page"""
+        f = open(sitedir+'index.html','w')
+        f.write(self.templatize(self.get_index(posts_no)))
+        f.close()
+    
     def archive(self):
         """Build an archive page of all the posts, by date"""
         posts = self.get_index(0) 
@@ -58,14 +52,21 @@ class Blog:
                 months[key].append(post)
 
         templ = self.temp_lookup.get_template('archive.html')
-        return templ.render(
-                months = months,
-                title = title)
+        processed_entry = templ.render(months = months, title = title)
+        
+        f = open(sitedir+'archive.html','w')
+        f.write(processed_entry)
+        f.close()
 
     def update(self):
         """Update the entire site (after a change to the posts)"""
-        self.write('index')
-        self.write('archive')
+        self.index()
+        self.archive()
 
-    def paginate(self):
-        pass
+    def update_all(self):
+        """Update the entire site, also processing the posts"""
+        files = os.listdir(datadir)
+        for file in files:
+            post = Post(file)
+            post.write()
+        self.update()
