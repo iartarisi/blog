@@ -2,7 +2,7 @@ sitedir = 'perma/'
 datadir = 'db/' 
 templatedir = 'temp'
 
-title = 'Ulugha'
+title = 'Revolution blahg'
 author = 'mapleoin'
 email = 'mapleoin@lavabit.com'
 

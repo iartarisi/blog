@@ -1,9 +1,8 @@
 body {
     padding: 0;
-    width: 46em;
     text-align: justify;
-    background-color: #050; 
-    margin: 0 auto 0;
+    background-color: #030; 
+    margin: 0 2em 0;
     font-family: sans-serif;
     overflow: auto;
     color: #606060;
@@ -12,8 +11,19 @@ body {
 a {
     color: #008800;
 }
+a.title, a.title:visited {
+    font-weight: normal;
+    font-size: 1.1em;
+    float: right;
+    color: #aaa;
+}
 
-
+h2 {
+    margin: 2em 0 .5em;
+}
+li {
+    line-height: 1.6em;
+}
 h2 a {
     color: #005500;
 }
@@ -36,25 +46,23 @@ pre {
 }
 
 #header {
-    margin: .5em 0 .4em;
+    margin: .5em 0 3em;
     text-align: left;
 }
 #header a {
-    color: #005500;
     padding: 0 1em 0 0;
     text-decoration: none;
-    font-weight: bold;
     font-family: serif;
 }
 
 #content {
     border-top: groove 1em #050;
     background-color: white;
-    padding: .5em 2em 2em 2em;
+    padding: .5em 10em 2em;
 }
 
 .post {
-    margin-top: 4em;
+    padding-bottom: 4em;
 }
 * {
     margin: 0;

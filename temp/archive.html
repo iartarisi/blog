@@ -3,14 +3,40 @@
 <%def name="content()">
 <h1>Archives<h1>
         <hr />
-% for month in months:
-<h2>${month}</h2>
-<ul>
-    % for post in months[month]:
-    <li>
-        <a href="${post.url}">${post.title}</a>
-    </li>
-    % endfor 
-</ul>
+        <%
+            year = posts[0].year
+            month = posts[0].month
+        %>
+        <ul id="years">
+            <li class="year">
+                <h2>${year}</h2>
+                <ul class="months">
+                    <li class="month">
+                        <h3>${posts[0].month_name}</h3>
+                        <ul class="days"> 
+% for post in posts:
+    % if post.year != year:
+                        </ul> <!-- days -->
+                    </li> <!-- month -->
+                </ul> <!-- months -->
+            </li> <!-- year -->
+            <li class="year">
+                <h2>${post.year}</h2>
+    % endif
+    % if post.month != month:
+        % if post.month > month: ## the tags aren't closed by year
+                        <% year = post.year %>
+                        </ul> <!-- days -->
+                    </li> <!-- month -->
+        % endif
+                    <li class="month">
+                        <% month = post.month %>
+                        <h3>${post.month_name}</h3>
+                        <ul class="days">
+    % endif
+                            <li>
+                            <a href="${post.url}">${post.day} - ${post.title}</a>
+                            </li>
 % endfor
+        </ul> <!-- years -->
 </%def>

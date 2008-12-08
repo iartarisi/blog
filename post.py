@@ -14,12 +14,12 @@ class Post:
         """Initializes a Post object with these fields: date, slug, entry"""
         (dir, self.filename) = os.path.split(file)
         
-        self.year = '20'+self.filename[0:2]
+        self.year = int('20'+self.filename[0:2])
         self.month = int(self.filename[3:5])
         self.month_name = calendar.month_name[self.month]
-        self.day = self.filename[6:8]
+        self.day = int(self.filename[6:8])
 
-        self.pretty_date = self.day+' '+self.month_name+' '+self.year
+        self.pretty_date = str(self.day)+' '+self.month_name+' '+str(self.year)
 
         self.slug = self.filename[9:]
         self.url = self.slug + '.html'

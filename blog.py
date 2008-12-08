@@ -39,20 +39,25 @@ class Blog:
     
     def archive(self):
         """Build an archive page of all the posts, by date"""
-        posts = self.get_index(0) 
-        # get the month number from the filename
-        key = posts[0].month_name
-        months = {} # dictionary of month names : lists of posts
-        months[key] = [posts[0]]
-        for post in posts[1:]:
-            if key != post.month_name:
-                key = post.month_name
-                months[key] = [post]
-            else:
-                months[key].append(post)
+        posts = self.get_index(0)
+        
+        #year = {} # dictionary of month names : lists of posts
+        #mon = posts[0].month_name
+        #months[mon] = [posts[0]]
+        #years = {}
+        #year = posts[0].year
+        #years[year] = [months[0]]
+        #for post in posts[1:]:
+        #    if year != post.year:
+
+        #    if mon != post.month_name:
+        #        mon = post.month_name
+        #        months[mon] = [post]
+        #    else:
+        #        months[mon].append(post)
 
         templ = self.temp_lookup.get_template('archive.html')
-        processed_entry = templ.render(months = months, title = title)
+        processed_entry = templ.render(posts = posts, title = title)
         
         f = open(sitedir+'archive.html','w')
         f.write(processed_entry)
