@@ -1,25 +1,50 @@
+#!/usr/bin/env python
+
+"""usage: pyblee [-s|--sitedir=SITEDIR] [-d|--datadir=DATADIR]
+
+mumumu
+"""
+
 import sys
 import os
-from datetime import datetime
+import getopt
 
 from blog import Blog
 from post import Post
 
-blog = Blog()
-if __name__ == '__main__':
-    if len(sys.argv) == 3 and sys.argv[1] == 'post':
-        post = Post(sys.argv[2])
-        post.write()
-        blog.update()
-    elif len(sys.argv) == 2:
-        if sys.argv[1] == 'index':
+from config import DATADIR, SITEDIR 
+
+def usage():
+    print __doc__
+
+def main():
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "hd:s:", 
+                ["help", "datadir=", "sitedir="])
+    except getopt.GetoptError, err:
+        usage()
+        sys.exit(2)
+    
+    for opt, arg in opts:
+        if opt in ('-h','--help'):
+            usage()
+            sys.exit()
+        elif opt in ('-d','--datadir'):
+            datadir = arg
+        elif opt in ('-s','--sitedir'):
+            SITEDIR = arg
+        else:
+            assert False, "unhandled option"
+
+    blog = Blog()
+    
+    for a in args:
+        if a == 'update':
             blog.update()
-        elif sys.argv[1] == 'archive':
+        elif a == 'archive':
             blog.archive()
-        elif (sys.argv[1] == 'update'):
-            blog.update()
-        elif (sys.argv[1] == 'update_all'):
-            """Also processes the posts"""
-            blog.update_all()
-    else:
-        print 'you suck!' # help?
+    if args == []:
+        blog.update_all()
+
+if __name__ == '__main__':
+    main()

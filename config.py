@@ -1,12 +1,12 @@
-sitedir = 'perma/'
-datadir = 'db/' 
-templatedir = 'temp'
+SITEDIR = 'perma/'
+DATADIR = 'db/' 
+TEMPLATEDIR = 'temp'
 
 # mostly RSS related info
-title = 'Revolution blahg'
-link = 'http://mapleoin.bluepink.ro'
-description = 'and Digger Dosh bludgeoned and feasted on each second they left behind them…'
-author = 'mapleoin'
-email = 'mapleoin@bluepinkr.ro'
+TITLE = 'Revolution blahg'
+LINK = 'http://mapleoin.bluepink.ro'
+DESCRIPTION = 'and Digger Dosh bludgeoned and feasted on each second they left behind them...'
+AUTHOR = 'mapleoin'
+EMAIL = 'mapleoin@bluepink.ro'
 
-posts_no = 7 # number of posts on a page
+POSTS_NO = 7 # number of posts on a page

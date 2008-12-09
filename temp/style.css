@@ -90,3 +90,9 @@ pre {
 ul {
     list-style: none;
 }
+code {
+    font-family: monospace;
+    border: solid 1px #ddd;
+    background-color: #efe;
+    padding: 2px;
+}

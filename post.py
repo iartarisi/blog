@@ -8,7 +8,7 @@ from textile import textile
 import BeautifulSoup
 from pygments import formatters, lexers, highlight
 
-from config import sitedir, datadir, templatedir, title
+from config import SITEDIR, DATADIR, TEMPLATEDIR
 
 class Post:
     def __init__(self, file, datetime=None):
@@ -24,18 +24,18 @@ class Post:
 
         self.slug = self.filename[9:]
         self.url = self.slug + '.html'
-        f = codecs.open(datadir+self.filename, 'r', 'utf-8')
+        f = codecs.open(DATADIR+self.filename, 'r', 'utf-8')
         postu = f.read()
         f.close()
         
         # get the post title and the entry
         try:
-            (self.title, self.entry) = postu.split('\n---\n\n', 1)
+            (self.name, self.entry) = postu.split('\n---\n\n', 1)
         except ValueError:
             raise ValueError, 'check the formatting: '+file
 
-        self.entry = self.highlight(textile(self.entry.encode('utf-8')))
-        self.temp_lookup = TemplateLookup(directories=[templatedir], default_filters=['decode.utf8'])
+        self.entry = self.highlight(textile(self.entry.encode('utf-8'), encoding="utf-8", output="utf-8"))
+        self.temp_lookup = TemplateLookup(directories=[TEMPLATEDIR], default_filters=['decode.utf8'])
 
     def highlight(self, entry):
         soup = BeautifulSoup.BeautifulSoup(entry)
@@ -55,8 +55,8 @@ class Post:
     def write(self):    
         """Output the processed post"""
 
-        db_entry = open(sitedir+self.slug+'.html', 'w')
-        db_entry.write( self.template().encode('utf-8') )
+        db_entry = open(SITEDIR+self.slug+'.html', 'w')
+        db_entry.write( self.template() )
         db_entry.close()
 
     def template(self):
@@ -64,6 +64,6 @@ class Post:
         
         templ = self.temp_lookup.get_template('post.html')
         return templ.render_unicode(
-                title = title +' | '+ self.slug,
+                title = self.name+' | '+ self.slug,
                 posts = [self]
-                )
+                ).encode('utf-8')

@@ -2,22 +2,23 @@ import os
 
 from mako.lookup import TemplateLookup
 
-from config import title, author, email, sitedir, datadir, posts_no, templatedir
+from config import TITLE, AUTHOR, EMAIL, SITEDIR, DATADIR, POSTS_NO, TEMPLATEDIR
 from post import Post
 
 class Blog:
     def __init__(self):
-        self.title = title
-        self.link = link
-        self.description = description
-        self.author = author
-        self.email = email
+        self.title = TITLE
+        #self.link = LINK
+        #self.description = DESCRIPTION
+        self.author = AUTHOR
+        self.email = EMAIL
         # get_index(0) should be self.posts - figure it out!
-        self.temp_lookup = TemplateLookup(directories=[templatedir], default_filters=['decode.utf8'])
+        self.temp_lookup = TemplateLookup(
+                directories=[TEMPLATEDIR], default_filters=['decode.utf8'])
     
     def get_index(self, posts_no=0):
         """Get posts from database and return a list of them (+textilize)"""
-        files = os.listdir(datadir)
+        files = os.listdir(DATADIR)
         files.sort(reverse=True)
         index = []
         if posts_no != 0:
@@ -27,42 +28,39 @@ class Blog:
             index.append(post)
         return index
 
-    def templatize(self, posts):
-        templ = self.temp_lookup.get_template('post.html')
+    def templatize(self, template, posts_no=None):
+        """Runs the posts through the given template"""
+        templ = self.temp_lookup.get_template(template)
+        if posts_no:
+            posts = self.get_index(posts_no)
+        else:
+            posts = self.get_index(0)
         return templ.render_unicode(
                 posts = posts,
-                title = title)
+                title = self.title).encode('utf-8')
 
     def index(self):
         """Build the index page"""
-        f = open(sitedir+'index.html','w')
-        f.write(self.templatize(self.get_index(posts_no)).encode('utf-8'))
-        f.close()
+        
+        rendered_temp = self.templatize('post.html', POSTS_NO)
+        self.write('index.html', rendered_temp)
     
     def archive(self):
         """Build an archive page of all the posts, by date"""
-        posts = self.get_index(0)
-        
-        #year = {} # dictionary of month names : lists of posts
-        #mon = posts[0].month_name
-        #months[mon] = [posts[0]]
-        #years = {}
-        #year = posts[0].year
-        #years[year] = [months[0]]
-        #for post in posts[1:]:
-        #    if year != post.year:
 
-        #    if mon != post.month_name:
-        #        mon = post.month_name
-        #        months[mon] = [post]
-        #    else:
-        #        months[mon].append(post)
-
-        templ = self.temp_lookup.get_template('archive.html')
-        processed_entry = templ.render_unicode(posts = posts, title = title)
+        rendered_temp = self.templatize('archive.html')
+        self.write('archive.html', rendered_temp)
         
-        f = open(sitedir+'archive.html','w')
-        f.write(processed_entry.encode('utf-8'))
+    def write(self, file, rendered_temp):
+        """Write the template to the specified file
+            
+           Arguments:
+           :file: a file to be written to in the SITEDIR 
+           :rendered_temp: string (#FIXME#: should it be utf-ed?) 
+           returns nothing
+        """
+        f = open(SITEDIR+file, 'w')
+        f.write(rendered_temp)
         f.close()
 
     def update(self):
@@ -72,11 +70,11 @@ class Blog:
 
     def rss(self):
        """ """
-       rss = '
+       pass
 
     def update_all(self):
         """Update the entire site, also processing the posts"""
-        files = os.listdir(datadir)
+        files = os.listdir(DATADIR)
         for file in files:
             post = Post(file)
             post.write()
