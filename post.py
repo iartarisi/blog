@@ -1,10 +1,11 @@
 import os
 import calendar
+import codecs
 
 from mako.template import Template
 from mako.lookup import TemplateLookup
 from textile import textile
-from BeautifulSoup import BeautifulSoup
+import BeautifulSoup
 from pygments import formatters, lexers, highlight
 
 from config import sitedir, datadir, templatedir, title
@@ -23,7 +24,7 @@ class Post:
 
         self.slug = self.filename[9:]
         self.url = self.slug + '.html'
-        f = open(datadir+self.filename, 'r')
+        f = codecs.open(datadir+self.filename, 'r', 'utf-8')
         postu = f.read()
         f.close()
         
@@ -33,36 +34,36 @@ class Post:
         except ValueError:
             raise ValueError, 'check the formatting: '+file
 
-        self.entry =self.highlight(textile(self.entry))
-        self.temp_lookup = TemplateLookup(directories=[templatedir])
+        self.entry = self.highlight(textile(self.entry.encode('utf-8')))
+        self.temp_lookup = TemplateLookup(directories=[templatedir], default_filters=['decode.utf8'])
 
     def highlight(self, entry):
-        soup = BeautifulSoup(entry)
+        soup = BeautifulSoup.BeautifulSoup(entry)
         preblocks = soup.findAll('pre')
         for pre in preblocks:
             if pre.has_key('lang'):
-                code = ''.join([unicode(item) for item in pre.contents])
+                code = ''.join([str(item) for item in pre.contents])
                 lexer = lexers.get_lexer_by_name(pre['lang'])
                 formatter = formatters.HtmlFormatter()
                 code_hl = highlight(code, lexer, formatter)
-                pre.contents = [BeautifulSoup(code_hl)]
+                pre.contents = [BeautifulSoup.BeautifulSoup(code_hl)]
                 pre.name = 'div'
                 del(pre['lang'])
                 pre['class'] = lexer.name
-        return unicode(soup)
+        return str(soup)
 
     def write(self):    
         """Output the processed post"""
 
         db_entry = open(sitedir+self.slug+'.html', 'w')
-        db_entry.write( self.template(self.entry) )
+        db_entry.write( self.template().encode('utf-8') )
         db_entry.close()
 
-    def template(self, entry):
+    def template(self):
         """Returns the final html, ready to be rendered"""
         
         templ = self.temp_lookup.get_template('post.html')
-        return templ.render(
+        return templ.render_unicode(
                 title = title +' | '+ self.slug,
                 posts = [self]
                 )

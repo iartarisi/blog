@@ -1,18 +1,17 @@
 <%inherit file="base.html" />
 
 <%def name="content()">
-<h1>Archives<h1>
-        <hr />
+<h1 id="title">Archives</h1>
         <%
             year = posts[0].year
             month = posts[0].month
         %>
         <ul id="years">
             <li class="year">
-                <h2>${year}</h2>
+                <h2 class="year">${year}</h2>
                 <ul class="months">
                     <li class="month">
-                        <h3>${posts[0].month_name}</h3>
+                        <h3 class="month">${posts[0].month_name}</h3>
                         <ul class="days"> 
 % for post in posts:
     % if post.year != year:
@@ -21,22 +20,26 @@
                 </ul> <!-- months -->
             </li> <!-- year -->
             <li class="year">
-                <h2>${post.year}</h2>
+                <h2 class="year">${post.year}</h2><% year = post.year %>
+                <ul class="months">
     % endif
     % if post.month != month:
-        % if post.month > month: ## the tags aren't closed by year
+        % if (post.month < month): ## the tags aren't closed by year
                         <% year = post.year %>
                         </ul> <!-- days -->
                     </li> <!-- month -->
         % endif
-                    <li class="month">
-                        <% month = post.month %>
-                        <h3>${post.month_name}</h3>
+                    <li class="month"><% month = post.month %>
+                        <h3 class="month">${post.month_name}</h3>
                         <ul class="days">
     % endif
-                            <li>
-                            <a href="${post.url}">${post.day} - ${post.title}</a>
+                            <li class="day">
+                                <h4 class="day">${post.day} - <a href="${post.url}">${post.title}</a></h4>
                             </li>
 % endfor
+                        </ul> <!-- days -->
+                    </li> <!-- month -->
+                </ul> <!-- months -->
+            </li> <!-- year -->
         </ul> <!-- years -->
 </%def>

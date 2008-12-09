@@ -1,6 +1,5 @@
 import os
 
-from textile import textile
 from mako.lookup import TemplateLookup
 
 from config import title, author, email, sitedir, datadir, posts_no, templatedir
@@ -11,7 +10,7 @@ class Blog:
         self.title = title
         self.author = author
         self.email = email
-        self.temp_lookup = TemplateLookup(directories=[templatedir])
+        self.temp_lookup = TemplateLookup(directories=[templatedir], default_filters=['decode.utf8'])
     
     def get_index(self, posts_no=0):
         """Get posts from database and return a list of them (+textilize)"""
@@ -27,14 +26,14 @@ class Blog:
 
     def templatize(self, posts):
         templ = self.temp_lookup.get_template('post.html')
-        return templ.render(
+        return templ.render_unicode(
                 posts = posts,
                 title = title)
 
     def index(self):
         """Build the index page"""
         f = open(sitedir+'index.html','w')
-        f.write(self.templatize(self.get_index(posts_no)))
+        f.write(self.templatize(self.get_index(posts_no)).encode('utf-8'))
         f.close()
     
     def archive(self):
