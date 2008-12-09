@@ -8,8 +8,11 @@ from post import Post
 class Blog:
     def __init__(self):
         self.title = title
+        self.link = link
+        self.description = description
         self.author = author
         self.email = email
+        # get_index(0) should be self.posts - figure it out!
         self.temp_lookup = TemplateLookup(directories=[templatedir], default_filters=['decode.utf8'])
     
     def get_index(self, posts_no=0):
@@ -56,16 +59,20 @@ class Blog:
         #        months[mon].append(post)
 
         templ = self.temp_lookup.get_template('archive.html')
-        processed_entry = templ.render(posts = posts, title = title)
+        processed_entry = templ.render_unicode(posts = posts, title = title)
         
         f = open(sitedir+'archive.html','w')
-        f.write(processed_entry)
+        f.write(processed_entry.encode('utf-8'))
         f.close()
 
     def update(self):
         """Update the entire site (after a change to the posts)"""
         self.index()
         self.archive()
+
+    def rss(self):
+       """ """
+       rss = '
 
     def update_all(self):
         """Update the entire site, also processing the posts"""

@@ -1,3 +1,4 @@
+## -*- coding: utf-8 -*-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -7,14 +8,53 @@
         <title>${title}</title>
     </head>
     <body>
-        <div id="content">
-            <div id="header">
+    <div id="container">
+        <div id="header">
                 <a href="index.html" class="title">${title}</a>
                 <a href="index.html">home</a>
                 <a href="archive.html">archive</a>
                 <a href="about.html">about</a>
-            </div>
+        </div>
+        <div id="links">
+    			<h3>Recente</h3>
+                    <ul>
+    				    <li><a href="http://mapleoin.bluepink.ro/perma/django-comment-fields/">django comment fields </a></li>
+    				    <li><a href="http://mapleoin.bluepink.ro/perma/adbusters/">Adbusters </a></li>
+    					<li><a href="http://mapleoin.bluepink.ro/perma/testing-django-models/">testing a django blog&#8217;s models </a></li>
+    					<li><a href="http://mapleoin.bluepink.ro/perma/eliminate-rails-caching-gap/">eliminate rails caching gap </a></li>
+    					<li><a href="http://mapleoin.bluepink.ro/perma/elevator-music/">elevator music </a></li>
+    					<li><a href="http://mapleoin.bluepink.ro/perma/despre-procrastinare/">despre procrastinare </a></li>
+    					<li><a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2/">blog database schema cu căpșuni - Part 2 </a></li>
+    					<li><a href="http://mapleoin.bluepink.ro/perma/blog-database-schema/">blog database schema cu căpșuni </a></li>
+    				</ul>
+    	</div>
+    <div id="linkcat-12" class="box-right"><h3>Links</h3><div class="box-right-content">
+    	<ul class='xoxo blogroll'>
+    <li><a href="http://hackety.org" title="artful computer hacking">hackety</a></li>
+    <li><a href="http://jamendo.com" title="muzică liberă">jamendo!</a></li>
+    <li><a href="http://linuxsoft.ro" title="Comunitate open-source">linuxsoft</a></li>
+    <li><a href="http://poignantguide.net/ruby/" title="_why&#8217;s (poignant) guide to ruby">poignant book</a></li>
+    
+    <li><a href="http://www.spiritofeducation.com/" title="spirit of education">spirit of education</a></li>
+    <li><a href="http://ted.com" title="ideas worth spreading">ted</a></li>
+    <li><a href="http://xkcd.org" title="42">xkcd</a></li>
+    
+    	</ul>
+    </div></div>
+    <div id="linkcat-11" class="box-right"><h3>Volunteer!</h3><div class="box-right-content">
+    	<ul class='xoxo blogroll'>
+    <li><a href="http://fedoraproject.org" title="infinity | freedom | voice">fedora project</a></li>
+    <li><a href="http://pgdp.net/c/" title="distributed proofreaders">gutenberg</a></li>
+    
+    <li><a href="http://librivox.org" title="accoustical liberation of books in the public domain">librivox</a></li>
+    
+    	</ul>
+    </div></div>
+</div><!--links-->
+<div id="content">
             ${self.content()}
         </div>
+
+</div><!-- container -->
     </body>
 </html>
