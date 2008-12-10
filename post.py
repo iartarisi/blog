@@ -8,10 +8,10 @@ from textile import textile
 import BeautifulSoup
 from pygments import formatters, lexers, highlight
 
-from config import SITEDIR, DATADIR, TEMPLATEDIR
+from config import SITEDIR, DATADIR, TEMPLATEDIR, ENCODING
 
 class Post:
-    def __init__(self, file, datetime=None):
+    def __init__(self, file, encoding=ENCODING):
         """Initializes a Post object with these fields: date, slug, entry"""
         (dir, self.filename) = os.path.split(file)
         
@@ -24,8 +24,12 @@ class Post:
 
         self.slug = self.filename[9:]
         self.url = self.slug + '.html'
-        f = codecs.open(DATADIR+self.filename, 'r', 'utf-8')
-        postu = f.read()
+        
+        f = codecs.open(DATADIR+self.filename, 'r', encoding)
+        try:
+            postu = f.read()
+        except UnicodeDecodeError:
+           raise ValueError, 'your ENCODING is bogus'
         f.close()
         
         # get the post title and the entry
@@ -33,9 +37,13 @@ class Post:
             (self.name, self.entry) = postu.split('\n---\n\n', 1)
         except ValueError:
             raise ValueError, 'check the formatting: '+file
-
-        self.entry = self.highlight(textile(self.entry.encode('utf-8'), encoding="utf-8", output="utf-8"))
+        self.entry = self.highlight(self.markup(self.entry))
         self.temp_lookup = TemplateLookup(directories=[TEMPLATEDIR], default_filters=['decode.utf8'])
+
+    def markup(self, entry):
+        """Uses textile to return a formatted unicode string"""
+        return textile(entry.encode('utf-8'), encoding='utf-8', 
+                output='utf-8')
 
     def highlight(self, entry):
         soup = BeautifulSoup.BeautifulSoup(entry)

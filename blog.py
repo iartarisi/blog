@@ -16,17 +16,19 @@ class Blog:
         self.temp_lookup = TemplateLookup(
                 directories=[TEMPLATEDIR], default_filters=['decode.utf8'])
     
-    def get_index(self, posts_no=0):
-        """Get posts from database and return a list of them (+textilize)"""
+    def get_index(self, posts_no=None):
+        """Get posts from database and return a list of them"""
         files = os.listdir(DATADIR)
         files.sort(reverse=True)
-        index = []
-        if posts_no != 0:
-            files = files[:7]
+        posts = []
+        if posts_no:
+            files = files[:posts_no]
+        
         for file in files:
             post = Post(file)
-            index.append(post)
-        return index
+            posts.append(post)
+
+        return posts
 
     def templatize(self, template, posts_no=None):
         """Runs the posts through the given template"""
@@ -34,7 +36,7 @@ class Blog:
         if posts_no:
             posts = self.get_index(posts_no)
         else:
-            posts = self.get_index(0)
+            posts = self.get_index()
         return templ.render_unicode(
                 posts = posts,
                 title = self.title).encode('utf-8')

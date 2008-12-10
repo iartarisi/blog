@@ -1,6 +1,7 @@
 SITEDIR = 'perma/'
 DATADIR = 'db/' 
 TEMPLATEDIR = 'temp'
+ENCODING = 'utf-8'
 
 # mostly RSS related info
 TITLE = 'Revolution blahg'
