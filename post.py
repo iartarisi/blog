@@ -1,6 +1,7 @@
 import os
 import calendar
 import codecs
+import re
 
 from mako.lookup import TemplateLookup
 from textile import textile
@@ -11,14 +12,24 @@ import config
 
 class Post:
     def __init__(self, file, encoding=config.encoding):
-        """Initializes a Post object with these fields: date, slug, entry"""
-        (dir, self.filename) = os.path.split(file)
-        
-        self.year = int('20'+self.filename[0:2])
-        self.month = int(self.filename[3:5])
-        self.month_name = calendar.month_name[self.month]
-        self.day = int(self.filename[6:8])
+        """Initializes a Post object with these fields: date, slug, entry
 
+           Arguments:
+           :file: relative path to pyblee
+           :encoding: string representation of encoding
+
+        """
+        (dir, self.filename) = os.path.split(file)
+       
+        try:
+            self.year, self.month, self.day = re.findall('(\d{2})',a)[:3]
+        except ValueError:
+            # Is new page!
+        
+        self.year += 2000
+
+        self.month_name = calendar.month_name[self.month]
+        
         self.pretty_date = str(self.day)+' '+self.month_name+' '+str(self.year)
 
         self.slug = self.filename[9:]
@@ -40,6 +51,7 @@ class Post:
             (self.name, self.entry) = postu.split('\n---\n\n', 1)
         except ValueError:
             raise ValueError, 'check the formatting: '+file
+        
         self.entry = self.highlight(self.markup(self.entry))
         self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
                                           default_filters=['decode.utf8'])

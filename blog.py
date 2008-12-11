@@ -7,6 +7,7 @@ from post import Post
 
 class Blog:
     def __init__(self, datadir=config.datadir, sitedir=config.sitedir):
+        """Get the posts into self.posts, and build the temp_lookup"""
         
         # get_index() should be self.posts ???
 
@@ -14,47 +15,39 @@ class Blog:
         self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
                                           default_filters=['decode.utf8'])
     
-    def get_index(self, posts_no=None):
-        """Get posts from database and return a list of them"""
+        # get posts from database and return a list of them
         files = os.listdir(config.datadir)
         files.sort(reverse=True)
-        posts = []
-        if posts_no:
-            files = files[:posts_no]
-        
+        self.posts = []
         for file in files:
-            post = Post(file)
-            posts.append(post)
+            post = Post(config.datadir+file)
+            self.posts.append(post)
 
-        return posts
 
     def templatize(self, template, posts_no=None):
         """Runs the posts through the given template"""
         templ = self.temp_lookup.get_template(template)
             
-        posts = self.get_index(posts_no)
+        posts = self.posts[:posts_no]
         return templ.render_unicode(posts = posts).encode(config.encoding)
 
-    def build_page(self, template, output_page, posts=None):
+    def build_page(self, template, output_file, posts=None):
         """Build a blog page, using :template:"""
         rendered_template = self.templatize(template, posts)
-        self.write(output_page, rendered_template)
+        self.write(output_file, rendered_template)
         
     def write(self, file, rendered_temp):
         """Write the template to the specified file
             
            Arguments:
            :file: a file to be written to in the config.sitedir 
-           :rendered_temp: string (#FIXME#: should it be utf-ed?) 
+           :rendered_temp: string (FIXME: should it be utf-ed?) 
+           
            returns nothing
         """
         f = open(config.sitedir+file, 'w')
         f.write(rendered_temp)
         f.close()
-
-    def rss(self):
-        """Generate the rss feed for the site"""
-
 
     def index(self):
         """Build the index page"""
@@ -65,7 +58,7 @@ class Blog:
         self.build_page('archive.html', 'archive.html') 
 
     def update(self):
-        """Update the entire site (after a change to the posts)"""
+        """Update the entire site (after a change to on of the posts)"""
         self.index()
         self.archive()
 
@@ -73,6 +66,6 @@ class Blog:
         """Update the entire site, also processing the posts"""
         files = os.listdir(config.datadir)
         for file in files:
-            post = Post(file)
+            post = Post(config.datadir+file)
             post.write()
         self.update()
