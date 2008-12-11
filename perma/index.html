@@ -46,22 +46,8 @@
 <div id="content">
             
     <div class="post">
-        <h2><a href="vim-tips-part-1.html">mapleoin's Vim tips #1</a></h2>
-        <h3>9 December 2008</h2>
-        <div class="entry">
-            <p>Here&#8217;s my selection of this week&#8217;s vim tips.</p>
-<ol>
-<li>Uppercaseing words:</li>
-</ol>
-<p><code>quvawgUq</code></p>
-<p>Say what?<br />
-Let&#8217;s break that. If you&#8217;ve ever read any kind of vim tutorial, you&#8217;re probably familiar with it&#8217;s recording feature (otherwise do this: <code>:h recording</code> <span class="caps">NOW</span> <span class="caps">GODAMMIT</span>!). So we first choose a letter for our recording (i chose <strong>u</strong>). Afterwards, we go into <span class="caps">VISUAL</span> <span class="caps">MODE</span> (<strong>v</strong>), then we select a(<strong>a</strong>) word(<strong>w</strong>) and uppercase(gU) it (You could also lowercase it by using <strong>gu</strong> instead). So now, that we&#8217;ve stored our magic in the u key, we can use it on any word with <strong>@u</strong>.</p>
-            <br />
-        </div>
-    </div>
-    <div class="post">
         <h2><a href="incepe-django-rails.html">Incepe django-rails?</a></h2>
-        <h3>22 September 2008</h2>
+        <h3>22 September 2009</h2>
         <div class="entry">
             <p>Când m-am trezit de dimineață am deschis <a href="http://en.wikipedia.org/wiki/Code_Complete">Code Complete</a> prima oară după câteva săptămâni. Citește mai departe ca să vezi ce m-a făcut să fac asta.</p>
 <p>Mă joc de 3 zile cu wordpress și pot să zic că e cel mai fain <acronym title="Content Management System"><span class="caps">CMS</span></acronym> pentru bloguri pe care mi l-aș putea dori. Face tot ce-mi trebuie până acum. N-am ce să-i reproșez. Concluzia logică e că: trebuie schimbat<sup class="footnote"><a href="#fn42" title="Iar eu am blahg, nu blog. blaahag!! blaaahhhhg!">42</a></sup>.<br />
@@ -76,6 +62,85 @@ Pe de altă parte, django excelează la capitolul documentație. Citind codul, n
 Postul ăsta marchează și mult-așteptata întoarcere la programare după <i>vacanță</i>, iar fără el probabil că nu aș merge acum să mă uit la celelalte frameworkuri interesante (la care ziceam că n-o să mă uit la începutul postului). I&#8217;m young again!!1</p>
 <p class="footnote" id="fn42"><sup>42</sup> Iar eu am <strong>blahg</strong>, nu blog. blaahag!! blaaahhhhg!</p>
 <p class="footnote" id="fn1"><sup>1</sup> Am găsit un <a href="http://rubyconf2007.confreaks.com/d1t1p3_why_camping_matters.html">screencast Camping</a> foarte interesant în timp ce căutam situri rails.</p>
+            <br />
+        </div>
+    </div>
+    <div class="post">
+        <h2><a href="vim-tips-part-1.html">mapleoin's Vim tips #1</a></h2>
+        <h3>9 December 2008</h2>
+        <div class="entry">
+            <p>Here&#8217;s my selection of this week&#8217;s vim tips.</p>
+<ol>
+<li>Uppercaseing words:</li>
+</ol>
+<p><code>quvawgUq</code></p>
+<p>Say what?<br />
+Let&#8217;s break that. If you&#8217;ve ever read any kind of vim tutorial, you&#8217;re probably familiar with it&#8217;s recording feature (otherwise do this: <code>:h recording</code> <span class="caps">NOW</span> <span class="caps">GODAMMIT</span>!). So we first choose a letter for our recording (i chose <strong>u</strong>). Afterwards, we go into <span class="caps">VISUAL</span> <span class="caps">MODE</span> (<strong>v</strong>), then we select a(<strong>a</strong>) word(<strong>w</strong>) and uppercase(gU) it (You could also lowercase it by using <strong>gu</strong> instead). So now, that we&#8217;ve stored our magic in the u key, we can use it on any word with <strong>@u</strong>.</p>
+            <br />
+        </div>
+    </div>
+    <div class="post">
+        <h2><a href="django-comments-fields.html">Django comments fields</a></h2>
+        <h3>19 October 2008</h2>
+        <div class="entry">
+            <p>Upon reading the nice <a href="http://docs.djangoproject.com/en/dev/ref/contrib/comments/#module-django.contrib.comments">documentation</a> for the new comment framework in django 1.0, one might wonder what are the fields attached to the comment entity which you are to iterate against:</p>
+<div class="Python"><div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comment_list</span> <span class="o">%</span><span class="p">}</span>
+     <span class="o">...</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>There&#8217;s something wrong in that code. The ellipsis!<br />
+So what should you write in there? There&#8217;s no mention of the comment fields in the docs, so I put on my rubber boots and got down to my dbshell so you don&#8217;t have to.</p>
+<div class="MySQL"><div class="highlight"><pre><span class="n">revolution</span><span class="o">=&gt;</span> <span class="err">\</span><span class="n">d</span><span class="o">+</span> <span class="n">django_comments</span>
+                                             <span class="k">Table</span> <span class="s2">&quot;public.django_comments&quot;</span>
+     <span class="k">Column</span>      <span class="o">|</span>           <span class="n">Type</span>           <span class="o">|</span>                          <span class="n">Modifiers</span>                           <span class="o">|</span> <span class="n">Description</span> 
+<span class="o">-----------------+--------------------------+--------------------------------------------------------------+-----------</span><span class="c1">--</span>
+<span class="c1"> id              | integer                  | not null default nextval(&#39;django_comments_id_seq&#39;::regclass) | </span>
+ <span class="n">content_type_id</span> <span class="o">|</span> <span class="kt">integer</span>                  <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">object_pk</span>       <span class="o">|</span> <span class="kt">text</span>                     <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">site_id</span>         <span class="o">|</span> <span class="kt">integer</span>                  <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">user_id</span>         <span class="o">|</span> <span class="kt">integer</span>                  <span class="o">|</span>                                                              <span class="o">|</span> 
+ <span class="n">user_name</span>       <span class="o">|</span> <span class="k">character</span> <span class="k">varying</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>    <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">user_email</span>      <span class="o">|</span> <span class="k">character</span> <span class="k">varying</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span>    <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">user_url</span>        <span class="o">|</span> <span class="k">character</span> <span class="k">varying</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>   <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">comment</span>         <span class="o">|</span> <span class="kt">text</span>                     <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">submit_date</span>     <span class="o">|</span> <span class="kt">timestamp</span> <span class="k">with</span> <span class="kt">time</span> <span class="n">zone</span> <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">ip_address</span>      <span class="o">|</span> <span class="n">inet</span>                     <span class="o">|</span>                                                              <span class="o">|</span> 
+ <span class="n">is_public</span>       <span class="o">|</span> <span class="n">boolean</span>                  <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+ <span class="n">is_removed</span>      <span class="o">|</span> <span class="n">boolean</span>                  <span class="o">|</span> <span class="k">not</span> <span class="no">null</span>                                                     <span class="o">|</span> 
+<span class="n">Indexes</span><span class="p">:</span>
+    <span class="s2">&quot;django_comments_pkey&quot;</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="nf">btree</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
+    <span class="s2">&quot;django_comments_content_type_id&quot;</span> <span class="nf">btree</span> <span class="p">(</span><span class="n">content_type_id</span><span class="p">)</span>
+    <span class="s2">&quot;django_comments_site_id&quot;</span> <span class="nf">btree</span> <span class="p">(</span><span class="n">site_id</span><span class="p">)</span>
+    <span class="s2">&quot;django_comments_user_id&quot;</span> <span class="nf">btree</span> <span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+<span class="k">Foreign</span><span class="o">-</span><span class="k">key</span> <span class="n">constraints</span><span class="p">:</span>
+    <span class="s2">&quot;django_comments_content_type_id_fkey&quot;</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">content_type_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="nf">django_content_type</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">DEFERRABLE</span> <span class="n">INITIALLY</span> <span class="n">DEFERRED</span>
+    <span class="s2">&quot;django_comments_site_id_fkey&quot;</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">site_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="nf">django_site</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">DEFERRABLE</span> <span class="n">INITIALLY</span> <span class="n">DEFERRED</span>
+    <span class="s2">&quot;django_comments_user_id_fkey&quot;</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="nf">auth_user</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">DEFERRABLE</span> <span class="n">INITIALLY</span> <span class="n">DEFERRED</span>
+<span class="n">Has</span> <span class="n">OIDs</span><span class="p">:</span> <span class="n">no</span>
+</pre></div>
+</div>
+<p>So here&#8217;s how a simple django template with comments would look like, the relevant part:</p>
+<div class="Python"><div class="highlight"><pre><span class="p">{</span><span class="o">%</span> <span class="n">get_comment_count</span> <span class="k">for</span> <span class="n">post</span> <span class="k">as</span> <span class="n">comment_count</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">get_comment_list</span> <span class="k">for</span> <span class="n">post</span> <span class="k">as</span> <span class="n">comment_list</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">post</span><span class="o">.</span><span class="n">title</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;undertitle&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">post</span><span class="o">.</span><span class="n">creation_time</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">{{</span> <span class="n">post</span><span class="o">.</span><span class="n">body</span> <span class="p">}}</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;comments&quot;</span><span class="o">&gt;&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">comment_count</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comment_list</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;comment&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;{{ comment.user_url }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">comment</span><span class="o">.</span><span class="n">user_name</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">comment</span><span class="o">.</span><span class="n">submit_date</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+        <span class="p">{{</span> <span class="n">comment</span><span class="o">.</span><span class="n">comment</span> <span class="p">}}</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">render_comment_form</span> <span class="k">for</span> <span class="n">post</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You can play with the <em>is_public</em> and <em>is_removed</em> fields in the admin site <del>and you can also modify any other fields in your users&#8217; posts</del>. You could also use the <em>ip_address</em> field to display <a href="http://coulix.net/blog/2006/aug/17/ip-country-flags-django-comments/">country flags in your comments</a> .</p>
+<p>The django comments provide a spam-fighting technique by default, in the form of a <a href="http://docs.djangoproject.com/en/dev/ref/contrib/comments/#notes-on-the-comment-form">honeypot</a> (though I wonder how effective that is) as well as other extras. There are rumours that some sort of captcha system (some say <a href="http://recaptcha.net/">reCaptcha</a> ) will be integrated in the django comments framework.</p>
+<p>Take more risks! Live more dangerously!</p>
             <br />
         </div>
     </div>

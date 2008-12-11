@@ -2,16 +2,15 @@ import os
 import calendar
 import codecs
 
-from mako.template import Template
 from mako.lookup import TemplateLookup
 from textile import textile
-import BeautifulSoup
 from pygments import formatters, lexers, highlight
+from BeautifulSoup import BeautifulSoup
 
-from config import SITEDIR, DATADIR, TEMPLATEDIR, ENCODING
+import config
 
 class Post:
-    def __init__(self, file, encoding=ENCODING):
+    def __init__(self, file, encoding=config.encoding):
         """Initializes a Post object with these fields: date, slug, entry"""
         (dir, self.filename) = os.path.split(file)
         
@@ -24,13 +23,17 @@ class Post:
 
         self.slug = self.filename[9:]
         self.url = self.slug + '.html'
-        
-        f = codecs.open(DATADIR+self.filename, 'r', encoding)
+       
+        # read file
+        f = codecs.open(file, 'r', encoding)
         try:
             postu = f.read()
         except UnicodeDecodeError:
-           raise ValueError, 'your ENCODING is bogus'
+           raise ValueError, 'your config.encoding is bogus'
         f.close()
+
+        # TODO maybe we could create/move the file to the datadir if it's not 
+        # already there
         
         # get the post title and the entry
         try:
@@ -38,15 +41,16 @@ class Post:
         except ValueError:
             raise ValueError, 'check the formatting: '+file
         self.entry = self.highlight(self.markup(self.entry))
-        self.temp_lookup = TemplateLookup(directories=[TEMPLATEDIR], default_filters=['decode.utf8'])
+        self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
+                                          default_filters=['decode.utf8'])
 
     def markup(self, entry):
         """Uses textile to return a formatted unicode string"""
         return textile(entry.encode('utf-8'), encoding='utf-8', 
-                output='utf-8')
+                       output='utf-8')
 
     def highlight(self, entry):
-        soup = BeautifulSoup.BeautifulSoup(entry)
+        soup = BeautifulSoup(entry)
         preblocks = soup.findAll('pre')
         for pre in preblocks:
             if pre.has_key('lang'):
@@ -54,7 +58,7 @@ class Post:
                 lexer = lexers.get_lexer_by_name(pre['lang'])
                 formatter = formatters.HtmlFormatter()
                 code_hl = highlight(code, lexer, formatter)
-                pre.contents = [BeautifulSoup.BeautifulSoup(code_hl)]
+                pre.contents = [BeautifulSoup(code_hl)]
                 pre.name = 'div'
                 del(pre['lang'])
                 pre['class'] = lexer.name
@@ -63,15 +67,12 @@ class Post:
     def write(self):    
         """Output the processed post"""
 
-        db_entry = open(SITEDIR+self.slug+'.html', 'w')
+        db_entry = open(config.sitedir+self.slug+'.html', 'w')
         db_entry.write( self.template() )
         db_entry.close()
 
-    def template(self):
+    def template(self, temp='post.html'):
         """Returns the final html, ready to be rendered"""
         
-        templ = self.temp_lookup.get_template('post.html')
-        return templ.render_unicode(
-                title = self.name+' | '+ self.slug,
-                posts = [self]
-                ).encode('utf-8')
+        templ = self.temp_lookup.get_template(temp)
+        return templ.render_unicode(posts = [self]).encode('utf-8')

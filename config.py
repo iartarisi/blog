@@ -1,13 +1,9 @@
-SITEDIR = 'perma/'
-DATADIR = 'db/' 
-TEMPLATEDIR = 'temp'
-ENCODING = 'utf-8'
+sitedir = 'perma/'
+datadir = 'db/' 
+templatedir = 'temp/'
+encoding = 'utf-8'
 
-# mostly RSS related info
-TITLE = 'Revolution blahg'
-LINK = 'http://mapleoin.bluepink.ro'
-DESCRIPTION = 'and Digger Dosh bludgeoned and feasted on each second they left behind them...'
-AUTHOR = 'mapleoin'
-EMAIL = 'mapleoin@bluepink.ro'
+title = 'Revolution blahg'
+link = 'http://mapleoin.bluepink.ro'
 
-POSTS_NO = 7 # number of posts on a page
+posts_no = 7 # number of posts on a page
