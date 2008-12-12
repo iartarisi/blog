@@ -83,6 +83,13 @@ pre {
 .post {
     padding-bottom: 4em;
 }
+#pyblee {
+    margin: auto;
+    text-align: center;
+}
+#pyblee a {
+    color: white;
+}
 * {
     margin: 0;
     padding: 0;
@@ -96,3 +103,4 @@ code {
     background-color: #efe;
     padding: 2px;
 }
+

@@ -15,7 +15,7 @@ from BeautifulSoup import BeautifulSoup
 
 from blog import Blog
 from post import Post
-from config import encoding, templatedir
+from config import encoding, templatedir, site_type
 
 def usage():
     print __doc__
@@ -27,7 +27,6 @@ def main():
     except getopt.GetoptError, err:
         usage()
         sys.exit(2)
-    
     for opt, arg in opts:
         if opt in ('-h','--help'):
             usage()
@@ -58,22 +57,27 @@ def main():
 
         elif opt in ('-d','--datadir'):
             datadir = arg
+            print arg
         elif opt in ('-s','--sitedir'):
-            SITEDIR = arg
+            sitedir = arg
+            print arg
         else:
             assert False, "unhandled option"
 
     blog = Blog()
 
-    if opts == []:
-        for a in args:
-            if a == 'index':
-                blog.index()
-            elif a == 'archive':
-                blog.archive()
-        if args == []:
-            print "--> Updating everything"
-            blog.update_all()
+    for a in args:
+        if a == 'index':
+            blog.index()
+        elif a == 'archive':
+            blog.archive()
+    if args == []:
+        if site_type == 'blog':
+            print "--> Updating your blog"
+            blog.update_blog()
+        else:
+            print "--> Updating your site"
+            blog.update_site()
 
 if __name__ == '__main__':
     main()
