@@ -54,14 +54,18 @@ class Blog:
         print 'Wrote ' + file + ' succesfully'
 
     def base_template(self, base_temp='base.html'):
-        """Update the base template"""
+        """Update the base template adding the recent posts"""
+
+        # This could turn into something like a widget at one time, but this
+        # is faster since it's only done one time per update
+
         f = codecs.open(config.templatedir+base_temp, 'r', config.encoding)
         soup = BeautifulSoup(f.read())
         f.close()
 
         recent = soup.find('div',id='recent')
 
-        string = '<div id="recent">\n<h3>Recent</h3>\n<ul>'
+        string = '<div id="recent">\n<h3>Recent</h3>\n<ul>\n'
         for post in self.posts[:config.recent]:
             string += '<li><a href='+post.url+'>'+post.name+'</a></li>\n'
         string += '</ul>\n</div>'
