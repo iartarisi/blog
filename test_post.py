@@ -4,30 +4,30 @@
 import unittest
 import os
 import codecs
+import random
 
 import config
 from post import Post
 
 class InitializationTestCase(unittest.TestCase):
-    file = config.datadir + '08-01-01-foo-bar'
     def setUp(self):
-        self.file = config.datadir + '08-01-01-foo-bar'
-        f = codecs.open(self.file, 'w')
+        self.post = config.datadir + '08-01-01-foo-bar'
+        f = codecs.open(self.post, 'w')
         f.write('name\n---\n\nh1. foo bar baz bâș\n')  # it's unicode!
         f.close()
-        self.p = Post(self.file)
+        self.p = Post(self.post)
     
     def tearDown(self):
-        os.remove(self.file)
+        os.remove(self.post)
 
     def testDate(self):
-        self.assertEqual(self.p.year, 2008, "can't read year from the filename")
+        self.assertEqual(self.p.year, 2008, "can't read year from filename")
         self.assertEqual(self.p.month, 01, "can't read month from filename")
         self.assertEqual(self.p.day, 01, "can't read day from filename")
 
         self.assertEqual(self.p.month_name, 'January', 'wrong monthname')
         self.assertEqual(self.p.pretty_date, '1 January 2008', 
-                'prettydate fails')
+            'prettydate fails')
     
     def testUrl(self):
         self.assertEqual(self.p.slug, 'foo-bar', "slug isn't parsed correctly")
@@ -37,10 +37,10 @@ class InitializationTestCase(unittest.TestCase):
         self.assertEqual(self.p.name, 'name', "name incorrectly parsed!")
     
     def testUnicode(self):
-        self.assertRaises(ValueError, Post, self.file, encoding='ascii')
+        self.assertRaises(ValueError, Post, self.post, encoding='ascii')
    
-    def testEntry(self):
-        self.assertEqual(self.p.entry, 
+    def testBody(self):
+        self.assertEqual(self.p.body, 
                 '<h1>foo bar baz b\xc3\xa2\xc8\x99</h1>', 'processing fails!')
 
 class ProcessingTestCase(InitializationTestCase):

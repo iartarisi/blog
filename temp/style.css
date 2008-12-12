@@ -66,7 +66,7 @@ pre {
 #container {
     width: auto;
     height: auto;
-    line-height: 160%;
+    line-height: 1.6em;
     font-size: .9em;
     border-top: groove 1em #050;
     background-color: white;

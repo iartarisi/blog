@@ -11,30 +11,34 @@ from BeautifulSoup import BeautifulSoup
 import config
 
 class Post:
-    def __init__(self, file, encoding=config.encoding):
-        """Initializes a Post object with these fields: date, slug, entry
+    def __init__(self, file, sitedir=config.sitedir, encoding=config.encoding):
+        """Initializes a Post object with these fields: date, slug, body
 
            Arguments:
            :file: relative path to pyblee
            :encoding: string representation of encoding
 
         """
+        self.sitedir = sitedir
+        self.encoding = encoding
         (dir, self.filename) = os.path.split(file)
        
-        try:
-            self.year, self.month, self.day = re.findall('(\d{2})',a)[:3]
-        except ValueError:
-            # Is new page!
-        
-        self.year += 2000
-
-        self.month_name = calendar.month_name[self.month]
-        
-        self.pretty_date = str(self.day)+' '+self.month_name+' '+str(self.year)
-
-        self.slug = self.filename[9:]
-        self.url = self.slug + '.html'
+        if re.match('((\d{2}-){3})', self.filename): # post or page? 
+            y, m, d, s = re.match('(\d{2})-(\d{2})-(\d{2})-(.*)',
+                                    self.filename).groups()
+            self.year, self.month, self.day, self.slug = (y, m, d, s)
+            
+            # lots of date formatting:
+            self.year = int(self.year) + 2000
+            self.month = int(self.month)
+            self.day = int(self.day)
+            self.month_name = calendar.month_name[self.month]
+            self.pretty_date = str(self.day)+' '+self.month_name+ \
+                               ' '+str(self.year)
+        else:
+            self.slug = self.filename
        
+        self.url = self.slug + '.html'
         # read file
         f = codecs.open(file, 'r', encoding)
         try:
@@ -43,26 +47,23 @@ class Post:
            raise ValueError, 'your config.encoding is bogus'
         f.close()
 
-        # TODO maybe we could create/move the file to the datadir if it's not 
-        # already there
-        
-        # get the post title and the entry
+        # get the post title and the body
         try:
-            (self.name, self.entry) = postu.split('\n---\n\n', 1)
+            (self.name, self.body) = postu.split('\n---\n\n', 1)
         except ValueError:
             raise ValueError, 'check the formatting: '+file
         
-        self.entry = self.highlight(self.markup(self.entry))
+        self.body = self.highlight(self.markup(self.body))
         self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
                                           default_filters=['decode.utf8'])
 
-    def markup(self, entry):
+    def markup(self, body):
         """Uses textile to return a formatted unicode string"""
-        return textile(entry.encode('utf-8'), encoding='utf-8', 
-                       output='utf-8')
+        return textile(body.encode(self.encoding), encoding=self.encoding, 
+                       output=self.encoding)
 
-    def highlight(self, entry):
-        soup = BeautifulSoup(entry)
+    def highlight(self, body):
+        soup = BeautifulSoup(body)
         preblocks = soup.findAll('pre')
         for pre in preblocks:
             if pre.has_key('lang'):
@@ -79,9 +80,13 @@ class Post:
     def write(self):    
         """Output the processed post"""
 
-        db_entry = open(config.sitedir+self.slug+'.html', 'w')
-        db_entry.write( self.template() )
-        db_entry.close()
+        db_post = open(self.sitedir+self.slug+'.html', 'w')
+        if self.filename == self.slug: # page
+            db_post.write(self.template('page.html'))
+        else:
+            db_post.write(self.template('post.html'))
+            print 'Post added: '+self.name +' -- '+self.pretty_date
+        db_post.close()
 
     def template(self, temp='post.html'):
         """Returns the final html, ready to be rendered"""

@@ -17,10 +17,11 @@ class InitializationTestCase(unittest.TestCase):
         os.mkdir(self.datadir)
         os.mkdir(self.sitedir)
 
-        f = codecs.open(self.datadir + '01-01-01-post', 'w')
-        f.write('name\n---\n\nh1. foo bar baz bâș\n')  # it's unicode!
+        f = codecs.open(self.datadir + '01-01-01-post', 'w', config.encoding)
+        f.write('name\n---\n\nh1. foo bar baz bâș\n'.decode(config.encoding))
         f.close()
-        self.post = Post(self.datadir+'01-01-01-post')
+        self.post = Post(self.datadir+'01-01-01-post', sitedir=self.sitedir)
+        self.post.write()
         self.blog = Blog(self.datadir, self.sitedir)
         self.template = Template("TEST: ${posts[0].body}", 
                             default_filters=['decode.utf8'])
@@ -30,6 +31,12 @@ class InitializationTestCase(unittest.TestCase):
         os.remove(self.sitedir+'post.html')
         os.rmdir(self.datadir)
         os.rmdir(self.sitedir)
+
+    def testBaseTemplate(self):
+        links = '<h3>Recent</h3>\n<ul><li><a href='+self.post.url+'>'+ \
+                self.post.name+'</a></li></ul>'
+        self.assertEqual(links, self.blog.base_template(), 
+                         'base template fails!\n'+links+'\n'+self.blog.base_template())
 
 
 if __name__ == "__main__":
