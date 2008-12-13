@@ -1,5 +1,6 @@
 import os
 import calendar
+import datetime
 import codecs
 import re
 
@@ -24,17 +25,13 @@ class Post:
         (dir, self.filename) = os.path.split(file)
        
         if re.match('((\d{2}-){3})', self.filename): # post or page? 
-            y, m, d, s = re.match('(\d{2})-(\d{2})-(\d{2})-(.*)',
-                                    self.filename).groups()
-            self.year, self.month, self.day, self.slug = (y, m, d, s)
-            
+            y, m, d, self.slug = re.match('(\d{2})-(\d{2})-(\d{2})-(.*)',
+                                           self.filename).groups()
+            date = datetime.datetime(int('20'+y),int(m),int(d))
             # lots of date formatting:
-            self.year = int(self.year) + 2000
-            self.month = int(self.month)
-            self.day = int(self.day)
-            self.month_name = calendar.month_name[self.month]
-            self.pretty_date = str(self.day)+' '+self.month_name+ \
-                               ' '+str(self.year)
+            (self.day, self.month, self.year)=(date.day, date.month, date.year)
+            self.month_name = date.strftime('%B')
+            self.pretty_date = date.strftime('%A, %B %e, %Y')
         else:
             self.slug = self.filename
        

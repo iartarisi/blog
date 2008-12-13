@@ -23,10 +23,10 @@ class InitializationTestCase(unittest.TestCase):
     def testDate(self):
         self.assertEqual(self.p.year, 2008, "can't read year from filename")
         self.assertEqual(self.p.month, 01, "can't read month from filename")
-        self.assertEqual(self.p.day, 01, "can't read day from filename")
+        self.assertEqual(self.p.day, 1, "can't read day from filename")
 
         self.assertEqual(self.p.month_name, 'January', 'wrong monthname')
-        self.assertEqual(self.p.pretty_date, '1 January 2008', 
+        self.assertEqual(self.p.pretty_date, 'Tuesday, January  1, 2008', 
             'prettydate fails')
     
     def testUrl(self):

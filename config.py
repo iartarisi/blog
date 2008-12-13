@@ -9,4 +9,4 @@ link = 'http://mapleoin.bluepink.ro'
 posts_no = 7 # number of posts on the first page
 recent = 5 # number of posts in the recent links div
 
-site_type = 'blog' # or no_blog
+site_type = 'blog' # blog or no_blog
