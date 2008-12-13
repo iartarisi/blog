@@ -1,8 +1,8 @@
 body {
     padding: 0;
     text-align: justify;
-    background-color: #030; 
-    margin: 0 2em 0;
+    background-color: #606060; 
+    margin: 1em 2em 0;
     font-family: sans-serif;
     overflow: auto;
     color: #606060;
@@ -68,9 +68,8 @@ pre {
     height: auto;
     line-height: 1.6em;
     font-size: .9em;
-    border-top: groove 1em #050;
     background-color: white;
-    padding: .5em 2em 0 4em;
+    padding: 2em 2em 0 4em;
     margin: 0 0 2em;
 }
 #content {
@@ -85,6 +84,7 @@ pre {
 }
 #pyblee {
     margin: auto;
+    color: #bcb;
     text-align: center;
 }
 #pyblee a {
@@ -103,4 +103,3 @@ code {
     background-color: #efe;
     padding: 2px;
 }
-
