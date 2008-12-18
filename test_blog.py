@@ -16,7 +16,7 @@ class InitializationTestCase(unittest.TestCase):
         self.sitedir = 'testsite/'
         os.mkdir(self.datadir)
         os.mkdir(self.sitedir)
-
+        os.mkdir(self.sitedir+config.postdir)
         f = codecs.open(self.datadir + '01-01-01-post', 'w', config.encoding)
         f.write('name\n---\n\nh1. foo bar baz bâș\n'.decode(config.encoding))
         f.close()
@@ -28,13 +28,14 @@ class InitializationTestCase(unittest.TestCase):
     
     def tearDown(self):
         os.remove(self.datadir+'01-01-01-post')
-        os.remove(self.sitedir+'post.html')
+        os.remove(self.sitedir+config.postdir+'post')
+        os.rmdir(self.sitedir+config.postdir)
         os.rmdir(self.datadir)
         os.rmdir(self.sitedir)
 
     def testBaseTemplate(self):
-        links = '<div id="recent">\n<h3>Recent</h3>\n<ul>\n<li><a href='+ \
-                self.post.url+'>'+ self.post.name+'</a></li>\n</ul>\n</div>'
+        links = '<div id="recent">\n<h4>Recent</h4>\n<ul>\n<li><a href="'+ \
+                self.post.url+'">'+ self.post.name+'</a></li>\n</ul>\n</div>'
         self.assertEqual(links, self.blog.base_template(), 
                          'base template fails!\n'+links+'\n'+self.blog.base_template())
 

@@ -31,7 +31,7 @@ class InitializationTestCase(unittest.TestCase):
     
     def testUrl(self):
         self.assertEqual(self.p.slug, 'foo-bar', "slug isn't parsed correctly")
-        self.assertEqual(self.p.url, 'foo-bar.html', "url incorrect!")
+        self.assertEqual(self.p.url, config.link + 'perma/foo-bar', "url incorrect!\n" + self.p.url)
     
     def testName(self):
         self.assertEqual(self.p.name, 'name', "name incorrectly parsed!")
