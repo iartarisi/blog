@@ -1,12 +1,18 @@
-sitedir = 'perma/'
+sitedir = 'ftp/'
+postdir = 'perma/'
 datadir = 'db/' 
 templatedir = 'temp/'
 encoding = 'utf-8'
 
+# rss related information
 title = 'Revolution blahg'
-link = 'http://mapleoin.bluepink.ro'
+author = 'mapleoin@bluepink.ro (Oin Maple)'
+link = 'http://mapleoin.bluepink.ro/'
+description = "mapleoin's rambling thoughts"
+language = 'en'
 
 posts_no = 7 # number of posts on the first page
 recent = 5 # number of posts in the recent links div
 
 site_type = 'blog' # blog or no_blog
+

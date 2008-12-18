@@ -1,28 +1,34 @@
 ## -*- coding: utf-8 -*-
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="../temp/style.css" />
-<link rel="stylesheet" type="text/css" href="../temp/pygments.css" />
-<link rel="stylesheet" type="text/css" href="../temp/archive.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/pygments.css" />
+<link rel="stylesheet" type="text/css" href="/css/archive.css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="feed.xml" />
 <title>Revolution blahg</title>
 </head>
 <body>
 <div id="container">
 <div id="header">
-<a href="index.html" class="title">Revolution blahg</a>
-<a href="index.html">home</a>
-<a href="archive.html">archive</a>
-<a href="about.html">about</a>
+<h1><a href="/index.html" class="title">Revolution blahg</a></h1>
+<a href="/index.html">home</a>
+<a href="/archive.html">archive</a>
+<a href="/about.html">about</a>
 </div>
 <div id="links">
 <div id="recent">
-<h3>Recent</h3>
+<h4>Recent</h4>
 <ul>
-<li><a href=post.html>name</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/vim-tips-part-1">mapleoin's Vim tips #1</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/django-comments-fields">Django comments fields</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/testing-django-models">testing a django blog's models</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/eliminate-rails-caching-gap">Eliminate rails caching gap</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2">blog database schema cu capsuni - Part 2</a></li>
 </ul>
 </div><!--recent-->
-<h3>Links</h3>
+<h4>Links</h4>
 <ul>
 <li><a href="http://hackety.org" title="artful computer hacking">hackety</a></li>
 <li><a href="http://jamendo.com" title="muzică liberă">jamendo!</a></li>
@@ -32,16 +38,14 @@
 <li><a href="http://ted.com" title="ideas worth spreading">ted</a></li>
 <li><a href="http://xkcd.org" title="42">xkcd</a></li>
 </ul>
-<h3>Volunteer!</h3>
+<h4>Volunteer!</h4>
 <ul>
 <li><a href="http://fedoraproject.org" title="infinity | freedom | voice">fedora project</a></li>
 <li><a href="http://pgdp.net/c/" title="distributed proofreaders">gutenberg</a></li>
 <li><a href="http://librivox.org" title="accoustical liberation of books in the public domain">librivox</a></li>
 </ul>
 </div><!--links-->
-<div id="content">
-            ${self.content()}
-</div>
+<div id="content">${self.content()}</div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://pyblee.bluepink.ro">pyblee</a></div>
 </body>

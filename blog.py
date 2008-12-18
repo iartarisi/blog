@@ -1,11 +1,13 @@
 import os
 import re
 import codecs
+import cgi
 
 from mako.lookup import TemplateLookup
 from BeautifulSoup import BeautifulSoup, Tag
 import config
 from post import Post
+from rss import Rss
 
 class Blog:
     def __init__(self, datadir=config.datadir, sitedir=config.sitedir):
@@ -35,7 +37,7 @@ class Blog:
         return templ.render_unicode(posts = posts).encode(config.encoding)
 
     def build_page(self, template, output_file, posts=None):
-        """Build a blog page, using :template:"""
+        """Build a blog page, using :template: and writing the file to disk"""
         rendered_template = self.templatize(template, posts)
         self.write(self.sitedir+output_file, rendered_template)
         
@@ -60,14 +62,26 @@ class Blog:
         f.close()
 
         recent = soup.find('div',id='recent')
-        string = '<div id="recent">\n<h3>Recent</h3>\n<ul>\n'
+        string = '<div id="recent">\n<h4>Recent</h4>\n<ul>\n'
         for post in self.posts[:config.recent]:
-            string += '<li><a href='+post.url+'>'+post.name+'</a></li>\n'
+            string += '<li><a href="'+post.url+'">'+post.name+'</a></li>\n'
         string += '</ul>\n</div>'
         recent.replaceWith(string)
 
         self.write(config.templatedir+base_temp, str(soup))
         return string
+
+    def build_rss(self):
+        """Build an Rss object and return a rendered rss template"""
+        rss = Rss()
+        temp = self.temp_lookup.get_template('rss.xml')
+        for post in self.posts[:config.posts_no]: # FIXME make this nicer
+            post.body = cgi.escape(post.body)
+        return temp.render_unicode(posts = self.posts[:config.posts_no], 
+                                   rss = rss).encode(config.encoding)
+
+    def rss(self):
+        self.write(self.sitedir+'feed.xml', self.build_rss())
 
     def index(self):
         """Build the index page if it doesn't already exist"""
@@ -83,6 +97,8 @@ class Blog:
         self.update_site()
         self.index()
         self.archive()
+        self.rss()
+
     def update_site(self):
         """Updates only the static pages"""
         files = os.listdir(self.datadir)

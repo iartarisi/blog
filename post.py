@@ -12,7 +12,8 @@ from BeautifulSoup import BeautifulSoup
 import config
 
 class Post:
-    def __init__(self, file, sitedir=config.sitedir, encoding=config.encoding):
+    def __init__(self, file, sitedir=config.sitedir, 
+                 postdir=config.postdir, encoding=config.encoding):
         """Initializes a Post object with these fields: date, slug, body
 
            Arguments:
@@ -21,6 +22,7 @@ class Post:
 
         """
         self.sitedir = sitedir
+        self.postdir = postdir
         self.encoding = encoding
         (dir, self.filename) = os.path.split(file)
        
@@ -32,10 +34,11 @@ class Post:
             (self.day, self.month, self.year)=(date.day, date.month, date.year)
             self.month_name = date.strftime('%B')
             self.pretty_date = date.strftime('%A, %B %e, %Y')
+            self.pub_date = date.strftime("%a, %d %b %Y %H:%M:%S GMT")
         else:
             self.slug = self.filename
        
-        self.url = self.slug + '.html'
+        self.url = config.link + self.postdir + self.slug # + '.html'
         # read file
         f = codecs.open(file, 'r', encoding)
         try:
@@ -77,10 +80,12 @@ class Post:
     def write(self):    
         """Output the processed post"""
 
-        db_post = open(self.sitedir+self.slug+'.html', 'w')
         if self.filename == self.slug: # page
+            db_post = open(self.sitedir+self.slug, 'w')
             db_post.write(self.template('page.html'))
+            print 'Page updated: '+self.name
         else:
+            db_post = open(self.sitedir+self.postdir+self.slug, 'w')
             db_post.write(self.template('post.html'))
             print 'Post added: '+self.name +' -- '+self.pretty_date
         db_post.close()

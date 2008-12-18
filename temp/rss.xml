@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="1.0">
+    <channel>
+        <title>${rss.title}</title>
+        <link>${rss.link}</link>
+        <description>${rss.description}</description>
+        <language>${rss.language}</language>
+        <pubDate>${rss.pub_date}</pubDate>
+        <generator>${rss.pyblee}</generator>
+        % for post in posts:
+        <item>
+            <title>${post.name}</title>
+            <link>${post.url}</link>
+            <author>${rss.author}</author>
+            <description> ${post.body} </description>
+            <pubDate>${post.pub_date}</pubDate>
+        </item>
+        % endfor
+    </channel>
+</rss>

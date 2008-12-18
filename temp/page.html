@@ -1,0 +1,11 @@
+<%inherit file="base.html" />
+
+<%def name="content()">
+    <div class="post">
+        <h2><a href="${posts[0].url}">${posts[0].name}</a></h2>
+        <div class="entry">
+            ${posts[0].body}
+            <br />
+        </div>
+    </div>
+</%def>
