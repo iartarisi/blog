@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/pygments.css" />
+<link rel="stylesheet" type="text/css" href="/css/archive.css" />
+<link rel="shortcut icon" href="/favico.ico" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+<title>Revolution blahg</title>
+</head>
+<body>
+<div id="container">
+<div id="header">
+<h1><a href="/" class="title">Revolution blahg</a></h1><a href="/">home</a>
+<a href="/archive">archive</a>
+<a href="/about">about</a>
+
+</div>
+<div id="links">
+<div id="recent">
+<h4>Recent</h4>
+<ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/freemusic">Living with free music for a year</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/after-install-work">Linux - After install work</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/vim-tips-part-1">mapleoin's Vim tips #1</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/django-comments-fields">Django comments fields</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/testing-django-models">testing a django blog's models</a></li>
+</ul>
+</div><!--recent-->
+<h4>Links</h4>
+<ul>
+<li><a href="http://ted.com" title="ideas worth spreading">ted</a></li>
+<li><a href="http://xkcd.org" title="42">xkcd</a></li>
+<li><a href="http://hackety.org" title="artful computer hacking">hackety</a></li>
+<li><a href="http://linuxsoft.ro" title="Comunitate open-source">linuxsoft</a></li>
+<li><a href="http://jamendo.com" title="muzică liberă">jamendo!</a></li>
+<li><a href="http://poignantguide.net/ruby/" title="_why’s (poignant) guide to ruby">poignant book</a></li>
+</ul>
+<h4>Volunteer!</h4>
+<ul>
+<li><a href="http://fedoraproject.org" title="infinity | freedom | voice">fedora project</a></li>
+<li><a href="http://pgdp.net/c/" title="distributed proofreaders">gutenberg</a></li>
+<li><a href="http://librivox.org" title="accoustical liberation of books in the public domain">librivox</a></li>
+</ul>
+</div><!--links-->
+<div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/despre-procrastinare">despre procrastinare</a></h2>
+        <h3>Saturday, September 20, 2008</h3>
+        <div class="entry">
+            <object width="132" height="158" data="http://www.jamendo.com/get/track/id/track/id/playerpage/17958/?item_o=track_no_asc&amp;n=all&amp;player_height=158&amp;player_refuid=161804&amp;player_type=coverinfos1&amp;player_width=132&amp;playercode_type=generic" style="float: left; padding: 1em; border:0;width:132px;height:158px;" type="text/html">&nbsp;</object>Procrastinare "înseamnă":http://dexonline.ro/search.php?cuv=procrastina: ??A amâna în mod nejustificat începerea unei acţiuni, în special din cauza neglijenţei habituale sau a lenei; a temporiza, a tărăgăna, a tergiversa.??
+
+<p>&lt;&lt; Postul ăsta are soundtrack<sup class="footnote"><a href="#fn0" title="Mi-a luat o oră să-l fac! Revolution Void – As We May Think">0</a></sup>.</p>
+<p>Acum&#8212;sunt cel puțin două tipuri de procrastinare, teoretizate în diverse locuri, în special pe internet &#8211; locul preferat de procrastinare <i>in this day and age</i> (mi-e lene să mai caut linkuri). Procrastinare pozitivă și negativă. Dar să încep cu cea mai des întâlnită: televizorul. Deși în general regreți timpul pierdut procrastinându-te (deși poți să-l transformi în timp util, cum voi explica mai jos), procrastinarea negativă înșeamnă că nu ai ce povesti din timpul ăla. Dacă te întreabă cineva ce ai făcut e ca și cum ai avea o pată neagră în memorie &#8211; nu mai ții minte nimic. Ceea ce înseamnă că probabil n-ai făcut nimic. Asta e procrastinarea pentru amatori.</p>
+<p>Profesioniștii preferă procrastinarea pozitivă. De data asta îmi amintesc un link al lui <a href="http://www.aaronsw.com/weblog/productivity">Aaron Schwartz</a> pe subiectul ăsta<sup class="footnote"><a href="#fn1" title="Iar acum toți cititorii mei au plecat și vor citi eseul cel bun. Eh…">1</a></sup>. Pentru cei cărora le e lene să citească ce scrie acolo, o să continui aici. Procrastinarea pozitivă e un fel de multitasking simulat. Cam cum lucreaza majoritatea calculatoarelor de azi. Ai o grămadă de lucruri de făcut. De exemplu: scrii un blog, înveți pentru un examen, înveți django, asculți muzică, stai pe pisica<sup class="footnote"><a href="#fn2" title="din franceză—te-ai prins?">2</a></sup>. Chestia interesantă e că le faci pe toate în același timp. Nu ai un program. Pur și simpu te pui la masă și le deschizi pe toate. Faci câte puțin din fiecare. În general chestia pe care o poți face, cea la care-ți stă gândul în momentul respectiv. În felul ăsta, te poți procrastina pozitiv. Adică în loc să intri pe reddit când nu mai știi ce să scrii pe blahg, deschizi cartea și citești ceva pentru examen<sup class="footnote"><a href="#fn3" title="miroase a pateu?">3</a></sup>, sau deschizi consola și mai scrii un unit test pentru proiectul django. Când te plictisești de celălalt lucru, treci la altul. Unii oameni pot să facă asta &#8211; ca Aaron de exemplu. Alți oameni pot doar să-și dorească să poată face asta (mie nu-mi iese întotdeauna). <br />
+Poate există și cea de-a treia categorie de oameni care pot lucra secvențial o zi întreagă și nu le e distrasă niciodată atenția. Mi-ar plăcea să rescriu articolul ăsta când îi voi găsi.</p>
+<p>Deci găsiți-vă lucruri interesante de făcut de care <i>credeți</i> că n-aveți timp și apucați-vă să le faceți în timpul mort pe care l-ați petrece la televizor sau pe iutub sau uitându-vă pe pereți. Multe imperii au fost construite și vor mai fi construite așa.</p>
+<p>Și în sfârșit, momentul cel mai important al acestui post, cel care m-a determinat să-l scriu: cel mai bun citat despre procrastinare (l-am găsit pe <a href="http://reddit.com">reddit</a> bineînțeles). Acolo sunt experții în domeniu.</p>
+<p><a href="http://www.reddit.com/r/science/comments/721l6/the_real_difference_between_liberals_and/c05h6wm">Citez:</a><br />
+MercurialMadnessMan:</p>
+<blockquote>
+<p><cite>I had a goal of watching at least half the videos there [TED] over this summer.</cite><br />
+<cite>but I procrastinate.</cite><br />
+<cite>I think I watched about 15.</cite></p>
+</blockquote>
+<p>Hoodwink:</p>
+<blockquote>
+<p><cite>I used <span class="caps">TED</span> to procrastinate and finished every single video.</cite></p>
+</blockquote>
+<hr />
+<p class="footnote" id="fn0"><sup>0</sup> Mi-a luat o oră să-l fac! <a href="http://www.jamendo.com/en/artist/revolutionvoid">Revolution Void</a> &#8211; As We May Think</p>
+<p class="footnote" id="fn1"><sup>1</sup> Iar acum toți cititorii mei au plecat și vor citi eseul cel bun. Eh&#8230;</p>
+<p class="footnote" id="fn2"><sup>2</sup> din franceză&#8212;te-ai prins?</p>
+<p class="footnote" id="fn3"><sup>3</sup> miroase a pateu?</p>
+        </div>
+        <br />
+        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </div>
+</div>
+</div><!-- container -->
+<div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5576939-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

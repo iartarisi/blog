@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>${rss.title}</title>
+    <author>
+        <name>${rss.author}</name>
+    </author>
+    <link href="${rss.link + 'feed.xml'}" rel="self" />
+    <link href="${rss.link}" />
+    <subtitle>${rss.description}</subtitle>
+    <updated>${rss.pub_date}</updated>
+    <generator>${rss.pyblee}</generator>
+        % for post in posts:
+        <entry>
+            <title>${post.name}</title>
+            <link href="${post.url}" />
+            <summary type="html">${post.body}</summary>
+            <updated>${post.pub_date}</updated>
+        </entry>
+        % endfor
+</feed>

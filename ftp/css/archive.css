@@ -1,0 +1,37 @@
+h1#title{
+    text-align: center;
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+h2.year { 
+    border-bottom: .3em solid;
+    background-color: #ded;
+    padding: .3em;
+    margin-bottom: .5em;
+}
+
+h3.month {
+    color: #606060;
+    font-size: 1.2em;
+    margin-bottom: .5em;
+    font-weight: normal;
+}
+
+li.month {
+    padding-bottom: 2em;
+    padding-top: 1em;
+}
+ul.months { 
+    padding-left: 3em;
+}
+
+li.day {
+    padding-left: 3em;
+    line-height: 1.6em;
+}
+
+li.day a {
+    font-weight: normal;
+}

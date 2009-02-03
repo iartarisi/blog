@@ -13,8 +13,15 @@
         <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
         % else:
+        <a href="${post.url}#disqus_thread" class="comments">View Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
         % endif
     </div>
     % endfor
+</%def>
+
+<%def name="title()">
+    % if len(posts) == 1:
+    | ${posts[0].name}
+    % endif
 </%def>

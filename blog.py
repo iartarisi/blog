@@ -23,10 +23,14 @@ class Blog:
         files = os.listdir(datadir)
         files.sort(reverse=True)
         self.posts = []
+        self.pages = []
         for file in files:
             if re.match('((\d{2}-){3})', file):
                 post = Post(datadir+file)
                 self.posts.append(post)
+            elif file[0] != '.': # not hidden
+                page = Post(datadir+file)
+                self.pages.append(page)
 
 
     def templatize(self, template, posts_no=None):
@@ -61,22 +65,36 @@ class Blog:
         soup = BeautifulSoup(f.read())
         f.close()
 
-        recent = soup.find('div',id='recent')
-        string = '<div id="recent">\n<h4>Recent</h4>\n<ul>\n'
+        # update the recent posts
+        recent = soup.find('div', id='recent')
+        rec_html = '<div id="recent">\n<h4>Recent</h4>\n<ul>\n'
         for post in self.posts[:config.recent]:
-            string += '<li><a href="'+post.url+'">'+post.name+'</a></li>\n'
-        string += '</ul>\n</div>'
-        recent.replaceWith(string)
+            rec_html += '<li><a href="'+post.url+'">'+post.name+'</a></li>\n'
+        rec_html += '</ul>\n</div>'
+        recent.replaceWith(rec_html)
+
+        # update the page links
+        header = soup.find('div', id='header')
+        h1_html = '<div id="header">\n' + str(header.h1)
+        h1_html += '<a href="/">home</a>\n'
+        h1_html += '<a href="/archive">archive</a>\n'
+        for page in self.pages:
+            if page.slug == page.filename: # FIXME better way to find pages?
+                h1_html += '<a href="/'+page.slug+'">'+page.name+'</a>\n'
+        h1_html += '\n</div>'
+        header.replaceWith(h1_html)
 
         self.write(config.templatedir+base_temp, str(soup))
-        return string
+        return (rec_html, h1_html) 
 
     def build_rss(self):
         """Build an Rss object and return a rendered rss template"""
         rss = Rss()
         temp = self.temp_lookup.get_template('rss.xml')
-        for post in self.posts[:config.posts_no]: # FIXME make this nicer
+        
+        for post in self.posts[:config.posts_no]:
             post.body = cgi.escape(post.body)
+
         return temp.render_unicode(posts = self.posts[:config.posts_no], 
                                    rss = rss).encode(config.encoding)
 
@@ -89,7 +107,7 @@ class Blog:
     
     def archive(self):
         """Build an archive page of all the posts, by date"""
-        self.build_page('archive.html', 'archive.html') 
+        self.build_page('archive.html', 'archive') 
     
     def update_blog(self):
         """Update the entire site, also processing the posts"""
@@ -103,5 +121,6 @@ class Blog:
         """Updates only the static pages"""
         files = os.listdir(self.datadir)
         for file in files:
-            post = Post(self.datadir+file)
-            post.write()
+            if file[0] != '.': # leave out hidden files
+                post = Post(self.datadir+file)
+                post.write()

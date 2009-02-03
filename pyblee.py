@@ -43,7 +43,7 @@ def main():
             f.close()
 
             tag = soup.find('title')
-            tag.contents[0].replaceWith(arg)
+            tag.contents[0].replaceWith(arg + '${self.title()}')
 
             tag = soup.find('a','title')
             tag.contents[0].replaceWith(arg)

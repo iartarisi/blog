@@ -1,0 +1,277 @@
+testing a django blog's models
+---
+
+This post is a continuation of "this post":http://mapleoin.bluepink.ro/perma/blog-database-schema-2/ and I'll be using that schema to write tests on top of. Here it is, for easy reference:
+
+<pre lang='python'>
+from django.db import models
+class Category(models.Model):
+    nume = models.CharField(max_length=20)
+class Post(models.Model):
+    title = models.CharField(max_length=50)
+    body = models.TextField()
+    category = models.ForeignKey(Category)
+    published = models.BooleanField()
+    creation_time = models.DateTimeField(auto_now_add=True)
+    modified_time = models.DateTimeField(auto_now=True)
+class Commentator(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(max_length=50, unique=True)
+    website = models.URLField(verify_exists=True)
+class Comment(models.Model):
+    body = models.TextField()
+    post = models.ForeignKey(Post)
+    author = models.ForeignKey(Commentator)
+    approved = models.BooleanField()
+    creation_time = models.DateTimeField(auto_now_add=True)
+</pre>
+
+Ok, so here's what we're testing: our model -- the emphasis is on __our__, because we're only testing our code. And mostly, we're actually testing that the code in models.py corresponds with what's in the database. All test methods must begin with the word __test__.
+
+One of the most annoying things which took me a while to figure out was that the *setUp* method is run __every time__ before one of the other methods is run. That means that if you want to test for uniqueness, you __have to__ build a *tearDown* method if you want to run any other independent tests. This is why snippet A won't work, but snippet B will.
+Here's the model:
+
+<pre lang="python">
+class Category(models.Model):
+    name = models.CharField(max_length=20, unique=True)
+</pre>
+
+h4. snippet A
+
+<pre lang="python">
+class CategoryTest(unittest.TestCase):
+def setUp(self):
+    self.cat1 = Category.objects.create(name="cat1")
+def testexist(self):
+    # make sure they get to the database
+    self.assertEquals(self.cat1.name, "cat1")
+def testunique(self): 
+    self.assertRaises(IntegrityError, Category.objects.create, name="cat1")
+</pre>
+
+h4. snippet B
+
+<pre lang="python">
+class CategoryTest(unittest.TestCase):
+def setUp(self):
+    self.cat1 = Category.objects.create(name="cat1")
+def testexist(self):
+    # make sure they get to the database
+    self.assertEquals(self.cat1.name, "cat1")
+    self.assertRaises(IntegrityError, Category.objects.create, name="cat1")
+</pre>
+
+The second snippet only calls the *setUp* method once because there is only one other method. But that's not very nice. Ideally we'd to be able to run each test individually, so maybe we can write a *tearDown* method to be run after each other method, to restore the database.
+
+However, there is an easier way to not have to write a *tearDown* method and that is using the *django.test* module which is an extention to unittest. All you have to do is *import django.test* instead of *unittest* and make every test object a sublclass of *django.test.TestCase* instead of *unittest.TestCase*.
+Here is what it looks like now:
+
+<pre lang="python">
+class CategoryTest(django.test.TestCase):
+    def setUp(self):
+        self.cat1 = Category.objects.create(name="cat1")
+        self.cat2 = Category.objects.create(name="cat2")
+    def testexist(self):
+        # make sure they get to the database
+        self.assertEquals(self.cat1.name, "cat1")
+        self.assertEquals(self.cat2.name, "cat2")
+    def testunique(self):
+        self.assertRaises(IntegrityError, Category.objects.create, name="cat1")
+</pre>
+
+Now, let's test the *Post class*:
+
+<pre lang="python">
+class Post(models.Model):
+    title = models.CharField(max_length=50)
+    body = models.TextField()
+    category = models.ForeignKey(Category)
+    published = models.BooleanField()
+    creation_time = models.DateTimeField(auto_now_add=True)
+    modified_time = models.DateTimeField(auto_now=True)
+</pre>
+
+There's a bunch more stuff to test here, like the fact that everything gets to the database (title, body, category) and that everything has it's right type/class.
+We setUp a post, but also a category, since the test will be independent, but needs a Category to generate a Post.
+
+<pre lang="python">
+class PostTest(django.test.TestCase):
+    def setUp(self):
+        self.cat1 = Category.objects.create(name="cat1")
+        self.post1 = Post.objects.create(title="name",body="trala lala",
+                category=Category.objects.all()[0])
+</pre>
+
+Next, we need to do a bit of a __trivial__ test to check that the title, the body and the right category get to the db
+
+<pre lang="python">
+def testtrivial(self):
+        self.assertEquals(self.post1.title, "name")
+        self.assertEquals(self.post1.body, "trala lala")
+        self.assertEquals(self.post1.category, Category.objects.all()[0])
+</pre>
+
+I think this is a good way to test that the creation_time and modified_time are newly generated datetime.datetime objects:
+
+<pre lang="python">
+def testtime(self):
+    self.assertEquals(self.post1.creation_time.hour, datetime.now().hour)
+</pre>
+
+No, wait. I think this looks a bit more professional:
+
+<pre lang="python">
+def testtime(self):
+        delta = datetime.now() - self.post1.creation_time
+        self.assert_(delta.seconds < 10)
+        delta_modified = datetime.now() - self.post1.modified_time
+        self.assert_(delta_modified.seconds < 10)
+</pre>
+
+So now, we're looking for datetime objects that were generated less than 10 seconds ago. That's really very generous since the time it takes to run the test from the time the __setUp__ method is run is in the range of microseconds.
+This test doesn't show the true difference between modified and creation time. Modification time is changed every time the object is __saved__ to the database while creation time is not. So let's write a new test based on that knowledge:
+
+<pre  lang="python">
+ def testModifiedVsCreation(self):
+        modified = self.post1.modified_time
+        created = self.post1.creation_time
+        self.post1.save()
+        self.assertNotEqual(modified, self.post1.modified_time)
+        self.assertEqual(created, self.post1.creation_time)
+</pre>
+
+Testing for a boolean value is really easy:
+
+<pre lang="python">
+ def testpublished(self): 
+        self.assertEquals(self.post1.published, False)
+</pre>
+
+And then there's more than one way I can think of to test the Category ForeignKey:
+
+<pre lang="python">
+def testcategory(self):
+        self.assertEquals(self.cat1.__class__, self.post1.category.__class__)
+        self.assertRaises(ValueError, Post.objects.create, name="name",
+                body="tralaalal", category="ooopsie!")
+</pre>
+
+In the end, I'll go for the more general one, even though the second one is more excentric. So:
+
+<pre lang="python">
+def testcategory(self):
+        self.assertEquals(self.cat1.__class__, self.post1.category.__class__)
+        self.assertRaises(ValueError, Post.objects.create, name="name",
+                body="tralaalal", category="ooopsie!")
+</pre>
+
+Btw, if you don't know the errors (like ValueError -- I didn't know it), you can always drop to a __manage.py console__ and try to <code>Post.object.create(name="name",body="tralaalal", category="ooopsie!")</code> and see if you get lucky.
+
+Ok, passing on to the Commentator class:
+
+<pre lang="python">
+class Commentator(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(max_length=50, unique=True)
+    website = models.URLField(verify_exists=True, blank=True)
+</pre>
+
+We're only going to test that the data gets to the database and that the __name__ and __email__ fields are unique. At this stage we can't test the validation of the __email__ and __website__ fields. We'll be doing that later, when we write the "forms":http://docs.djangoproject.com/en/dev/ref/forms/validation/.
+This should seem trivial by now:
+
+<pre lang="python">
+class CommentatorTest(django.test.TestCase):
+    def setUp(self):
+        self.comtor = Commentator.objects.create(name="hacketyhack",
+                email="hackety@example.com", website="example.com")
+    def testExist(self):
+        self.assertEquals(self.comtor.name, "hacketyhack")
+        self.assertEquals(self.comtor.email, "hackety@example.com")
+        self.assertEquals(self.comtor.website, "example.com")
+     def testUnique(self):
+        self.assertRaises(IntegrityError, Commentator.objects.create, 
+                name="hacketyhack", email="new@example.com", 
+                website="example.com")
+        self.assertRaises(IntegrityError, Commentator.objects.create,
+                name="nothackety", email="hackety@example.com",
+                website="example.com")
+</pre>
+
+Now, let's get to testing the Comment class:
+
+<pre lang="python">
+class Comment(models.Model):
+    body = models.TextField()
+    post = models.ForeignKey(Post)
+    author = models.ForeignKey(Commentator)
+    approved = models.BooleanField()
+    creation_time = models.DateTimeField(auto_now_add=True)
+</pre>
+
+There won't be anything new here. And this is when and why testing is __boring__. But, hey! A man's gotta do, what a man's gotta do.
+
+<pre lang="python">
+class CommentTest(django.test.TestCase):
+    def setUp(self):
+        self.cat = Category.objects.create(name="cat1")
+        self.post = Post.objects.create(title="name",body="trala lala",
+                category=Category.objects.all()[0])
+        self.comtor = Commentator.objects.create(name="hacketyhack",
+                email="hackety@example.com", website="example.com")
+        self.com = Comment.objects.create(body="If the implementation is 
+        easy to explain, it may be a good idea.", 
+        post=Post.objects.all()[0], author=Commentator.objects.all()[0])
+    def testExist(self):
+        self.assertEquals(self.com.body, "If the implementation is 
+        easy to explain, it may be a good idea.")
+        self.assertEquals(self.com.post, Post.objects.all()[0])
+        self.assertEquals(self.com.author, Commentator.objects.all()[0])
+        self.assertEquals(self.com.approved, False)
+    def testTime(self):
+        delta_creation = datetime.now() - self.comm.creation_time
+        self.assert_(delta_creation.seconds < 7)
+    def testCreationTime(self):
+        # what if it's a modification_time instead?
+        created = self.com.creation_time
+        self.com.save()
+        self.assertEqual(created, self.com.creation_time)
+</pre>
+
+Now that we've written all the tests we have to make sure that they're run against the actual database. Or better yet, a backup copy of it. Otherwise, the tests are useless, since django creates a new database *based on the schema defined in models.py* every time __models.py test__ is run.
+
+First, you'll need to make a copy of django.test.simple (put it in your project's directory for example). Then comment these lines:
+
+<pre lang="python">
+# old_name = settings.DATABASE_NAME
+# from django.db import connection
+# connection.creation.create_test_db(verbosity, autoclobber=not interactive)
+result = unittest.TextTestRunner(verbosity=verbosity).run(suite)
+# connection.creation.destroy_test_db(old_name, verbosity)
+</pre>
+
+And now, add this to your settings.py file:
+
+<pre lang="python">
+TEST_RUNNER = 'myproject.simple.run_tests'
+</pre>
+
+Be careful now. All the data in your database *will* be lost when you run __manage.py test__ the next time. So back it up! First create a new database, say __backup__ and then:
+
+<pre lang="bash">
+mysqldump -u DB_USER --password=DB_PASS DB_NAME|mysql -u DB_USER --password=DB_PASSWD -h localhost backup
+</pre>
+
+You can reverse that when you're done.
+
+Here's to show that it works (after I've made a little modification to the model, but not the database):
+
+<pre lang="bash">
+$ python manage.py test
+..EEE..EEEEEE................
+--> lots of tracebacks <--
+----------------------------------------------------------------------
+Ran 29 tests in 10.149s
+FAILED (errors=9)
+</pre>
+
+Ok, so that should provide a pretty good test coverage for now. Let's go get breakfast!

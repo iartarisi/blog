@@ -44,7 +44,7 @@ class Post:
         try:
             postu = f.read()
         except UnicodeDecodeError:
-           raise ValueError, 'your config.encoding is bogus'
+           raise ValueError, 'your config.encoding is bogus'+file
         f.close()
 
         # get the post title and the body

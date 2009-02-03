@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/pygments.css" />
+<link rel="stylesheet" type="text/css" href="/css/archive.css" />
+<link rel="shortcut icon" href="/favico.ico" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+<title>Revolution blahg</title>
+</head>
+<body>
+<div id="container">
+<div id="header">
+<h1><a href="/" class="title">Revolution blahg</a></h1><a href="/">home</a>
+<a href="/archive">archive</a>
+<a href="/about">about</a>
+
+</div>
+<div id="links">
+<div id="recent">
+<h4>Recent</h4>
+<ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/freemusic">Living with free music for a year</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/after-install-work">Linux - After install work</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/vim-tips-part-1">mapleoin's Vim tips #1</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/django-comments-fields">Django comments fields</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/testing-django-models">testing a django blog's models</a></li>
+</ul>
+</div><!--recent-->
+<h4>Links</h4>
+<ul>
+<li><a href="http://ted.com" title="ideas worth spreading">ted</a></li>
+<li><a href="http://xkcd.org" title="42">xkcd</a></li>
+<li><a href="http://hackety.org" title="artful computer hacking">hackety</a></li>
+<li><a href="http://linuxsoft.ro" title="Comunitate open-source">linuxsoft</a></li>
+<li><a href="http://jamendo.com" title="muzică liberă">jamendo!</a></li>
+<li><a href="http://poignantguide.net/ruby/" title="_why’s (poignant) guide to ruby">poignant book</a></li>
+</ul>
+<h4>Volunteer!</h4>
+<ul>
+<li><a href="http://fedoraproject.org" title="infinity | freedom | voice">fedora project</a></li>
+<li><a href="http://pgdp.net/c/" title="distributed proofreaders">gutenberg</a></li>
+<li><a href="http://librivox.org" title="accoustical liberation of books in the public domain">librivox</a></li>
+</ul>
+</div><!--links-->
+<div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/blogging-despre-blogging">Blogging despre blogging</a></h2>
+        <h3>Friday, September 12, 2008</h3>
+        <div class="entry">
+            <p>Ar fi frumos ca blogul ăsta să fie interesant de citit peste câțiva ani, măcar de către mine. Să îmbătrânească la fel ca brânza, nu ca ridichiile. Așa că nu-mi voi revizui posturile<sup class="footnote"><a href="#fn1" title="ceea ce înseamnă de fapt că nu-mi voi revizui posturile la mai mult de 3 zile după ce le-am scris… Asta dacă nu conțin greșeli. Sau lucruri care nu-mi plac. Sau banalități. Sau aberații. Ba nu, aberațiile sunt ok.">1</a></sup>. Trebuie să-i mulțumesc lui M. Eliade pentru că mi-a susținut ideea asta.</p>
+<p>Tocmai mi-a trecut prin minte că dacă voi avea vreodată mulți oameni care să-mi răspundă &#8211; asta presupunând că aș împlini „visul blogger-ului” de a avea răspunsuri la posturi &#8211; blogul ăsta ar putea deveni locul în care două lumi se vor ciocni: cea a prietenilor reali și a celor imaginari (sau electronici (sau artificiali))).</p>
+<p>Revenind&#8230; E un blog personal (am folosit prezentul, asta înseamnă că <i>trăiește!</i>). Trebuie să fie foarte interesant pentru mine, pentru că eu îl scriu. Lucrul ăsta v-ar putea face să credeți că autorul e schizofrenic. Pentru că o să schimb de foarte multe ori tonul, subiectul, unghiul, ipostaza, atmosfera de la un post la altul. Să-mi ziceți dacă vreți să creez câte un personaj imaginar pentru fiecare post ca să mai reduc din confuzie. Eventual pot să-i pun și câte un avatar-monstru generat de wordpress ca în commenturi ;).</p>
+<p>În plus, ăsta va fi locul unde voi încerca să vărs câte un strop din grandioasa mea interesănțime. Nu doar inventânt noi cuvinte. Ca de obicei, descopăr fața ascunsă a lumii, cu o grămadă de personaje fabuloase, inorogi invizibili roz, flying spaghetti monsters sau ceainice cosmice&#8212; <i>aproape</i> că am făcut o aluzie aici. Posturile lăudăroase sunt terapeutice câteodată (nu e ăsta rostul blogurilor) cu condiția să... Am uitat ce vroiam să spun. Poate până la urmă mă apuc să scriu și poezii. Până atunci am niște dialoguri care ar trebui să apară pe aici, sper să iasă.</p>
+<p>Și o să încerc să contrazic de fiecare dată postul anterior.</p>
+<p class="footnote" id="fn0"><sup>0</sup> ce metaforă îți vine în minte când citești titlul?</p>
+<p class="footnote" id="fn1"><sup>1</sup> ceea ce înseamnă de fapt că nu-mi voi revizui posturile la mai mult de 3 zile după ce le-am scris&#8230; Asta dacă nu conțin greșeli. Sau lucruri care nu-mi plac. Sau banalități. Sau aberații. Ba nu, aberațiile sunt ok.</p>
+        </div>
+        <br />
+        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </div>
+</div>
+</div><!-- container -->
+<div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5576939-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

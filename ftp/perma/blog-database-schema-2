@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/pygments.css" />
+<link rel="stylesheet" type="text/css" href="/css/archive.css" />
+<link rel="shortcut icon" href="/favico.ico" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+<title>Revolution blahg</title>
+</head>
+<body>
+<div id="container">
+<div id="header">
+<h1><a href="/" class="title">Revolution blahg</a></h1><a href="/">home</a>
+<a href="/archive">archive</a>
+<a href="/about">about</a>
+
+</div>
+<div id="links">
+<div id="recent">
+<h4>Recent</h4>
+<ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/freemusic">Living with free music for a year</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/after-install-work">Linux - After install work</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/vim-tips-part-1">mapleoin's Vim tips #1</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/django-comments-fields">Django comments fields</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/testing-django-models">testing a django blog's models</a></li>
+</ul>
+</div><!--recent-->
+<h4>Links</h4>
+<ul>
+<li><a href="http://ted.com" title="ideas worth spreading">ted</a></li>
+<li><a href="http://xkcd.org" title="42">xkcd</a></li>
+<li><a href="http://hackety.org" title="artful computer hacking">hackety</a></li>
+<li><a href="http://linuxsoft.ro" title="Comunitate open-source">linuxsoft</a></li>
+<li><a href="http://jamendo.com" title="muzică liberă">jamendo!</a></li>
+<li><a href="http://poignantguide.net/ruby/" title="_why’s (poignant) guide to ruby">poignant book</a></li>
+</ul>
+<h4>Volunteer!</h4>
+<ul>
+<li><a href="http://fedoraproject.org" title="infinity | freedom | voice">fedora project</a></li>
+<li><a href="http://pgdp.net/c/" title="distributed proofreaders">gutenberg</a></li>
+<li><a href="http://librivox.org" title="accoustical liberation of books in the public domain">librivox</a></li>
+</ul>
+</div><!--links-->
+<div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2">blog database schema cu capsuni - Part 2</a></h2>
+        <h3>Monday, September 22, 2008</h3>
+        <div class="entry">
+            <p>Tocmai am reușit (am găsit timp&#8212;furat timp) să scriu în django schema din <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema">postul trecut</a>. Simplicity is divine:</p>
+<div class="Python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">nume</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">20</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">)</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Category</span><span class="p">)</span>
+    <span class="n">published</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+    <span class="n">creation_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Commentator</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">website</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URLField</span><span class="p">(</span><span class="n">verify_exists</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Comment</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Commentator</span><span class="p">)</span>
+    <span class="n">approved</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
+    <span class="n">modified_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Pe lângă faptul că toate tipurile de date au nume și <a href="http://docs.djangoproject.com/en/dev/ref/models/fields/#model-field-types">explicații</a> pe care le poate înțelege oricine, django va folosi datele astea atunci când va construi interfața de administrare.<br />
+E interesant că trebuie să declari toate tabelele în ordine. La început pusesem Categoria ultima și n-o găsea când vroia să facă ForeignKey-ul de la Post. M-a cam răsfățat <span class="caps">OOP</span>-ul.<br />
+Alt lucru fain e că de pe acum se pregătesc feature-uri interesante cum ar fi URLField.verify_exists care verifică toate url-urile introduse și le refuză dacă primește <a href="http://en.wikipedia.org/wiki/HTTP_404">404</a>. Așa că de-acum n-o să mai poată nimeni să pună <a href="http://en.wikipedia.org/wiki/Metasyntactic_variable">variabile metasintactice</a> de genu: <i>caca</i>, <i>mumu</i> și altele în field-ul ăla!</p>
+<p>Și acum un mysql describe<sup class="footnote"><a href="#fn3" title="merci gheorghe!">3</a></sup> pentru tabelele rezultate:</p>
+<div class="MySQL"><div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_category</span><span class="p">;</span>
+ <span class="o">+-------+-------------+------+-----+---------+</span>
+ <span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">Type</span>        <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
+ <span class="o">+-------+-------------+------+-----+---------+</span>
+ <span class="o">|</span> <span class="n">id</span>    <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>     <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">nume</span>  <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">+-------+-------------+------+-----+---------+</span>
+ <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_post</span><span class="p">;</span>
+ <span class="o">+---------------+-------------+------+-----+---------+</span>
+ <span class="o">|</span> <span class="n">Field</span>         <span class="o">|</span> <span class="n">Type</span>        <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
+ <span class="o">+---------------+-------------+------+-----+---------+</span>
+ <span class="o">|</span> <span class="n">id</span>            <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>     <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="no">NULL</span>    
+ <span class="o">|</span> <span class="n">title</span>         <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">body</span>          <span class="o">|</span> <span class="kt">longtext</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">category_id</span>   <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>     <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">MUL</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">published</span>     <span class="o">|</span> <span class="kt">tinyint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">creation_time</span> <span class="o">|</span> <span class="kt">datetime</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">modified_time</span> <span class="o">|</span> <span class="kt">datetime</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">+---------------+-------------+------+-----+---------+</span>
+ <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_commentator</span><span class="p">;</span>
+ <span class="o">+---------+--------------+------+-----+---------+</span>
+ <span class="o">|</span> <span class="n">Field</span>   <span class="o">|</span> <span class="n">Type</span>         <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span> 
+ <span class="o">+---------+--------------+------+-----+---------+</span>
+ <span class="o">|</span> <span class="n">id</span>      <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>      <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">name</span>    <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>  <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">UNI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">email</span>   <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>  <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">UNI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">website</span> <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">+---------+--------------+------+-----+---------+</span>
+ <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_comment</span><span class="p">;</span>
+ <span class="o">+---------------+------------+------+-----+---------+</span>
+ <span class="o">|</span> <span class="n">Field</span>         <span class="o">|</span> <span class="n">Type</span>       <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
+ <span class="o">+---------------+------------+------+-----+---------+</span>
+ <span class="o">|</span> <span class="n">id</span>            <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span> 
+ <span class="o">|</span> <span class="n">body</span>          <span class="o">|</span> <span class="kt">longtext</span>   <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">post_id</span>       <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">MUL</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span> 
+ <span class="o">|</span> <span class="n">author_id</span>     <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">MUL</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">approved</span>      <span class="o">|</span> <span class="kt">tinyint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">|</span> <span class="n">modified_time</span> <span class="o">|</span> <span class="kt">datetime</span>   <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
+ <span class="o">+---------------+------------+------+-----+---------+</span>
+</pre></div>
+</div>
+<p><span class="caps">TADA</span>!<br />
+Trebuie să studiez de ce se strică formatarea (de fapt știu de ce, trebuie să scot textile din blockul ăla), dar ideea de bază e clară.</p>
+<p class="footnote" id="fn3"><sup>3</sup> merci gheorghe!</p>
+        </div>
+        <br />
+        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </div>
+</div>
+</div><!-- container -->
+<div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5576939-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

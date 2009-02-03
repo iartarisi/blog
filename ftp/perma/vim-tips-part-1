@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/pygments.css" />
+<link rel="stylesheet" type="text/css" href="/css/archive.css" />
+<link rel="shortcut icon" href="/favico.ico" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+<title>Revolution blahg</title>
+</head>
+<body>
+<div id="container">
+<div id="header">
+<h1><a href="/" class="title">Revolution blahg</a></h1><a href="/">home</a>
+<a href="/archive">archive</a>
+<a href="/about">about</a>
+
+</div>
+<div id="links">
+<div id="recent">
+<h4>Recent</h4>
+<ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/freemusic">Living with free music for a year</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/after-install-work">Linux - After install work</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/vim-tips-part-1">mapleoin's Vim tips #1</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/django-comments-fields">Django comments fields</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/testing-django-models">testing a django blog's models</a></li>
+</ul>
+</div><!--recent-->
+<h4>Links</h4>
+<ul>
+<li><a href="http://ted.com" title="ideas worth spreading">ted</a></li>
+<li><a href="http://xkcd.org" title="42">xkcd</a></li>
+<li><a href="http://hackety.org" title="artful computer hacking">hackety</a></li>
+<li><a href="http://linuxsoft.ro" title="Comunitate open-source">linuxsoft</a></li>
+<li><a href="http://jamendo.com" title="muzică liberă">jamendo!</a></li>
+<li><a href="http://poignantguide.net/ruby/" title="_why’s (poignant) guide to ruby">poignant book</a></li>
+</ul>
+<h4>Volunteer!</h4>
+<ul>
+<li><a href="http://fedoraproject.org" title="infinity | freedom | voice">fedora project</a></li>
+<li><a href="http://pgdp.net/c/" title="distributed proofreaders">gutenberg</a></li>
+<li><a href="http://librivox.org" title="accoustical liberation of books in the public domain">librivox</a></li>
+</ul>
+</div><!--links-->
+<div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/vim-tips-part-1">mapleoin's Vim tips #1</a></h2>
+        <h3>Tuesday, December  9, 2008</h3>
+        <div class="entry">
+            <p>Here&#8217;s this week&#8217;s vim tips:</p>
+<p><code>quvawgUq</code></p>
+<p>Let&#8217;s break that. If you&#8217;ve ever read any kind of vim tutorial, you&#8217;re probably familiar with it&#8217;s recording feature (otherwise do this: <code>:h recording</code> <span class="caps">NOW</span> <span class="caps">GODAMMIT</span>!). So we first choose a letter for our recording (i chose <strong>u</strong>). Afterwards, we go into <span class="caps">VISUAL</span> <span class="caps">MODE</span> (<strong>v</strong>), then we select a(<strong>a</strong>) word(<strong>w</strong>) and uppercase(gU) it (You could also lowercase it by using <strong>gu</strong> instead). So now, that we&#8217;ve stored our magic in the u key, we can use it on any word with <strong>@u</strong>.</p>
+<p><code>:TOhtml</code></p>
+<p>For people who can&#8217;t be bothered to install those cool plugins on their blog (or make their own) &#8211; now you have a way to output all the html+formatting with this plugin. It&#8217;s got cool options to use your own css <code>:h TOhtml</code> . Here&#8217;s a sneakpeek:</p>
+<div style="background-color:#202020;color:wheat;">
+<font color="#8fa5d1">&nbsp;&nbsp;1 </font><span style="background-color: #202020"><font color="#d7a0d7">#!ruby</font></span><br />
+<font color="#8fa5d1">&nbsp;&nbsp;2 </font><span style="background-color: #202020"><font color="#d0d0a0">#!/usr/local/bin/ruby -rubygems</font></span><br />
+<font color="#8fa5d1">&nbsp;&nbsp;3 </font><span style="background-color: #202020"><font color="#d7a0d7">require</font></span>&nbsp;<span style="background-color: #202020"><font color="#e8b87e">'</font></span><span style="background-color: #202020"><font color="#87df71">camping</font></span><span style="background-color: #202020"><font color="#e8b87e">'</font></span><br />
+<font color="#8fa5d1">&nbsp;&nbsp;4 </font><span style="background-color: #202020"><font color="#d7a0d7">require</font></span>&nbsp;<span style="background-color: #202020"><font color="#e8b87e">'</font></span><span style="background-color: #202020"><font color="#87df71">feed-normalizer</font></span><span style="background-color: #202020"><font color="#e8b87e">'</font></span><br />
+<font color="#8fa5d1">&nbsp;&nbsp;5 </font><span style="background-color: #202020"><font color="#d7a0d7">require</font></span>&nbsp;<span style="background-color: #202020"><font color="#e8b87e">'</font></span><span style="background-color: #202020"><font color="#87df71">open-uri</font></span><span style="background-color: #202020"><font color="#e8b87e">'</font></span><br />
+<font color="#8fa5d1">&nbsp;&nbsp;6 </font><br />
+<font color="#8fa5d1">&nbsp;&nbsp;7 </font><span style="background-color: #202020"><font color="#f09479">Camping</font></span>.goes <span style="background-color: #202020"><font color="#87df71">:Planet</font></span><br />
+<font color="#8fa5d1">&nbsp;&nbsp;8 </font><br />
+<font color="#8fa5d1">&nbsp;&nbsp;9 </font><span style="background-color: #202020"><font color="#d7a0d7">module</font></span>&nbsp;<span style="background-color: #202020"><font color="#f09479">Planet</font></span>::<span style="background-color: #202020"><font color="#f09479">Controllers</font></span><br />
+<font color="#8fa5d1">&nbsp;10 </font><br />
+<font color="#8fa5d1">&nbsp;11 </font>&nbsp;&nbsp;<span style="background-color: #202020"><font color="#d0d0a0"># Yay!</font></span><br />
+<font color="#8fa5d1">&nbsp;12 </font>&nbsp;&nbsp;<span style="background-color: #202020"><font color="#d7a0d7">class</font></span>&nbsp;<span style="background-color: #202020"><font color="#f09479">Index</font></span>&nbsp;&lt; <span style="background-color: #202020"><font color="#f09479">R</font></span>&nbsp;<span style="background-color: #202020"><font color="#e8b87e">'</font></span><span style="background-color: #202020"><font color="#87df71">/</font></span><span style="background-color: #202020"><font color="#e8b87e">'</font></span><br />
+<font color="#8fa5d1">&nbsp;13 </font>&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #202020"><font color="#d7a0d7">def</font></span>&nbsp;<span style="background-color: #202020"><font color="#7ee0ce">get</font></span><br />
+<font color="#8fa5d1">&nbsp;14 </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;render <span style="background-color: #202020"><font color="#87df71">:index</font></span>&nbsp;<br />
+<font color="#8fa5d1">&nbsp;15 </font>&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #202020"><font color="#d7a0d7">end</font></span><br />
+<font color="#8fa5d1">&nbsp;16 </font>&nbsp;&nbsp;<span style="background-color: #202020"><font color="#d7a0d7">end</font></span><br />
+<font color="#8fa5d1">&nbsp;17 </font><span style="background-color: #202020"><font color="#d7a0d7">end</font></span><br /></div>
+<p><code>&#8212;<span class="caps">VISUAL</span> <span class="caps">BLOCK</span>&#8212;</code><br />
+There&#8217;s a wonderful way to indent many lines and then unindent them in vim. You can select a block in vim (like a rectangle) by using the <em>visual block</em> mode. Press <code>Ctrl-v</code>. Now you can delete that or if you&#8217;d rather, you can replace it with zeroes by doing <code>r0</code>. To indent a block you would go to the first character on the line, get into <em>visual block</em> mode, and press <code>j</code> until you&#8217;ve selected all your desired lines. Now comes the magic: press <code>I</code> (that&#8217;s an uppercase i) and your desired indenting or number of zeroes if that&#8217;s what you like and then escape. You can thank me for the enlightening now.</p>
+        </div>
+        <br />
+        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </div>
+</div>
+</div><!-- container -->
+<div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5576939-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

@@ -1,4 +1,3 @@
-## -*- coding: utf-8 -*-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -45,26 +44,25 @@
 <li><a href="http://librivox.org" title="accoustical liberation of books in the public domain">librivox</a></li>
 </ul>
 </div><!--links-->
-<div id="content">${self.content()}</div>
+<div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/stecher-ascutitoare-si-scrisori">Ștecher, ascuțitoare și scrisori imaginare</a></h2>
+        <h3>Tuesday, September  9, 2008</h3>
+        <div class="entry">
+            <p>Asta-i lista mea de cumpărături pentru azi. Și o parte din cea de ieri&#8230;</p>
+<p>Ștecherul e pentru lampa industrială galbenă de pe noptieră, pe care o folosesc dintotdeauna. Ascuțitoarea e pentru cele 20 de creioane cumpărate dintr-un supermarket nemțesc din grecia cu 1€ deși probabil o să mă plictisesc prea repede să le-ascut și mă voi întoarce la creionul meu „de arhitect”. Iar „Scrisori imaginare” sunt pentru luna viitoare sau peste două luni când voi termina celelalte 4&#8211;5 cărți de literatură care au un loc mai în față pe lista mea. Cele patru-cinci ar fi: „Aripa stângă” &#8211; Mircea Cărtărescu, „Citadela” &#8211; Antoine de Saint Exupery, „Cine suntem” &#8211; Dan Puric, „Viața pe un peron” &#8211; Octavian Paler.</p>
+<p>Postul ăsta marchează și începutul celui de-al treilea proiect de blog. Poate primul public&#8230; N-am vrut să-mi propun nimic, să mă limitez în vreun fel în prefața acestui blog. O să las tastatura să scrie. Sper să n-apară video-uri embedded totuși&#8230;</p>
+<p>Pe curând</p>
+<p>&#8212;observ că trebuie să revin mereu pentru a mai adăuga câte un detaliu la ce am scris până acum&#8230; interesant.</p>
+        </div>
+        <br />
+        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </div>
+</div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 
-% if len(posts) != 1:
-<script type="text/javascript">
-//<![CDATA[
-(function() {
-		var links = document.getElementsByTagName('a');
-		var query = '?';
-		for(var i = 0; i < links.length; i++) {
-			if(links[i].href.indexOf('#disqus_thread') >= 0) {
-				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-			}
-		}
-		document.write('<script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/get_num_replies.js' + query + '"></' + 'script>');
-	})();
-//]]>
-</script>
-% endif
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

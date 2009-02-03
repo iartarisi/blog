@@ -1,4 +1,3 @@
-## -*- coding: utf-8 -*-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -45,26 +44,54 @@
 <li><a href="http://librivox.org" title="accoustical liberation of books in the public domain">librivox</a></li>
 </ul>
 </div><!--links-->
-<div id="content">${self.content()}</div>
+<div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/blog-database-schema">blog database schema cu capsuni</a></h2>
+        <h3>Tuesday, September 16, 2008</h3>
+        <div class="entry">
+            <p>Am reușit să-mi scriu schema bazei de date a viitorului meu blog. Ah, da, m-am apucat de treabă. O să folosesc django cred (și deja mi s-a spus că era previzibil) deși încă mai am timp să mă răzgândesc. N-am găsit în 2 minute un script care să-mi deseneze scheme, așa că pun relațiile în engleză aici. Come bash me!</p>
+<h4>Post</h4>
+<ul>
+<li><code>belongs_to Category</code></li>
+<li><code>has_many Comments</code></li>
+</ul>
+<h4>Comment</h4>
+<ul>
+<li><code>has_one Commentator</code></li>
+<li><code>belongs_to Post</code></li>
+</ul>
+<h4>Commentator</h4>
+<ul>
+<li><code>has_many Comments</code></li>
+</ul>
+<h4>Category</h4>
+<ul>
+<li><code>has_many Posts</code></li>
+</ul>
+<p>Ia să încerc să fac și niște tabele din ce scrie mai sus.</p>
+<p>Post<br />
+<code>id || title || body || category_id || created_at || published</code></p>
+<p>Comment<br />
+<code>id || post_id || commentator_id || body || approved || created_at</code></p>
+<p>Commentator<br />
+<code>id || name || email || website || gravatar_url</code></p>
+<p>Category<br />
+<code>id || name</code></p>
+<p>Am renunțat la tabele și am improvizat o formatare. Sper să fie lizibil.</p>
+<p>E evident ceea ce <strong>nu</strong> am făcut sper. Nu am lăsat commentatorii cu commenturile lor ceea ce ar fi dus la o relație cu 4 coloane redundante (nume, email, website, gravatar):</p>
+<p>Comment<br />
+id || <span style="color:red;">autor || email || website || gravatar_url</span> || post_id || commentator_id || body || approved || created_at</p>
+<p>Pe parcurs o să mai adaug rating la posturi și alte lucruri care mai îmi vin în minte. Ratingul o să încerce să fie ceva complex cu sus/jos, dar asta mai târziu. <br />
+Deci? Ce părere aveți? Ce să mai adaug? Am greșit ceva? Mă încadrez în forma normală 5? :-)</p>
+        </div>
+        <br />
+        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </div>
+</div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 
-% if len(posts) != 1:
-<script type="text/javascript">
-//<![CDATA[
-(function() {
-		var links = document.getElementsByTagName('a');
-		var query = '?';
-		for(var i = 0; i < links.length; i++) {
-			if(links[i].href.indexOf('#disqus_thread') >= 0) {
-				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-			}
-		}
-		document.write('<script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/get_num_replies.js' + query + '"></' + 'script>');
-	})();
-//]]>
-</script>
-% endif
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
