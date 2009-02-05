@@ -7,7 +7,9 @@
 <link rel="stylesheet" type="text/css" href="/css/archive.css" />
 <link rel="shortcut icon" href="/favico.ico" />
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
-<title>Revolution blahg</title>
+<title>Revolution blahg 
+    | mapleoin's Vim tips #1
+</title>
 </head>
 <body>
 <div id="container">
@@ -21,11 +23,11 @@
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/ultimate-freebsd-desktop">the ultimate FreeBSD desktop (without a mouse)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/freemusic">Living with free music for a year</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/after-install-work">Linux - After install work</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/vim-tips-part-1">mapleoin's Vim tips #1</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/django-comments-fields">Django comments fields</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/testing-django-models">testing a django blog's models</a></li>
 </ul>
 </div><!--recent-->
 <h4>Links</h4>

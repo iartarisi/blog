@@ -141,8 +141,10 @@ ul {
 }
 
 .entry {
-    padding-bottom: 1em;
     margin-top: 1em;
+}
+.entry p {
+    padding-bottom: 1em;
 }
 * {
     margin: 0;

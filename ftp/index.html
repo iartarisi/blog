@@ -7,7 +7,8 @@
 <link rel="stylesheet" type="text/css" href="/css/archive.css" />
 <link rel="shortcut icon" href="/favico.ico" />
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
-<title>Revolution blahg</title>
+<title>Revolution blahg 
+</title>
 </head>
 <body>
 <div id="container">
@@ -21,11 +22,11 @@
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/ultimate-freebsd-desktop">the ultimate FreeBSD desktop (without a mouse)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/freemusic">Living with free music for a year</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/after-install-work">Linux - After install work</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/vim-tips-part-1">mapleoin's Vim tips #1</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/django-comments-fields">Django comments fields</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/testing-django-models">testing a django blog's models</a></li>
 </ul>
 </div><!--recent-->
 <h4>Links</h4>
@@ -45,6 +46,23 @@
 </ul>
 </div><!--links-->
 <div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/ultimate-freebsd-desktop">the ultimate FreeBSD desktop (without a mouse)</a></h2>
+        <h3>Tuesday, February  3, 2009</h3>
+        <div class="entry">
+            <p>I installed FreeBSD a few days ago, because I wanted to work on a distribution that&#8217;s famous for its code quality and good practices. I had been using Fedora for almost a year, after switching from ArchLinux which I think I had used for two years and various other Linux distros before that. I had messed around with various BSDs before (OpenBSD, NetBSD, FreeBSD), but none of them really stuck with me. One of the big reasons for switching was getting tired of not having a package for that new thing I just saw on reddit. I used to go search for it on <a href="http://freshports.org">freshports</a> everytime and everytime it was already there.</p>
+<p>After installing the base system, the first thing was to get some sort of <acronym title="Window Manager">WM</acronym> installed. I was in a bit of a hurry, anxious to get my new system ready, so I didn&#8217;t want anything big, like a <acronym title="Desktop Environment">DE</acronym> . <a href="http://en.wikipedia.org/wiki/Tiling_window_manager">Tiling WMs</a> are the next big thing. <a href="http://en.wikipedia.org/wiki/WIMP_%28computing%29"><span class="caps">WIMP</span></a> is dead. I had played with dwm/wmii before, but these didn&#8217;t really stick then. I think there&#8217;s an effort to be made in order to change your desktop paradigm, just like when you&#8217;re changing your editor or anything else. You can&#8217;t just use it cassually once a week and expect to become proefficient with it in a month. It doesn&#8217;t work that way. At least not for me. These things cause a bit of a headache. It&#8217;s like cutting a limb. You&#8217;re brain needs to adapt your other senses and limbs to compensate for the loss. But in this case, when you cut your limb, you get a new cyber-robotic-megatron arm instead. You just need to figure it out how it works and your productivity will increase exponentially.</p>
+<p>So i installed <a href="http://awesome.naquadah.org/">awesome</a> , then switched to <a href="http://xmonad.org/">xmonad</a> and then switched to <a href="http://www.suckless.org/dwm/">dwm</a> in a matter of minutes. I then opened up the configuration file for dwm, and changed some keybindings and some colors and two days later it feels like home.</p>
+<p>Early on, as I got the tiling wm installed I thought about trying to live without my mouse. That&#8217;s hardcore productivity staring me in the face. Especially the hardcore part. I already had my vim/emacs editor so nothing to change there.</p>
+<p>Browsing is a big part of our lives, and browsing can&#8217;t be done without a pointing device. Or could it? I installed <a href="http://vimperator.org/trac/wiki/Vimperator">vimperator</a> . You have these nice key-bindings for moving around (j,k,C-d,C-u,search etc.), but how do you click links? Vimperator has this awesome feature called <em>hinting</em> that highlights and gives a number to each link on the screen when you press <strong>f</strong>. I think it&#8217;s actually faster than moving your mouse around. You can open a new link just by pressing <strong>o</strong>, a tab by pressing <strong>t</strong>. It knows you mean google if you just give it words instead of a url. It goes back and forth with C-o, C-i. It can do almost everything firefox can do and more without looking around through ugly menus. It&#8217;s even got macros! You can go Granted, it takes some getting used to, but that&#8217;s the fun, right?</p>
+<p>Everyone already knows irssi the irc client and mutt the email client. You can try those. Or you could use one of emacs&#8217;s. That&#8217;s the next big part of my plan. I&#8217;m going to be switching over to emacs after about 3 years with vim. I&#8217;m probably going to say other things about this move some other time, so I&#8217;ll just summarise my first thoughts until now. I want my editor to be everywhere I edit text. Vim is already in my blog posts and in my source files. But I want my editor in my email, in my shell, in my chat client and under my pillow. Emacs 22 has ugly fonts, but Emacs 23 has antialiased fonts and what do you know? FreeBSD&#8217;s got a port of the development version. All the carpal syndrome scare goes away once you remap Caps to be another Ctrl key. Read a lot of tutorials. Read a lot of high-profile users&#8217; blog posts (like <a href="http://steve.yegge.googlepages.com/effective-emacs">steve yegge&#8217;s</a> ). Have a lot of commitment and you&#8217;ll do it.</p>
+<p>Learning one of the two editors is a rewarding experience in itself. Vimtutor and the emacs tutorial are amazing. They&#8217;ll have you crackling once every few lines at the new magic powers you&#8217;ve just gained. They truly are great weapons in any mastermind-bent-on-world-domination&#8217;s arsenal.</p>
+<p>The first few hours after the second few hours spent into the new environment are the most important. If you can get to this stage, the battle is almost won. The first <em>session</em> is the most troublesome. Your brain revolts and refuses to adapt to the <em>new way</em> . That&#8217;s why it&#8217;s most important to not give up. Spend the night with the new environment and go to sleep. The next day you have to be able to wake up in the same environment and everything will seem natural in a little while. Try it.</p>
+<p>Next year I&#8217;ll go <a href="http://en.wikipedia.org/wiki/Dvorak_Simplified_Keyboard">Dvorak</a> .</p>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/ultimate-freebsd-desktop#disqus_thread" class="comments">View Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
+    </div>
     <div class="post">
         <h2><a href="http://mapleoin.bluepink.ro/perma/freemusic">Living with free music for a year</a></h2>
         <h3>Sunday, January 11, 2009</h3>
@@ -439,84 +457,6 @@ curl http://planet.example.com &gt; planet.html &amp;amp; mv oldplanet planet.ht
 This, together with something like rails&#8217;s <a href="http://feed-normalizer.rubyforge.org/">feed-normalizer</a> gem can make writing a rails planet aggregator a breeze.</p>
         </div>
         <a href="http://mapleoin.bluepink.ro/perma/eliminate-rails-caching-gap#disqus_thread" class="comments">View Comments</a>
-        <img class="separator" alt="post separator" src="/css/separator.png" />
-    </div>
-    <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2">blog database schema cu capsuni - Part 2</a></h2>
-        <h3>Monday, September 22, 2008</h3>
-        <div class="entry">
-            <p>Tocmai am reușit (am găsit timp&#8212;furat timp) să scriu în django schema din <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema">postul trecut</a>. Simplicity is divine:</p>
-<div class="Python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
-<span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">nume</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">20</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">)</span>
-    <span class="n">body</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
-    <span class="n">category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Category</span><span class="p">)</span>
-    <span class="n">published</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
-    <span class="n">creation_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">Commentator</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">website</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URLField</span><span class="p">(</span><span class="n">verify_exists</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">Comment</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">body</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
-    <span class="n">post</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
-    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Commentator</span><span class="p">)</span>
-    <span class="n">approved</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
-    <span class="n">modified_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Pe lângă faptul că toate tipurile de date au nume și <a href="http://docs.djangoproject.com/en/dev/ref/models/fields/#model-field-types">explicații</a> pe care le poate înțelege oricine, django va folosi datele astea atunci când va construi interfața de administrare.<br />
-E interesant că trebuie să declari toate tabelele în ordine. La început pusesem Categoria ultima și n-o găsea când vroia să facă ForeignKey-ul de la Post. M-a cam răsfățat <span class="caps">OOP</span>-ul.<br />
-Alt lucru fain e că de pe acum se pregătesc feature-uri interesante cum ar fi URLField.verify_exists care verifică toate url-urile introduse și le refuză dacă primește <a href="http://en.wikipedia.org/wiki/HTTP_404">404</a>. Așa că de-acum n-o să mai poată nimeni să pună <a href="http://en.wikipedia.org/wiki/Metasyntactic_variable">variabile metasintactice</a> de genu: <i>caca</i>, <i>mumu</i> și altele în field-ul ăla!</p>
-<p>Și acum un mysql describe<sup class="footnote"><a href="#fn3" title="merci gheorghe!">3</a></sup> pentru tabelele rezultate:</p>
-<div class="MySQL"><div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_category</span><span class="p">;</span>
- <span class="o">+-------+-------------+------+-----+---------+</span>
- <span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">Type</span>        <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
- <span class="o">+-------+-------------+------+-----+---------+</span>
- <span class="o">|</span> <span class="n">id</span>    <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>     <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">nume</span>  <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">+-------+-------------+------+-----+---------+</span>
- <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_post</span><span class="p">;</span>
- <span class="o">+---------------+-------------+------+-----+---------+</span>
- <span class="o">|</span> <span class="n">Field</span>         <span class="o">|</span> <span class="n">Type</span>        <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
- <span class="o">+---------------+-------------+------+-----+---------+</span>
- <span class="o">|</span> <span class="n">id</span>            <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>     <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="no">NULL</span>    
- <span class="o">|</span> <span class="n">title</span>         <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">body</span>          <span class="o">|</span> <span class="kt">longtext</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">category_id</span>   <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>     <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">MUL</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">published</span>     <span class="o">|</span> <span class="kt">tinyint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">creation_time</span> <span class="o">|</span> <span class="kt">datetime</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">modified_time</span> <span class="o">|</span> <span class="kt">datetime</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">+---------------+-------------+------+-----+---------+</span>
- <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_commentator</span><span class="p">;</span>
- <span class="o">+---------+--------------+------+-----+---------+</span>
- <span class="o">|</span> <span class="n">Field</span>   <span class="o">|</span> <span class="n">Type</span>         <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span> 
- <span class="o">+---------+--------------+------+-----+---------+</span>
- <span class="o">|</span> <span class="n">id</span>      <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>      <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">name</span>    <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>  <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">UNI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">email</span>   <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>  <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">UNI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">website</span> <span class="o">|</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">+---------+--------------+------+-----+---------+</span>
- <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_comment</span><span class="p">;</span>
- <span class="o">+---------------+------------+------+-----+---------+</span>
- <span class="o">|</span> <span class="n">Field</span>         <span class="o">|</span> <span class="n">Type</span>       <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
- <span class="o">+---------------+------------+------+-----+---------+</span>
- <span class="o">|</span> <span class="n">id</span>            <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">PRI</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span> 
- <span class="o">|</span> <span class="n">body</span>          <span class="o">|</span> <span class="kt">longtext</span>   <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">post_id</span>       <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">MUL</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span> 
- <span class="o">|</span> <span class="n">author_id</span>     <span class="o">|</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>    <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span> <span class="n">MUL</span> <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">approved</span>      <span class="o">|</span> <span class="kt">tinyint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">|</span> <span class="n">modified_time</span> <span class="o">|</span> <span class="kt">datetime</span>   <span class="o">|</span> <span class="n">NO</span>   <span class="o">|</span>     <span class="o">|</span> <span class="no">NULL</span>    <span class="o">|</span>
- <span class="o">+---------------+------------+------+-----+---------+</span>
-</pre></div>
-</div>
-<p><span class="caps">TADA</span>!<br />
-Trebuie să studiez de ce se strică formatarea (de fapt știu de ce, trebuie să scot textile din blockul ăla), dar ideea de bază e clară.</p>
-<p class="footnote" id="fn3"><sup>3</sup> merci gheorghe!</p>
-        </div>
-        <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2#disqus_thread" class="comments">View Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
 </div>

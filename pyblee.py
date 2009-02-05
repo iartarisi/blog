@@ -4,7 +4,7 @@
 
 Example usage:
     -t "Doomsday Blog" - sets the title
-    -s 
+    -p db/newpost - publishes a new post in the set file 
 """
 
 import sys
