@@ -89,14 +89,14 @@ pre {
     margin: .5em 0 3em;
     text-align: left;
 }
-#links {
+#sidebar {
     text-align: right;
     padding: 4em 1em ;
     font-size: .9em;
     width: 20%;
     float: right;
 }
-#links ul {
+#sidebar ul {
     padding-bottom: 2em;
 }
 #recent ul {
@@ -106,7 +106,7 @@ pre {
 ul {
     list-style: none;
 }
-#links h4 {
+#sidebar h4 {
     font-family: serif;
     font-size: 1.4em;
     padding-bottom: .5em;

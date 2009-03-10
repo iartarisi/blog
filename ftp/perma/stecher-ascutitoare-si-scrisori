@@ -19,7 +19,7 @@
 <a href="/about">about</a>
 
 </div>
-<div id="links">
+<div id="sidebar">
 <div id="recent">
 <h4>Recent</h4>
 <ul>
@@ -30,6 +30,8 @@
 <li><a href="http://mapleoin.bluepink.ro/perma/django-comments-fields">Django comments fields</a></li>
 </ul>
 </div><!--recent-->
+<a href="http://www.eliberatica.ro/2009" target="_blank"><img src="http://www.eliberatica.ro/2009/2009-images/logo-eLiberatica-2009-200x100.gif" alt="eLiberatica 2009 - The Benefits of Open and Free Technologies Conference" border="0" /></a>
+<br />
 <h4>Links</h4>
 <ul>
 <li><a href="http://ted.com" title="ideas worth spreading">ted</a></li>
