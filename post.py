@@ -57,7 +57,7 @@ class Post:
                 self.name, self.body = splits
                 self.tags = None
             else:
-                raise ValueError, 'checkformatting: '+ file
+                raise ValueError, 'check formatting: '+ file
         except ValueError:
             raise ValueError, 'check the formatting: '+file
         

@@ -6,7 +6,9 @@
 <link rel="stylesheet" type="text/css" href="/css/pygments.css" />
 <link rel="stylesheet" type="text/css" href="/css/archive.css" />
 <link rel="shortcut icon" href="/favico.ico" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/
+feed
+.xml" />
 <title>Revolution blahg 
     | blog database schema cu capsuni
 </title>
@@ -103,12 +105,10 @@ id || <span style="color:red;">autor || email || website || gravatar_url</span> 
 Deci? Ce părere aveți? Ce să mai adaug? Am greșit ceva? Mă încadrez în forma normală 5? :-)</p>
         </div>
         <div class="post_tags">Tags:
-            <ul>
-                <li><a href="/tag/django.html">django</a></li>
-                <li><a href="/tag/programming.html">programming</a></li>
-                <li><a href="/tag/python.html">python</a></li>
-                <li><a href="/tag/databases.html">databases</a></li>
-            </ul>
+                <a href="/tag/django.html">django</a>
+                <a href="/tag/programming.html">programming</a>
+                <a href="/tag/python.html">python</a>
+                <a href="/tag/databases.html">databases</a>
         </div>
         <br />
         <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>

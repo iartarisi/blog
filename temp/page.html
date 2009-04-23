@@ -2,7 +2,7 @@
 
 <%def name="content()">
     <div class="post">
-        <h2><a href="${posts[0].url}">${posts[0].name}</a></h2>
+        <h2><a href="/${posts[0].name}">${posts[0].name}</a></h2>
         <div class="entry">
             ${posts[0].body}
             <br />
@@ -12,4 +12,7 @@
 
 <%def name="title()">
     | ${posts[0].name}
+</%def>
+<%def name="xml()">
+feed
 </%def>

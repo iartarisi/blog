@@ -7,10 +7,9 @@
 <link rel="stylesheet" type="text/css" href="/css/archive.css" />
 <link rel="shortcut icon" href="/favico.ico" />
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/
-feed
+tag/unix
 .xml" />
 <title>Revolution blahg 
-    | the ultimate FreeBSD desktop (without a mouse)
 </title>
 </head>
 <body>
@@ -83,14 +82,52 @@ feed
                 <a href="/tag/freebsd.html">freebsd</a>
                 <a href="/tag/unix.html">unix</a>
         </div>
-        <br />
-        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+        <a href="http://mapleoin.bluepink.ro/perma/ultimate-freebsd-desktop#disqus_thread" class="comments">View Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/after-install-work">Linux - After install work</a></h2>
+        <h3>Friday, December 19, 2008</h3>
+        <div class="entry">
+            <p>It&#8217;s distro-hopping season again and I chose debian this time. I might explain my reasons for that somewhere else. Here&#8217;s a list of stuff I need to do on every install in order to get comfy with my new distro. (There&#8217;s a sort of meme floating around).<br />
+I use gnome!</p>
+<ul>
+<li>Get 6 virtual desktops. </li>
+<li>Set some basic can&#8217;t-live-without-keybindings Ctrl+<em>number</em> for switching between desktops and Alt+T for launching a gnome-terminal.</li>
+<li>Clean up my desktop. I really hate every kind of clutter on my desktop, so I delete everything. Almost everything can just be deleted, except for the Home, Trash and Computer icons. Fire up <code>gconf-editor</code> and go to <em>apps>nautilus>desktop</em> to uncheck everything. While we&#8217;re at it, let&#8217;s also enabling deleting in <em>nautilus</em> (it normally only lets you send stuff to Trash), by checking enable_delete in <em>nautilus>preferences</em>. Nautilus>Edit>Preferences>Behaviour &#8211; always open in browser windows &#8211; so it doesn&#8217;t spam me with 1000 windows to the world.</li>
+<li>Next is <code>&lt;package manager&gt; install bash-completion</code> and adding this to my <em>.bashrc</em>: <code>. /etc/bash_completion</code>.</li>
+<li>Time to get my .vimrc from wherever i happen to be keeping it at the time. you can check it out now <a href="http://mapleoin.fedorapeople.org/vimrc">here</a>.</li>
+<li>Nowadays, as I&#8217;ve got really lazy, I also set up automatic login (you can do that from <em>System>Administration>Login Window</em>. That basically bypasses gdm.</li>
+<li>Get myself into some better groups like: wheel/admin/sudo, storage/disk(so nautilus can mount disks), by editing <code>/etc/group</code>.</li>
+<li>You might also want to take a look at <a href="http://art.gnome.org">http://art.gnome.org</a> if you&#8217;re the type. I know it&#8217;s a bit outdated, but the interface is a whole lot better than *-look.org</li>
+<li>Here&#8217;s a list of apps I use regularly: <em>Firefox, gnome-terminal, vim, ipython, git, xchat, evolution, pidgin, deluge, banshee/amarok, gnome-mplayer</em>.</li>
+</ul>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/unix.html">unix</a>
+                <a href="/tag/linux.html">linux</a>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/after-install-work#disqus_thread" class="comments">View Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
 </div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

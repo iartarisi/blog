@@ -10,11 +10,9 @@
         </div>
         % if post.tags:
         <div class="post_tags">Tags:
-            <ul>
             % for tag in post.tags:
-                <li><a href="/tag/${tag}.html">${tag}</a></li>
+                <a href="/tag/${tag}.html">${tag}</a>
             % endfor
-            </ul>
         </div>
         % endif
         % if len(posts) == 1:
@@ -28,7 +26,13 @@
     </div>
     % endfor
 </%def>
-
+<%def name="xml()">
+% if tag:
+tag/${tag}
+% else:
+feed
+% endif
+</%def>
 <%def name="title()">
     % if len(posts) == 1:
     | ${posts[0].name}

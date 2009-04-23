@@ -162,15 +162,21 @@ code {
 }
 img.separator {
     display: block;
+    clear: both;
     margin: auto;
     padding-top: .5em;
 }
 a.comments {
+    float: right;
     color: #898;
     font-style: italic;
 }
 a.comments:hover, a.comments:visited {
     color: #040;
+}
+.post_tags {
+    float: left;
+    position: relative;
 }
 .post_tags li {
     display: inline;

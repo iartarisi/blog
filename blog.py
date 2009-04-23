@@ -40,18 +40,19 @@ class Blog:
                 self.pages.append(page)
 
 
-    def templatize(self, template, posts):
+    def templatize(self, template, posts, tag=None):
         """Runs the posts through the given template"""
         templ = self.temp_lookup.get_template(template)
             
-        return templ.render_unicode(posts = posts).encode(config.encoding)
+        return templ.render_unicode(posts = posts, 
+                                    tag = tag).encode(config.encoding)
 
-    def build_page(self, template, output_file, posts):
+    def build_page(self, template, output_file, posts, tag=None):
         """Build a blog page/post
 
            Build a blog page/post, using :template: and writing the file to disk
         """
-        rendered_template = self.templatize(template, posts)
+        rendered_template = self.templatize(template, posts, tag)
         self.write(self.sitedir+output_file, rendered_template)
         
     def write(self, file, rendered_temp):
@@ -107,21 +108,23 @@ class Blog:
         tags.replaceWith(tag_html)
 
         self.write(config.templatedir+base_temp, str(soup))
-        return (rec_html, h1_html) 
+        return (rec_html, h1_html, tag_html) 
 
     def build_rss(self, post_list):
         """Build an rss object and return a rendered rss template"""
         rss = Rss()
         temp = self.temp_lookup.get_template('rss.xml')
         
-        for post in post_list:
-            post.body = cgi.escape(post.body)
-
         return temp.render_unicode(posts = post_list, 
                                    rss = rss).encode(config.encoding)
 
     def rss(self):
         """Give the order to build all the rss pages"""
+        # cleanup here, so it gets done once and only for rss
+        # FIXME: this is tightly coupled b/c it changes the posts'
+        for post in self.posts:
+            post.body = cgi.escape(post.body)
+       
         for tag in self.tags:
             self.write(self.sitedir+config.tagdir+tag+'.xml', 
                     self.build_rss(self.tags[tag]))
@@ -132,7 +135,7 @@ class Blog:
         """Build the pages relevant to each tag"""
         for tag in self.tags:
             self.build_page('post.html', config.tagdir+tag+'.html', 
-                    self.tags[tag])
+                    self.tags[tag], tag=tag)
 
     def index(self):
         """Build the index page if it doesn't already exist"""
