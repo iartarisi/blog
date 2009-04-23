@@ -15,6 +15,7 @@ class Blog:
        
         self.datadir = datadir
         self.sitedir = sitedir
+        self.tags = {}
         # FIXME need to do something about the utf8 constant
         self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
                                           default_filters=['decode.utf8'])
@@ -28,20 +29,27 @@ class Blog:
             if re.match('((\d{2}-){3})', file):
                 post = Post(datadir+file)
                 self.posts.append(post)
-            elif file[0] != '.': # not hidden
+                for tag in post.tags:
+                    if tag not in self.tags.keys():
+                        self.tags[tag] = [post]
+                    else:
+                        self.tags[tag].append(post)
+            elif file[0] != '.': # not hidden -> page
                 page = Post(datadir+file)
                 self.pages.append(page)
 
 
-    def templatize(self, template, posts_no=None):
+    def templatize(self, template, posts):
         """Runs the posts through the given template"""
         templ = self.temp_lookup.get_template(template)
             
-        posts = self.posts[:posts_no]
         return templ.render_unicode(posts = posts).encode(config.encoding)
 
-    def build_page(self, template, output_file, posts=None):
-        """Build a blog page, using :template: and writing the file to disk"""
+    def build_page(self, template, output_file, posts):
+        """Build a blog page/post
+
+           Build a blog page/post, using :template: and writing the file to disk
+        """
         rendered_template = self.templatize(template, posts)
         self.write(self.sitedir+output_file, rendered_template)
         
@@ -60,7 +68,10 @@ class Blog:
         print 'Wrote ' + file + ' succesfully'
 
     def base_template(self, base_temp='base.html'):
-        """Update the base template"""
+        """Update the base template
+        
+           Update: recent posts, page links 
+        """
         f = codecs.open(config.templatedir+base_temp, 'r', config.encoding)
         soup = BeautifulSoup(f.read())
         f.close()
@@ -74,6 +85,7 @@ class Blog:
         recent.replaceWith(rec_html)
 
         # update the page links
+        # FIXME ugly ugly view code should go in the view
         header = soup.find('div', id='header')
         h1_html = '<div id="header">\n' + str(header.h1)
         h1_html += '<a href="/">home</a>\n'
@@ -84,30 +96,51 @@ class Blog:
         h1_html += '\n</div>'
         header.replaceWith(h1_html)
 
+        # update the tags
+        tags = soup.find('div', id='tags')
+        tag_html = '<div id="tags">\n<h4>Tags</h4>\n<ul>\n'
+        for tag in self.tags:
+            tag_html += '<li><a href="/'+config.tagdir+tag+'.html">'+tag \
+                        +'</a></li>\n'
+        tag_html += '</ul>\n</div>'
+        tags.replaceWith(tag_html)
+
         self.write(config.templatedir+base_temp, str(soup))
         return (rec_html, h1_html) 
 
-    def build_rss(self):
-        """Build an Rss object and return a rendered rss template"""
+    def build_rss(self, post_list):
+        """Build an rss object and return a rendered rss template"""
         rss = Rss()
         temp = self.temp_lookup.get_template('rss.xml')
         
-        for post in self.posts[:config.posts_no]:
+        for post in post_list:
             post.body = cgi.escape(post.body)
 
-        return temp.render_unicode(posts = self.posts[:config.posts_no], 
+        return temp.render_unicode(posts = post_list, 
                                    rss = rss).encode(config.encoding)
 
     def rss(self):
-        self.write(self.sitedir+'feed.xml', self.build_rss())
+        """Give the order to build all the rss pages"""
+        for tag in self.tags:
+            self.write(self.sitedir+config.tagdir+tag+'.xml', 
+                    self.build_rss(self.tags[tag]))
+        self.write(self.sitedir+'feed.xml', 
+                self.build_rss(self.posts[:config.posts_no]))
+
+    def build_tags(self):
+        """Build the pages relevant to each tag"""
+        for tag in self.tags:
+            self.build_page('post.html', config.tagdir+tag+'.html', 
+                    self.tags[tag])
 
     def index(self):
         """Build the index page if it doesn't already exist"""
-        self.build_page('post.html', 'index.html', config.posts_no)     
+        self.build_page('post.html', 'index.html', 
+                self.posts[:config.posts_no])     
     
     def archive(self):
         """Build an archive page of all the posts, by date"""
-        self.build_page('archive.html', 'archive') 
+        self.build_page('archive.html', 'archive', self.posts) 
     
     def update_blog(self):
         """Update the entire site, also processing the posts"""
@@ -115,6 +148,7 @@ class Blog:
         self.update_site()
         self.index()
         self.archive()
+        self.build_tags()
         self.rss()
 
     def update_site(self):

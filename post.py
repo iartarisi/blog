@@ -44,12 +44,20 @@ class Post:
         try:
             postu = f.read()
         except UnicodeDecodeError:
-           raise ValueError, 'your config.encoding is bogus'+file
+           raise ValueError, 'your config.encoding is bogus '+file
         f.close()
 
         # get the post title and the body
         try:
-            (self.name, self.body) = postu.split('\n---\n\n', 1)
+            splits = postu.split('\n---\n\n')
+            if len(splits) == 3:
+                self.name, self.tags, self.body = splits
+                self.tags = self.tags.split(', ')
+            elif len(splits) == 2:
+                self.name, self.body = splits
+                self.tags = None
+            else:
+                raise ValueError, 'checkformatting: '+ file
         except ValueError:
             raise ValueError, 'check the formatting: '+file
         
@@ -87,6 +95,7 @@ class Post:
         else:
             db_post = open(self.sitedir+self.postdir+self.slug, 'w')
             db_post.write(self.template('post.html'))
+            # move posts in the directories specific to their tags
             print 'Post added: '+self.name +' -- '+self.pretty_date
         db_post.close()
 

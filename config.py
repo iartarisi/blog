@@ -1,8 +1,11 @@
 sitedir = 'ftp/'
-postdir = 'perma/'
 datadir = 'db/' 
 templatedir = 'temp/'
 encoding = 'utf-8'
+
+# these are relative to the sitedir
+tagdir = 'tag/'
+postdir = 'perma/'
 
 # rss related information
 title = 'Revolution blahg'
