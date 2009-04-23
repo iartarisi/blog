@@ -8,6 +8,15 @@
         <div class="entry">
             ${post.body}
         </div>
+        % if post.tags:
+        <div class="post_tags">Tags:
+            <ul>
+            % for tag in post.tags:
+                <li><a href="/tag/${tag}.html">${tag}</a></li>
+            % endfor
+            </ul>
+        </div>
+        % endif
         % if len(posts) == 1:
         <br />
         <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>

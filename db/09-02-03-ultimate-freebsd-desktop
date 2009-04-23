@@ -1,6 +1,9 @@
 the ultimate FreeBSD desktop (without a mouse)
 ---
 
+freebsd, unix
+---
+
 I installed FreeBSD a few days ago, because I wanted to work on a distribution that's famous for its code quality and good practices. I had been using Fedora for almost a year, after switching from ArchLinux which I think I had used for two years and various other Linux distros before that. I had messed around with various BSDs before (OpenBSD, NetBSD, FreeBSD), but none of them really stuck with me. One of the big reasons for switching was getting tired of not having a package for that new thing I just saw on reddit. I used to go search for it on "freshports":http://freshports.org everytime and everytime it was already there.
 
 After installing the base system, the first thing was to get some sort of WM(Window Manager) installed. I was in a bit of a hurry, anxious to get my new system ready, so I didn't want anything big, like a DE(Desktop Environment) . "Tiling WMs":http://en.wikipedia.org/wiki/Tiling_window_manager are the next big thing. "WIMP":http://en.wikipedia.org/wiki/WIMP_%28computing%29 is dead. I had played with dwm/wmii before, but these didn't really stick then. I think there's an effort to be made in order to change your desktop paradigm, just like when you're changing your editor or anything else. You can't just use it casually once a week and expect to become proficient with it in a month. It doesn't work that way. At least not for me. These things cause a bit of a headache. It's like cutting a limb. You're brain needs to adapt your other senses and limbs to compensate for the loss. But in this case, when you cut your limb, you get a new cyber-robotic-megatron arm instead. You just need to figure it out how it works and your productivity will increase exponentially.

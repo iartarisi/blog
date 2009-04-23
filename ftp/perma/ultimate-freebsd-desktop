@@ -47,6 +47,20 @@
 <li><a href="http://pgdp.net/c/" title="distributed proofreaders">gutenberg</a></li>
 <li><a href="http://librivox.org" title="accoustical liberation of books in the public domain">librivox</a></li>
 </ul>
+<div id="tags">
+<h4>Tags</h4>
+<ul>
+<li><a href="/tag/python.html">python</a></li>
+<li><a href="/tag/databases.html">databases</a></li>
+<li><a href="/tag/programming.html">programming</a></li>
+<li><a href="/tag/django.html">django</a></li>
+<li><a href="/tag/unix.html">unix</a></li>
+<li><a href="/tag/music.html">music</a></li>
+<li><a href="/tag/freebsd.html">freebsd</a></li>
+<li><a href="/tag/linux.html">linux</a></li>
+<li><a href="/tag/creativecommons.html">creativecommons</a></li>
+</ul>
+</div><!--tags-->
 </div><!--links-->
 <div id="content">
     <div class="post">
@@ -62,6 +76,12 @@
 <p>Learning one of the two editors is a rewarding experience in itself. Vimtutor and the emacs tutorial are amazing. They&#8217;ll have you crackling once every few lines at the new magic powers you&#8217;ve just gained. They truly are great weapons in any mastermind-bent-on-world-domination&#8217;s arsenal.</p>
 <p>The first few hours after the second few hours spent into the new environment are the most important. If you can get to this stage, the battle is almost won. The first <em>session</em> is the most troublesome. Your brain revolts and refuses to adapt to the <em>new way</em> . That&#8217;s why it&#8217;s most important to not give up. Spend the night with the new environment and go to sleep. The next day you have to be able to wake up in the same environment and everything will seem natural in a little while. Try it.</p>
 <p>Next year I&#8217;ll go <a href="http://en.wikipedia.org/wiki/Dvorak_Simplified_Keyboard">Dvorak</a> .</p>
+        </div>
+        <div class="post_tags">Tags:
+            <ul>
+                <li><a href="/tag/freebsd.html">freebsd</a></li>
+                <li><a href="/tag/unix.html">unix</a></li>
+            </ul>
         </div>
         <br />
         <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>

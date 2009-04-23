@@ -29,11 +29,12 @@ class Blog:
             if re.match('((\d{2}-){3})', file):
                 post = Post(datadir+file)
                 self.posts.append(post)
-                for tag in post.tags:
-                    if tag not in self.tags.keys():
-                        self.tags[tag] = [post]
-                    else:
-                        self.tags[tag].append(post)
+                if post.tags:
+                    for tag in post.tags:
+                        if tag not in self.tags.keys():
+                            self.tags[tag] = [post]
+                        else:
+                            self.tags[tag].append(post)
             elif file[0] != '.': # not hidden -> page
                 page = Post(datadir+file)
                 self.pages.append(page)
