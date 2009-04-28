@@ -3,6 +3,7 @@ import calendar
 import datetime
 import codecs
 import re
+import pytz
 
 from mako.lookup import TemplateLookup
 from textile import textile
@@ -26,15 +27,16 @@ class Post:
         self.encoding = encoding
         (dir, self.filename) = os.path.split(file)
        
+        eurbuc = pytz.timezone('Europe/Bucharest')
         if re.match('((\d{2}-){3})', self.filename): # post or page? 
-            y, m, d, self.slug = re.match('(\d{2})-(\d{2})-(\d{2})-(.*)',
+            y, m, d, H, M, self.slug = re.match('(\d{2})-(\d{2})-(\d{2})-(\d{2}):(\d{2})-(.*)',
                                            self.filename).groups()
-            date = datetime.datetime(int('20'+y),int(m),int(d))
+            date = datetime.datetime(int('20'+y),int(m),int(d), int(H), int(M))
             # lots of date formatting:
             (self.day, self.month, self.year)=(date.day, date.month, date.year)
             self.month_name = date.strftime('%B')
             self.pretty_date = date.strftime('%A, %B %e, %Y')
-            self.pub_date = date.strftime("%a, %d %b %Y %H:%M:%S GMT")
+            self.pub_date = date.strftime("%a, %d %b %Y %H:%M GMT")
         else:
             self.slug = self.filename
        

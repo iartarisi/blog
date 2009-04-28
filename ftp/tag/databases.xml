@@ -5,7 +5,7 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Thu, 23 Apr 2009 15:13:20 GMT</pubDate>
+        <pubDate>Sat, 25 Apr 2009 14:32:39 +0300</pubDate>
         <generator>pyBlee!</generator>
         <item>
             <title>blog database schema cu capsuni - Part 2</title>
@@ -81,7 +81,7 @@ Alt lucru fain e că de pe acum se pregătesc feature-uri interesante cum ar fi 
 &lt;p&gt;&lt;span class="caps"&gt;TADA&lt;/span&gt;!&lt;br /&gt;
 Trebuie să studiez de ce se strică formatarea (de fapt știu de ce, trebuie să scot textile din blockul ăla), dar ideea de bază e clară.&lt;/p&gt;
 &lt;p class="footnote" id="fn3"&gt;&lt;sup&gt;3&lt;/sup&gt; merci gheorghe!&lt;/p&gt; </description>
-            <pubDate>Mon, 22 Sep 2008 00:00:00 GMT</pubDate>
+            <pubDate>Mon, 22 Sep 2008 12:00 GMT</pubDate>
         </item>
         <item>
             <title>blog database schema cu capsuni</title>
@@ -121,7 +121,7 @@ Trebuie să studiez de ce se strică formatarea (de fapt știu de ce, trebuie s�
 id || &lt;span style="color:red;"&gt;autor || email || website || gravatar_url&lt;/span&gt; || post_id || commentator_id || body || approved || created_at&lt;/p&gt;
 &lt;p&gt;Pe parcurs o să mai adaug rating la posturi și alte lucruri care mai îmi vin în minte. Ratingul o să încerce să fie ceva complex cu sus/jos, dar asta mai târziu. &lt;br /&gt;
 Deci? Ce părere aveți? Ce să mai adaug? Am greșit ceva? Mă încadrez în forma normală 5? :-)&lt;/p&gt; </description>
-            <pubDate>Tue, 16 Sep 2008 00:00:00 GMT</pubDate>
+            <pubDate>Tue, 16 Sep 2008 12:00 GMT</pubDate>
         </item>
     </channel>
 </rss>

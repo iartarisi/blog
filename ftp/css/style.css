@@ -162,9 +162,9 @@ code {
 }
 img.separator {
     display: block;
-    clear: both;
+    clear: left;
     margin: auto;
-    padding-top: .5em;
+    padding-top: 1em;
 }
 a.comments {
     float: right;
