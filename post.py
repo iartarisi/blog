@@ -61,7 +61,8 @@ class Post:
             else:
                 raise ValueError, 'check formatting: '+ file
         except ValueError:
-            raise ValueError, 'check the formatting: '+file
+            raise ValueError, "check the formatting (I'd like a title "+  \
+                              + 'and some tags, please!' + file
         
         self.body = self.highlight(self.markup(self.body))
         self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
