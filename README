@@ -1,0 +1,2 @@
+dependencies:
+python-BeautifulSoup, python-mako, python-pygments, pytz, python-textile

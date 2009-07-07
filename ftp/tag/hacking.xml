@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="1.0">
+    <channel>
+        <title>Revolution blahg</title>
+        <link>http://mapleoin.bluepink.ro/</link>
+        <description>mapleoin's rambling blahg</description>
+        <language>en</language>
+        <pubDate>Tue, 30 Jun 2009 12:42:42 +0300</pubDate>
+        <generator>pyBlee!</generator>
+        <item>
+            <title>Fedora Business Cards</title>
+            <link>http://mapleoin.bluepink.ro/perma/fedora-business-cards</link>
+            <author>mapleoin@bluepink.ro (Oin Maple)</author>
+            <description>  &lt;p&gt;A few days ago, me and a few friends from Fedora Romania decided we&amp;#8217;d like some fedora business cards for the upcoming eLiberatica conference. &lt;a href="http://ianweller.org"&gt;Ian Weller&lt;/a&gt; had already developed an official &lt;a href="https://fedoraproject.org/wiki/Business_cards"&gt;template&lt;/a&gt; and even created a cool python generator script and packaged it.&lt;/p&gt;
+&lt;p&gt;The problem, however, was that it only supported US-style business cards which are a bit smaller than the Romanian/Central European ones. Live and learnâ&amp;euro;Ś It seems that there are a lot of &lt;a href="http://en.wikipedia.org/wiki/Business_cards#Dimensions"&gt;different sizes&lt;/a&gt; actually.&lt;/p&gt;
+&lt;p&gt;So I got my hacking hat and dived in. The code was quite nice to look at and easy to understand. The &lt;span class="caps"&gt;XML&lt;/span&gt; in the svg templates is quite easy to hack, too. Especially when using tools like python&amp;#8217;s &lt;a href="http://docs.python.org/library/xml.dom.minidom.html"&gt;minidom&lt;/a&gt; . It makes working with python and &lt;span class="caps"&gt;XML&lt;/span&gt; taste like javascript dom manipulation which is quite nice.&lt;/p&gt;
+&lt;p&gt;Everything went smooth, I renamed a few tags, made some modifiable (for height and width), but then I had to make the blue strip on the right of the front of the business card extendable1 . There is no way in &lt;span class="caps"&gt;XML&lt;/span&gt; to align an element to the right so I spent about an hour coming up with a sweet solution. Instead of having a big white background on which I would apply the blue band, I made a big blue background and made the white background just a little narrower. Because the white background was on top of the blue one, it could get aligned to the left (x=0, y=0 in &lt;span class="caps"&gt;XML&lt;/span&gt;) and cover just the part that needed to be white, and left a blue band at the right. Problem solved. Hoo-grah!&lt;/p&gt;
+&lt;p&gt;Now I&amp;#8217;m waiting for an answer to the patch that I sent to bugzilla. Hopefully it&amp;#8217;ll be accepted and will be available in Fedora, soon, so that others may enjoy and cherish the coolness that it be!&lt;/p&gt; </description>
+            <pubDate>Fri, 24 Apr 2009 00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,49 @@
+blog database schema cu capsuni
+---
+
+django, programming, python, databases
+---
+
+Am reușit să-mi scriu schema bazei de date a viitorului meu blog. Ah, da, m-am apucat de treabă. O să folosesc django cred (și deja mi s-a spus că era previzibil) deși încă mai am timp să mă răzgândesc. N-am găsit în 2 minute un script care să-mi deseneze scheme, așa că pun relațiile în engleză aici. Come bash me!
+
+h4. Post
+
+* @belongs_to Category@
+* @has_many Comments@
+
+h4. Comment
+
+* @has_one Commentator@
+* @belongs_to Post@
+
+h4. Commentator
+
+* @has_many Comments@
+
+h4. Category
+
+* @has_many Posts@
+
+Ia să încerc să fac și niște tabele din ce scrie mai sus.
+
+Post
+@id || title || body || category_id || created_at || published@
+
+Comment
+@id || post_id || commentator_id || body || approved || created_at@
+
+Commentator
+@id || name || email || website || gravatar_url@
+
+Category
+@id || name@
+
+Am renunțat la tabele și am improvizat o formatare. Sper să fie lizibil.
+
+E evident ceea ce *nu* am făcut sper. Nu am lăsat commentatorii cu commenturile lor ceea ce ar fi dus la o relație cu 4 coloane redundante (nume, email, website, gravatar):
+
+Comment
+id || %{color:red}autor || email || website || gravatar_url% || post_id || commentator_id || body || approved || created_at
+
+Pe parcurs o să mai adaug rating la posturi și alte lucruri care mai îmi vin în minte. Ratingul o să încerce să fie ceva complex cu sus/jos, dar asta mai târziu. 
+Deci? Ce părere aveți? Ce să mai adaug? Am greșit ceva? Mă încadrez în forma normală 5? :-)

@@ -1,0 +1,18 @@
+Linux - After install work
+---
+
+unix, linux
+---
+
+It's distro-hopping season again and I chose debian this time. I might explain my reasons for that somewhere else. Here's a list of stuff I need to do on every install in order to get comfy with my new distro. (There's a sort of meme floating around).
+I use gnome!
+
+* Get 6 virtual desktops. 
+* Set some basic can't-live-without-keybindings Ctrl+_number_ for switching between desktops and Alt+T for launching a gnome-terminal.
+* Clean up my desktop. I really hate every kind of clutter on my desktop, so I delete everything. Almost everything can just be deleted, except for the Home, Trash and Computer icons. Fire up @gconf-editor@ and go to _apps>nautilus>desktop_ to uncheck everything. While we're at it, let's also enabling deleting in _nautilus_ (it normally only lets you send stuff to Trash), by checking enable_delete in _nautilus>preferences_. Nautilus>Edit>Preferences>Behaviour - always open in browser windows - so it doesn't spam me with 1000 windows to the world.
+* Next is @<package manager> install bash-completion@ and adding this to my _.bashrc_: @. /etc/bash_completion@.
+* Time to get my .vimrc from wherever i happen to be keeping it at the time. you can check it out now "here":http://mapleoin.fedorapeople.org/vimrc.
+* Nowadays, as I've got really lazy, I also set up automatic login (you can do that from _System>Administration>Login Window_. That basically bypasses gdm.
+* Get myself into some better groups like: wheel/admin/sudo, storage/disk(so nautilus can mount disks), by editing @/etc/group@.
+* You might also want to take a look at http://art.gnome.org if you're the type. I know it's a bit outdated, but the interface is a whole lot better than *-look.org
+* Here's a list of apps I use regularly: _Firefox, gnome-terminal, vim, ipython, git, xchat, evolution, pidgin, deluge, banshee/amarok, gnome-mplayer_.

@@ -1,0 +1,15 @@
+Fedora Business Cards
+---
+
+fedora, hacking
+---
+
+A few days ago, me and a few friends from Fedora Romania decided we'd like some fedora business cards for the upcoming eLiberatica conference. "Ian Weller":http://ianweller.org had already developed an official "template":https://fedoraproject.org/wiki/Business_cards and even created a cool python generator script and packaged it.
+
+The problem, however, was that it only supported US-style business cards which are a bit smaller than the Romanian/Central European ones. Live and learn… It seems that there are a lot of "different sizes":http://en.wikipedia.org/wiki/Business_cards#Dimensions actually.
+
+So I got my hacking hat and dived in. The code was quite nice to look at and easy to understand. The XML in the svg templates is quite easy to hack, too. Especially when using tools like python's "minidom":http://docs.python.org/library/xml.dom.minidom.html . It makes working with python and XML taste like javascript dom manipulation which is quite nice.
+
+Everything went smooth, I renamed a few tags, made some modifiable (for height and width), but then I had to make the blue strip on the right of the front of the business card extendable1 . There is no way in XML to align an element to the right so I spent about an hour coming up with a sweet solution. Instead of having a big white background on which I would apply the blue band, I made a big blue background and made the white background just a little narrower. Because the white background was on top of the blue one, it could get aligned to the left (x=0, y=0 in XML) and cover just the part that needed to be white, and left a blue band at the right. Problem solved. Hoo-grah!
+
+Now I'm waiting for an answer to the patch that I sent to bugzilla. Hopefully it'll be accepted and will be available in Fedora, soon, so that others may enjoy and cherish the coolness that it be!
