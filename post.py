@@ -29,8 +29,9 @@ class Post:
        
         eurbuc = pytz.timezone('Europe/Bucharest')
         if re.match('((\d{2}-){3})', self.filename): # post or page? 
-            y, m, d, H, M, self.slug = re.match('(\d{2})-(\d{2})-(\d{2})-(\d{2}):(\d{2})-(.*)',
-                                           self.filename).groups()
+            y, m, d, H, M, self.slug = re.match(
+                '(\d{2})-(\d{2})-(\d{2})-(\d{2}):(\d{2})-(.*)',
+                self.filename).groups()
             date = datetime.datetime(int('20'+y),int(m),int(d), int(H), int(M))
             # lots of date formatting:
             (self.day, self.month, self.year)=(date.day, date.month, date.year)

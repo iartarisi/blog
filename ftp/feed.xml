@@ -5,8 +5,17 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Tue, 30 Jun 2009 12:42:42 +0300</pubDate>
+        <pubDate>Tue, 18 Aug 2009 19:18:28 +0300</pubDate>
         <generator>pyBlee!</generator>
+        <item>
+            <title>Emacs la Ceata</title>
+            <link>http://mapleoin.bluepink.ro/perma/emacs-in-ceata</link>
+            <author>mapleoin@bluepink.ro (Oin Maple)</author>
+            <description>  &lt;p&gt;Să folosesc blogul ăsta și altfel decât până acum.&lt;/p&gt;
+&lt;p&gt;Dacă mă are cineva în feed reader și vrea să meargă la o mică (o juma&amp;#8217; de duzină de oameni) prezentare emacs în politehnică, cu oamenii din &lt;a href="http://ceata.org"&gt;Ceata&lt;/a&gt; (probabil e stricat situl în momentul ăsta), știți cum să mă contactați. Întâlnirea va avea loc mâine probabil după ora 18 în sediul Cetei din unul din căminele din Poli.&lt;/p&gt;
+&lt;p&gt;Ceata e o organizație de studenți din Politehnică interesați de tehnologii libere.&lt;/p&gt; </description>
+            <pubDate>Tue, 18 Aug 2009 19:40 GMT</pubDate>
+        </item>
         <item>
             <title>FUDCon Berlin</title>
             <link>http://mapleoin.bluepink.ro/perma/fudcon-berlin</link>
@@ -97,24 +106,6 @@
 &lt;p&gt;My legal music collection is now 12G big with 113 artists, 23 of which are ripped cds. It&amp;#8217;s all ogg. &lt;br /&gt;These days I&amp;#8217;m beginning to get bored and annoyed with jamendo&amp;#8217;s mismanagement. I haven&amp;#8217;t downloaded a new jamendo album in months and that&amp;#8217;s not because I haven&amp;#8217;t tried.&lt;br /&gt;The interest in me keeping this legal music collection just faded. I&amp;#8217;ve lost motivation. Also, there are a lot of commercial artists that sound interesting and that I can&amp;#8217;t buy locally. Music isn&amp;#8217;t like software. You can&amp;#8217;t replace an artist with another just because they&amp;#8217;re in the same genre. With software you have to get something done, regardless of the means. With music, you&amp;#8217;re not just listening to &lt;em&gt;music&lt;/em&gt;, the means is the purpose and every artist is irreplaceable.&lt;/p&gt;
 &lt;p&gt;I&amp;#8217;m probably going to migrate my music collection to flac files since my audiophile needs have just become more aristocratic after I bought a new hi-fi head-set. I&amp;#8217;m still going to be watching the artists I love from jamendo that no one will ever hear about. I might even go on a raid or two at the bay of pirates.&lt;/p&gt; </description>
             <pubDate>Sun, 11 Jan 2009 00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title>Linux - After install work</title>
-            <link>http://mapleoin.bluepink.ro/perma/after-install-work</link>
-            <author>mapleoin@bluepink.ro (Oin Maple)</author>
-            <description>  &lt;p&gt;It&amp;#8217;s distro-hopping season again and I chose debian this time. I might explain my reasons for that somewhere else. Here&amp;#8217;s a list of stuff I need to do on every install in order to get comfy with my new distro. (There&amp;#8217;s a sort of meme floating around).&lt;br /&gt;I use gnome!&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Get 6 virtual desktops. &lt;/li&gt;
-&lt;li&gt;Set some basic can&amp;#8217;t-live-without-keybindings Ctrl+_number_ for switching between desktops and Alt+T for launching a gnome-terminal.&lt;/li&gt;
-&lt;li&gt;Clean up my desktop. I really hate every kind of clutter on my desktop, so I delete everything. Almost everything can just be deleted, except for the Home, Trash and Computer icons. Fire up &lt;code&gt;gconf-editor&lt;/code&gt; and go to &lt;em&gt;apps&gt;nautilus&gt;desktop&lt;/em&gt; to uncheck everything. While we&amp;#8217;re at it, let&amp;#8217;s also enabling deleting in &lt;em&gt;nautilus&lt;/em&gt; (it normally only lets you send stuff to Trash), by checking enable_delete in &lt;em&gt;nautilus&gt;preferences&lt;/em&gt;. Nautilus&gt;Edit&gt;Preferences&gt;Behaviour &amp;#8211; always open in browser windows &amp;#8211; so it doesn&amp;#8217;t spam me with 1000 windows to the world.&lt;/li&gt;
-&lt;li&gt;Next is &lt;code&gt;&amp;#60;package manager&amp;#62; install bash-completion&lt;/code&gt; and adding this to my &lt;em&gt;.bashrc&lt;/em&gt;: &lt;code&gt;. /etc/bash_completion&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Time to get my .vimrc from wherever i happen to be keeping it at the time. you can check it out now &lt;a href="http://mapleoin.fedorapeople.org/vimrc"&gt;here&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Nowadays, as I&amp;#8217;ve got really lazy, I also set up automatic login (you can do that from &lt;em&gt;System&gt;Administration&gt;Login Window&lt;/em&gt;. That basically bypasses gdm.&lt;/li&gt;
-&lt;li&gt;Get myself into some better groups like: wheel/admin/sudo, storage/disk(so nautilus can mount disks), by editing &lt;code&gt;/etc/group&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;You might also want to take a look at http://art.gnome.org if you&amp;#8217;re the type. I know it&amp;#8217;s a bit outdated, but the interface is a whole lot better than *-look.org&lt;/li&gt;
-&lt;li&gt;Here&amp;#8217;s a list of apps I use regularly: &lt;em&gt;Firefox, gnome-terminal, vim, ipython, git, xchat, evolution, pidgin, deluge, banshee/amarok, gnome-mplayer&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt; </description>
-            <pubDate>Fri, 19 Dec 2008 00:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
