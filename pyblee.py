@@ -56,10 +56,8 @@ def main():
             sys.exit()
 
         elif opt in ('-d','--datadir'):
-            datadir = arg
             print arg
         elif opt in ('-s','--sitedir'):
-            sitedir = arg
             print arg
         else:
             assert False, "unhandled option"

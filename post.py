@@ -1,9 +1,7 @@
 import os
-import calendar
 import datetime
 import codecs
 import re
-import pytz
 
 from mako.lookup import TemplateLookup
 from textile import textile
@@ -13,21 +11,20 @@ from BeautifulSoup import BeautifulSoup
 import config
 
 class Post:
-    def __init__(self, file, sitedir=config.sitedir, 
+    def __init__(self, postfile, sitedir=config.sitedir, 
                  postdir=config.postdir, encoding=config.encoding):
         """Initializes a Post object with these fields: date, slug, body
 
            Arguments:
-           :file: relative path to pyblee
+           :postfile: relative path to pyblee
            :encoding: string representation of encoding
 
         """
         self.sitedir = sitedir
         self.postdir = postdir
         self.encoding = encoding
-        (dir, self.filename) = os.path.split(file)
+        self.filename = os.path.split(postfile)[1]
        
-        eurbuc = pytz.timezone('Europe/Bucharest')
         if re.match('((\d{2}-){3})', self.filename): # post or page? 
             y, m, d, H, M, self.slug = re.match(
                 '(\d{2})-(\d{2})-(\d{2})-(\d{2}):(\d{2})-(.*)',
@@ -43,11 +40,11 @@ class Post:
        
         self.url = config.link + self.postdir + self.slug # + '.html'
         # read file
-        f = codecs.open(file, 'r', encoding)
+        f = codecs.open(postfile, 'r', encoding)
         try:
             postu = f.read()
         except UnicodeDecodeError:
-           raise ValueError, 'your config.encoding is bogus '+file
+            raise ValueError, 'your config.encoding is bogus %s' % postfile
         f.close()
 
         # get the post title and the body

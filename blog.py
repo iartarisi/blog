@@ -4,7 +4,7 @@ import codecs
 import cgi
 
 from mako.lookup import TemplateLookup
-from BeautifulSoup import BeautifulSoup, Tag
+from BeautifulSoup import BeautifulSoup
 import config
 from post import Post
 from rss import Rss
@@ -25,9 +25,9 @@ class Blog:
         files.sort(reverse=True)
         self.posts = []
         self.pages = []
-        for file in files:
-            if re.match('((\d{2}-){3})', file):
-                post = Post(datadir+file)
+        for f in files:
+            if re.match('((\d{2}-){3})', f):
+                post = Post(datadir+f)
                 self.posts.append(post)
                 if post.tags:
                     for tag in post.tags:
@@ -35,8 +35,8 @@ class Blog:
                             self.tags[tag] = [post]
                         else:
                             self.tags[tag].append(post)
-            elif file[0] != '.': # not hidden -> page
-                page = Post(datadir+file)
+            elif f[0] != '.': # not hidden -> page
+                page = Post(datadir+f)
                 self.pages.append(page)
 
 
@@ -55,7 +55,7 @@ class Blog:
         rendered_template = self.templatize(template, posts, tag)
         self.write(self.sitedir+output_file, rendered_template)
         
-    def write(self, file, rendered_temp):
+    def write(self, filename, rendered_temp):
         """Write the template to the specified file
             
            Arguments:
@@ -64,7 +64,7 @@ class Blog:
            
            returns nothing
         """
-        f = open(file, 'w')
+        f = open(filename, 'w')
         f.write(rendered_temp)
         f.close()
         print 'Wrote ' + file + ' succesfully'
@@ -158,7 +158,7 @@ class Blog:
     def update_site(self):
         """Updates only the static pages"""
         files = os.listdir(self.datadir)
-        for file in files:
-            if file[0] != '.': # leave out hidden files
-                post = Post(self.datadir+file)
+        for f in files:
+            if f[0] != '.': # leave out hidden files
+                post = Post(self.datadir+f)
                 post.write()
