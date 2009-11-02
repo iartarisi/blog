@@ -11,7 +11,7 @@ from post import Post
 
 class InitializationTestCase(unittest.TestCase):
     def setUp(self):
-        self.post = config.datadir + '08-01-01-foo-bar'
+        self.post = config.datadir + '08-01-01-10:00-foo-bar'
         f = codecs.open(self.post, 'w')
         f.write('name\n---\n\nh1. foo bar baz bâș\n')  # it's unicode!
         f.close()
@@ -41,12 +41,13 @@ class InitializationTestCase(unittest.TestCase):
    
     def testBody(self):
         self.assertEqual(self.p.body, 
-                '<h1>foo bar baz b\xc3\xa2\xc8\x99</h1>', 'processing fails!')
+                         ' <h1>foo bar baz b\xc3\xa2\xc8\x99</h1>',
+                         'processing fails!' + self.p.body)
 
 class ProcessingTestCase(InitializationTestCase):
     def testMarkup(self):
-        self.assertEqual(self.p.markup('h1. pyblee'), "<h1>pyblee</h1>", 
-                'markup fails!')
+        self.assertEqual(self.p.markup('h1. pyblee'), "\t<h1>pyblee</h1>", 
+                'markup fails!' + self.p.markup('h1. pyblee'))
     
     def testHighlight(self):
         self.assertEqual(self.p.highlight(

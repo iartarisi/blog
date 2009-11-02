@@ -17,17 +17,17 @@ class InitializationTestCase(unittest.TestCase):
         os.mkdir(self.datadir)
         os.mkdir(self.sitedir)
         os.mkdir(self.sitedir+config.postdir)
-        f = codecs.open(self.datadir + '01-01-01-post', 'w', config.encoding)
+        f = codecs.open(self.datadir + '01-01-01-10:00-post', 'w', config.encoding)
         f.write('name\n---\n\nh1. foo bar baz bâș\n'.decode(config.encoding))
         f.close()
-        self.post = Post(self.datadir+'01-01-01-post', sitedir=self.sitedir)
+        self.post = Post(self.datadir+'01-01-01-10:00-post', sitedir=self.sitedir)
         self.post.write()
         self.blog = Blog(self.datadir, self.sitedir)
         self.template = Template("TEST: ${posts[0].body}", 
                             default_filters=['decode.utf8'])
     
     def tearDown(self):
-        os.remove(self.datadir+'01-01-01-post')
+        os.remove(self.datadir+'01-01-01-10:00-post')
         os.remove(self.sitedir+config.postdir+'post')
         os.rmdir(self.sitedir+config.postdir)
         os.rmdir(self.datadir)

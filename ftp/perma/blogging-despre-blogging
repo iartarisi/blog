@@ -32,11 +32,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning Packaging for Fedora</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata">Emacs la Ceata</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin">FUDCon Berlin</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/eLiberatica-aftermath">eLiberatica - the aftermath!</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards">Fedora Business Cards</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/GSOC-it-begins">GSOC - it begins...</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -57,6 +57,7 @@ feed
 <li><a href="/tag/django.html">django</a></li>
 <li><a href="/tag/gsoc.html">gsoc</a></li>
 <li><a href="/tag/floss.html">floss</a></li>
+<li><a href="/tag/books.html">books</a></li>
 <li><a href="/tag/emacs.html">emacs</a></li>
 <li><a href="/tag/freebsd.html">freebsd</a></li>
 <li><a href="/tag/linux.html">linux</a></li>
@@ -73,13 +74,13 @@ feed
         <h2><a href="http://mapleoin.bluepink.ro/perma/blogging-despre-blogging">Blogging despre blogging</a></h2>
         <h3>Friday, September 12, 2008</h3>
         <div class="entry">
-             <p>Ar fi frumos ca blogul ăsta să fie interesant de citit peste câțiva ani, măcar de către mine. Să îmbătrânească la fel ca brânza, nu ca ridichiile. Așa că nu-mi voi revizui posturile<sup class="footnote"><a href="#fn8ac76951-2fff-4bf1-8588-2db373c5fcbb">1</a></sup>. Trebuie să-i mulțumesc lui M. Eliade pentru că mi-a susținut ideea asta.</p>
+             <p>Ar fi frumos ca blogul ăsta să fie interesant de citit peste câțiva ani, măcar de către mine. Să îmbătrânească la fel ca brânza, nu ca ridichiile. Așa că nu-mi voi revizui posturile<sup class="footnote"><a href="#fna47f158c-ec65-4f83-bdde-fd10a192ee6e">1</a></sup>. Trebuie să-i mulțumesc lui M. Eliade pentru că mi-a susținut ideea asta.</p>
 <p>Tocmai mi-a trecut prin minte că dacă voi avea vreodată mulți oameni care să-mi răspundă &#8211; asta presupunând că aș împlini „visul blogger-ului” de a avea răspunsuri la posturi &#8211; blogul ăsta ar putea deveni locul în care două lumi se vor ciocni: cea a prietenilor reali și a celor imaginari (sau electronici (sau artificiali))).</p>
 <p>Revenind&#8230; E un blog personal (am folosit prezentul, asta înseamnă că <i>trăiește!</i>). Trebuie să fie foarte interesant pentru mine, pentru că eu îl scriu. Lucrul ăsta v-ar putea face să credeți că autorul e schizofrenic. Pentru că o să schimb de foarte multe ori tonul, subiectul, unghiul, ipostaza, atmosfera de la un post la altul. Să-mi ziceți dacă vreți să creez câte un personaj imaginar pentru fiecare post ca să mai reduc din confuzie. Eventual pot să-i pun și câte un avatar-monstru generat de wordpress ca în commenturi ;).</p>
 <p>În plus, ăsta va fi locul unde voi încerca să vărs câte un strop din grandioasa mea interesănțime. Nu doar inventânt noi cuvinte. Ca de obicei, descopăr fața ascunsă a lumii, cu o grămadă de personaje fabuloase, inorogi invizibili roz, flying spaghetti monsters sau ceainice cosmice &#8212;  <i>aproape</i> că am făcut o aluzie aici. Posturile lăudăroase sunt terapeutice câteodată (nu e ăsta rostul blogurilor) cu condiția să... Am uitat ce vroiam să spun. Poate până la urmă mă apuc să scriu și poezii. Până atunci am niște dialoguri care ar trebui să apară pe aici, sper să iasă.</p>
 <p>Și o să încerc să contrazic de fiecare dată postul anterior.</p>
 <p id="fn0" class="footnote"><sup>0</sup>ce metaforă îți vine în minte când citești titlul?</p>
-<p id="fn8ac76951-2fff-4bf1-8588-2db373c5fcbb" class="footnote"><sup>1</sup>ceea ce înseamnă de fapt că nu-mi voi revizui posturile la mai mult de 3 zile după ce le-am scris&#8230; Asta dacă nu conțin greșeli. Sau lucruri care nu-mi plac. Sau banalități. Sau aberații. Ba nu, aberațiile sunt ok.</p>
+<p id="fna47f158c-ec65-4f83-bdde-fd10a192ee6e" class="footnote"><sup>1</sup>ceea ce înseamnă de fapt că nu-mi voi revizui posturile la mai mult de 3 zile după ce le-am scris&#8230; Asta dacă nu conțin greșeli. Sau lucruri care nu-mi plac. Sau banalități. Sau aberații. Ba nu, aberațiile sunt ok.</p>
         </div>
         <br />
         <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>

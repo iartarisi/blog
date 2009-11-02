@@ -67,7 +67,7 @@ class Blog:
         f = open(filename, 'w')
         f.write(rendered_temp)
         f.close()
-        print 'Wrote ' + file + ' succesfully'
+        print 'Wrote ' + filename + ' succesfully'
 
     def base_template(self, base_temp='base.html'):
         """Update the base template
