@@ -1,0 +1,204 @@
+Cum să peticești un rpm (patch rpm)
+---
+
+fedora-ro, hacking, linux
+---
+
+O să vă descriu cum am aplicat un petec pentru unul dintre pachetele pentru care sunt responsabil la fedora: calibre, în timp ce așteptam să-mi vină pizza http://www.fedoraproject.ro/am-lansat-fedora-12-avans . Petecul este răspunsul la un bug report: https://bugzilla.redhat.com/show_bug.cgi?id=537525 . Calibre verifică de fiecare dată când este pornit dacă pe situl oficial a apărut o nouă versiune și dacă a apărut, îl anunță pe utilizator printr-un pop-up că trebuie să actualizeze aplicația. Cum fedora are propriul management al pachetelor și deci și al actualizărilor, este recomandat ca pachetele noi să fie instalate folosind yum; deci mesajul trebuie eliminat.
+
+Mai întâi trebuie să descărcăm sursele actuale ale rpm-ului (în momentul în care am scris patchul, în repo-uri cea mai recentă versiune era 0.6.21-1, acum ar trebui să fie una cu patchul deja aplicat):
+
+<pre>
+  $ yumdownloader --source calibre
+</pre>
+
+și să le despachetăm:
+
+<pre lang="bash">
+  $ rpm -ivh calibre-0.6.21-1.fc12.src.rpm
+</pre>
+
+Comanda va crea un nou director rpmbuild, cu subdirectoarele SPECS și SOURCES. În SPECS avem fișierul care ține toate informațiile despre cum se va construi pachetul: calibre.spec, iar în SOURCES avem sursele pachetului și toate patchurile pe care le-am creat până acum:
+
+<pre>
+  $ tree rpmbuild/
+  rpmbuild/
+  |-- SOURCES
+  |   |-- calibre-0.6.21-nofonts.tar.gz
+  |   |-- calibre-cssprofiles.patch
+  |   |-- calibre-manpages.patch
+  |   `-- generate-tarball.sh
+  `-- SPECS
+  `-- calibre.spec
+</pre>
+
+Mai avem de făcut un pas, ca să putem umbla prin sursele programului. Trebuie să dezarhivăm arhiva calibre-0.6.21-nofonts.tar.gz. Următoarea comandă dezarhivează și aplică patchurile pe care le avem deja:
+
+<pre>
+  $ cd rpmbuild/SPECS
+  $ rpmbuild -bp calibre.spec
+</pre>
+
+Au apărut mai multe directoare după comanda asta:
+
+<pre>
+  $ ls rpmbuild/
+  BUILD  BUILDROOT  RPMS  SOURCES  SPECS  SRPMS
+</pre>
+
+Cel care ne interesează este BUILD, în care au apărut sursele peticite ale programului.
+
+Atunci când e pornit, dacă există o versiune mai nouă, calibre va afișa următorul mesaj în fereastra pop-up:
+
+calibre has been updated to version 0.6.24. See the new features. Visit the download page?
+
+Ca să aflăm din ce fișier vine fereastra de pop-up putem să căutăm pur și simplu o parte din textul de mai sus în sursele calibre:
+
+<pre>
+  $ cd rpmbuild/BUILD/calibre/
+  $ find .|xargs grep "has been updated"
+</pre>
+
+Dacă ignorăm fișierele de localizare, vom afla sursa pop-up-ului:
+
+<pre>
+  ./calibre/src/calibre/gui2/main.py:                    _('%s has been updated to version %s. '
+</pre>
+
+Mergând în fișierul respectiv vedem că acel cod face parte dintr-o funcție numită update_found:
+
+<pre lang="bash"> 
+  def update_found(self, version):
+  os = 'windows' if iswindows else 'osx' if isosx else 'linux'
+  url = 'http://%s.kovidgoyal.net/download_%s'%(__appname__, os)
+  self.latest_version = '<br>' + _('<span style="color:red; font-weight:bold">'
+    'Latest version: <a href="%s">%s</a></span>')%(url, version)
+  self.vanity.setText(self.vanity_template%\
+  (dict(version=self.latest_version,
+  device=self.device_info)))
+  self.vanity.update()
+  if config.get('new_version_notification') and \
+  dynamic.get('update to version %s'%version, True):
+  if question_dialog(self, _('Update available'),
+  _('%s has been updated to version %s. '
+  'See the <a href="http://calibre.kovidgoyal.net/wiki/'
+                    'Changelog">new features</a>. Visit the download pa'
+  'ge?')%(__appname__, version)):
+  url = 'http://calibre.kovidgoyal.net/download_'+\
+  ('windows' if iswindows else 'osx' if isosx else 'linux')
+  QDesktopServices.openUrl(QUrl(url))
+  dynamic.set('update to version %s'%version, False)
+</pre>
+
+Ne interesează ca modificarea pe care o vom aduce să fie cât mai lizibilă pentru cei care vor modifica pachetul nostru mai târziu și să fie cât mai ușor de revenit la versiunea nemodificată. Dacă ne uităm mai atent în main, găsim următorul cod:
+
+<pre>
+  if not opts.no_update_check:
+  self.update_checker = CheckForUpdates()
+  QObject.connect(self.update_checker,
+  SIGNAL('update_found(PyQt_PyObject)'), self.update_found)
+  self.update_checker.start()
+</pre>
+
+Codul verifică dacă programul a fost pornit cu opțiunea no_update_check. Ar complica prea mult lucrurile dacă am modifica programul în așa fel încât să pornească de fiecare dată cu opțiunea asta așa că mai bine comentăm codul aici, ca să nu mai verifice opțiunea și deci să nu mai caute niciodată update-uri. E soluția cea mai simplă.
+
+Ca să facem un petec ca la carte, vom face așa:
+
+Facem o copie a fișierului main.py:
+
+<pre>
+  $ cd ~/rpmbuild/BUILD/calibre/src/calibre/gui2/
+  $ cp main.py main.py.no_update
+  După care modificăm *fișierul inițial* și comentăm codul respectiv așa:
+  # if not opts.no_update_check:
+  #     self.update_checker = CheckForUpdates()
+  #     QObject.connect(self.update_checker,
+  #             SIGNAL('update_found(PyQt_PyObject)'), self.update_found)
+  #     self.update_checker.start()
+</pre>
+
+Ca să generăm petecul vom folosi gendiff din directorul de deasupra directorului rădăcină:
+
+<pre>
+    $ cd ~/rpmbuild/BUILD
+    $ gendiff calibre .no_update
+    diff -up calibre/src/calibre/gui2/main.py.no_update calibre/src/calibre/gui2/main.py
+    --- calibre/src/calibre/gui2/main.py.no_update	2009-11-16 14:21:55.200387171 +0200
+    +++ calibre/src/calibre/gui2/main.py	2009-11-16 14:22:10.400510757 +0200
+    @@ -221,11 +221,11 @@ class Main(MainWindow, Ui_MainWindow, De
+    self.latest_version = ' '
+    self.vanity.setText(self.vanity_template%dict(version=' ', device=' '))
+    self.device_info = ' '
+    -        if not opts.no_update_check:
+    -            self.update_checker = CheckForUpdates()
+    -            QObject.connect(self.update_checker,
+    -                    SIGNAL('update_found(PyQt_PyObject)'), self.update_found)
+    -            self.update_checker.start()
+    +        # if not opts.no_update_check:
+    +        #     self.update_checker = CheckForUpdates()
+    +        #     QObject.connect(self.update_checker,
+    +        #             SIGNAL('update_found(PyQt_PyObject)'), self.update_found)
+    +        #     self.update_checker.start()
+    ####################### Status Bar #####################
+    self.status_bar = StatusBar(self.jobs_dialog, self.system_tray_icon)
+    self.setStatusBar(self.status_bar)
+</pre>
+
+Totul arată bine, deci putem să-l punem în surse:
+
+<pre>
+  $ gendiff calibre .no_update > ~/rpmbuild/SOURCES/calibre-no-update.patch
+  </pre>
+
+Acum trebuie să modificăm spec-ul, adăugând un nou petec, incrementând release-ul, menționând motivul pentru petec și scriind modificarea în Changelog:
+
+<pre>
+  @@ -1,6 +1,6 @@
+  Name:           calibre
+  Version:        0.6.21
+  -Release:        1%{?dist}
+  +Release:        2%{?dist}
+  Summary:        E-book converter and library management
+  Group:          Applications/Multimedia
+  License:        GPLv3
+  @@ -18,6 +18,7 @@
+  Source1:        generate-tarball.sh
+  Patch0:         %{name}-cssprofiles.patch
+  Patch1:         %{name}-manpages.patch
+  +Patch2:         %{name}-no-update.patch
+  BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+  BuildRequires:  python >= 2.6
+  @@ -72,6 +73,9 @@
+  # don't append calibre1 to the name of the manpages. No need to compress either
+  %patch1 -p1 -b .manpages
+  
+  +# don't check for new upstream version (that's what packagers do)
+  +%patch2 -p1 -b .no-update
+  +
+  # dos2unix newline conversion
+  %{__sed} -i 's/\r//' src/calibre/web/feeds/recipes/*
+  
+  @@ -239,6 +243,9 @@
+  %{_mandir}/man1/*
+  
+  %changelog
+  +* Sat Nov  29 2009 Ionuț C. Arțăriși <mapleoin@fedoraproject.org> - 0.6.21-2
+    +- patch to stop checking for new upstream version
+    +
+    * Sat Nov  6 2009 Ionuț C. Arțăriși <mapleoin@fedoraproject.org> - 0.6.21-1
+      - new upstream version: http://calibre.kovidgoyal.net/wiki/Changelog#Version0.6.2106Nov2009
+      - added python-BeautifulSoup requirement
+    </pre>
+
+Gata. Asta a fost tot :). Acum putem reconstrui pachetul cu noile patchuri:
+
+<pre>
+  $ cd ~/rpmbuild/SPECS/
+  $ rpmbuild -ba calibre.spec
+</pre>
+
+Și putem reinstala noul pachet:
+
+<pre>
+  $ su -c "yum localinstall -y --nogpgcheck ~/rpmbuild/RPMS/x86_64/calibre-0.6.21-2.fc12.x86_64.rpm"
+  </pre>

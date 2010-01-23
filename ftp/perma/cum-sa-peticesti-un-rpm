@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/pygments.css" />
+<link rel="stylesheet" type="text/css" href="/css/archive.css" />
+<link rel="shortcut icon" href="/favico.ico" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/
+feed
+.xml" />
+<title>Revolution blahg 
+    | Cum să peticești un rpm (patch rpm)
+</title>
+</head>
+<body>
+<div id="container">
+<div id="header">
+<h1><a href="/" class="title">Revolution blahg</a></h1><a href="/">home</a>
+<a href="/archive">archive</a>
+<a href="/about">about</a>
+
+</div>
+<div id="sidebar">
+<!--Ad Bard advertisement snippet, begin -->
+<script type="text/javascript">
+ var ab_h = '07a588f86184b760339f128868a94817';
+  var ab_s = '8d5dbcb89f13a768116e6e2bb4db1e53';
+  </script>
+<script type="text/javascript" src="http://cdn1.adbard.net/js/ab1.js"></script>
+<!--Ad Bard, end -->
+<!--Pristav -->
+<script type="text/javascript" src="http://pristav.ceata.org/serve/mapleoin">
+          //<![CDATA[
+  (function(id) {
+       document.write('<script type="text/javascript" src="' +
+       'serve/' + id + '"></' + 'script>');
+       })("mapleoin");
+ //]]>
+      </script>
+<!-- Pristav, end -->
+<div id="recent">
+<h4>Recent</h4>
+<ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata">Emacs la Ceata</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin">FUDCon Berlin</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/eLiberatica-aftermath">eLiberatica - the aftermath!</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards">Fedora Business Cards</a></li>
+</ul>
+</div><!--recent-->
+<br />
+<h4>Links</h4>
+<ul>
+<li><a href="http://linuxsoft.ro" title="Comunitate open-source">linuxsoft</a></li>
+<li><a href="http://jamendo.com" title="muzică liberă">jamendo!</a></li>
+<li><a href="http://fedoraproject.ro" title="Fedora România">fedora Romania</a></li>
+</ul>
+<div id="tags">
+<h4>Tags</h4>
+<ul>
+<li><a href="/tag/fedora.html">fedora</a></li>
+<li><a href="/tag/python.html">python</a></li>
+<li><a href="/tag/databases.html">databases</a></li>
+<li><a href="/tag/programming.html">programming</a></li>
+<li><a href="/tag/unix.html">unix</a></li>
+<li><a href="/tag/django.html">django</a></li>
+<li><a href="/tag/gsoc.html">gsoc</a></li>
+<li><a href="/tag/floss.html">floss</a></li>
+<li><a href="/tag/emacs.html">emacs</a></li>
+<li><a href="/tag/freebsd.html">freebsd</a></li>
+<li><a href="/tag/linux.html">linux</a></li>
+<li><a href="/tag/creativecommons.html">creativecommons</a></li>
+<li><a href="/tag/music.html">music</a></li>
+<li><a href="/tag/hacking.html">hacking</a></li>
+<li><a href="/tag/foss.html">foss</a></li>
+<li><a href="/tag/fedora-ro.html">fedora-ro</a></li>
+<li><a href="/tag/events.html">events</a></li>
+</ul>
+</div><!--tags-->
+</div><!--links-->
+<div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></h2>
+        <h3>Monday, November 30, 2009</h3>
+        <div class="entry">
+             <p>O să vă descriu cum am aplicat un petec pentru unul dintre pachetele pentru care sunt responsabil la fedora: calibre, în timp ce așteptam să-mi vină pizza http://www.fedoraproject.ro/am-lansat-fedora-12-avans . Petecul este răspunsul la un bug report: https://bugzilla.redhat.com/show_bug.cgi?id=537525 . Calibre verifică de fiecare dată când este pornit dacă pe situl oficial a apărut o nouă versiune și dacă a apărut, îl anunță pe utilizator printr-un pop-up că trebuie să actualizeze aplicația. Cum fedora are propriul management al pachetelor și deci și al actualizărilor, este recomandat ca pachetele noi să fie instalate folosind yum; deci mesajul trebuie eliminat.</p>
+<p>Mai întâi trebuie să descărcăm sursele actuale ale rpm-ului (în momentul în care am scris patchul, în repo-uri cea mai recentă versiune era 0.6.21-1, acum ar trebui să fie una cu patchul deja aplicat):</p>
+<pre>
+  $ yumdownloader --source calibre
+</pre>
+<p>și să le despachetăm:</p>
+<div class="Bash"><div class="highlight"><pre>  <span class="nv">$ </span>rpm -ivh calibre-0.6.21-1.fc12.src.rpm
+</pre></div>
+</div>
+<p>Comanda va crea un nou director rpmbuild, cu subdirectoarele <span class="caps">SPECS</span> și <span class="caps">SOURCES</span>. În <span class="caps">SPECS</span> avem fișierul care ține toate informațiile despre cum se va construi pachetul: calibre.spec, iar în <span class="caps">SOURCES</span> avem sursele pachetului și toate patchurile pe care le-am creat până acum:</p>
+<pre>
+  $ tree rpmbuild/
+  rpmbuild/
+  |-- SOURCES
+  |   |-- calibre-0.6.21-nofonts.tar.gz
+  |   |-- calibre-cssprofiles.patch
+  |   |-- calibre-manpages.patch
+  |   `-- generate-tarball.sh
+  `-- SPECS
+  `-- calibre.spec
+</pre>
+<p>Mai avem de făcut un pas, ca să putem umbla prin sursele programului. Trebuie să dezarhivăm arhiva calibre-0.6.21-nofonts.tar.gz. Următoarea comandă dezarhivează și aplică patchurile pe care le avem deja:</p>
+<pre>
+  $ cd rpmbuild/SPECS
+  $ rpmbuild -bp calibre.spec
+</pre>
+<p>Au apărut mai multe directoare după comanda asta:</p>
+<pre>
+  $ ls rpmbuild/
+  BUILD  BUILDROOT  RPMS  SOURCES  SPECS  SRPMS
+</pre>
+<p>Cel care ne interesează este <span class="caps">BUILD</span>, în care au apărut sursele peticite ale programului.</p>
+<p>Atunci când e pornit, dacă există o versiune mai nouă, calibre va afișa următorul mesaj în fereastra pop-up:</p>
+<p>calibre has been updated to version 0.6.24. See the new features. Visit the download page?</p>
+<p>Ca să aflăm din ce fișier vine fereastra de pop-up putem să căutăm pur și simplu o parte din textul de mai sus în sursele calibre:</p>
+<pre>
+  $ cd rpmbuild/BUILD/calibre/
+  $ find .|xargs grep &#34;has been updated&#34;
+</pre>
+<p>Dacă ignorăm fișierele de localizare, vom afla sursa pop-up-ului:</p>
+<pre>
+  ./calibre/src/calibre/gui2/main.py:                    _(&#39;%s has been updated to version %s. &#39;
+</pre>
+<p>Mergând în fișierul respectiv vedem că acel cod face parte dintr-o funcție numită update_found:</p>
+<div class="Bash"><div class="highlight"><pre> 
+  def update_found<span class="o">(</span>self, version<span class="o">)</span>:
+  <span class="nv">os</span> <span class="o">=</span> <span class="s1">&#39;windows&amp;#8217; if iswindows else &#39;</span>osx&amp;#8217; <span class="k">if </span>isosx <span class="k">else</span> <span class="s1">&#39;linux&amp;#8217;</span>
+<span class="s1">  url = &#39;</span>http://%s.kovidgoyal.net/download_%s&amp;#8217;%<span class="o">(</span>__appname__, os<span class="o">)</span>
+  self.latest_version <span class="o">=</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span> + _<span class="o">(</span>&amp;#8217;&lt;span <span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color:red; font-weight:bold&quot;</span>&gt;<span class="s1">&#39;</span>
+<span class="s1">    &#39;</span>Latest version: &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;%s&quot;</span>&gt;&lt;span&gt;s&lt;/span&gt;&lt;/a&gt;&lt;/span&gt;<span class="s1">&#39;)(url, version)</span>
+<span class="s1">  self.vanity.setText(self.vanity_template%\</span>
+<span class="s1">  (dict(version=self.latest_version,</span>
+<span class="s1">  device=self.device_info)))</span>
+<span class="s1">  self.vanity.update()</span>
+<span class="s1">  if config.get(&#39;</span>new_version_notification&amp;#8217;<span class="o">)</span> and <span class="se">\</span>
+  dynamic.get<span class="o">(</span><span class="s1">&#39;update to version %s&amp;#8217;%version, True):</span>
+<span class="s1">  if question_dialog(self, _(&#39;</span>Update available&amp;#8217;<span class="o">)</span>,
+  &lt;em <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;ââ%s&quot;</span> <span class="nv">has</span><span class="o">=</span><span class="s2">&quot;has&quot;</span> <span class="nv">been</span><span class="o">=</span><span class="s2">&quot;been&quot;</span> <span class="nv">updated</span><span class="o">=</span><span class="s2">&quot;updated&quot;</span> <span class="nv">to</span><span class="o">=</span><span class="s2">&quot;to&quot;</span> <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;version&quot;</span>&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;âhttp://calibre.kovidgoyal.net/wiki/â&quot;</span>&gt;new features&lt;/a&gt;. Visit the download pa&amp;#8217;
+  <span class="s1">&#39;ge?&amp;#8217;&amp;#8221;&gt;%(&lt;/em&gt;_appname__, version)):</span>
+<span class="s1">  url = &#39;</span>http://calibre.kovidgoyal.net/download_&amp;#8217;+<span class="se">\</span>
+  <span class="o">(</span><span class="s1">&#39;windows&amp;#8217; if iswindows else &#39;</span>osx&amp;#8217; <span class="k">if </span>isosx <span class="k">else</span> <span class="s1">&#39;linux&amp;#8217;)</span>
+<span class="s1">  QDesktopServices.openUrl(QUrl(url))</span>
+<span class="s1">  dynamic.set(&#39;</span>update to version %s&amp;#8217;%version, False<span class="o">)</span>
+</pre></div>
+</div>
+<p>Ne interesează ca modificarea pe care o vom aduce să fie cât mai lizibilă pentru cei care vor modifica pachetul nostru mai târziu și să fie cât mai ușor de revenit la versiunea nemodificată. Dacă ne uităm mai atent în main, găsim următorul cod:</p>
+<pre>
+  if not opts.no_update_check:
+  self.update_checker = CheckForUpdates()
+  QObject.connect(self.update_checker,
+  SIGNAL(&#39;update_found(PyQt_PyObject)&#39;), self.update_found)
+  self.update_checker.start()
+</pre>
+<p>Codul verifică dacă programul a fost pornit cu opțiunea no_update_check. Ar complica prea mult lucrurile dacă am modifica programul în așa fel încât să pornească de fiecare dată cu opțiunea asta așa că mai bine comentăm codul aici, ca să nu mai verifice opțiunea și deci să nu mai caute niciodată update-uri. E soluția cea mai simplă.</p>
+<p>Ca să facem un petec ca la carte, vom face așa:</p>
+<p>Facem o copie a fișierului main.py:</p>
+<pre>
+  $ cd ~/rpmbuild/BUILD/calibre/src/calibre/gui2/
+  $ cp main.py main.py.no_update
+  După care modificăm *fișierul inițial* și comentăm codul respectiv așa:
+  # if not opts.no_update_check:
+  #     self.update_checker = CheckForUpdates()
+  #     QObject.connect(self.update_checker,
+  #             SIGNAL(&#39;update_found(PyQt_PyObject)&#39;), self.update_found)
+  #     self.update_checker.start()
+</pre>
+<p>Ca să generăm petecul vom folosi gendiff din directorul de deasupra directorului rădăcină:</p>
+<pre>
+    $ cd ~/rpmbuild/BUILD
+    $ gendiff calibre .no_update
+    diff -up calibre/src/calibre/gui2/main.py.no_update calibre/src/calibre/gui2/main.py
+    --- calibre/src/calibre/gui2/main.py.no_update	2009-11-16 14:21:55.200387171 +0200
+    +++ calibre/src/calibre/gui2/main.py	2009-11-16 14:22:10.400510757 +0200
+    <code></code> -221,11 +221,11 <code></code> class Main(MainWindow, Ui_MainWindow, De
+    self.latest_version = &#39; &#39;
+    self.vanity.setText(self.vanity_template%dict(version=&#39; &#39;, device=&#39; &#39;))
+    self.device_info = &#39; &#39;
+    -        if not opts.no_update_check:
+    -            self.update_checker = CheckForUpdates()
+    -            QObject.connect(self.update_checker,
+    -                    SIGNAL(&#39;update_found(PyQt_PyObject)&#39;), self.update_found)
+    -            self.update_checker.start()
+    +        # if not opts.no_update_check:
+    +        #     self.update_checker = CheckForUpdates()
+    +        #     QObject.connect(self.update_checker,
+    +        #             SIGNAL(&#39;update_found(PyQt_PyObject)&#39;), self.update_found)
+    +        #     self.update_checker.start()
+    ####################### Status Bar #####################
+    self.status_bar = StatusBar(self.jobs_dialog, self.system_tray_icon)
+    self.setStatusBar(self.status_bar)
+</pre>
+<p>Totul arată bine, deci putem să-l punem în surse:</p>
+<pre>
+  $ gendiff calibre .no_update &#62; ~/rpmbuild/SOURCES/calibre-no-update.patch
+  </pre>
+<p>Acum trebuie să modificăm spec-ul, adăugând un nou petec, incrementând release-ul, menționând motivul pentru petec și scriind modificarea în Changelog:</p>
+<p><pre>
+  <code></code> -1,6 +1,6 <code></code>
+  Name:           calibre
+  Version:        0.6.21
+  -Release:        1%{?dist}
+  +Release:        2%{?dist}
+  Summary:        E-book converter and library management
+  Group:          Applications/Multimedia
+  License:        GPLv3
+  <code></code> -18,6 +18,7 <code></code>
+  Source1:        generate-tarball.sh
+  Patch0:         %{name}-cssprofiles.patch
+  Patch1:         %{name}-manpages.patch
+  +Patch2:         %{name}-no-update.patch
+  BuildRoot:      <span style="_tmppath;">/</span>{name<del><span style="version;text-align:left;">/del></span>{release<del>root</del><span>(</span>{__id_u} -n)
+  BuildRequires:  python >= 2.6
+  <code></code> -72,6 +73,9 <code></code>
+  # don&#8217;t append calibre1 to the name of the manpages. No need to compress either
+  %patch1 -p1 -b .manpages</del></pre></p>
+
+  +# don&#8217;t check for new upstream version (that&#8217;s what packagers do)
+  +%patch2 -p1 -b .no-update
+  +
+  # dos2unix newline conversion
+  %{__sed} -i 's/\r//&#8217; src/calibre/web/feeds/recipes/*
+
+  <code></code> -239,6 +243,9 <code></code>
+  %{_mandir}/man1/*
+
+  %changelog
+  +* Sat Nov  29 2009 Ionuț C. Arțăriși <mapleoin> &#8211; 0.6.21-2
+    +- patch to stop checking for new upstream version
+    +
+    * Sat Nov  6 2009 Ionuț C. Arțăriși </mapleoin><mapleoin> &#8211; 0.6.21-1
+      &#8211; new upstream version: http://calibre.kovidgoyal.net/wiki/Changelog#Version0.6.2106Nov2009
+      &#8211; added python-BeautifulSoup requirement
+    
+<p>Gata. Asta a fost tot :). Acum putem reconstrui pachetul cu noile patchuri:</p>
+<pre>
+  $ cd ~/rpmbuild/SPECS/
+  $ rpmbuild -ba calibre.spec
+</pre>
+<p>Și putem reinstala noul pachet:</p>
+<pre>
+  $ su -c &#34;yum localinstall -y --nogpgcheck ~/rpmbuild/RPMS/x86_64/calibre-0.6.21-2.fc12.x86_64.rpm&#34;
+  </pre></mapleoin>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/fedora-ro.html">fedora-ro</a>
+                <a href="/tag/hacking.html">hacking</a>
+                <a href="/tag/linux.html">linux</a>
+        </div>
+        <br />
+        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </div>
+</div>
+</div><!-- container -->
+<div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5576939-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
