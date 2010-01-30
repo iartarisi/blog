@@ -29,14 +29,24 @@ feed
   </script>
 <script type="text/javascript" src="http://cdn1.adbard.net/js/ab1.js"></script>
 <!--Ad Bard, end -->
+<!--cuZmeura -->
+<script type="text/javascript" src="http://cuzmeura.org/serve/mapleoin">
+    //<![CDATA[
+  (function(id) {
+       document.write('<script type="text/javascript" src="' +
+       'http://cuzmeura.org/serve/' + id + '"></' + 'script>');
+       })(mapleoin);
+  //]]>
+  </script>
+<!-- cuZmeura, end -->
 <div id="recent">
 <h4>Recent</h4>
 <ul>
-<li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning Packaging for Fedora</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata">Emacs la Ceata</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin">FUDCon Berlin</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/eLiberatica-aftermath">eLiberatica - the aftermath!</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards">Fedora Business Cards</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -57,7 +67,6 @@ feed
 <li><a href="/tag/django.html">django</a></li>
 <li><a href="/tag/gsoc.html">gsoc</a></li>
 <li><a href="/tag/floss.html">floss</a></li>
-<li><a href="/tag/books.html">books</a></li>
 <li><a href="/tag/emacs.html">emacs</a></li>
 <li><a href="/tag/freebsd.html">freebsd</a></li>
 <li><a href="/tag/linux.html">linux</a></li>
@@ -65,6 +74,7 @@ feed
 <li><a href="/tag/music.html">music</a></li>
 <li><a href="/tag/hacking.html">hacking</a></li>
 <li><a href="/tag/foss.html">foss</a></li>
+<li><a href="/tag/fedora-ro.html">fedora-ro</a></li>
 <li><a href="/tag/events.html">events</a></li>
 </ul>
 </div><!--tags-->
@@ -75,9 +85,9 @@ feed
         <h3>Saturday, September 20, 2008</h3>
         <div class="entry">
              <p><object width="132" height="158" data="http://www.jamendo.com/get/track/id/track/id/playerpage/17958/?item_o=track_no_asc&amp;n=all&amp;player_height=158&amp;player_refuid=161804&amp;player_type=coverinfos1&amp;player_width=132&amp;playercode_type=generic" style="float: left; padding: 1em; border:0;width:132px;height:158px;" type="text/html">&nbsp;</object>Procrastinare <a href="http://dexonline.ro/search.php?cuv=procrastina">înseamnă</a>: <cite>A amâna în mod nejustificat începerea unei acţiuni, în special din cauza neglijenţei habituale sau a lenei; a temporiza, a tărăgăna, a tergiversa.</cite></p>
-<p>&lt;&lt; Postul ăsta are soundtrack<sup class="footnote"><a href="#fn01057ab7-522f-4637-8852-a3a04f0bc927">0</a></sup>.</p>
+<p>&lt;&lt; Postul ăsta are soundtrack<sup class="footnote"><a href="#fnff5a22b5-5537-4306-b8fd-0a9e7b01f659">0</a></sup>.</p>
 <p>Acum &#8212; sunt cel puțin două tipuri de procrastinare, teoretizate în diverse locuri, în special pe internet &#8211; locul preferat de procrastinare <i>in this day and age</i> (mi-e lene să mai caut linkuri). Procrastinare pozitivă și negativă. Dar să încep cu cea mai des întâlnită: televizorul. Deși în general regreți timpul pierdut procrastinându-te (deși poți să-l transformi în timp util, cum voi explica mai jos), procrastinarea negativă înșeamnă că nu ai ce povesti din timpul ăla. Dacă te întreabă cineva ce ai făcut e ca și cum ai avea o pată neagră în memorie &#8211; nu mai ții minte nimic. Ceea ce înseamnă că probabil n-ai făcut nimic. Asta e procrastinarea pentru amatori.</p>
-<p>Profesioniștii preferă procrastinarea pozitivă. De data asta îmi amintesc un link al lui <a href="http://www.aaronsw.com/weblog/productivity">Aaron Schwartz</a> pe subiectul ăsta<sup class="footnote"><a href="#fne0a5e026-dae6-439e-8c9c-2b85387193cd">1</a></sup>. Pentru cei cărora le e lene să citească ce scrie acolo, o să continui aici. Procrastinarea pozitivă e un fel de multitasking simulat. Cam cum lucreaza majoritatea calculatoarelor de azi. Ai o grămadă de lucruri de făcut. De exemplu: scrii un blog, înveți pentru un examen, înveți django, asculți muzică, stai pe pisica<sup class="footnote"><a href="#fne5e6021e-1401-4d4a-b7db-2ba241feb3ff">2</a></sup>. Chestia interesantă e că le faci pe toate în același timp. Nu ai un program. Pur și simpu te pui la masă și le deschizi pe toate. Faci câte puțin din fiecare. În general chestia pe care o poți face, cea la care-ți stă gândul în momentul respectiv. În felul ăsta, te poți procrastina pozitiv. Adică în loc să intri pe reddit când nu mai știi ce să scrii pe blahg, deschizi cartea și citești ceva pentru examen<sup class="footnote"><a href="#fnd19a9347-c130-4b37-a4c3-f228cfa2d382">3</a></sup>, sau deschizi consola și mai scrii un unit test pentru proiectul django. Când te plictisești de celălalt lucru, treci la altul. Unii oameni pot să facă asta &#8211; ca Aaron de exemplu. Alți oameni pot doar să-și dorească să poată face asta (mie nu-mi iese întotdeauna). <br />Poate există și cea de-a treia categorie de oameni care pot lucra secvențial o zi întreagă și nu le e distrasă niciodată atenția. Mi-ar plăcea să rescriu articolul ăsta când îi voi găsi. </p>
+<p>Profesioniștii preferă procrastinarea pozitivă. De data asta îmi amintesc un link al lui <a href="http://www.aaronsw.com/weblog/productivity">Aaron Schwartz</a> pe subiectul ăsta<sup class="footnote"><a href="#fn043ef7a5-9d3a-4a8e-9e5e-9ea26491f4d7">1</a></sup>. Pentru cei cărora le e lene să citească ce scrie acolo, o să continui aici. Procrastinarea pozitivă e un fel de multitasking simulat. Cam cum lucreaza majoritatea calculatoarelor de azi. Ai o grămadă de lucruri de făcut. De exemplu: scrii un blog, înveți pentru un examen, înveți django, asculți muzică, stai pe pisica<sup class="footnote"><a href="#fn830f3f39-26c1-4d57-b61c-6e8dfb7c3887">2</a></sup>. Chestia interesantă e că le faci pe toate în același timp. Nu ai un program. Pur și simpu te pui la masă și le deschizi pe toate. Faci câte puțin din fiecare. În general chestia pe care o poți face, cea la care-ți stă gândul în momentul respectiv. În felul ăsta, te poți procrastina pozitiv. Adică în loc să intri pe reddit când nu mai știi ce să scrii pe blahg, deschizi cartea și citești ceva pentru examen<sup class="footnote"><a href="#fn526576a5-e908-406b-82e6-5d3736545f96">3</a></sup>, sau deschizi consola și mai scrii un unit test pentru proiectul django. Când te plictisești de celălalt lucru, treci la altul. Unii oameni pot să facă asta &#8211; ca Aaron de exemplu. Alți oameni pot doar să-și dorească să poată face asta (mie nu-mi iese întotdeauna). <br />Poate există și cea de-a treia categorie de oameni care pot lucra secvențial o zi întreagă și nu le e distrasă niciodată atenția. Mi-ar plăcea să rescriu articolul ăsta când îi voi găsi. </p>
 <p>Deci găsiți-vă lucruri interesante de făcut de care <i>credeți</i> că n-aveți timp și apucați-vă să le faceți în timpul mort pe care l-ați petrece la televizor sau pe iutub sau uitându-vă pe pereți. Multe imperii au fost construite și vor mai fi construite așa. </p>
 <p>Și în sfârșit, momentul cel mai important al acestui post, cel care m-a determinat să-l scriu: cel mai bun citat despre procrastinare (l-am găsit pe <a href="http://reddit.com">reddit</a> bineînțeles). Acolo sunt experții în domeniu. </p>
 <p><a href="http://www.reddit.com/r/science/comments/721l6/the_real_difference_between_liberals_and/c05h6wm">Citez:</a><br />MercurialMadnessMan:</p>
@@ -89,10 +99,10 @@ feed
 <p><cite>I used <span class="caps">TED</span> to procrastinate and finished every single video.</cite></p>
 </blockquote>
 <hr />
-<p id="fn01057ab7-522f-4637-8852-a3a04f0bc927" class="footnote"><sup>0</sup>Mi-a luat o oră să-l fac! <a href="http://www.jamendo.com/en/artist/revolutionvoid">Revolution Void</a> &#8211; As We May Think</p>
-<p id="fne0a5e026-dae6-439e-8c9c-2b85387193cd" class="footnote"><sup>1</sup>Iar acum toți cititorii mei au plecat și vor citi eseul cel bun. Eh&#8230;</p>
-<p id="fne5e6021e-1401-4d4a-b7db-2ba241feb3ff" class="footnote"><sup>2</sup>din franceză &#8212; te-ai prins?</p>
-<p id="fnd19a9347-c130-4b37-a4c3-f228cfa2d382" class="footnote"><sup>3</sup>miroase a pateu?</p>
+<p id="fnff5a22b5-5537-4306-b8fd-0a9e7b01f659" class="footnote"><sup>0</sup>Mi-a luat o oră să-l fac! <a href="http://www.jamendo.com/en/artist/revolutionvoid">Revolution Void</a> &#8211; As We May Think</p>
+<p id="fn043ef7a5-9d3a-4a8e-9e5e-9ea26491f4d7" class="footnote"><sup>1</sup>Iar acum toți cititorii mei au plecat și vor citi eseul cel bun. Eh&#8230;</p>
+<p id="fn830f3f39-26c1-4d57-b61c-6e8dfb7c3887" class="footnote"><sup>2</sup>din franceză &#8212; te-ai prins?</p>
+<p id="fn526576a5-e908-406b-82e6-5d3736545f96" class="footnote"><sup>3</sup>miroase a pateu?</p>
 
         </div>
         <br />

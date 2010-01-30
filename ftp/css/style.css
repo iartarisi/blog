@@ -100,6 +100,7 @@ pre {
     padding-bottom: 2em;
 }
 #recent ul {
+    clear: both;
     color: #545454;
     list-style-type: circle;
 }
@@ -111,6 +112,7 @@ ul {
     font-size: 1.4em;
     padding-bottom: .5em;
     text-transform: lowercase;
+    clear: right;
 }
 #container {
     background: white no-repeat url(grassy.png);
@@ -185,4 +187,9 @@ a.comments:hover, a.comments:visited {
     font-size: 1em;
     font-style: italic;
     font-family: sans-serif;
+}
+
+#cuZmeura { 
+    float: right;
+    margin: 2em 0 2em;
 }

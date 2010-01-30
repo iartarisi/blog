@@ -5,33 +5,175 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Fri, 18 Sep 2009 12:37:51 +0300</pubDate>
+        <pubDate>Sat, 30 Jan 2010 10:36:54 +0200</pubDate>
         <generator>pyBlee!</generator>
         <item>
-            <title>The Productive Programmer</title>
-            <link>http://mapleoin.bluepink.ro/perma/productive-programmer-review</link>
+            <title>Cum să peticești un rpm (patch rpm)</title>
+            <link>http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm</link>
             <author>mapleoin@bluepink.ro (Oin Maple)</author>
-            <description> &lt;div style="float: left; padding: 1em"&gt;
-&lt;img src="/covers/productive.jpg" style="text-align:left;" alt="" /&gt;
+            <description>  &lt;p&gt;O să vă descriu cum am aplicat un petec pentru unul dintre pachetele pentru care sunt responsabil la fedora: calibre, în timp ce așteptam să-mi vină pizza http://www.fedoraproject.ro/am-lansat-fedora-12-avans . Petecul este răspunsul la un bug report: https://bugzilla.redhat.com/show_bug.cgi?id=537525 . Calibre verifică de fiecare dată când este pornit dacă pe situl oficial a apărut o nouă versiune și dacă a apărut, îl anunță pe utilizator printr-un pop-up că trebuie să actualizeze aplicația. Cum fedora are propriul management al pachetelor și deci și al actualizărilor, este recomandat ca pachetele noi să fie instalate folosind yum; deci mesajul trebuie eliminat.&lt;/p&gt;
+&lt;p&gt;Mai întâi trebuie să descărcăm sursele actuale ale rpm-ului (în momentul în care am scris patchul, în repo-uri cea mai recentă versiune era 0.6.21-1, acum ar trebui să fie una cu patchul deja aplicat):&lt;/p&gt;
+&lt;pre&gt;
+  $ yumdownloader --source calibre
+&lt;/pre&gt;
+&lt;p&gt;și să le despachetăm:&lt;/p&gt;
+&lt;div class="Bash"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;  &lt;span class="nv"&gt;$ &lt;/span&gt;rpm -ivh calibre-0.6.21-1.fc12.src.rpm
+&lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Today I read &lt;a href="http://www.amazon.com/gp/product/0596519788?ie=UTF8&amp;amp;tag=httpmapleoinb-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=0596519788"&gt;The Productive Programmer&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;I&amp;#8217;ve already got a bunch of books piled up and waiting to be read, some of which I&amp;#8217;ve reached the middle of and some of which I&amp;#8217;ve read only the introduction to. I was bored today and this looked like an easy read that I could drop at any time. It is an easy read, but the fact is, it&amp;#8217;s very catchy. It draws you in and doesn&amp;#8217;t want to be let go. It&amp;#8217;s a great way to spend half a day.&lt;/p&gt;
-&lt;p&gt;This could have been another one of those &amp;#8220;94 things you need to know&amp;#8221; books, but I think this title is way better. The tips are divided into 2 big sections and a few separate chapters within each one, giving the book some structure. One of the strange things about it is that its advice spans across 3 different platforms (*nix, OS X and Windows) and they&amp;#8217;re all mingled together in the same chapter. I was put off by this at first, but after I&amp;#8217;d gotten into the book a bit I realized that it is, in fact, a good idea. The whole theme of the book is programmer productivity and the reason it has this title and not a cheesy title with numbers like &amp;#8220;94.3 productivity tips for programmers&amp;#8221; is that the tips aren&amp;#8217;t what&amp;#8217;s important. The book is there to hit people in the head with and open their minds. You aren&amp;#8217;t supposed to just use the tips provided, that&amp;#8217;s unimportant. What&amp;#8217;s important is that you have a shock and realize that you&amp;#8217;ve been the wrong kind of lazy as a programmer. You&amp;#8217;ve stopped automating, you&amp;#8217;ve become a machine; in the author&amp;#8217;s own words, computers have started &amp;#8220;getting together late at night to make fun of their users&amp;#8221;. As soon as I realized what this book was really about, I started reading the Windows tips as well. I also stopped a few times to look in my distro&amp;#8217;s repository for tools that I had known of, but never used before, only now understanding their true purpose. There are many applications that seem just trendy at first, until you realize that even a small productivity boost is a big productivity boost. (Go check out &amp;#8220;gnome-do&amp;#8221;, I&amp;#8217;d heard about it years ago, but never tried it until now).&lt;/p&gt;
-&lt;p&gt;The book contains tips ranging from application launchers, Firefox&amp;#8217;s magic address bar, bash scripting commands to office productivity tips for killing distractions. Once again, the mindset is important, not the tips themselves. The big take-away from this book is beginning to constantly judge everything you do as a programmer. This isn&amp;#8217;t new advice (at least for those who have read &lt;a href="http://www.amazon.com/gp/product/020161622X?ie=UTF8&amp;amp;tag=httpmapleoinb-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=020161622X"&gt;The Pragmatic Programmer&lt;/a&gt; , which by the way is mentioned several times in this book), but I find it&amp;#8217;s better emphasized in this book. At one point in the book, the author explains how it took his team one hour to devise a Ruby script to automate some simple task that would&amp;#8217;ve required 10 minutes if done manually and finally only needed doing 5 times. One could say there was a loss in productivity, but as the author points out, one would be wrong. Those 50 minutes would&amp;#8217;ve been spent with the brain turned off, whereas the hour writing the script was spent &lt;strong&gt;learning&lt;/strong&gt;, focusing, practicing, gaining knowledge that can later be used on a different project. Some of us would probably have gotten bored in those 50 minutes and fallen into procrastination. That doesn&amp;#8217;t happen when you&amp;#8217;ve got a complex problem to solve.&lt;/p&gt;
-&lt;p&gt;That was the first part of the book, &lt;em&gt;Mechanics&lt;/em&gt;. The second part, &lt;em&gt;Practice&lt;/em&gt; is a bit harder to read, as it&amp;#8217;s not just disparaged tips on very different applications. They&amp;#8217;re quite two separate books actually. The majority of the examples in Part IIare java (they&amp;#8217;re mostly readable even for someone who doesn&amp;#8217;t speak the exact dialect of &lt;span class="caps"&gt;OOP&lt;/span&gt; that java uses) and this part is mostly about software &lt;strong&gt;construction&lt;/strong&gt; as &lt;a href="http://www.amazon.com/gp/product/0735619670?ie=UTF8&amp;amp;tag=httpmapleoinb-20&amp;amp;linkCode=as2&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=0735619670"&gt;Steve McConnell&lt;/a&gt; would say, but it&amp;#8217;s also about Java. I learned a new acronym: &lt;acronym title="You Ain’t Gonna Need It"&gt;YAGNI&lt;/acronym&gt; which basically means that thinking ahead is bad. This is probably one of the advices that I feel the least guilty about, but which I sometime observe in people around me. Never program a feature you don&amp;#8217;t urgently have a need for.&lt;/p&gt;
-&lt;p&gt;One of the good points of this book is the originality with which the ideas are expressed. Most of these ideas aren&amp;#8217;t new, especially to anyone who&amp;#8217;s read other software engineering books. The text is spiced up with little narratives of different adventures from the author&amp;#8217;s experience as a consultant and there is also an &lt;strong&gt;Ancient Philosophers&lt;/strong&gt; chapter and an explanation of the PacMan game&amp;#8217;s way of functioning (although I didn&amp;#8217;t understand how that&amp;#8217;s supposed to make the game less enjoyable).&lt;/p&gt; </description>
-            <pubDate>Fri, 18 Sep 2009 02:30 GMT</pubDate>
-        </item>
-        <item>
-            <title>Beginning Packaging for Fedora</title>
-            <link>http://mapleoin.bluepink.ro/perma/packaging-for-fedora</link>
-            <author>mapleoin@bluepink.ro (Oin Maple)</author>
-            <description>  &lt;p&gt;With &lt;span class="caps"&gt;GSOC&lt;/span&gt; now over, which I should write a blogpost about soon, I&amp;#8217;ve taken a break from pkgdb and web programming and started developing another skill.&lt;/p&gt;
-&lt;p&gt;The fact that &lt;a href="https://admin.fedoraproject.org/pkgdb/users/packages/mapleoin"&gt;this page&lt;/a&gt; is empty has been bugging me for too much time, so I set out to fix it. I also wanted to find out more about the packaging process and the road of a package before it gets accepted into fedora&amp;#8217;s official repos which is a bit complex. This knowledge would also help me better understand the parts of pkgdb which packagers interact with.&lt;/p&gt;
-&lt;p&gt;It was not my first time trying to make a package for fedora. I think this is actually my third time. I&amp;#8217;d given up before, scared by all the different tools and scattered documentation. In a previous life, I had made some &lt;a href="http://aur.archlinux.org/"&gt;AUR&lt;/a&gt; packages, but the experience is a lot different. I&amp;#8217;m now starting to get used to all the different tools that I was scared of before, like mock and rpmlint and I can now find my way around the fedora wiki for package related information. There is a wealth of information in the wiki, but you need a lot of patience.&lt;/p&gt;
-&lt;p&gt;I started slow, with quite a complex application to package: &lt;a href="http://calibre.kovidgoyal.net/"&gt;Calibre&lt;/a&gt; . Having all those different distros is great when you&amp;#8217;re a packager, because you have somewhere to look for help and the Debian package of calibre helped me a lot. It took me about two days to get a somewhat acceptable version of calibre packaged, which I then posted to redhat&amp;#8217;s bugzilla. The following days I found more small apps to be packaged and it became easier and easier for me to do it. Last night for example, I was just browsing &lt;a href="http://news.ycombinator.org"&gt;Hacker News&lt;/a&gt; as usual when I found a link to &lt;a href="http://developers.facebook.com/news.php?blog=1&amp;amp;story=301"&gt;facebook&amp;#8217;s opensourcing of their web server framework&lt;/a&gt; I just rushed to the download and installation instructions page and I quickly got it packaged. I&amp;#8217;m not saying it&amp;#8217;s perfect, it probably needs a lot of improvement, but it was fun to do. It&amp;#8217;s fun to think that you&amp;#8217;re making things easier for someone and learning a lot at the same time. I now have 5 packages waiting to be reviewed and I&amp;#8217;ve found someone willing to sponsor me into the &lt;em&gt;packager&lt;/em&gt; group. Anyone in a package-review mood? ;)&lt;/p&gt;
-&lt;p&gt;My journey into the packaging world has been enlightening so far and the good thing is I&amp;#8217;m just beginning. There&amp;#8217;s a whole new world to be discovered out there and also another part of the fedora community. &lt;/p&gt; </description>
-            <pubDate>Fri, 11 Sep 2009 11:30 GMT</pubDate>
+&lt;p&gt;Comanda va crea un nou director rpmbuild, cu subdirectoarele &lt;span class="caps"&gt;SPECS&lt;/span&gt; și &lt;span class="caps"&gt;SOURCES&lt;/span&gt;. În &lt;span class="caps"&gt;SPECS&lt;/span&gt; avem fișierul care ține toate informațiile despre cum se va construi pachetul: calibre.spec, iar în &lt;span class="caps"&gt;SOURCES&lt;/span&gt; avem sursele pachetului și toate patchurile pe care le-am creat până acum:&lt;/p&gt;
+&lt;pre&gt;
+  $ tree rpmbuild/
+  rpmbuild/
+  |-- SOURCES
+  |   |-- calibre-0.6.21-nofonts.tar.gz
+  |   |-- calibre-cssprofiles.patch
+  |   |-- calibre-manpages.patch
+  |   `-- generate-tarball.sh
+  `-- SPECS
+  `-- calibre.spec
+&lt;/pre&gt;
+&lt;p&gt;Mai avem de făcut un pas, ca să putem umbla prin sursele programului. Trebuie să dezarhivăm arhiva calibre-0.6.21-nofonts.tar.gz. Următoarea comandă dezarhivează și aplică patchurile pe care le avem deja:&lt;/p&gt;
+&lt;pre&gt;
+  $ cd rpmbuild/SPECS
+  $ rpmbuild -bp calibre.spec
+&lt;/pre&gt;
+&lt;p&gt;Au apărut mai multe directoare după comanda asta:&lt;/p&gt;
+&lt;pre&gt;
+  $ ls rpmbuild/
+  BUILD  BUILDROOT  RPMS  SOURCES  SPECS  SRPMS
+&lt;/pre&gt;
+&lt;p&gt;Cel care ne interesează este &lt;span class="caps"&gt;BUILD&lt;/span&gt;, în care au apărut sursele peticite ale programului.&lt;/p&gt;
+&lt;p&gt;Atunci când e pornit, dacă există o versiune mai nouă, calibre va afișa următorul mesaj în fereastra pop-up:&lt;/p&gt;
+&lt;p&gt;calibre has been updated to version 0.6.24. See the new features. Visit the download page?&lt;/p&gt;
+&lt;p&gt;Ca să aflăm din ce fișier vine fereastra de pop-up putem să căutăm pur și simplu o parte din textul de mai sus în sursele calibre:&lt;/p&gt;
+&lt;pre&gt;
+  $ cd rpmbuild/BUILD/calibre/
+  $ find .|xargs grep &amp;#34;has been updated&amp;#34;
+&lt;/pre&gt;
+&lt;p&gt;Dacă ignorăm fișierele de localizare, vom afla sursa pop-up-ului:&lt;/p&gt;
+&lt;pre&gt;
+  ./calibre/src/calibre/gui2/main.py:                    _(&amp;#39;%s has been updated to version %s. &amp;#39;
+&lt;/pre&gt;
+&lt;p&gt;Mergând în fișierul respectiv vedem că acel cod face parte dintr-o funcție numită update_found:&lt;/p&gt;
+&lt;div class="Bash"&gt;&lt;div class="highlight"&gt;&lt;pre&gt; 
+  def update_found&lt;span class="o"&gt;(&lt;/span&gt;self, version&lt;span class="o"&gt;)&lt;/span&gt;:
+  &lt;span class="nv"&gt;os&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;windows&amp;amp;#8217; if iswindows else &amp;#39;&lt;/span&gt;osx&amp;amp;#8217; &lt;span class="k"&gt;if &lt;/span&gt;isosx &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;linux&amp;amp;#8217;&lt;/span&gt;
+&lt;span class="s1"&gt;  url = &amp;#39;&lt;/span&gt;http://%s.kovidgoyal.net/download_%s&amp;amp;#8217;%&lt;span class="o"&gt;(&lt;/span&gt;__appname__, os&lt;span class="o"&gt;)&lt;/span&gt;
+  self.latest_version &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;br /&amp;gt;&amp;#39;&lt;/span&gt; + _&lt;span class="o"&gt;(&lt;/span&gt;&amp;amp;#8217;&amp;lt;span &lt;span class="nv"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;color:red; font-weight:bold&amp;quot;&lt;/span&gt;&amp;gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+&lt;span class="s1"&gt;    &amp;#39;&lt;/span&gt;Latest version: &amp;lt;a &lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;%s&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;span&amp;gt;s&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;&lt;span class="s1"&gt;&amp;#39;)(url, version)&lt;/span&gt;
+&lt;span class="s1"&gt;  self.vanity.setText(self.vanity_template%\&lt;/span&gt;
+&lt;span class="s1"&gt;  (dict(version=self.latest_version,&lt;/span&gt;
+&lt;span class="s1"&gt;  device=self.device_info)))&lt;/span&gt;
+&lt;span class="s1"&gt;  self.vanity.update()&lt;/span&gt;
+&lt;span class="s1"&gt;  if config.get(&amp;#39;&lt;/span&gt;new_version_notification&amp;amp;#8217;&lt;span class="o"&gt;)&lt;/span&gt; and &lt;span class="se"&gt;\&lt;/span&gt;
+  dynamic.get&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;update to version %s&amp;amp;#8217;%version, True):&lt;/span&gt;
+&lt;span class="s1"&gt;  if question_dialog(self, _(&amp;#39;&lt;/span&gt;Update available&amp;amp;#8217;&lt;span class="o"&gt;)&lt;/span&gt;,
+  &amp;lt;em &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ââ%s&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;has&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;has&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;been&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;been&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;updated&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;updated&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;to&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;a &lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;âhttp://calibre.kovidgoyal.net/wiki/â&amp;quot;&lt;/span&gt;&amp;gt;new features&amp;lt;/a&amp;gt;. Visit the download pa&amp;amp;#8217;
+  &lt;span class="s1"&gt;&amp;#39;ge?&amp;amp;#8217;&amp;amp;#8221;&amp;gt;%(&amp;lt;/em&amp;gt;_appname__, version)):&lt;/span&gt;
+&lt;span class="s1"&gt;  url = &amp;#39;&lt;/span&gt;http://calibre.kovidgoyal.net/download_&amp;amp;#8217;+&lt;span class="se"&gt;\&lt;/span&gt;
+  &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;windows&amp;amp;#8217; if iswindows else &amp;#39;&lt;/span&gt;osx&amp;amp;#8217; &lt;span class="k"&gt;if &lt;/span&gt;isosx &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;linux&amp;amp;#8217;)&lt;/span&gt;
+&lt;span class="s1"&gt;  QDesktopServices.openUrl(QUrl(url))&lt;/span&gt;
+&lt;span class="s1"&gt;  dynamic.set(&amp;#39;&lt;/span&gt;update to version %s&amp;amp;#8217;%version, False&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Ne interesează ca modificarea pe care o vom aduce să fie cât mai lizibilă pentru cei care vor modifica pachetul nostru mai târziu și să fie cât mai ușor de revenit la versiunea nemodificată. Dacă ne uităm mai atent în main, găsim următorul cod:&lt;/p&gt;
+&lt;pre&gt;
+  if not opts.no_update_check:
+  self.update_checker = CheckForUpdates()
+  QObject.connect(self.update_checker,
+  SIGNAL(&amp;#39;update_found(PyQt_PyObject)&amp;#39;), self.update_found)
+  self.update_checker.start()
+&lt;/pre&gt;
+&lt;p&gt;Codul verifică dacă programul a fost pornit cu opțiunea no_update_check. Ar complica prea mult lucrurile dacă am modifica programul în așa fel încât să pornească de fiecare dată cu opțiunea asta așa că mai bine comentăm codul aici, ca să nu mai verifice opțiunea și deci să nu mai caute niciodată update-uri. E soluția cea mai simplă.&lt;/p&gt;
+&lt;p&gt;Ca să facem un petec ca la carte, vom face așa:&lt;/p&gt;
+&lt;p&gt;Facem o copie a fișierului main.py:&lt;/p&gt;
+&lt;pre&gt;
+  $ cd ~/rpmbuild/BUILD/calibre/src/calibre/gui2/
+  $ cp main.py main.py.no_update
+  După care modificăm *fișierul inițial* și comentăm codul respectiv așa:
+  # if not opts.no_update_check:
+  #     self.update_checker = CheckForUpdates()
+  #     QObject.connect(self.update_checker,
+  #             SIGNAL(&amp;#39;update_found(PyQt_PyObject)&amp;#39;), self.update_found)
+  #     self.update_checker.start()
+&lt;/pre&gt;
+&lt;p&gt;Ca să generăm petecul vom folosi gendiff din directorul de deasupra directorului rădăcină:&lt;/p&gt;
+&lt;pre&gt;
+    $ cd ~/rpmbuild/BUILD
+    $ gendiff calibre .no_update
+    diff -up calibre/src/calibre/gui2/main.py.no_update calibre/src/calibre/gui2/main.py
+    --- calibre/src/calibre/gui2/main.py.no_update	2009-11-16 14:21:55.200387171 +0200
+    +++ calibre/src/calibre/gui2/main.py	2009-11-16 14:22:10.400510757 +0200
+    &lt;code&gt;&lt;/code&gt; -221,11 +221,11 &lt;code&gt;&lt;/code&gt; class Main(MainWindow, Ui_MainWindow, De
+    self.latest_version = &amp;#39; &amp;#39;
+    self.vanity.setText(self.vanity_template%dict(version=&amp;#39; &amp;#39;, device=&amp;#39; &amp;#39;))
+    self.device_info = &amp;#39; &amp;#39;
+    -        if not opts.no_update_check:
+    -            self.update_checker = CheckForUpdates()
+    -            QObject.connect(self.update_checker,
+    -                    SIGNAL(&amp;#39;update_found(PyQt_PyObject)&amp;#39;), self.update_found)
+    -            self.update_checker.start()
+    +        # if not opts.no_update_check:
+    +        #     self.update_checker = CheckForUpdates()
+    +        #     QObject.connect(self.update_checker,
+    +        #             SIGNAL(&amp;#39;update_found(PyQt_PyObject)&amp;#39;), self.update_found)
+    +        #     self.update_checker.start()
+    ####################### Status Bar #####################
+    self.status_bar = StatusBar(self.jobs_dialog, self.system_tray_icon)
+    self.setStatusBar(self.status_bar)
+&lt;/pre&gt;
+&lt;p&gt;Totul arată bine, deci putem să-l punem în surse:&lt;/p&gt;
+&lt;pre&gt;
+  $ gendiff calibre .no_update &amp;#62; ~/rpmbuild/SOURCES/calibre-no-update.patch
+  &lt;/pre&gt;
+&lt;p&gt;Acum trebuie să modificăm spec-ul, adăugând un nou petec, incrementând release-ul, menționând motivul pentru petec și scriind modificarea în Changelog:&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+  &lt;code&gt;&lt;/code&gt; -1,6 +1,6 &lt;code&gt;&lt;/code&gt;
+  Name:           calibre
+  Version:        0.6.21
+  -Release:        1%{?dist}
+  +Release:        2%{?dist}
+  Summary:        E-book converter and library management
+  Group:          Applications/Multimedia
+  License:        GPLv3
+  &lt;code&gt;&lt;/code&gt; -18,6 +18,7 &lt;code&gt;&lt;/code&gt;
+  Source1:        generate-tarball.sh
+  Patch0:         %{name}-cssprofiles.patch
+  Patch1:         %{name}-manpages.patch
+  +Patch2:         %{name}-no-update.patch
+  BuildRoot:      &lt;span style="_tmppath;"&gt;/&lt;/span&gt;{name&lt;del&gt;&lt;span style="version;text-align:left;"&gt;/del&gt;&lt;/span&gt;{release&lt;del&gt;root&lt;/del&gt;&lt;span&gt;(&lt;/span&gt;{__id_u} -n)
+  BuildRequires:  python &gt;= 2.6
+  &lt;code&gt;&lt;/code&gt; -72,6 +73,9 &lt;code&gt;&lt;/code&gt;
+  # don&amp;#8217;t append calibre1 to the name of the manpages. No need to compress either
+  %patch1 -p1 -b .manpages&lt;/del&gt;&lt;/pre&gt;&lt;/p&gt;
+
+  +# don&amp;#8217;t check for new upstream version (that&amp;#8217;s what packagers do)
+  +%patch2 -p1 -b .no-update
+  +
+  # dos2unix newline conversion
+  %{__sed} -i 's/\r//&amp;#8217; src/calibre/web/feeds/recipes/*
+
+  &lt;code&gt;&lt;/code&gt; -239,6 +243,9 &lt;code&gt;&lt;/code&gt;
+  %{_mandir}/man1/*
+
+  %changelog
+  +* Sat Nov  29 2009 Ionuț C. Arțăriși &lt;mapleoin&gt; &amp;#8211; 0.6.21-2
+    +- patch to stop checking for new upstream version
+    +
+    * Sat Nov  6 2009 Ionuț C. Arțăriși &lt;/mapleoin&gt;&lt;mapleoin&gt; &amp;#8211; 0.6.21-1
+      &amp;#8211; new upstream version: http://calibre.kovidgoyal.net/wiki/Changelog#Version0.6.2106Nov2009
+      &amp;#8211; added python-BeautifulSoup requirement
+    
+&lt;p&gt;Gata. Asta a fost tot :). Acum putem reconstrui pachetul cu noile patchuri:&lt;/p&gt;
+&lt;pre&gt;
+  $ cd ~/rpmbuild/SPECS/
+  $ rpmbuild -ba calibre.spec
+&lt;/pre&gt;
+&lt;p&gt;Și putem reinstala noul pachet:&lt;/p&gt;
+&lt;pre&gt;
+  $ su -c &amp;#34;yum localinstall -y --nogpgcheck ~/rpmbuild/RPMS/x86_64/calibre-0.6.21-2.fc12.x86_64.rpm&amp;#34;
+  &lt;/pre&gt;&lt;/mapleoin&gt; </description>
+            <pubDate>Mon, 30 Nov 2009 12:00 GMT</pubDate>
         </item>
         <item>
             <title>Fedora Business Cards</title>

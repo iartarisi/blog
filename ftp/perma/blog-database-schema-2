@@ -29,14 +29,24 @@ feed
   </script>
 <script type="text/javascript" src="http://cdn1.adbard.net/js/ab1.js"></script>
 <!--Ad Bard, end -->
+<!--cuZmeura -->
+<script type="text/javascript" src="http://cuzmeura.org/serve/mapleoin">
+    //<![CDATA[
+  (function(id) {
+       document.write('<script type="text/javascript" src="' +
+       'http://cuzmeura.org/serve/' + id + '"></' + 'script>');
+       })(mapleoin);
+  //]]>
+  </script>
+<!-- cuZmeura, end -->
 <div id="recent">
 <h4>Recent</h4>
 <ul>
-<li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning Packaging for Fedora</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata">Emacs la Ceata</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin">FUDCon Berlin</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/eLiberatica-aftermath">eLiberatica - the aftermath!</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards">Fedora Business Cards</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -57,7 +67,6 @@ feed
 <li><a href="/tag/django.html">django</a></li>
 <li><a href="/tag/gsoc.html">gsoc</a></li>
 <li><a href="/tag/floss.html">floss</a></li>
-<li><a href="/tag/books.html">books</a></li>
 <li><a href="/tag/emacs.html">emacs</a></li>
 <li><a href="/tag/freebsd.html">freebsd</a></li>
 <li><a href="/tag/linux.html">linux</a></li>
@@ -65,6 +74,7 @@ feed
 <li><a href="/tag/music.html">music</a></li>
 <li><a href="/tag/hacking.html">hacking</a></li>
 <li><a href="/tag/foss.html">foss</a></li>
+<li><a href="/tag/fedora-ro.html">fedora-ro</a></li>
 <li><a href="/tag/events.html">events</a></li>
 </ul>
 </div><!--tags-->
@@ -77,16 +87,16 @@ feed
              <p>Tocmai am reușit (am găsit timp &#8212; furat timp) să scriu în django schema din <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema">postul trecut</a>. Simplicity is divine:</p>
 <div class="Python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">nume</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">20</span><span class="p">)</span>
+    <span class="n">nume</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
     <span class="n">body</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
     <span class="n">category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Category</span><span class="p">)</span>
     <span class="n">published</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">()</span>
     <span class="n">creation_time</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Commentator</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">website</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URLField</span><span class="p">(</span><span class="n">verify_exists</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Comment</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">body</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
@@ -97,7 +107,7 @@ feed
 </pre></div>
 </div>
 <p>Pe lângă faptul că toate tipurile de date au nume și <a href="http://docs.djangoproject.com/en/dev/ref/models/fields/#model-field-types">explicații</a> pe care le poate înțelege oricine, django va folosi datele astea atunci când va construi interfața de administrare.<br />E interesant că trebuie să declari toate tabelele în ordine. La început pusesem Categoria ultima și n-o găsea când vroia să facă ForeignKey-ul de la Post. M-a cam răsfățat OOP-ul.<br />Alt lucru fain e că de pe acum se pregătesc feature-uri interesante cum ar fi URLField.verify_exists care verifică toate url-urile introduse și le refuză dacă primește <a href="http://en.wikipedia.org/wiki/HTTP_404">404</a>. Așa că de-acum n-o să mai poată nimeni să pună <a href="http://en.wikipedia.org/wiki/Metasyntactic_variable">variabile metasintactice</a> de genu: <i>caca</i>, <i>mumu</i> și altele în field-ul ăla!</p>
-<p>Și acum un mysql describe<sup class="footnote"><a href="#fn9c5dafca-1a19-47c8-af24-f72eb6369997">3</a></sup> pentru tabelele rezultate:</p>
+<p>Și acum un mysql describe<sup class="footnote"><a href="#fn9beed49e-3a7c-4d8f-a0c1-e9fa7f52027b">3</a></sup> pentru tabelele rezultate:</p>
 <div class="MySQL"><div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_category</span><span class="p">;</span>
  <span class="o">&lt;</span><span class="n">ins</span><span class="o">&gt;&amp;</span><span class="c1">#8212;&amp;#8212;&amp;#8212;-&lt;/ins&gt;&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;-+&amp;#8212;&amp;#8212;&amp;#8212;+&amp;#8212;&amp;#8212;-+&amp;#8212;&amp;#8212;&amp;#8212;&amp;#8212;-+</span>
  <span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">Type</span>        <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
@@ -140,7 +150,7 @@ feed
 </pre></div>
 </div>
 <p>TADA!<br />Trebuie să studiez de ce se strică formatarea (de fapt știu de ce, trebuie să scot textile din blockul ăla), dar ideea de bază e clară.</p>
-<p id="fn9c5dafca-1a19-47c8-af24-f72eb6369997" class="footnote"><sup>3</sup>merci gheorghe!</p>
+<p id="fn9beed49e-3a7c-4d8f-a0c1-e9fa7f52027b" class="footnote"><sup>3</sup>merci gheorghe!</p>
         </div>
         <div class="post_tags">Tags:
                 <a href="/tag/programming.html">programming</a>

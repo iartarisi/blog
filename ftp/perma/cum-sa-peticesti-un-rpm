@@ -29,16 +29,16 @@ feed
   </script>
 <script type="text/javascript" src="http://cdn1.adbard.net/js/ab1.js"></script>
 <!--Ad Bard, end -->
-<!--Pristav -->
-<script type="text/javascript" src="http://pristav.ceata.org/serve/mapleoin">
-          //<![CDATA[
+<!--cuZmeura -->
+<script type="text/javascript" src="http://cuzmeura.org/serve/mapleoin">
+    //<![CDATA[
   (function(id) {
        document.write('<script type="text/javascript" src="' +
-       'serve/' + id + '"></' + 'script>');
-       })("mapleoin");
- //]]>
-      </script>
-<!-- Pristav, end -->
+       'http://cuzmeura.org/serve/' + id + '"></' + 'script>');
+       })(mapleoin);
+  //]]>
+  </script>
+<!-- cuZmeura, end -->
 <div id="recent">
 <h4>Recent</h4>
 <ul>
