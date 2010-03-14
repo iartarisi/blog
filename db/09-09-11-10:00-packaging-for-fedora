@@ -1,0 +1,15 @@
+Beginning packaging for Fedora
+---
+
+fedora, foss, packaging
+---
+
+With GSOC now over, which I should write a blogpost about soon, I've taken a break from pkgdb and web programming and started developing another skill.
+
+The fact that "this page":https://admin.fedoraproject.org/pkgdb/users/packages/mapleoin is empty has been bugging me for too much time, so I set out to fix it. I also wanted to find out more about the packaging process and the road of a package before it gets accepted into fedora's official repos which is a bit complex. This knowledge would also help me better understand the parts of pkgdb which packagers interact with.
+
+It was not my first time trying to make a package for fedora. I think this is actually my third time. I'd given up before, scared by all the different tools and scattered documentation. In a previous life, I had made some "AUR":http://aur.archlinux.org/ packages, but the experience is a lot different. I'm now starting to get used to all the different tools that I was scared of before, like mock and rpmlint and I can now find my way around the fedora wiki for package related information. There is a wealth of information in the wiki, but you need a lot of patience.
+
+I started slow, with quite a complex application to package: "Calibre":http://calibre.kovidgoyal.net/. Having all those different distros is great when you're a packager, because you have somewhere to look for help and the Debian package of calibre helped me a lot. It took me about two days to get a somewhat acceptable version of calibre packaged, which I then posted to redhat's bugzilla. The following days I found more small apps to be packaged and it became easier and easier for me to do it. Last night for example, I was just browsing "Hacker News":http://news.ycombinator.org as usual when I found a link to "facebook's opensourcing of their web server framework":http://developers.facebook.com/news.php?blog=1&amp;story=301 . I just rushed to the download and installation instructions page and I quickly got it packaged. I'm not saying it's perfect, it probably needs a lot of improvement, but it was fun to do. It's fun to think that you're making things easier for someone and learning a lot at the same time. I now have 5 packages waiting to be reviewed and I've found someone willing to sponsor me into the *packager* group. Anyone in a package-review mood? ;)
+
+My journey into the packaging world has been enlightening so far and the good thing is I'm just beginning. There's a whole new world to be discovered out there and also another part of the fedora community. 
