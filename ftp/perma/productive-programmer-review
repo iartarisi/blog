@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/pygments.css" />
+<link rel="stylesheet" type="text/css" href="/css/archive.css" />
+<link rel="shortcut icon" href="/favico.ico" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/
+feed
+.xml" />
+<title>Revolution blahg 
+    | The Productive Programmer
+</title>
+</head>
+<body>
+<div id="container">
+<div id="header">
+<h1><a href="/" class="title">Revolution blahg</a></h1><a href="/">home</a>
+<a href="/archive">archive</a>
+<a href="/about">about</a>
+
+</div>
+<div id="sidebar">
+<!--Ad Bard advertisement snippet, begin -->
+<script type="text/javascript">
+ var ab_h = '07a588f86184b760339f128868a94817';
+  var ab_s = '8d5dbcb89f13a768116e6e2bb4db1e53';
+  </script>
+<script type="text/javascript" src="http://cdn1.adbard.net/js/ab1.js"></script>
+<!--Ad Bard, end -->
+<!--cuZmeura -->
+<script type="text/javascript" src="http://cuzmeura.org/serve/mapleoin">
+    //<![CDATA[
+  (function(id) {
+       document.write('<script type="text/javascript" src="' +
+       'http://cuzmeura.org/serve/' + id + '"></' + 'script>');
+       })(mapleoin);
+  //]]>
+  </script>
+<!-- cuZmeura, end -->
+<div id="recent">
+<h4>Recent</h4>
+<ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata">Emacs la Ceata</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin">FUDCon Berlin</a></li>
+</ul>
+</div><!--recent-->
+<br />
+<h4>Links</h4>
+<ul>
+<li><a href="http://linuxsoft.ro" title="Comunitate open-source">linuxsoft</a></li>
+<li><a href="http://jamendo.com" title="muzică liberă">jamendo!</a></li>
+<li><a href="http://fedoraproject.ro" title="Fedora România">fedora Romania</a></li>
+</ul>
+<div id="tags">
+<h4>Tags</h4>
+<ul>
+<li><a href="/tag/gsoc.html">gsoc</a></li>
+<li><a href="/tag/fedora.html">fedora</a></li>
+<li><a href="/tag/python.html">python</a></li>
+<li><a href="/tag/databases.html">databases</a></li>
+<li><a href="/tag/programming.html">programming</a></li>
+<li><a href="/tag/unix.html">unix</a></li>
+<li><a href="/tag/django.html">django</a></li>
+<li><a href="/tag/packaging.html">packaging</a></li>
+<li><a href="/tag/floss.html">floss</a></li>
+<li><a href="/tag/books.html">books</a></li>
+<li><a href="/tag/emacs.html">emacs</a></li>
+<li><a href="/tag/freebsd.html">freebsd</a></li>
+<li><a href="/tag/linux.html">linux</a></li>
+<li><a href="/tag/creativecommons.html">creativecommons</a></li>
+<li><a href="/tag/music.html">music</a></li>
+<li><a href="/tag/hacking.html">hacking</a></li>
+<li><a href="/tag/foss.html">foss</a></li>
+<li><a href="/tag/fedora-ro.html">fedora-ro</a></li>
+<li><a href="/tag/events.html">events</a></li>
+</ul>
+</div><!--tags-->
+</div><!--links-->
+<div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></h2>
+        <h3>Friday, September 18, 2009</h3>
+        <div class="entry">
+             <p>Today I read <a href="http://www.amazon.com/gp/product/0596519788?ie=UTF8&amp;tag=httpmapleoinb-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596519788">The Productive Programmer</a> .</p>
+<p>I&#8217;ve already got a bunch of books piled up and waiting to be read, some of which I&#8217;ve reached the middle of and some of which I&#8217;ve read only the introduction to. I was bored today and this looked like an easy read that I could drop at any time. It is an easy read, but the fact is, it&#8217;s very catchy. It draws you in and doesn&#8217;t want to be let go. It&#8217;s a great way to spend half a day.</p>
+<p>This could have been another one of those &#8220;94 things you need to know&#8221; books, but I think this title is way better. The tips are divided into 2 big sections and a few separate chapters within each one, giving the book some structure. One of the strange things about it is that its advice spans across 3 different platforms (*nix, OS X and Windows) and they&#8217;re all mingled together in the same chapter. I was put off by this at first, but after I&#8217;d gotten into the book a bit I realized that it is, in fact, a good idea. The whole theme of the book is programmer productivity and the reason it has this title and not a cheesy title with numbers like &#8220;94.3 productivity tips for programmers&#8221; is that the tips aren&#8217;t what&#8217;s important. The book is there to hit people in the head with and open their minds. You aren&#8217;t supposed to just use the tips provided, that&#8217;s unimportant. What&#8217;s important is that you have a shock and realize that you&#8217;ve been the wrong kind of lazy as a programmer. You&#8217;ve stopped automating, you&#8217;ve become a machine; in the author&#8217;s own words, computers have started &#8220;getting together late at night to make fun of their users&#8221;. As soon as I realized what this book was really about, I started reading the Windows tips as well. I also stopped a few times to look in my distro&#8217;s repository for tools that I had known of, but never used before, only now understanding their true purpose. There are many applications that seem just trendy at first, until you realize that even a small productivity boost is a big productivity boost. (Go check out <i>gnome-do</i> , I&#8217;d heard about it years ago, but never tried it until now).<br />The book contains tips ranging from application launchers, Firefox&#8217;s magic address bar, bash scripting commands to office productivity tips for killing distractions. Once again, the mindset is important, not the tips themselves. The big take-away from this book is beginning to constantly judge everything you do as a programmer. This isn&#8217;t new advice (at least for those who have read <a href="http://www.amazon.com/gp/product/020161622X?ie=UTF8&amp;tag=httpmapleoinb-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=020161622X">The Pragmatic Programmer</a>&#8221;, which by the way is mentioned several times in this book), but I find it&#8217;s better emphasized in this book. At one point in the book, the author explains how it took his team one hour to devise a Ruby script to automate some simple task that would&#8217;ve required 10 minutes if done manually and finally only needed doing 5 times. One could say there was a loss in productivity, but as the author points out, one would be wrong. Those 50 minutes would&#8217;ve been spent with the brain turned off, whereas the hour writing the script was spent <i>learning</i>, focusing, practicing, gaining knowledge that can later be used on a different project. Some of us would probably have gotten bored in those 50 minutes and fallen into procrastination. That doesn&#8217;t happen when you&#8217;ve got a complex problem to solve.<br />That was the first part of the book, <i>Mechanics</i>. The second part, <i>Practice</i> is a bit harder to read, as it&#8217;s not just disparaged tips on very different applications. They&#8217;re quite two separate books actually. The majority of the examples in Part IIare java (they&#8217;re mostly readable even for someone who doesn&#8217;t speak the exact dialect of <span class="caps">OOP</span> that java uses) and this part is mostly about software <i>construction</i> as <a href="http://www.amazon.com/gp/product/0735619670?ie=UTF8&amp;tag=httpmapleoinb-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0735619670">Steve McConnell</a> would say, but it&#8217;s also about Java. I learned a new acronym: <acronym title="You Ainâ&euro;&trade;t Gonna Need It">YAGNI</acronym> which basically means that thinking ahead is bad. This is probably one of the advices that I feel the least guilty about, but which I sometime observe in people around me. Never program a feature you don&#8217;t urgently have a need for.<br />One of the good points of this book is the originality with which the ideas are expressed. Most of these ideas aren&#8217;t new, especially to anyone who&#8217;s read other software engineering books. The text is spiced up with little narratives of different adventures from the author&#8217;s experience as a consultant and there is also an <i>Ancient Philosophers</i> chapter and an explanation of the PacMan game&#8217;s way of functioning (although I didn&#8217;t understand how that&#8217;s supposed to make the game less enjoyable).</p>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/programming.html">programming</a>
+                <a href="/tag/hacking.html">hacking</a>
+                <a href="/tag/books.html">books</a>
+        </div>
+        <br />
+        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </div>
+</div>
+</div><!-- container -->
+<div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5576939-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

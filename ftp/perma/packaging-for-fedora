@@ -10,7 +10,7 @@
 feed
 .xml" />
 <title>Revolution blahg 
-    | Linux - After install work
+    | Beginning packaging for Fedora
 </title>
 </head>
 <body>
@@ -83,25 +83,19 @@ feed
 </div><!--links-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/after-install-work">Linux - After install work</a></h2>
-        <h3>Friday, December 19, 2008</h3>
+        <h2><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a></h2>
+        <h3>Friday, September 11, 2009</h3>
         <div class="entry">
-             <p>It&#8217;s distro-hopping season again and I chose debian this time. I might explain my reasons for that somewhere else. Here&#8217;s a list of stuff I need to do on every install in order to get comfy with my new distro. (There&#8217;s a sort of meme floating around).<br />I use gnome!</p>
-<ul>
-<li>Get 6 virtual desktops. </li>
-<li>Set some basic can&#8217;t-live-without-keybindings Ctrl+_number_ for switching between desktops and Alt+T for launching a gnome-terminal.</li>
-<li>Clean up my desktop. I really hate every kind of clutter on my desktop, so I delete everything. Almost everything can just be deleted, except for the Home, Trash and Computer icons. Fire up <code>gconf-editor</code> and go to <em>apps>nautilus>desktop</em> to uncheck everything. While we&#8217;re at it, let&#8217;s also enabling deleting in <em>nautilus</em> (it normally only lets you send stuff to Trash), by checking enable_delete in <em>nautilus>preferences</em>. Nautilus>Edit>Preferences>Behaviour &#8211; always open in browser windows &#8211; so it doesn&#8217;t spam me with 1000 windows to the world.</li>
-<li>Next is <code>&#60;package manager&#62; install bash-completion</code> and adding this to my <em>.bashrc</em>: <code>. /etc/bash_completion</code>.</li>
-<li>Time to get my .vimrc from wherever i happen to be keeping it at the time. you can check it out now <a href="http://mapleoin.fedorapeople.org/vimrc">here</a>.</li>
-<li>Nowadays, as I&#8217;ve got really lazy, I also set up automatic login (you can do that from <em>System>Administration>Login Window</em>. That basically bypasses gdm.</li>
-<li>Get myself into some better groups like: wheel/admin/sudo, storage/disk(so nautilus can mount disks), by editing <code>/etc/group</code>.</li>
-<li>You might also want to take a look at http://art.gnome.org if you&#8217;re the type. I know it&#8217;s a bit outdated, but the interface is a whole lot better than *-look.org</li>
-<li>Here&#8217;s a list of apps I use regularly: <em>Firefox, gnome-terminal, vim, ipython, git, xchat, evolution, pidgin, deluge, banshee/amarok, gnome-mplayer</em>.</li>
-</ul>
+             <p>With <span class="caps">GSOC</span> now over, which I should write a blogpost about soon, I&#8217;ve taken a break from pkgdb and web programming and started developing another skill.</p>
+<p>The fact that <a href="https://admin.fedoraproject.org/pkgdb/users/packages/mapleoin">this page</a> is empty has been bugging me for too much time, so I set out to fix it. I also wanted to find out more about the packaging process and the road of a package before it gets accepted into fedora&#8217;s official repos which is a bit complex. This knowledge would also help me better understand the parts of pkgdb which packagers interact with.</p>
+<p>It was not my first time trying to make a package for fedora. I think this is actually my third time. I&#8217;d given up before, scared by all the different tools and scattered documentation. In a previous life, I had made some <a href="http://aur.archlinux.org/">AUR</a> packages, but the experience is a lot different. I&#8217;m now starting to get used to all the different tools that I was scared of before, like mock and rpmlint and I can now find my way around the fedora wiki for package related information. There is a wealth of information in the wiki, but you need a lot of patience.</p>
+<p>I started slow, with quite a complex application to package: <a href="http://calibre.kovidgoyal.net/">Calibre</a>. Having all those different distros is great when you&#8217;re a packager, because you have somewhere to look for help and the Debian package of calibre helped me a lot. It took me about two days to get a somewhat acceptable version of calibre packaged, which I then posted to redhat&#8217;s bugzilla. The following days I found more small apps to be packaged and it became easier and easier for me to do it. Last night for example, I was just browsing <a href="http://news.ycombinator.org">Hacker News</a> as usual when I found a link to <a href="http://developers.facebook.com/news.php?blog=1&amp;story=301">facebook&#8217;s opensourcing of their web server framework</a> . I just rushed to the download and installation instructions page and I quickly got it packaged. I&#8217;m not saying it&#8217;s perfect, it probably needs a lot of improvement, but it was fun to do. It&#8217;s fun to think that you&#8217;re making things easier for someone and learning a lot at the same time. I now have 5 packages waiting to be reviewed and I&#8217;ve found someone willing to sponsor me into the <strong>packager</strong> group. Anyone in a package-review mood? ;)</p>
+<p>My journey into the packaging world has been enlightening so far and the good thing is I&#8217;m just beginning. There&#8217;s a whole new world to be discovered out there and also another part of the fedora community. </p>
         </div>
         <div class="post_tags">Tags:
-                <a href="/tag/unix.html">unix</a>
-                <a href="/tag/linux.html">linux</a>
+                <a href="/tag/fedora.html">fedora</a>
+                <a href="/tag/foss.html">foss</a>
+                <a href="/tag/packaging.html">packaging</a>
         </div>
         <br />
         <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
