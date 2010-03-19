@@ -1,12 +1,12 @@
-import os
-import datetime
 import codecs
+import datetime
+import os
 import re
 
-from mako.lookup import TemplateLookup
 from textile import textile
+from mako.lookup import TemplateLookup
 from pygments import formatters, lexers, highlight
-from BeautifulSoup import BeautifulSoup
+from BeautifulSoup import BeautifulSoup, Tag
 
 import config
 
@@ -61,30 +61,44 @@ class Post:
         except ValueError:
             raise ValueError, "check the formatting (I'd like a title "+  \
                               + 'and some tags, please!' + file
-        
+
         self.body = self.highlight(self.markup(self.body))
         self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
                                           default_filters=['decode.utf8'])
 
     def markup(self, body):
         """Uses textile to return a formatted unicode string"""
-        return textile(body.encode(self.encoding), encoding=self.encoding, 
-                       output=self.encoding)
-
-    def highlight(self, body):
         soup = BeautifulSoup(body)
         preblocks = soup.findAll('pre')
+        # add a <notextile> tag inside every pre lang tag
         for pre in preblocks:
             if pre.has_key('lang'):
+                notextile_tag = Tag(soup, "notextile")
+                notextile_tag.insert(0, pre.contents[0])
+                pre.clear()
+                pre.insert(0, notextile_tag)
+
+        # textilize everything else
+        return textile(unicode(soup))
+
+    def highlight(self, body):
+        """Syntax highlighting and textilization"""
+        soup = BeautifulSoup(body)
+        preblocks = soup.findAll('pre')
+
+        formatter = formatters.HtmlFormatter()
+        # highlight
+        for pre in preblocks:
+            if pre.has_key('lang'):
+                lexer = lexers.get_lexer_by_name(pre['lang'],
+                                                 encoding=self.encoding)
                 code = ''.join([str(item) for item in pre.contents])
-                lexer = lexers.get_lexer_by_name(pre['lang'])
-                formatter = formatters.HtmlFormatter()
-                code_hl = highlight(code, lexer, formatter)
-                pre.contents = [BeautifulSoup(code_hl)]
+                code_hl = BeautifulSoup(highlight(code, lexer, formatter))
+                pre.contents = [code_hl]
                 pre.name = 'div'
                 del(pre['lang'])
                 pre['class'] = lexer.name
-        return str(soup)
+        return unicode(soup)
 
     def write(self):    
         """Output the processed post"""
