@@ -92,7 +92,7 @@ Mergând în fișierul respectiv vedem că acel cod face parte dintr-o funcție 
 
 Ne interesează ca modificarea pe care o vom aduce să fie cât mai lizibilă pentru cei care vor modifica pachetul nostru mai târziu și să fie cât mai ușor de revenit la versiunea nemodificată. Dacă ne uităm mai atent în main, găsim următorul cod:
 
-<pre>
+<pre lang="python">
   if not opts.no_update_check:
   self.update_checker = CheckForUpdates()
   QObject.connect(self.update_checker,
@@ -119,7 +119,7 @@ Facem o copie a fișierului main.py:
 
 Ca să generăm petecul vom folosi gendiff din directorul de deasupra directorului rădăcină:
 
-<pre>
+<pre lang="diff">
     $ cd ~/rpmbuild/BUILD
     $ gendiff calibre .no_update
     diff -up calibre/src/calibre/gui2/main.py.no_update calibre/src/calibre/gui2/main.py
@@ -148,11 +148,11 @@ Totul arată bine, deci putem să-l punem în surse:
 
 <pre>
   $ gendiff calibre .no_update > ~/rpmbuild/SOURCES/calibre-no-update.patch
-  </pre>
+</pre>
 
 Acum trebuie să modificăm spec-ul, adăugând un nou petec, incrementând release-ul, menționând motivul pentru petec și scriind modificarea în Changelog:
 
-<pre>
+<pre lang="diff">
   @@ -1,6 +1,6 @@
   Name:           calibre
   Version:        0.6.21
@@ -171,16 +171,13 @@ Acum trebuie să modificăm spec-ul, adăugând un nou petec, incrementând rele
   @@ -72,6 +73,9 @@
   # don't append calibre1 to the name of the manpages. No need to compress either
   %patch1 -p1 -b .manpages
-  
   +# don't check for new upstream version (that's what packagers do)
   +%patch2 -p1 -b .no-update
   +
   # dos2unix newline conversion
   %{__sed} -i 's/\r//' src/calibre/web/feeds/recipes/*
-  
   @@ -239,6 +243,9 @@
   %{_mandir}/man1/*
-  
   %changelog
   +* Sat Nov  29 2009 Ionuț C. Arțăriși <mapleoin@fedoraproject.org> - 0.6.21-2
     +- patch to stop checking for new upstream version
@@ -188,7 +185,7 @@ Acum trebuie să modificăm spec-ul, adăugând un nou petec, incrementând rele
     * Sat Nov  6 2009 Ionuț C. Arțăriși <mapleoin@fedoraproject.org> - 0.6.21-1
       - new upstream version: http://calibre.kovidgoyal.net/wiki/Changelog#Version0.6.2106Nov2009
       - added python-BeautifulSoup requirement
-    </pre>
+</pre>
 
 Gata. Asta a fost tot :). Acum putem reconstrui pachetul cu noile patchuri:
 
@@ -201,4 +198,4 @@ Gata. Asta a fost tot :). Acum putem reconstrui pachetul cu noile patchuri:
 
 <pre>
   $ su -c "yum localinstall -y --nogpgcheck ~/rpmbuild/RPMS/x86_64/calibre-0.6.21-2.fc12.x86_64.rpm"
-  </pre>
+</pre>

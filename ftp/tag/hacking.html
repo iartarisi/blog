@@ -137,13 +137,13 @@ tag/hacking
 </pre></div>
 </div>
 <p>Ne interesează ca modificarea pe care o vom aduce să fie cât mai lizibilă pentru cei care vor modifica pachetul nostru mai târziu și să fie cât mai ușor de revenit la versiunea nemodificată. Dacă ne uităm mai atent în main, găsim următorul cod:</p>
-<pre>
-  if not opts.no_update_check:
-  self.update_checker = CheckForUpdates()
-  QObject.connect(self.update_checker,
-  SIGNAL(&#39;update_found(PyQt_PyObject)&#39;), self.update_found)
-  self.update_checker.start()
-</pre>
+<div class="Python"><div class="highlight"><pre>  <span class="k">if</span> <span class="ow">not</span> <span class="n">opts</span><span class="o">.</span><span class="n">no_update_check</span><span class="p">:</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">update_checker</span> <span class="o">=</span> <span class="n">CheckForUpdates</span><span class="p">()</span>
+  <span class="n">QObject</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_checker</span><span class="p">,</span>
+  <span class="n">SIGNAL</span><span class="p">(</span><span class="s">&#39;update_found(PyQt_PyObject)&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_found</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">update_checker</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
 <p>Codul verifică dacă programul a fost pornit cu opțiunea no_update_check. Ar complica prea mult lucrurile dacă am modifica programul în așa fel încât să pornească de fiecare dată cu opțiunea asta așa că mai bine comentăm codul aici, ca să nu mai verifice opțiunea și deci să nu mai caute niciodată update-uri. E soluția cea mai simplă.</p>
 <p>Ca să facem un petec ca la carte, vom face așa:</p>
 <p>Facem o copie a fișierului main.py:</p>
@@ -158,13 +158,12 @@ tag/hacking
   #     self.update_checker.start()
 </pre>
 <p>Ca să generăm petecul vom folosi gendiff din directorul de deasupra directorului rădăcină:</p>
-<pre>
-    $ cd ~/rpmbuild/BUILD
+<div class="Diff"><div class="highlight"><pre>    $ cd ~/rpmbuild/BUILD
     $ gendiff calibre .no_update
     diff -up calibre/src/calibre/gui2/main.py.no_update calibre/src/calibre/gui2/main.py
     --- calibre/src/calibre/gui2/main.py.no_update	2009-11-16 14:21:55.200387171 +0200
     +++ calibre/src/calibre/gui2/main.py	2009-11-16 14:22:10.400510757 +0200
-    <code></code> -221,11 +221,11 <code></code> class Main(MainWindow, Ui_MainWindow, De
+    @@ -221,11 +221,11 @@ class Main(MainWindow, Ui_MainWindow, De
     self.latest_version = &#39; &#39;
     self.vanity.setText(self.vanity_template%dict(version=&#39; &#39;, device=&#39; &#39;))
     self.device_info = &#39; &#39;
@@ -181,14 +180,14 @@ tag/hacking
     ####################### Status Bar #####################
     self.status_bar = StatusBar(self.jobs_dialog, self.system_tray_icon)
     self.setStatusBar(self.status_bar)
-</pre>
+</pre></div>
+</div>
 <p>Totul arată bine, deci putem să-l punem în surse:</p>
 <pre>
   $ gendiff calibre .no_update &#62; ~/rpmbuild/SOURCES/calibre-no-update.patch
-  </pre>
+</pre>
 <p>Acum trebuie să modificăm spec-ul, adăugând un nou petec, incrementând release-ul, menționând motivul pentru petec și scriind modificarea în Changelog:</p>
-<p><pre>
-  <code></code> -1,6 +1,6 <code></code>
+<div class="Diff"><div class="highlight"><pre>  @@ -1,6 +1,6 @@
   Name:           calibre
   Version:        0.6.21
   -Release:        1%{?dist}
@@ -196,34 +195,27 @@ tag/hacking
   Summary:        E-book converter and library management
   Group:          Applications/Multimedia
   License:        GPLv3
-  <code></code> -18,6 +18,7 <code></code>
+  @@ -18,6 +18,7 @@
   Source1:        generate-tarball.sh
   Patch0:         %{name}-cssprofiles.patch
   Patch1:         %{name}-manpages.patch
   +Patch2:         %{name}-no-update.patch
-  BuildRoot:      <span style="_tmppath;">/</span>{name<del><span style="version;text-align:left;">/del></span>{release<del>root</del><span>(</span>{__id_u} -n)
-  BuildRequires:  python >= 2.6
-  <code></code> -72,6 +73,9 <code></code>
-  # don&#8217;t append calibre1 to the name of the manpages. No need to compress either
-  %patch1 -p1 -b .manpages</del></pre></p>
-
-  +# don&#8217;t check for new upstream version (that&#8217;s what packagers do)
+  BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+  BuildRequires:  python &gt;= 2.6
+  @@ -72,6 +73,9 @@
+  # don&#39;t append calibre1 to the name of the manpages. No need to compress either
+  %patch1 -p1 -b .manpages
+  +# don&#39;t check for new upstream version (that&#39;s what packagers do)
   +%patch2 -p1 -b .no-update
   +
   # dos2unix newline conversion
-  %{__sed} -i 's/\r//&#8217; src/calibre/web/feeds/recipes/*
-
-  <code></code> -239,6 +243,9 <code></code>
+  %{__sed} -i &#39;s/\r//&#39; src/calibre/web/feeds/recipes/*
+  @@ -239,6 +243,9 @@
   %{_mandir}/man1/*
-
   %changelog
-  +* Sat Nov  29 2009 Ionuț C. Arțăriși <mapleoin> &#8211; 0.6.21-2
-    +- patch to stop checking for new upstream version
-    +
-    * Sat Nov  6 2009 Ionuț C. Arțăriși </mapleoin><mapleoin> &#8211; 0.6.21-1
-      &#8211; new upstream version: http://calibre.kovidgoyal.net/wiki/Changelog#Version0.6.2106Nov2009
-      &#8211; added python-BeautifulSoup requirement
-    </mapleoin>
+  +* Sat Nov  29 2009 Ionuț C. Arțăriși 
+</pre></div>
+</div>
 <p>Gata. Asta a fost tot :). Acum putem reconstrui pachetul cu noile patchuri:</p>
 <pre>
   $ cd ~/rpmbuild/SPECS/
@@ -232,7 +224,7 @@ tag/hacking
 <p>Și putem reinstala noul pachet:</p>
 <pre>
   $ su -c &#34;yum localinstall -y --nogpgcheck ~/rpmbuild/RPMS/x86_64/calibre-0.6.21-2.fc12.x86_64.rpm&#34;
-  </pre>
+</pre>
         </div>
         <div class="post_tags">Tags:
                 <a href="/tag/fedora-ro.html">fedora-ro</a>

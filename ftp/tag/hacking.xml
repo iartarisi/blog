@@ -5,7 +5,7 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Fri, 19 Mar 2010 12:26:23 +0200</pubDate>
+        <pubDate>Fri, 19 Mar 2010 12:32:34 +0200</pubDate>
         <generator>pyBlee!</generator>
         <item>
             <title>Cum să peticești un rpm (patch rpm)</title>
@@ -63,13 +63,13 @@
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Ne interesează ca modificarea pe care o vom aduce să fie cât mai lizibilă pentru cei care vor modifica pachetul nostru mai târziu și să fie cât mai ușor de revenit la versiunea nemodificată. Dacă ne uităm mai atent în main, găsim următorul cod:&lt;/p&gt;
-&lt;pre&gt;
-  if not opts.no_update_check:
-  self.update_checker = CheckForUpdates()
-  QObject.connect(self.update_checker,
-  SIGNAL(&amp;#39;update_found(PyQt_PyObject)&amp;#39;), self.update_found)
-  self.update_checker.start()
-&lt;/pre&gt;
+&lt;div class="Python"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;no_update_check&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update_checker&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CheckForUpdates&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+  &lt;span class="n"&gt;QObject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update_checker&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="n"&gt;SIGNAL&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;update_found(PyQt_PyObject)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update_found&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update_checker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;p&gt;Codul verifică dacă programul a fost pornit cu opțiunea no_update_check. Ar complica prea mult lucrurile dacă am modifica programul în așa fel încât să pornească de fiecare dată cu opțiunea asta așa că mai bine comentăm codul aici, ca să nu mai verifice opțiunea și deci să nu mai caute niciodată update-uri. E soluția cea mai simplă.&lt;/p&gt;
 &lt;p&gt;Ca să facem un petec ca la carte, vom face așa:&lt;/p&gt;
 &lt;p&gt;Facem o copie a fișierului main.py:&lt;/p&gt;
@@ -84,13 +84,12 @@
   #     self.update_checker.start()
 &lt;/pre&gt;
 &lt;p&gt;Ca să generăm petecul vom folosi gendiff din directorul de deasupra directorului rădăcină:&lt;/p&gt;
-&lt;pre&gt;
-    $ cd ~/rpmbuild/BUILD
+&lt;div class="Diff"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;    $ cd ~/rpmbuild/BUILD
     $ gendiff calibre .no_update
     diff -up calibre/src/calibre/gui2/main.py.no_update calibre/src/calibre/gui2/main.py
     --- calibre/src/calibre/gui2/main.py.no_update	2009-11-16 14:21:55.200387171 +0200
     +++ calibre/src/calibre/gui2/main.py	2009-11-16 14:22:10.400510757 +0200
-    &lt;code&gt;&lt;/code&gt; -221,11 +221,11 &lt;code&gt;&lt;/code&gt; class Main(MainWindow, Ui_MainWindow, De
+    @@ -221,11 +221,11 @@ class Main(MainWindow, Ui_MainWindow, De
     self.latest_version = &amp;#39; &amp;#39;
     self.vanity.setText(self.vanity_template%dict(version=&amp;#39; &amp;#39;, device=&amp;#39; &amp;#39;))
     self.device_info = &amp;#39; &amp;#39;
@@ -107,14 +106,14 @@
     ####################### Status Bar #####################
     self.status_bar = StatusBar(self.jobs_dialog, self.system_tray_icon)
     self.setStatusBar(self.status_bar)
-&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;p&gt;Totul arată bine, deci putem să-l punem în surse:&lt;/p&gt;
 &lt;pre&gt;
   $ gendiff calibre .no_update &amp;#62; ~/rpmbuild/SOURCES/calibre-no-update.patch
-  &lt;/pre&gt;
+&lt;/pre&gt;
 &lt;p&gt;Acum trebuie să modificăm spec-ul, adăugând un nou petec, incrementând release-ul, menționând motivul pentru petec și scriind modificarea în Changelog:&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;
-  &lt;code&gt;&lt;/code&gt; -1,6 +1,6 &lt;code&gt;&lt;/code&gt;
+&lt;div class="Diff"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;  @@ -1,6 +1,6 @@
   Name:           calibre
   Version:        0.6.21
   -Release:        1%{?dist}
@@ -122,34 +121,27 @@
   Summary:        E-book converter and library management
   Group:          Applications/Multimedia
   License:        GPLv3
-  &lt;code&gt;&lt;/code&gt; -18,6 +18,7 &lt;code&gt;&lt;/code&gt;
+  @@ -18,6 +18,7 @@
   Source1:        generate-tarball.sh
   Patch0:         %{name}-cssprofiles.patch
   Patch1:         %{name}-manpages.patch
   +Patch2:         %{name}-no-update.patch
-  BuildRoot:      &lt;span style="_tmppath;"&gt;/&lt;/span&gt;{name&lt;del&gt;&lt;span style="version;text-align:left;"&gt;/del&gt;&lt;/span&gt;{release&lt;del&gt;root&lt;/del&gt;&lt;span&gt;(&lt;/span&gt;{__id_u} -n)
-  BuildRequires:  python &gt;= 2.6
-  &lt;code&gt;&lt;/code&gt; -72,6 +73,9 &lt;code&gt;&lt;/code&gt;
-  # don&amp;#8217;t append calibre1 to the name of the manpages. No need to compress either
-  %patch1 -p1 -b .manpages&lt;/del&gt;&lt;/pre&gt;&lt;/p&gt;
-
-  +# don&amp;#8217;t check for new upstream version (that&amp;#8217;s what packagers do)
+  BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+  BuildRequires:  python &amp;gt;= 2.6
+  @@ -72,6 +73,9 @@
+  # don&amp;#39;t append calibre1 to the name of the manpages. No need to compress either
+  %patch1 -p1 -b .manpages
+  +# don&amp;#39;t check for new upstream version (that&amp;#39;s what packagers do)
   +%patch2 -p1 -b .no-update
   +
   # dos2unix newline conversion
-  %{__sed} -i 's/\r//&amp;#8217; src/calibre/web/feeds/recipes/*
-
-  &lt;code&gt;&lt;/code&gt; -239,6 +243,9 &lt;code&gt;&lt;/code&gt;
+  %{__sed} -i &amp;#39;s/\r//&amp;#39; src/calibre/web/feeds/recipes/*
+  @@ -239,6 +243,9 @@
   %{_mandir}/man1/*
-
   %changelog
-  +* Sat Nov  29 2009 Ionuț C. Arțăriși &lt;mapleoin&gt; &amp;#8211; 0.6.21-2
-    +- patch to stop checking for new upstream version
-    +
-    * Sat Nov  6 2009 Ionuț C. Arțăriși &lt;/mapleoin&gt;&lt;mapleoin&gt; &amp;#8211; 0.6.21-1
-      &amp;#8211; new upstream version: http://calibre.kovidgoyal.net/wiki/Changelog#Version0.6.2106Nov2009
-      &amp;#8211; added python-BeautifulSoup requirement
-    &lt;/mapleoin&gt;
+  +* Sat Nov  29 2009 Ionuț C. Arțăriși 
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;p&gt;Gata. Asta a fost tot :). Acum putem reconstrui pachetul cu noile patchuri:&lt;/p&gt;
 &lt;pre&gt;
   $ cd ~/rpmbuild/SPECS/
@@ -158,7 +150,7 @@
 &lt;p&gt;Și putem reinstala noul pachet:&lt;/p&gt;
 &lt;pre&gt;
   $ su -c &amp;#34;yum localinstall -y --nogpgcheck ~/rpmbuild/RPMS/x86_64/calibre-0.6.21-2.fc12.x86_64.rpm&amp;#34;
-  &lt;/pre&gt; </description>
+&lt;/pre&gt; </description>
             <pubDate>Mon, 30 Nov 2009 12:00 GMT</pubDate>
         </item>
         <item>
