@@ -1,0 +1,27 @@
+Cum să actualizezi metadatele yum în mod automat
+---
+
+fedora-ro, linux, foss
+---
+
+Unul dintre lucrurile care mă enervează cel mai tare ca utilizator desktop la yum e că de fiecare dată când vreau să caut sau să instalez un pachet, trebuie să aștept câteva secunde bune până își actualizează metadatele pentru toate depozitele active. Astăzi am avut timp să caut o metodă de a scăpa de neplăcerea asta și a fost destul de simplu de găsit.
+
+Rezolvarea nu este să dezactivăm complet actualizarea metadatelor, pentru că am putea încerca să instalăm pachete a căror dependințe au fost actualizate și a căror versiune exactă nu se mai găsește în depozit => _dependency hell_.
+
+Se pare că există un program _yum-updatesd_ (@su -c "yum install yum-updatesd"@) care poate actualiza automat metadatele.
+
+După ce l-am instalat, putem modifica @/etc/yum/yum-updatesd.conf@ dacă vrem să facem lucruri dubioase, cum ar fi să îl lăsăm să instaleze actualizări automat -- pentru că trăim într-o utopie în care actualizările nu strică niciodată nimic -- sau, mai puțin dubios, doar să le descarce.
+
+Acum că am terminat cu setările, putem porni serviciul cu:
+
+<pre lang="bash">
+ $ su -c "service yum-updatesd start"
+ $ cacamaca
+</pre>
+
+
+Și îl putem pune să se pornească automat la fiecare boot:
+
+<pre lang="bash">
+ $ su -c "chkconfig yum-updatesd on"
+</pre>
