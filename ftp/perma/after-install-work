@@ -42,11 +42,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata">Emacs la Ceata</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin">FUDCon Berlin</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -87,17 +87,17 @@ feed
         <h3>Friday, December 19, 2008</h3>
         <div class="entry">
              <p>It&#8217;s distro-hopping season again and I chose debian this time. I might explain my reasons for that somewhere else. Here&#8217;s a list of stuff I need to do on every install in order to get comfy with my new distro. (There&#8217;s a sort of meme floating around).<br />I use gnome!</p>
-<ul>
+<p> <ul>
 <li>Get 6 virtual desktops. </li>
 <li>Set some basic can&#8217;t-live-without-keybindings Ctrl+_number_ for switching between desktops and Alt+T for launching a gnome-terminal.</li>
 <li>Clean up my desktop. I really hate every kind of clutter on my desktop, so I delete everything. Almost everything can just be deleted, except for the Home, Trash and Computer icons. Fire up <code>gconf-editor</code> and go to <em>apps>nautilus>desktop</em> to uncheck everything. While we&#8217;re at it, let&#8217;s also enabling deleting in <em>nautilus</em> (it normally only lets you send stuff to Trash), by checking enable_delete in <em>nautilus>preferences</em>. Nautilus>Edit>Preferences>Behaviour &#8211; always open in browser windows &#8211; so it doesn&#8217;t spam me with 1000 windows to the world.</li>
-<li>Next is <code>&#60;package manager&#62; install bash-completion</code> and adding this to my <em>.bashrc</em>: <code>. /etc/bash_completion</code>.</li>
+<li>Next is <code>&#60;package manager=&#34;manager&#34;&#62; install bash-completion</code> and adding this to my <em>.bashrc</em>: <code>. /etc/bash_completion</code>.</li>
 <li>Time to get my .vimrc from wherever i happen to be keeping it at the time. you can check it out now <a href="http://mapleoin.fedorapeople.org/vimrc">here</a>.</li>
 <li>Nowadays, as I&#8217;ve got really lazy, I also set up automatic login (you can do that from <em>System>Administration>Login Window</em>. That basically bypasses gdm.</li>
 <li>Get myself into some better groups like: wheel/admin/sudo, storage/disk(so nautilus can mount disks), by editing <code>/etc/group</code>.</li>
 <li>You might also want to take a look at http://art.gnome.org if you&#8217;re the type. I know it&#8217;s a bit outdated, but the interface is a whole lot better than *-look.org</li>
 <li>Here&#8217;s a list of apps I use regularly: <em>Firefox, gnome-terminal, vim, ipython, git, xchat, evolution, pidgin, deluge, banshee/amarok, gnome-mplayer</em>.</li>
-</ul>
+</ul><br /></p>
         </div>
         <div class="post_tags">Tags:
                 <a href="/tag/unix.html">unix</a>
