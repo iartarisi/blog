@@ -1,0 +1,19 @@
+The late Fedora Summer coder
+---
+
+linux, foss, fedora, fedora-summer-coding
+---
+
+I started my "Fedora Summer Coding":https://fedoraproject.org/wiki/Summer_Coding_2010 last week. Although most people started almost two months ago, I chose (and was allowed to - Yay, FSC(Fedora Summer Coding)!) a different schedule because I just finished college last week.
+
+This summer I'll be working on a new project for Fedora - "Copr":https://fedoraproject.org/wiki/Category:Copr. Fedora Copr will allow any Fedorian to have their own package repository with packages built and hosted by "Fedora's Infrastructure":https://fedoraproject.org/wiki/Infrastructure. My mentor this summer will be "Toshio":http://anonbadger.wordpress.com/, I've always enjoyed working with him and this summer will be no different. "Here":https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app is my actual FSC(Fedora Summer Coding) proposal. Although the things written in that proposal are turning out to be a bit inaccurate, it's still a good bird's eye view of what I'm going to do this summer. 
+
+So about the first week. Things started really slow. I did a lot of orientation, certainly more than I thought I would. I hadn't used TurboGears2 before, though I had worked with TurboGears 1.x on "Fedora's pkgdb":https://admin.fedoraproject.org/pkgdb. When I started out I had only a TG2 automatically generated skeleton app - well it's mostly the same now, though at least I now know a lot more about what's in there. The fact that I had to start it up myself meant I had to learn a lot of things about TG2 that I would've normally just copied from other parts of a fully-functional project. And that was a great experience. In a way it's fulfilling to be able to _pioneer_ things in this way ;). I'm trying to only ask my mentor questions about designing the actual app and solve my "How do I ... in TurboGears/Python?" questions elsewhere. My mentor has always given me a lot of independence when working on things and that feels really good, though at times I feel inexperienced. There's the thought that the project I'm working on will be used by a lot of technical users and I'm really not sure what my decisions' impact will be on the whole project.
+
+I'm mostly on time with my "mock-up schedule":https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app#Timeline because I had set the first week for orienteering. I also wrote the DB schema for Coprs, though that was on the second week. That doesn't mean I'm ahead of schedule however, because I'll probably have a lot to work on the Copr controllers, and a lot of documenting and designing.
+
+I'm proud that I setup testing after a day of wading through the scattered documentation of TurboGears2 testing. There's mostly no documentation on testing on the "TurboGears2.0 docs website":http://www.turbogears.org/2.0/docs/toc.html. So I went to the "python nose":http://somethingaboutorange.com/mrl/projects/nose/0.11.2/ webpage. But they don't have any info on the TurboGears2 web helpers which I needed to use. So I went to "pylonshq docs about testing":http://pylonsbook.com/en/1.1/testing.html, but they use a slightly different syntax because they're using paste.fixture. I finally found the "TurboGears2.1 testing docs":http://turbogears.org/2.1/docs/main/Testing/index.html which was what I really needed. It turns out that TurboGears 2.x uses "WebTest":http://pythonpaste.org/webtest/.
+
+So now I have testing. My project is not supposed to have any web interface at this point, so writing tests is the easiest way to prove that things are actually working.
+
+This next week I'll probably get some work done on Copr controllers. Implementing the ability to CRUD Coprs and Repos.

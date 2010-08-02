@@ -22,13 +22,6 @@ feed
 
 </div>
 <div id="sidebar">
-<!--Ad Bard advertisement snippet, begin -->
-<script type="text/javascript">
- var ab_h = '07a588f86184b760339f128868a94817';
-  var ab_s = '8d5dbcb89f13a768116e6e2bb4db1e53';
-  </script>
-<script type="text/javascript" src="http://cdn1.adbard.net/js/ab1.js"></script>
-<!--Ad Bard, end -->
 <!--cuZmeura -->
 <script type="text/javascript" src="http://cuzmeura.org/serve/mapleoin">
     //<![CDATA[
@@ -42,32 +35,27 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata">Emacs la Ceata</a></li>
 </ul>
 </div><!--recent-->
 <br />
-<h4>Links</h4>
-<ul>
-<li><a href="http://linuxsoft.ro" title="Comunitate open-source">linuxsoft</a></li>
-<li><a href="http://jamendo.com" title="muzică liberă">jamendo!</a></li>
-<li><a href="http://fedoraproject.ro" title="Fedora România">fedora Romania</a></li>
-</ul>
 <div id="tags">
 <h4>Tags</h4>
 <ul>
 <li><a href="/tag/gsoc.html">gsoc</a></li>
 <li><a href="/tag/fedora.html">fedora</a></li>
 <li><a href="/tag/python.html">python</a></li>
+<li><a href="/tag/unix.html">unix</a></li>
 <li><a href="/tag/databases.html">databases</a></li>
 <li><a href="/tag/programming.html">programming</a></li>
-<li><a href="/tag/unix.html">unix</a></li>
+<li><a href="/tag/floss.html">floss</a></li>
 <li><a href="/tag/django.html">django</a></li>
 <li><a href="/tag/packaging.html">packaging</a></li>
-<li><a href="/tag/floss.html">floss</a></li>
+<li><a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a></li>
 <li><a href="/tag/books.html">books</a></li>
 <li><a href="/tag/emacs.html">emacs</a></li>
 <li><a href="/tag/freebsd.html">freebsd</a></li>
@@ -80,25 +68,26 @@ feed
 <li><a href="/tag/events.html">events</a></li>
 </ul>
 </div><!--tags-->
-</div><!--links-->
+</div><!--sidebar-->
 <div id="content">
     <div class="post">
         <h2><a href="http://mapleoin.bluepink.ro/perma/blogging-despre-blogging">Blogging despre blogging</a></h2>
         <h3>Friday, September 12, 2008</h3>
         <div class="entry">
-             <p>Ar fi frumos ca blogul ăsta să fie interesant de citit peste câțiva ani, măcar de către mine. Să îmbătrânească la fel ca brânza, nu ca ridichiile. Așa că nu-mi voi revizui posturile<sup class="footnote"><a href="#fnb3a41472-6206-492a-b30a-beb33e2689f4">1</a></sup>. Trebuie să-i mulțumesc lui M. Eliade pentru că mi-a susținut ideea asta.</p>
+             <p>Ar fi frumos ca blogul ăsta să fie interesant de citit peste câțiva ani, măcar de către mine. Să îmbătrânească la fel ca brânza, nu ca ridichiile. Așa că nu-mi voi revizui posturile<sup class="footnote"><a href="#fnd9aec2f1-c399-4cae-ac8c-dbb0f48d8e03">1</a></sup>. Trebuie să-i mulțumesc lui M. Eliade pentru că mi-a susținut ideea asta.</p>
 <p>Tocmai mi-a trecut prin minte că dacă voi avea vreodată mulți oameni care să-mi răspundă &#8211; asta presupunând că aș împlini „visul blogger-ului” de a avea răspunsuri la posturi &#8211; blogul ăsta ar putea deveni locul în care două lumi se vor ciocni: cea a prietenilor reali și a celor imaginari (sau electronici (sau artificiali))).</p>
 <p>Revenind&#8230; E un blog personal (am folosit prezentul, asta înseamnă că <i>trăiește!</i>). Trebuie să fie foarte interesant pentru mine, pentru că eu îl scriu. Lucrul ăsta v-ar putea face să credeți că autorul e schizofrenic. Pentru că o să schimb de foarte multe ori tonul, subiectul, unghiul, ipostaza, atmosfera de la un post la altul. Să-mi ziceți dacă vreți să creez câte un personaj imaginar pentru fiecare post ca să mai reduc din confuzie. Eventual pot să-i pun și câte un avatar-monstru generat de wordpress ca în commenturi ;).</p>
 <p>În plus, ăsta va fi locul unde voi încerca să vărs câte un strop din grandioasa mea interesănțime. Nu doar inventânt noi cuvinte. Ca de obicei, descopăr fața ascunsă a lumii, cu o grămadă de personaje fabuloase, inorogi invizibili roz, flying spaghetti monsters sau ceainice cosmice &#8212;  <i>aproape</i> că am făcut o aluzie aici. Posturile lăudăroase sunt terapeutice câteodată (nu e ăsta rostul blogurilor) cu condiția să... Am uitat ce vroiam să spun. Poate până la urmă mă apuc să scriu și poezii. Până atunci am niște dialoguri care ar trebui să apară pe aici, sper să iasă.</p>
 <p>Și o să încerc să contrazic de fiecare dată postul anterior.</p>
 <p id="fn0" class="footnote"><sup>0</sup>ce metaforă îți vine în minte când citești titlul?</p>
-<p id="fnb3a41472-6206-492a-b30a-beb33e2689f4" class="footnote"><sup>1</sup>ceea ce înseamnă de fapt că nu-mi voi revizui posturile la mai mult de 3 zile după ce le-am scris&#8230; Asta dacă nu conțin greșeli. Sau lucruri care nu-mi plac. Sau banalități. Sau aberații. Ba nu, aberațiile sunt ok.</p>
+<p id="fnd9aec2f1-c399-4cae-ac8c-dbb0f48d8e03" class="footnote"><sup>1</sup>ceea ce înseamnă de fapt că nu-mi voi revizui posturile la mai mult de 3 zile după ce le-am scris&#8230; Asta dacă nu conțin greșeli. Sau lucruri care nu-mi plac. Sau banalități. Sau aberații. Ba nu, aberațiile sunt ok.</p>
         </div>
         <br />
         <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
     </div>
 </div>
+<div style="clear:both"></div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 
