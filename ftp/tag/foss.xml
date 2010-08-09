@@ -5,8 +5,17 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Mon, 02 Aug 2010 19:08:56 +0300</pubDate>
+        <pubDate>Mon, 02 Aug 2010 19:39:25 +0300</pubDate>
         <generator>pyBlee!</generator>
+        <item>
+            <title>CRUD for Coprs and testing</title>
+            <link>http://mapleoin.bluepink.ro/perma/basic-coprs-crud</link>
+            <author>mapleoin@bluepink.ro (Oin Maple)</author>
+            <description>  &lt;p&gt;This last week I worked on the first controller for the &lt;a href="https://fedoraproject.org/wiki/Category:Copr"&gt;Copr&lt;/a&gt; &lt;a href="https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app"&gt;TG App&lt;/a&gt;. There is now a &lt;span class="caps"&gt;JSON&lt;/span&gt; &lt;span class="caps"&gt;API&lt;/span&gt; to &lt;span class="caps"&gt;CRUD&lt;/span&gt; Coprs in the TG App&amp;#8217;s database. It also supports adding/removing Copr dependencies. And everything in this first controller is (mostly?) tested with nose unit tests. The happy thing is I&amp;#8217;m still on schedule, though I&amp;#8217;m not ahead of it anymore, which I actually expected.&lt;/p&gt;
+&lt;p&gt;I encountered a couple of problems while setting up testing. I installed python-fedora&amp;#8217;s &lt;span class="caps"&gt;FAS&lt;/span&gt; authorization repoze-who plugin and wasted a lot of time trying to get that working with webtest. In the process I managed to screw up something in my TurboGears installation. Since I was already too deep down the rabbit&amp;#8217;s hole I gave up on it. (I also figured out that I don&amp;#8217;t actually need to test anything about the &lt;span class="caps"&gt;FAS&lt;/span&gt; integration so I don&amp;#8217;t even need to install it). So I proceeded to install TG2 inside a python virtualenv which feels a lot more hygienic and will be a lot easier to replace in case of future screw-ups. I had a few problems there aswell since the documented way to install TurboGears2 without distro-packages is broken &lt;span class="caps"&gt;ATM&lt;/span&gt;, but I now have virtualenv! Yay!&lt;/p&gt;
+&lt;p&gt;Now the next step is to figure out the right relationship between Coprs and Repos and write some code to manage Repos transparently for the user. I also have to learn to write more frequent status updates.&lt;/p&gt; </description>
+            <pubDate>Mon, 02 Aug 2010 18:00 GMT</pubDate>
+        </item>
         <item>
             <title>The late Fedora Summer coder</title>
             <link>http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder</link>

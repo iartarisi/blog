@@ -34,11 +34,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -70,6 +70,22 @@ feed
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></h2>
+        <h3>Monday, August  2, 2010</h3>
+        <div class="entry">
+             <p>This last week I worked on the first controller for the <a href="https://fedoraproject.org/wiki/Category:Copr">Copr</a> <a href="https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app">TG App</a>. There is now a <span class="caps">JSON</span> <span class="caps">API</span> to <span class="caps">CRUD</span> Coprs in the TG App&#8217;s database. It also supports adding/removing Copr dependencies. And everything in this first controller is (mostly?) tested with nose unit tests. The happy thing is I&#8217;m still on schedule, though I&#8217;m not ahead of it anymore, which I actually expected.</p>
+<p>I encountered a couple of problems while setting up testing. I installed python-fedora&#8217;s <span class="caps">FAS</span> authorization repoze-who plugin and wasted a lot of time trying to get that working with webtest. In the process I managed to screw up something in my TurboGears installation. Since I was already too deep down the rabbit&#8217;s hole I gave up on it. (I also figured out that I don&#8217;t actually need to test anything about the <span class="caps">FAS</span> integration so I don&#8217;t even need to install it). So I proceeded to install TG2 inside a python virtualenv which feels a lot more hygienic and will be a lot easier to replace in case of future screw-ups. I had a few problems there aswell since the documented way to install TurboGears2 without distro-packages is broken <span class="caps">ATM</span>, but I now have virtualenv! Yay!</p>
+<p>Now the next step is to figure out the right relationship between Coprs and Repos and write some code to manage Repos transparently for the user. I also have to learn to write more frequent status updates.</p>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/foss.html">foss</a>
+                <a href="/tag/fedora.html">fedora</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud#disqus_thread" class="comments">Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
+    </div>
+    <div class="post">
         <h2><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></h2>
         <h3>Sunday, July 25, 2010</h3>
         <div class="entry">
@@ -87,7 +103,7 @@ feed
                 <a href="/tag/fedora.html">fedora</a>
                 <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -113,7 +129,7 @@ feed
                 <a href="/tag/linux.html">linux</a>
                 <a href="/tag/foss.html">foss</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -266,7 +282,7 @@ feed
                 <a href="/tag/hacking.html">hacking</a>
                 <a href="/tag/linux.html">linux</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -282,7 +298,7 @@ feed
                 <a href="/tag/hacking.html">hacking</a>
                 <a href="/tag/books.html">books</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -300,7 +316,7 @@ feed
                 <a href="/tag/foss.html">foss</a>
                 <a href="/tag/packaging.html">packaging</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -315,50 +331,20 @@ feed
                 <a href="/tag/emacs.html">emacs</a>
                 <a href="/tag/events.html">events</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata#disqus_thread" class="comments">View Comments</a>
-        <img class="separator" alt="post separator" src="/css/separator.png" />
-    </div>
-    <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin">FUDCon Berlin</a></h2>
-        <h3>Monday, June 29, 2009</h3>
-        <div class="entry">
-             <p>I just got back from this year&#8217;s <acronym title="Europe, the Middle East and Africa">EMEA</acronym> <acronym title="Fedora Users and Developers Conference">FUDCON</acronym> in Berlin with <a href="http://nicubunu.blogspot.com">Nicu</a> . I didn&#8217;t have time to write anything while I was there because so much was happening all the time.</p>
-<p><img src="http://fedora.nicubunu.ro/photos/fudcon2009berlin/613-img_1477.jpg.medium.jpeg" alt="" /></p>
-<h3>FUDCon and LinuxTag</h3>
-<p>LinuxTag wasn&#8217;t really the purpose of our visit, but we got free tickets so I checked the place out for a while. There were lots of booths and some speeches (mostly in German). There were also some activities, but I really didn&#8217;t get to any of them since most appeared to be German-only. I was a bit disappointed, <a href="http://mapleoin.bluepink.ro/perma/eLiberatica-aftermath">eLiberatica</a> had way better talks and guests.</p>
-<p>FUDCon was nice. The first day was a little slow to start, but the BarCamp session the next day was very interesting and diverse. More of that would&#8217;ve been nice. Some of the cool topics I enjoyed were: koji at <span class="caps">CERN</span>, git for hackers, Fedora <span class="caps">EKG</span> and UI Design. The last day was mostly random hacking by people who already had something to work on. I did a bit of pkgdb hacking on my own and then went Berlinxploring.</p>
-<h3>Berlin</h3>
-<p>The city was awesome. I haven&#8217;t been to a lot of different countries, but right now Berlin is my favourite. Its public transportation is awesome, the people are polite, friendly and everyone can speak English. There were a lot of trees everywhere, the temperature was really cool and there were wild bunnies in the parks! I separated from the crowd two times to go visit the city and I got to see some stuff I would&#8217;ve missed otherwise. It was also cool because what I did was basically ride the train and get off whenever I would see something interesting. I went to the Brandenburg gate and the Governmental district and also got a closer look of the bombed church. I also went to a cool flea market.</p>
-<h3>German Beer</h3>
-<p>The best part of the whole conference were the nights out at the restaurant, I think. I and Nicu were lucky to tag along to a few people from Red Hat before the majority of people had arrived. We got to see some nice places that way, especially thanks to Jesse&#8217;s iphone. I got to eat indian food, assembly line sushy and we were also at the local Zoo. I soon found out that my English was a bit slow and so I couldn&#8217;t keep up with their constant witty joking so I sort of gave up and switched into listening mode.<br />The nights-at-the-restaurant got better and better as more people arrived. We went to a small restaurant right under the railways for free pizza (thanks Red Hat!) where I met a few of the newly arrived people and had some interesting chats mostly about fedora and Red Hat.<br />The next day we went looking for a Sudanese restaurant, but ended up at a Cuban restaurant with cool waitresses. I got to taste the first real German beer and socialised with some of the other European guys which was really fun. <br />The last night was the best night. We had interesting discussions about fonetics(!), German beer, the Dutch language and <span class="caps">RMS</span> among other things. They also had the greatest dark German beer, which I forgot the name of. Real traditional German beer really doesn&#8217;t compare with any other beer. It&#8217;s a whole different beverage and an awesome one.</p>
-<h3>Conclusion</h3>
-<p>Overall I think it was a great experience. I got to meet a lot of interesting and smart people from all over the world who all shared a passion for their work and for Fedora.<br />So these are sort of the words to <a href="http://fedora.nicubunu.ro/photos/fudcon2009berlin/">Nicu&#8217;s photos</a> which explain the rest, only better.</p>
-        </div>
-        <div class="post_tags">Tags:
-                <a href="/tag/fedora.html">fedora</a>
-                <a href="/tag/events.html">events</a>
-        </div>
-        <a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
 </div>
-<div style="clear:both"></div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 
 <script type="text/javascript">
-//<![CDATA[
-(function() {
-		var links = document.getElementsByTagName('a');
-		var query = '?';
-		for(var i = 0; i < links.length; i++) {
-			if(links[i].href.indexOf('#disqus_thread') >= 0) {
-				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-			}
-		}
-		document.write('<script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/get_num_replies.js' + query + '"></' + 'script>');
-	})();
-//]]>
+var disqus_shortname = 'revolutionblahg';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/revolutionblahg/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
 </script>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

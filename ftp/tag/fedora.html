@@ -34,11 +34,11 @@ tag/fedora
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -70,6 +70,22 @@ tag/fedora
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></h2>
+        <h3>Monday, August  2, 2010</h3>
+        <div class="entry">
+             <p>This last week I worked on the first controller for the <a href="https://fedoraproject.org/wiki/Category:Copr">Copr</a> <a href="https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app">TG App</a>. There is now a <span class="caps">JSON</span> <span class="caps">API</span> to <span class="caps">CRUD</span> Coprs in the TG App&#8217;s database. It also supports adding/removing Copr dependencies. And everything in this first controller is (mostly?) tested with nose unit tests. The happy thing is I&#8217;m still on schedule, though I&#8217;m not ahead of it anymore, which I actually expected.</p>
+<p>I encountered a couple of problems while setting up testing. I installed python-fedora&#8217;s <span class="caps">FAS</span> authorization repoze-who plugin and wasted a lot of time trying to get that working with webtest. In the process I managed to screw up something in my TurboGears installation. Since I was already too deep down the rabbit&#8217;s hole I gave up on it. (I also figured out that I don&#8217;t actually need to test anything about the <span class="caps">FAS</span> integration so I don&#8217;t even need to install it). So I proceeded to install TG2 inside a python virtualenv which feels a lot more hygienic and will be a lot easier to replace in case of future screw-ups. I had a few problems there aswell since the documented way to install TurboGears2 without distro-packages is broken <span class="caps">ATM</span>, but I now have virtualenv! Yay!</p>
+<p>Now the next step is to figure out the right relationship between Coprs and Repos and write some code to manage Repos transparently for the user. I also have to learn to write more frequent status updates.</p>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/foss.html">foss</a>
+                <a href="/tag/fedora.html">fedora</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud#disqus_thread" class="comments">Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
+    </div>
+    <div class="post">
         <h2><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></h2>
         <h3>Sunday, July 25, 2010</h3>
         <div class="entry">
@@ -87,7 +103,7 @@ tag/fedora
                 <a href="/tag/fedora.html">fedora</a>
                 <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -105,7 +121,7 @@ tag/fedora
                 <a href="/tag/foss.html">foss</a>
                 <a href="/tag/packaging.html">packaging</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -128,7 +144,7 @@ tag/fedora
                 <a href="/tag/fedora.html">fedora</a>
                 <a href="/tag/events.html">events</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -154,7 +170,7 @@ tag/fedora
                 <a href="/tag/events.html">events</a>
                 <a href="/tag/floss.html">floss</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/eLiberatica-aftermath#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/eLiberatica-aftermath#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -171,7 +187,7 @@ tag/fedora
                 <a href="/tag/fedora.html">fedora</a>
                 <a href="/tag/hacking.html">hacking</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -192,27 +208,20 @@ tag/fedora
                 <a href="/tag/programming.html">programming</a>
                 <a href="/tag/foss.html">foss</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/GSOC-it-begins#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/GSOC-it-begins#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
 </div>
-<div style="clear:both"></div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 
 <script type="text/javascript">
-//<![CDATA[
-(function() {
-		var links = document.getElementsByTagName('a');
-		var query = '?';
-		for(var i = 0; i < links.length; i++) {
-			if(links[i].href.indexOf('#disqus_thread') >= 0) {
-				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-			}
-		}
-		document.write('<script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/get_num_replies.js' + query + '"></' + 'script>');
-	})();
-//]]>
+var disqus_shortname = 'revolutionblahg';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/revolutionblahg/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
 </script>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

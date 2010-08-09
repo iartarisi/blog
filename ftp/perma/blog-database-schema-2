@@ -35,11 +35,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -97,7 +97,7 @@ feed
 </pre></div>
 </div>
 <p>Pe lângă faptul că toate tipurile de date au nume și <a href="http://docs.djangoproject.com/en/dev/ref/models/fields/#model-field-types">explicații</a> pe care le poate înțelege oricine, django va folosi datele astea atunci când va construi interfața de administrare.<br />E interesant că trebuie să declari toate tabelele în ordine. La început pusesem Categoria ultima și n-o găsea când vroia să facă ForeignKey-ul de la Post. M-a cam răsfățat OOP-ul.<br />Alt lucru fain e că de pe acum se pregătesc feature-uri interesante cum ar fi URLField.verify_exists care verifică toate url-urile introduse și le refuză dacă primește <a href="http://en.wikipedia.org/wiki/HTTP_404">404</a>. Așa că de-acum n-o să mai poată nimeni să pună <a href="http://en.wikipedia.org/wiki/Metasyntactic_variable">variabile metasintactice</a> de genu: <i>caca</i>, <i>mumu</i> și altele în field-ul ăla!</p>
-<p>Și acum un mysql describe<sup class="footnote"><a href="#fne0284912-246e-4185-adf4-35e23437958d">3</a></sup> pentru tabelele rezultate:</p>
+<p>Și acum un mysql describe<sup class="footnote"><a href="#fnf5be4353-bfc4-4585-a7b7-2ab07ba52123">3</a></sup> pentru tabelele rezultate:</p>
 <div class="MySQL"><div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_category</span><span class="p">;</span>
  <span class="o">+-------+-------------+------+-----+---------+</span>
  <span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">Type</span>        <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
@@ -140,7 +140,7 @@ feed
 </pre></div>
 </div>
 <p>TADA!<br />Trebuie să studiez de ce se strică formatarea (de fapt știu de ce, trebuie să scot textile din blockul ăla), dar ideea de bază e clară.</p>
-<p id="fne0284912-246e-4185-adf4-35e23437958d" class="footnote"><sup>3</sup>merci gheorghe!</p>
+<p id="fnf5be4353-bfc4-4585-a7b7-2ab07ba52123" class="footnote"><sup>3</sup>merci gheorghe!</p>
         </div>
         <div class="post_tags">Tags:
                 <a href="/tag/programming.html">programming</a>
@@ -149,11 +149,24 @@ feed
                 <a href="/tag/python.html">python</a>
         </div>
         <br />
-        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-    </div>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          /** * var disqus_identifier; [Optional but recommended: Define
+          a unique identifier (e.g. post id or slug) for this thread] */
+          (function() { var dsq = document.createElement('script');
+          dsq.type = 'text/javascript'; dsq.async = true; dsq.src =
+          'http://revolutionblahg.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] ||
+          document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view
+        the <a href="http://disqus.com/?ref_noscript=revolutionblahg">comments
+        powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments
+        powered by <span class="logo-disqus">Disqus</span></a>
     </div>
 </div>
-<div style="clear:both"></div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 

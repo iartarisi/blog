@@ -34,11 +34,11 @@ tag/hacking
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -219,7 +219,7 @@ tag/hacking
                 <a href="/tag/hacking.html">hacking</a>
                 <a href="/tag/linux.html">linux</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -235,7 +235,7 @@ tag/hacking
                 <a href="/tag/hacking.html">hacking</a>
                 <a href="/tag/books.html">books</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -252,27 +252,20 @@ tag/hacking
                 <a href="/tag/fedora.html">fedora</a>
                 <a href="/tag/hacking.html">hacking</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
 </div>
-<div style="clear:both"></div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 
 <script type="text/javascript">
-//<![CDATA[
-(function() {
-		var links = document.getElementsByTagName('a');
-		var query = '?';
-		for(var i = 0; i < links.length; i++) {
-			if(links[i].href.indexOf('#disqus_thread') >= 0) {
-				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-			}
-		}
-		document.write('<script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/get_num_replies.js' + query + '"></' + 'script>');
-	})();
-//]]>
+var disqus_shortname = 'revolutionblahg';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/revolutionblahg/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
 </script>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

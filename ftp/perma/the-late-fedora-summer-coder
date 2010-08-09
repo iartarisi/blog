@@ -35,11 +35,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -89,11 +89,24 @@ feed
                 <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
         </div>
         <br />
-        <div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/embed.js"></script><noscript><a href="http://revolutionblahg.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-    </div>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          /** * var disqus_identifier; [Optional but recommended: Define
+          a unique identifier (e.g. post id or slug) for this thread] */
+          (function() { var dsq = document.createElement('script');
+          dsq.type = 'text/javascript'; dsq.async = true; dsq.src =
+          'http://revolutionblahg.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] ||
+          document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view
+        the <a href="http://disqus.com/?ref_noscript=revolutionblahg">comments
+        powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments
+        powered by <span class="logo-disqus">Disqus</span></a>
     </div>
 </div>
-<div style="clear:both"></div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 

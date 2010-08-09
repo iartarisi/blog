@@ -34,11 +34,11 @@ tag/django
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -299,7 +299,7 @@ FAILED <span class="o">(</span><span class="nv">errors</span><span class="o">=</
                 <a href="/tag/django.html">django</a>
                 <a href="/tag/python.html">python</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/testing-django-models#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/testing-django-models#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -329,7 +329,7 @@ FAILED <span class="o">(</span><span class="nv">errors</span><span class="o">=</
 </pre></div>
 </div>
 <p>Pe lângă faptul că toate tipurile de date au nume și <a href="http://docs.djangoproject.com/en/dev/ref/models/fields/#model-field-types">explicații</a> pe care le poate înțelege oricine, django va folosi datele astea atunci când va construi interfața de administrare.<br />E interesant că trebuie să declari toate tabelele în ordine. La început pusesem Categoria ultima și n-o găsea când vroia să facă ForeignKey-ul de la Post. M-a cam răsfățat OOP-ul.<br />Alt lucru fain e că de pe acum se pregătesc feature-uri interesante cum ar fi URLField.verify_exists care verifică toate url-urile introduse și le refuză dacă primește <a href="http://en.wikipedia.org/wiki/HTTP_404">404</a>. Așa că de-acum n-o să mai poată nimeni să pună <a href="http://en.wikipedia.org/wiki/Metasyntactic_variable">variabile metasintactice</a> de genu: <i>caca</i>, <i>mumu</i> și altele în field-ul ăla!</p>
-<p>Și acum un mysql describe<sup class="footnote"><a href="#fn0bb3d42a-f699-460a-8c19-c01320cc8648">3</a></sup> pentru tabelele rezultate:</p>
+<p>Și acum un mysql describe<sup class="footnote"><a href="#fn2033c771-e77e-4604-b422-9676cc099070">3</a></sup> pentru tabelele rezultate:</p>
 <div class="MySQL"><div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_category</span><span class="p">;</span>
  <span class="o">+-------+-------------+------+-----+---------+</span>
  <span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">Type</span>        <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
@@ -372,7 +372,7 @@ FAILED <span class="o">(</span><span class="nv">errors</span><span class="o">=</
 </pre></div>
 </div>
 <p>TADA!<br />Trebuie să studiez de ce se strică formatarea (de fapt știu de ce, trebuie să scot textile din blockul ăla), dar ideea de bază e clară.</p>
-<p id="fn0bb3d42a-f699-460a-8c19-c01320cc8648" class="footnote"><sup>3</sup>merci gheorghe!</p>
+<p id="fn2033c771-e77e-4604-b422-9676cc099070" class="footnote"><sup>3</sup>merci gheorghe!</p>
         </div>
         <div class="post_tags">Tags:
                 <a href="/tag/programming.html">programming</a>
@@ -380,7 +380,7 @@ FAILED <span class="o">(</span><span class="nv">errors</span><span class="o">=</
                 <a href="/tag/django.html">django</a>
                 <a href="/tag/python.html">python</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
     <div class="post">
@@ -422,27 +422,20 @@ FAILED <span class="o">(</span><span class="nv">errors</span><span class="o">=</
                 <a href="/tag/python.html">python</a>
                 <a href="/tag/databases.html">databases</a>
         </div>
-        <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema#disqus_thread" class="comments">View Comments</a>
+        <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
 </div>
-<div style="clear:both"></div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 
 <script type="text/javascript">
-//<![CDATA[
-(function() {
-		var links = document.getElementsByTagName('a');
-		var query = '?';
-		for(var i = 0; i < links.length; i++) {
-			if(links[i].href.indexOf('#disqus_thread') >= 0) {
-				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-			}
-		}
-		document.write('<script type="text/javascript" src="http://disqus.com/forums/revolutionblahg/get_num_replies.js' + query + '"></' + 'script>');
-	})();
-//]]>
+var disqus_shortname = 'revolutionblahg';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/revolutionblahg/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
 </script>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

@@ -10,7 +10,7 @@
 feed
 .xml" />
 <title>Revolution blahg 
-    | Fedora Business Cards
+    | CRUD for Coprs and testing
 </title>
 </head>
 <body>
@@ -71,18 +71,17 @@ feed
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards">Fedora Business Cards</a></h2>
-        <h3>Friday, April 24, 2009</h3>
+        <h2><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></h2>
+        <h3>Monday, August  2, 2010</h3>
         <div class="entry">
-             <p>A few days ago, me and a few friends from Fedora Romania decided we&#8217;d like some fedora business cards for the upcoming eLiberatica conference. <a href="http://ianweller.org">Ian Weller</a> had already developed an official <a href="https://fedoraproject.org/wiki/Business_cards">template</a> and even created a cool python generator script and packaged it.</p>
-<p>The problem, however, was that it only supported US-style business cards which are a bit smaller than the Romanian/Central European ones. Live and learn… It seems that there are a lot of <a href="http://en.wikipedia.org/wiki/Business_cards#Dimensions">different sizes</a> actually.</p>
-<p>So I got my hacking hat and dived in. The code was quite nice to look at and easy to understand. The <span class="caps">XML</span> in the svg templates is quite easy to hack, too. Especially when using tools like python&#8217;s <a href="http://docs.python.org/library/xml.dom.minidom.html">minidom</a> . It makes working with python and <span class="caps">XML</span> taste like javascript dom manipulation which is quite nice.</p>
-<p>Everything went smooth, I renamed a few tags, made some modifiable (for height and width), but then I had to make the blue strip on the right of the front of the business card extendable1 . There is no way in <span class="caps">XML</span> to align an element to the right so I spent about an hour coming up with a sweet solution. Instead of having a big white background on which I would apply the blue band, I made a big blue background and made the white background just a little narrower. Because the white background was on top of the blue one, it could get aligned to the left (x=0, y=0 in <span class="caps">XML</span>) and cover just the part that needed to be white, and left a blue band at the right. Problem solved. Hoo-grah!</p>
-<p>Now I&#8217;m waiting for an answer to the patch that I sent to bugzilla. Hopefully it&#8217;ll be accepted and will be available in Fedora, soon, so that others may enjoy and cherish the coolness that it be!</p>
+             <p>This last week I worked on the first controller for the <a href="https://fedoraproject.org/wiki/Category:Copr">Copr</a> <a href="https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app">TG App</a>. There is now a <span class="caps">JSON</span> <span class="caps">API</span> to <span class="caps">CRUD</span> Coprs in the TG App&#8217;s database. It also supports adding/removing Copr dependencies. And everything in this first controller is (mostly?) tested with nose unit tests. The happy thing is I&#8217;m still on schedule, though I&#8217;m not ahead of it anymore, which I actually expected.</p>
+<p>I encountered a couple of problems while setting up testing. I installed python-fedora&#8217;s <span class="caps">FAS</span> authorization repoze-who plugin and wasted a lot of time trying to get that working with webtest. In the process I managed to screw up something in my TurboGears installation. Since I was already too deep down the rabbit&#8217;s hole I gave up on it. (I also figured out that I don&#8217;t actually need to test anything about the <span class="caps">FAS</span> integration so I don&#8217;t even need to install it). So I proceeded to install TG2 inside a python virtualenv which feels a lot more hygienic and will be a lot easier to replace in case of future screw-ups. I had a few problems there aswell since the documented way to install TurboGears2 without distro-packages is broken <span class="caps">ATM</span>, but I now have virtualenv! Yay!</p>
+<p>Now the next step is to figure out the right relationship between Coprs and Repos and write some code to manage Repos transparently for the user. I also have to learn to write more frequent status updates.</p>
         </div>
         <div class="post_tags">Tags:
+                <a href="/tag/foss.html">foss</a>
                 <a href="/tag/fedora.html">fedora</a>
-                <a href="/tag/hacking.html">hacking</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
         </div>
         <br />
         <div id="disqus_thread"></div>

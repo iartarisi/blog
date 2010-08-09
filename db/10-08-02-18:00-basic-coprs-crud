@@ -1,0 +1,11 @@
+CRUD for Coprs and testing
+---
+
+foss, fedora, fedora-summer-coding, copr
+---
+
+This last week I worked on the first controller for the "Copr":https://fedoraproject.org/wiki/Category:Copr "TG App":https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app. There is now a JSON API to CRUD Coprs in the TG App's database. It also supports adding/removing Copr dependencies. And everything in this first controller is (mostly?) tested with nose unit tests. The happy thing is I'm still on schedule, though I'm not ahead of it anymore, which I actually expected.
+
+I encountered a couple of problems while setting up testing. I installed python-fedora's FAS authorization repoze-who plugin and wasted a lot of time trying to get that working with webtest. In the process I managed to screw up something in my TurboGears installation. Since I was already too deep down the rabbit's hole I gave up on it. (I also figured out that I don't actually need to test anything about the FAS integration so I don't even need to install it). So I proceeded to install TG2 inside a python virtualenv which feels a lot more hygienic and will be a lot easier to replace in case of future screw-ups. I had a few problems there aswell since the documented way to install TurboGears2 without distro-packages is broken ATM, but I now have virtualenv! Yay!
+
+Now the next step is to figure out the right relationship between Coprs and Repos and write some code to manage Repos transparently for the user. I also have to learn to write more frequent status updates.
