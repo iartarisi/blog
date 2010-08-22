@@ -34,11 +34,11 @@ tag/fedora
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></li>
+<li><a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things">Copr design - being all things to all people</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -46,6 +46,7 @@ tag/fedora
 <h4>Tags</h4>
 <ul>
 <li><a href="/tag/gsoc.html">gsoc</a></li>
+<li><a href="/tag/packaging.html">packaging</a></li>
 <li><a href="/tag/fedora.html">fedora</a></li>
 <li><a href="/tag/python.html">python</a></li>
 <li><a href="/tag/unix.html">unix</a></li>
@@ -53,7 +54,7 @@ tag/fedora
 <li><a href="/tag/programming.html">programming</a></li>
 <li><a href="/tag/floss.html">floss</a></li>
 <li><a href="/tag/django.html">django</a></li>
-<li><a href="/tag/packaging.html">packaging</a></li>
+<li><a href="/tag/copr.html">copr</a></li>
 <li><a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a></li>
 <li><a href="/tag/books.html">books</a></li>
 <li><a href="/tag/emacs.html">emacs</a></li>
@@ -70,6 +71,54 @@ tag/fedora
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></h2>
+        <h3>Monday, August 16, 2010</h3>
+        <div class="entry">
+             <p>This midterm scared me when I found out about it on Friday when I looked at the schedule I had set myself. However, I have done the work that I should have done by this point in the project. When I wrote the proposal I had assumed that the buildsystem would already be built before me starting coding on the TG app, but that is not the case. Therefore I could only code the user-facing <span class="caps">JSON</span> interface that interacts with the DB as it would if the buildsystem would provide it with packages and repos. Except that there are no packages and repos at this stage.</p>
+<p>So for this midterm, we&#8217;ve got working Copr <span class="caps">CRUD</span>, dependency handling and release/repo editing on a Copr. I also coded the Package <span class="caps">CRUD</span>, which basically allows for uploads of SRPMs, stores the info in the db and also allows for information retrieval and deleting packages. Actually building packages and retrieving packagebuilds will have to wait for the buildsystem to be built.</p>
+<p>After I finish polishing things a bit, I will probably start working on a basic client and then maybe move on to working on the buildsystem part of Copr. That should be loads of fun especially since I haven&#8217;t done anything quite like this before. So it will be hard, but fun :).</p>
+<p>If anyone wants to check out what Copr looks like so far, you&#8217;ll just have to install TurboGears 2.0.x and then:</p>
+<div class="Bash"><div class="highlight"><pre> <span class="nv">$ </span>bzr branch bzr://bzr.fedorahosted.org/bzr/copr/devel
+ <span class="nv">$ </span><span class="nb">cd </span>devel
+ <span class="nv">$ </span>python setup.py develop
+ <span class="nv">$ </span>paster setup-app development.ini
+</pre></div>
+</div>
+<p>And you should have a working Copr. You can run the unit tests with the <code>nosetests</code> command and all 52 of them should run fine. Yay!</p>
+<p>Congratulations to everyone who is finishing their <span class="caps">FSC</span> adventure today! I&#8217;ll still be coding for another month or so.</p>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/copr.html">copr</a>
+                <a href="/tag/fedora.html">fedora</a>
+                <a href="/tag/foss.html">foss</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/midterm-report#disqus_thread" class="comments">Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
+    </div>
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things">Copr design - being all things to all people</a></h2>
+        <h3>Monday, August  9, 2010</h3>
+        <div class="entry">
+             <p>Lots of things happened this third Fedora Summer Coding week. Most people are already wrapping up, but I feel like I&#8217;m still at the beginning.</p>
+<p>The biggest accomplishment of this week has got to be the fact that we (I and my mentor, Toshio) settled on a stable design for representing Coprs, Repos and their relationships. It was harder than it might seem, since we&#8217;ve got all these different entities in Fedora: we&#8217;ve got repos that you could look at as being either a directory with a release and an architecture or a repofile that is the same across releases and arches. When talking about releases we&#8217;ve got Fedora releases (e.g. Fedora 13, Fedora 14) and then we&#8217;ve got the packages for other distros with their own releases: <span class="caps">EPEL</span> and <span class="caps">OLPC</span>.</p>
+<p>Now, on top of all of this we&#8217;ve got Coprs and (at least) two groups of users for the API: the end-users of the Coprs &#8211; the people that install the repos and the packages and the developers of the packages in the Coprs. The end users shouldn&#8217;t have to deal with the intricacies of the Copr/Repos/Releases model; ideally they&#8217;d just have one big button per the distribution they&#8217;re using, so they can install the repo once and have it work even after they&#8217;ve upgraded their distro three times or reinstalled five times (which is sort of how a repofile works). The package developers on the other hand could get hurt by the differences between different distro releases and their different packages &#8211; when depending on different package versions for example.</p>
+<p>So finally we get to Coprs which should basically be a collection of packages that are available for one or more distros with each one having one or more releases. The package maintainer gets to create a Copr and choose a number of releases which they want to support with that Copr. One Copr can depend on as many other Coprs as needed. When the maintainer creates a Copr, the Copr App will automatically create repos for all of the specified releases and for each of the architectures that are supported by the buildsystem.</p>
+<p>Everything I said until now is already implemented at the level of the TurboGears App which will provide the <span class="caps">API</span> for the web interface and any number of <span class="caps">JSON</span> clients. The schema is built and the database insteraction works fine, but repos don&#8217;t actually get created, because that&#8217;s not part of my proposal and will be handled at a different level. Oh and it&#8217;s all unit tested!</p>
+<p>This week wasn&#8217;t just designing and building though, I spent a lot of time digging through TurboGears2 and its sub-packages&#8217; documentation for things that should make the code simpler: raising <span class="caps">JSON</span> errors from nested functions, sending list arguments to <span class="caps">JSON</span> functions via WebTest post requests and even returning a flat list from a SQLAlchemy query on a single table column. All of these things seem to me like they should already be implemented and easy to use which makes me waste time searching for them. In fact they either are bugs or require coding them myself (at least from what I understand so far). I&#8217;ll have to investigate further, especially now since the weekend is over and I hope there&#8217;ll be more people answering questions on <span class="caps">IRC</span> and on issue trackers.</p>
+<p>This next week I&#8217;ll mostly start worrying about what happens when a package maintainer submits a package to be built and that package has the right dependencies available in some releases, but not others, even though the Copr should support all of them. Will she have to submit different <span class="caps">SRPMS</span> for each release or should the Copr have the same version of the package in all of its releases? This will be a matter of settling upon a contract that the Copr provides its users and how uniform the Copr&#8217;s content has to be.</p>
+<p>Fedora Summer Coding! Yay!</p>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/copr.html">copr</a>
+                <a href="/tag/fedora.html">fedora</a>
+                <a href="/tag/foss.html">foss</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things#disqus_thread" class="comments">Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
+    </div>
+    <div class="post">
         <h2><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></h2>
         <h3>Monday, August  2, 2010</h3>
         <div class="entry">
@@ -81,6 +130,7 @@ tag/fedora
                 <a href="/tag/foss.html">foss</a>
                 <a href="/tag/fedora.html">fedora</a>
                 <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+                <a href="/tag/copr.html">copr</a>
         </div>
         <a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
@@ -102,6 +152,7 @@ tag/fedora
                 <a href="/tag/foss.html">foss</a>
                 <a href="/tag/fedora.html">fedora</a>
                 <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+                <a href="/tag/copr.html">copr</a>
         </div>
         <a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
@@ -212,6 +263,7 @@ tag/fedora
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
 </div>
+<div style="clear: right;"></div>
 </div><!-- container -->
 <div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
 

@@ -10,7 +10,7 @@
 feed
 .xml" />
 <title>Revolution blahg 
-    | Fedora Business Cards
+    | Fedora Summer Coding midterm
 </title>
 </head>
 <body>
@@ -72,18 +72,27 @@ feed
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards">Fedora Business Cards</a></h2>
-        <h3>Friday, April 24, 2009</h3>
+        <h2><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></h2>
+        <h3>Monday, August 16, 2010</h3>
         <div class="entry">
-             <p>A few days ago, me and a few friends from Fedora Romania decided we&#8217;d like some fedora business cards for the upcoming eLiberatica conference. <a href="http://ianweller.org">Ian Weller</a> had already developed an official <a href="https://fedoraproject.org/wiki/Business_cards">template</a> and even created a cool python generator script and packaged it.</p>
-<p>The problem, however, was that it only supported US-style business cards which are a bit smaller than the Romanian/Central European ones. Live and learn… It seems that there are a lot of <a href="http://en.wikipedia.org/wiki/Business_cards#Dimensions">different sizes</a> actually.</p>
-<p>So I got my hacking hat and dived in. The code was quite nice to look at and easy to understand. The <span class="caps">XML</span> in the svg templates is quite easy to hack, too. Especially when using tools like python&#8217;s <a href="http://docs.python.org/library/xml.dom.minidom.html">minidom</a> . It makes working with python and <span class="caps">XML</span> taste like javascript dom manipulation which is quite nice.</p>
-<p>Everything went smooth, I renamed a few tags, made some modifiable (for height and width), but then I had to make the blue strip on the right of the front of the business card extendable1 . There is no way in <span class="caps">XML</span> to align an element to the right so I spent about an hour coming up with a sweet solution. Instead of having a big white background on which I would apply the blue band, I made a big blue background and made the white background just a little narrower. Because the white background was on top of the blue one, it could get aligned to the left (x=0, y=0 in <span class="caps">XML</span>) and cover just the part that needed to be white, and left a blue band at the right. Problem solved. Hoo-grah!</p>
-<p>Now I&#8217;m waiting for an answer to the patch that I sent to bugzilla. Hopefully it&#8217;ll be accepted and will be available in Fedora, soon, so that others may enjoy and cherish the coolness that it be!</p>
+             <p>This midterm scared me when I found out about it on Friday when I looked at the schedule I had set myself. However, I have done the work that I should have done by this point in the project. When I wrote the proposal I had assumed that the buildsystem would already be built before me starting coding on the TG app, but that is not the case. Therefore I could only code the user-facing <span class="caps">JSON</span> interface that interacts with the DB as it would if the buildsystem would provide it with packages and repos. Except that there are no packages and repos at this stage.</p>
+<p>So for this midterm, we&#8217;ve got working Copr <span class="caps">CRUD</span>, dependency handling and release/repo editing on a Copr. I also coded the Package <span class="caps">CRUD</span>, which basically allows for uploads of SRPMs, stores the info in the db and also allows for information retrieval and deleting packages. Actually building packages and retrieving packagebuilds will have to wait for the buildsystem to be built.</p>
+<p>After I finish polishing things a bit, I will probably start working on a basic client and then maybe move on to working on the buildsystem part of Copr. That should be loads of fun especially since I haven&#8217;t done anything quite like this before. So it will be hard, but fun :).</p>
+<p>If anyone wants to check out what Copr looks like so far, you&#8217;ll just have to install TurboGears 2.0.x and then:</p>
+<div class="Bash"><div class="highlight"><pre> <span class="nv">$ </span>bzr branch bzr://bzr.fedorahosted.org/bzr/copr/devel
+ <span class="nv">$ </span><span class="nb">cd </span>devel
+ <span class="nv">$ </span>python setup.py develop
+ <span class="nv">$ </span>paster setup-app development.ini
+</pre></div>
+</div>
+<p>And you should have a working Copr. You can run the unit tests with the <code>nosetests</code> command and all 52 of them should run fine. Yay!</p>
+<p>Congratulations to everyone who is finishing their <span class="caps">FSC</span> adventure today! I&#8217;ll still be coding for another month or so.</p>
         </div>
         <div class="post_tags">Tags:
+                <a href="/tag/copr.html">copr</a>
                 <a href="/tag/fedora.html">fedora</a>
-                <a href="/tag/hacking.html">hacking</a>
+                <a href="/tag/foss.html">foss</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
         </div>
         <br />
         <div id="disqus_thread"></div>

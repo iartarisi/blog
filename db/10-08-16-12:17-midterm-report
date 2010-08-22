@@ -1,0 +1,24 @@
+Fedora Summer Coding midterm
+---
+
+copr, fedora, foss, fedora-summer-coding
+---
+
+This midterm scared me when I found out about it on Friday when I looked at the schedule I had set myself. However, I have done the work that I should have done by this point in the project. When I wrote the proposal I had assumed that the buildsystem would already be built before me starting coding on the TG app, but that is not the case. Therefore I could only code the user-facing JSON interface that interacts with the DB as it would if the buildsystem would provide it with packages and repos. Except that there are no packages and repos at this stage.
+
+So for this midterm, we've got working Copr CRUD, dependency handling and release/repo editing on a Copr. I also coded the Package CRUD, which basically allows for uploads of SRPMs, stores the info in the db and also allows for information retrieval and deleting packages. Actually building packages and retrieving packagebuilds will have to wait for the buildsystem to be built.
+
+After I finish polishing things a bit, I will probably start working on a basic client and then maybe move on to working on the buildsystem part of Copr. That should be loads of fun especially since I haven't done anything quite like this before. So it will be hard, but fun :).
+
+If anyone wants to check out what Copr looks like so far, you'll just have to install TurboGears 2.0.x and then:
+
+<pre lang="bash">
+ $ bzr branch bzr://bzr.fedorahosted.org/bzr/copr/devel
+ $ cd devel
+ $ python setup.py develop
+ $ paster setup-app development.ini
+</pre>
+
+And you should have a working Copr. You can run the unit tests with the @nosetests@ command and all 52 of them should run fine. Yay!
+
+Congratulations to everyone who is finishing their FSC adventure today! I'll still be coding for another month or so.
