@@ -35,11 +35,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things">Copr design - being all things to all people</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -80,6 +80,9 @@ feed
                     <li class="month">
                         <h3 class="month">August</h3>
                         <ul class="days"> 
+                            <li class="day">
+                                22 - <a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a>
+                            </li>
                             <li class="day">
                                 16 - <a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a>
                             </li>

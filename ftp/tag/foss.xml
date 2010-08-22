@@ -5,8 +5,19 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Mon, 16 Aug 2010 18:07:49 +0300</pubDate>
+        <pubDate>Mon, 23 Aug 2010 00:54:18 +0300</pubDate>
         <generator>pyBlee!</generator>
+        <item>
+            <title>Ruby koans</title>
+            <link>http://mapleoin.bluepink.ro/perma/ruby-koans</link>
+            <author>mapleoin@bluepink.ro (Oin Maple)</author>
+            <description>  &lt;p&gt;I had a great time today with &lt;a href="http://www.rubykoans.com/"&gt;Ruby Koans&lt;/a&gt;. It took me about 5 hours in all. A good way to spend a Sunday afternoon I suppose.&lt;/p&gt;
+&lt;p&gt;These Ruby Koans are a great way to go on a quick journey through a lot of Ruby&amp;#8217;s common features. You basically have to edit tests in order to get them working. It&amp;#8217;s mostly reading tests actually, but the fact that you have to fill in some blanks keeps the mind from wandering. There are also a couple of exercises which imply a bit more coding.&lt;/p&gt;
+&lt;p&gt;I have a good knowledge of Python and have worked with Ruby in the past on a little Rails project. I had forgotten anything I knew about Ruby though. Yesterday, I don&amp;#8217;t think I would&amp;#8217;ve been able to write a foobaz in Ruby without looking for help online. This proved to be a welcome refresher. Solving these koans gives a great tour of Ruby. As I went through them I kept thinking of how I would do those things with Python. I really like Python&amp;#8217;s philosophy and maybe solving all these ruby koans has made me appreciate Python&amp;#8217;s simplicity and predictability a bit more. Ruby allows for a lot more flexibility however and the koans left me to wonder at what amazing feats this language could accomplish.&lt;/p&gt;
+&lt;p&gt;I wouldn&amp;#8217;t recommend this to a beginner however. While I think I now have a pretty good idea of what the language can do, there were no whys or recommendations about all these features. Maybe it would be a good starting point (or a &lt;em&gt;dive&lt;/em&gt;) for someone coming from a similar language (like Python), before moving on to a good Ruby book. The website claims that they teach culture in addition to Ruby. I would&amp;#8217;ve liked more of that. Maybe it was too subtle for me, but I didn&amp;#8217;t notice anything other than some references to oriental philosophy: &lt;code&gt;test_assert_truth has damaged your karma. You have not yet reached enlightenment ...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;There are a lot of ports of the Ruby Koans. There&amp;#8217;s one for &lt;a href="http://wiki.github.com/gregmalcolm/python_koans/"&gt;python&lt;/a&gt; and there are also a bunch for &lt;a href="http://github.com/relevance/functional-koans"&gt;functional languages&lt;/a&gt;: Clojure, F#, Haskell and Scala. These look like a lot of fun, maybe I&amp;#8217;ll try them next week.&lt;/p&gt; </description>
+            <pubDate>Sun, 22 Aug 2010 22:22 GMT</pubDate>
+        </item>
         <item>
             <title>Fedora Summer Coding midterm</title>
             <link>http://mapleoin.bluepink.ro/perma/midterm-report</link>
