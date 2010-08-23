@@ -1,0 +1,36 @@
+the Copr client
+---
+
+copr, foss, fedora-summer-coding
+---
+
+This last week I started working on the command line client to "Copr":https://fedoraproject.org/wiki/Category:Copr. Luckily, the "python-fedora":https://fedorahosted.org/python-fedora already has a lot of code in place to make the task of writing clients for TurboGears apps a lot easier. Some of "the":http://admin.fedoraproject.org/pkgdb "apps":http://admin.fedoraproject.org/updates "in":http://admin.fedoraproject.org/accounts infrastructure are already using this library, which make for some good examples.
+
+So I'm building a client library and a client um... command line client. The command line client is basically one big "argparse":http://docs.python.org/library/argparse.html application that calls the functions in the client library and sometimes does a bit of formatting on the output. The client library implements a fedora.client.BaseClient that mostly just calls json methods on the Copr server.
+
+It's all pretty simple. The hard part is deciding what the command line client's interface will look like. In argparse parlance, which ones should be the positional arguments and which should be the optional arguments. So far I've been inclined to use something that looks like a VCS's interface. Here's what it looks like so far:
+
+<pre>
+$ python client/bin.py -h
+usage: bin.py [-h] [-v] [-u USERNAME] [-p PASSWORD] [--url URL]
+              {info,edit,create,list,delete}
+Command line tool for interacting with Fedora Copr
+positional arguments:
+  {info,edit,create,list,delete}
+    list                list all the available Coprs
+    info                get information about a specific Copr
+    create              create a new Copr
+    edit                edit an existing copr
+    delete              delete an existing copr
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version
+  --url URL             provide an alternate url for the Copr service
+authentication:
+  -u USERNAME, --username USERNAME
+  -p PASSWORD, --password PASSWORD
+</pre>
+
+Right now, all the copr functions are top-level. I wonder if I'll have to create a deeper level of nesting when I start implementing package-related functions.
+
+I'm also having a few problems with the BaseClient that I'll probably have to solve this week. All of the other client libraries were written for TurboGears 1.x and it seems that authentication has changed in TurboGears 2. There's also no support for HTTP PUT and DELETE which I would like to use since I used RestControllers in the API. I also had to write a patch for file upload support; that seems to work well so far.

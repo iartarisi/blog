@@ -34,11 +34,11 @@ tag/foss
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things">Copr design - being all things to all people</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -70,6 +70,44 @@ tag/foss
 </div><!--tags-->
 </div><!--sidebar-->
 <div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></h2>
+        <h3>Monday, August 23, 2010</h3>
+        <div class="entry">
+             <p>This last week I started working on the command line client to <a href="https://fedoraproject.org/wiki/Category:Copr">Copr</a>. Luckily, the <a href="https://fedorahosted.org/python-fedora">python-fedora</a> already has a lot of code in place to make the task of writing clients for TurboGears apps a lot easier. Some of <a href="http://admin.fedoraproject.org/pkgdb">the</a> <a href="http://admin.fedoraproject.org/updates">apps</a> <a href="http://admin.fedoraproject.org/accounts">in</a> infrastructure are already using this library, which make for some good examples.</p>
+<p>So I&#8217;m building a client library and a client um&#8230; command line client. The command line client is basically one big <a href="http://docs.python.org/library/argparse.html">argparse</a> application that calls the functions in the client library and sometimes does a bit of formatting on the output. The client library implements a fedora.client.BaseClient that mostly just calls json methods on the Copr server.</p>
+<p>It&#8217;s all pretty simple. The hard part is deciding what the command line client&#8217;s interface will look like. In argparse parlance, which ones should be the positional arguments and which should be the optional arguments. So far I&#8217;ve been inclined to use something that looks like a VCS&#8217;s interface. Here&#8217;s what it looks like so far:</p>
+<pre>
+$ python client/bin.py -h
+usage: bin.py [-h] [-v] [-u USERNAME] [-p PASSWORD] [--url URL]
+              {info,edit,create,list,delete}
+Command line tool for interacting with Fedora Copr
+positional arguments:
+  {info,edit,create,list,delete}
+    list                list all the available Coprs
+    info                get information about a specific Copr
+    create              create a new Copr
+    edit                edit an existing copr
+    delete              delete an existing copr
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version
+  --url URL             provide an alternate url for the Copr service
+authentication:
+  -u USERNAME, --username USERNAME
+  -p PASSWORD, --password PASSWORD
+</pre>
+<p>Right now, all the copr functions are top-level. I wonder if I&#8217;ll have to create a deeper level of nesting when I start implementing package-related functions.</p>
+<p>I&#8217;m also having a few problems with the BaseClient that I&#8217;ll probably have to solve this week. All of the other client libraries were written for TurboGears 1.x and it seems that authentication has changed in TurboGears 2. There&#8217;s also no support for <span class="caps">HTTP</span> <span class="caps">PUT</span> and <span class="caps">DELETE</span> which I would like to use since I used RestControllers in the <span class="caps">API</span>. I also had to write a patch for file upload support; that seems to work well so far.</p>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/copr.html">copr</a>
+                <a href="/tag/foss.html">foss</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/copr-client#disqus_thread" class="comments">Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
+    </div>
     <div class="post">
         <h2><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></h2>
         <h3>Sunday, August 22, 2010</h3>

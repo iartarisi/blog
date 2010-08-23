@@ -34,11 +34,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things">Copr design - being all things to all people</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -70,6 +70,44 @@ feed
 </div><!--tags-->
 </div><!--sidebar-->
 <div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></h2>
+        <h3>Monday, August 23, 2010</h3>
+        <div class="entry">
+             <p>This last week I started working on the command line client to <a href="https://fedoraproject.org/wiki/Category:Copr">Copr</a>. Luckily, the <a href="https://fedorahosted.org/python-fedora">python-fedora</a> already has a lot of code in place to make the task of writing clients for TurboGears apps a lot easier. Some of <a href="http://admin.fedoraproject.org/pkgdb">the</a> <a href="http://admin.fedoraproject.org/updates">apps</a> <a href="http://admin.fedoraproject.org/accounts">in</a> infrastructure are already using this library, which make for some good examples.</p>
+<p>So I&#8217;m building a client library and a client um&#8230; command line client. The command line client is basically one big <a href="http://docs.python.org/library/argparse.html">argparse</a> application that calls the functions in the client library and sometimes does a bit of formatting on the output. The client library implements a fedora.client.BaseClient that mostly just calls json methods on the Copr server.</p>
+<p>It&#8217;s all pretty simple. The hard part is deciding what the command line client&#8217;s interface will look like. In argparse parlance, which ones should be the positional arguments and which should be the optional arguments. So far I&#8217;ve been inclined to use something that looks like a VCS&#8217;s interface. Here&#8217;s what it looks like so far:</p>
+<pre>
+$ python client/bin.py -h
+usage: bin.py [-h] [-v] [-u USERNAME] [-p PASSWORD] [--url URL]
+              {info,edit,create,list,delete}
+Command line tool for interacting with Fedora Copr
+positional arguments:
+  {info,edit,create,list,delete}
+    list                list all the available Coprs
+    info                get information about a specific Copr
+    create              create a new Copr
+    edit                edit an existing copr
+    delete              delete an existing copr
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version
+  --url URL             provide an alternate url for the Copr service
+authentication:
+  -u USERNAME, --username USERNAME
+  -p PASSWORD, --password PASSWORD
+</pre>
+<p>Right now, all the copr functions are top-level. I wonder if I&#8217;ll have to create a deeper level of nesting when I start implementing package-related functions.</p>
+<p>I&#8217;m also having a few problems with the BaseClient that I&#8217;ll probably have to solve this week. All of the other client libraries were written for TurboGears 1.x and it seems that authentication has changed in TurboGears 2. There&#8217;s also no support for <span class="caps">HTTP</span> <span class="caps">PUT</span> and <span class="caps">DELETE</span> which I would like to use since I used RestControllers in the <span class="caps">API</span>. I also had to write a patch for file upload support; that seems to work well so far.</p>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/copr.html">copr</a>
+                <a href="/tag/foss.html">foss</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/copr-client#disqus_thread" class="comments">Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
+    </div>
     <div class="post">
         <h2><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></h2>
         <h3>Sunday, August 22, 2010</h3>
@@ -198,159 +236,6 @@ feed
                 <a href="/tag/foss.html">foss</a>
         </div>
         <a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum#disqus_thread" class="comments">Comments</a>
-        <img class="separator" alt="post separator" src="/css/separator.png" />
-    </div>
-    <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a></h2>
-        <h3>Monday, November 30, 2009</h3>
-        <div class="entry">
-             <p>O să vă descriu cum am aplicat un petec pentru unul dintre pachetele pentru care sunt responsabil la fedora: calibre, în timp ce așteptam să-mi vină pizza http://www.fedoraproject.ro/am-lansat-fedora-12-avans . Petecul este răspunsul la un bug report: https://bugzilla.redhat.com/show_bug.cgi?id=537525 . Calibre verifică de fiecare dată când este pornit dacă pe situl oficial a apărut o nouă versiune și dacă a apărut, îl anunță pe utilizator printr-un pop-up că trebuie să actualizeze aplicația. Cum fedora are propriul management al pachetelor și deci și al actualizărilor, este recomandat ca pachetele noi să fie instalate folosind yum; deci mesajul trebuie eliminat.</p>
-<p>Mai întâi trebuie să descărcăm sursele actuale ale rpm-ului (în momentul în care am scris patchul, în repo-uri cea mai recentă versiune era 0.6.21-1, acum ar trebui să fie una cu patchul deja aplicat):</p>
-<pre>
-  $ yumdownloader --source calibre
-</pre>
-<p>și să le despachetăm:</p>
-<div class="Bash"><div class="highlight"><pre>  <span class="nv">$ </span>rpm -ivh calibre-0.6.21-1.fc12.src.rpm
-</pre></div>
-</div>
-<p>Comanda va crea un nou director rpmbuild, cu subdirectoarele <span class="caps">SPECS</span> și <span class="caps">SOURCES</span>. În <span class="caps">SPECS</span> avem fișierul care ține toate informațiile despre cum se va construi pachetul: calibre.spec, iar în <span class="caps">SOURCES</span> avem sursele pachetului și toate patchurile pe care le-am creat până acum:</p>
-<pre>
-  $ tree rpmbuild/
-  rpmbuild/
-  |-- SOURCES
-  |   |-- calibre-0.6.21-nofonts.tar.gz
-  |   |-- calibre-cssprofiles.patch
-  |   |-- calibre-manpages.patch
-  |   `-- generate-tarball.sh
-  `-- SPECS
-  `-- calibre.spec
-</pre>
-<p>Mai avem de făcut un pas, ca să putem umbla prin sursele programului. Trebuie să dezarhivăm arhiva calibre-0.6.21-nofonts.tar.gz. Următoarea comandă dezarhivează și aplică patchurile pe care le avem deja:</p>
-<pre>
-  $ cd rpmbuild/SPECS
-  $ rpmbuild -bp calibre.spec
-</pre>
-<p>Au apărut mai multe directoare după comanda asta:</p>
-<pre>
-  $ ls rpmbuild/
-  BUILD  BUILDROOT  RPMS  SOURCES  SPECS  SRPMS
-</pre>
-<p>Cel care ne interesează este <span class="caps">BUILD</span>, în care au apărut sursele peticite ale programului.</p>
-<p>Atunci când e pornit, dacă există o versiune mai nouă, calibre va afișa următorul mesaj în fereastra pop-up:</p>
-<p>calibre has been updated to version 0.6.24. See the new features. Visit the download page?</p>
-<p>Ca să aflăm din ce fișier vine fereastra de pop-up putem să căutăm pur și simplu o parte din textul de mai sus în sursele calibre:</p>
-<pre>
-  $ cd rpmbuild/BUILD/calibre/
-  $ find .|xargs grep &#34;has been updated&#34;
-</pre>
-<p>Dacă ignorăm fișierele de localizare, vom afla sursa pop-up-ului:</p>
-<pre>
-  ./calibre/src/calibre/gui2/main.py:                    _(&#39;%s has been updated to version %s. &#39;
-</pre>
-<p>Mergând în fișierul respectiv vedem că acel cod face parte dintr-o funcție numită update_found:</p>
-<div class="Bash"><div class="highlight"><pre> 
-  def update_found<span class="o">(</span>self, version<span class="o">)</span>:
-  <span class="nv">os</span> <span class="o">=</span> <span class="s1">&#39;windows&#39;</span> <span class="k">if </span>iswindows <span class="k">else</span> <span class="s1">&#39;osx&#39;</span> <span class="k">if </span>isosx <span class="k">else</span> <span class="s1">&#39;linux&#39;</span>
-  <span class="nv">url</span> <span class="o">=</span> <span class="s1">&#39;http://%s.kovidgoyal.net/download_%s&#39;</span>%<span class="o">(</span>__appname__, os<span class="o">)</span>
-  self.latest_version <span class="o">=</span> <span class="err">&#39;</span>
-</pre></div>
-</div>
-<p>Ne interesează ca modificarea pe care o vom aduce să fie cât mai lizibilă pentru cei care vor modifica pachetul nostru mai târziu și să fie cât mai ușor de revenit la versiunea nemodificată. Dacă ne uităm mai atent în main, găsim următorul cod:</p>
-<div class="Python"><div class="highlight"><pre>  <span class="k">if</span> <span class="ow">not</span> <span class="n">opts</span><span class="o">.</span><span class="n">no_update_check</span><span class="p">:</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">update_checker</span> <span class="o">=</span> <span class="n">CheckForUpdates</span><span class="p">()</span>
-  <span class="n">QObject</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_checker</span><span class="p">,</span>
-  <span class="n">SIGNAL</span><span class="p">(</span><span class="s">&#39;update_found(PyQt_PyObject)&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_found</span><span class="p">)</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">update_checker</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Codul verifică dacă programul a fost pornit cu opțiunea no_update_check. Ar complica prea mult lucrurile dacă am modifica programul în așa fel încât să pornească de fiecare dată cu opțiunea asta așa că mai bine comentăm codul aici, ca să nu mai verifice opțiunea și deci să nu mai caute niciodată update-uri. E soluția cea mai simplă.</p>
-<p>Ca să facem un petec ca la carte, vom face așa:</p>
-<p>Facem o copie a fișierului main.py:</p>
-<pre>
-  $ cd ~/rpmbuild/BUILD/calibre/src/calibre/gui2/
-  $ cp main.py main.py.no_update
-  După care modificăm *fișierul inițial* și comentăm codul respectiv așa:
-  # if not opts.no_update_check:
-  #     self.update_checker = CheckForUpdates()
-  #     QObject.connect(self.update_checker,
-  #             SIGNAL(&#39;update_found(PyQt_PyObject)&#39;), self.update_found)
-  #     self.update_checker.start()
-</pre>
-<p>Ca să generăm petecul vom folosi gendiff din directorul de deasupra directorului rădăcină:</p>
-<div class="Diff"><div class="highlight"><pre>    $ cd ~/rpmbuild/BUILD
-    $ gendiff calibre .no_update
-    diff -up calibre/src/calibre/gui2/main.py.no_update calibre/src/calibre/gui2/main.py
-    --- calibre/src/calibre/gui2/main.py.no_update	2009-11-16 14:21:55.200387171 +0200
-    +++ calibre/src/calibre/gui2/main.py	2009-11-16 14:22:10.400510757 +0200
-    @@ -221,11 +221,11 @@ class Main(MainWindow, Ui_MainWindow, De
-    self.latest_version = &#39; &#39;
-    self.vanity.setText(self.vanity_template%dict(version=&#39; &#39;, device=&#39; &#39;))
-    self.device_info = &#39; &#39;
-    -        if not opts.no_update_check:
-    -            self.update_checker = CheckForUpdates()
-    -            QObject.connect(self.update_checker,
-    -                    SIGNAL(&#39;update_found(PyQt_PyObject)&#39;), self.update_found)
-    -            self.update_checker.start()
-    +        # if not opts.no_update_check:
-    +        #     self.update_checker = CheckForUpdates()
-    +        #     QObject.connect(self.update_checker,
-    +        #             SIGNAL(&#39;update_found(PyQt_PyObject)&#39;), self.update_found)
-    +        #     self.update_checker.start()
-    ####################### Status Bar #####################
-    self.status_bar = StatusBar(self.jobs_dialog, self.system_tray_icon)
-    self.setStatusBar(self.status_bar)
-</pre></div>
-</div>
-<p>Totul arată bine, deci putem să-l punem în surse:</p>
-<pre>
-  $ gendiff calibre .no_update &#62; ~/rpmbuild/SOURCES/calibre-no-update.patch
-</pre>
-<p>Acum trebuie să modificăm spec-ul, adăugând un nou petec, incrementând release-ul, menționând motivul pentru petec și scriind modificarea în Changelog:</p>
-<div class="Diff"><div class="highlight"><pre>  @@ -1,6 +1,6 @@
-  Name:           calibre
-  Version:        0.6.21
-  -Release:        1%{?dist}
-  +Release:        2%{?dist}
-  Summary:        E-book converter and library management
-  Group:          Applications/Multimedia
-  License:        GPLv3
-  @@ -18,6 +18,7 @@
-  Source1:        generate-tarball.sh
-  Patch0:         %{name}-cssprofiles.patch
-  Patch1:         %{name}-manpages.patch
-  +Patch2:         %{name}-no-update.patch
-  BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-  BuildRequires:  python &gt;= 2.6
-  @@ -72,6 +73,9 @@
-  # don&#39;t append calibre1 to the name of the manpages. No need to compress either
-  %patch1 -p1 -b .manpages
-  +# don&#39;t check for new upstream version (that&#39;s what packagers do)
-  +%patch2 -p1 -b .no-update
-  +
-  # dos2unix newline conversion
-  %{__sed} -i &#39;s/\r//&#39; src/calibre/web/feeds/recipes/*
-  @@ -239,6 +243,9 @@
-  %{_mandir}/man1/*
-  %changelog
-  +* Sat Nov  29 2009 Ionuț C. Arțăriși 
-</pre></div>
-</div>
-<p>Gata. Asta a fost tot :). Acum putem reconstrui pachetul cu noile patchuri:</p>
-<pre>
-  $ cd ~/rpmbuild/SPECS/
-  $ rpmbuild -ba calibre.spec
-</pre>
-<p>Și putem reinstala noul pachet:</p>
-<pre>
-  $ su -c &#34;yum localinstall -y --nogpgcheck ~/rpmbuild/RPMS/x86_64/calibre-0.6.21-2.fc12.x86_64.rpm&#34;
-</pre>
-        </div>
-        <div class="post_tags">Tags:
-                <a href="/tag/fedora-ro.html">fedora-ro</a>
-                <a href="/tag/hacking.html">hacking</a>
-                <a href="/tag/linux.html">linux</a>
-        </div>
-        <a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
 </div>
