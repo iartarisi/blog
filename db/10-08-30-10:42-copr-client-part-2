@@ -1,0 +1,12 @@
+the Copr client part II
+---
+
+copr, fedora-summer-coding, foss
+---
+
+I spent this week finishing up the copr client. It now supports all the functionality that the Copr TG API supports. It's not much, but it's a starting point.
+
+I spent a lot of time trying to understand the way repoze.who works and the authentication plugins that we're using for the "python-fedora":https://fedorahosted.org/python-fedora/ "FAS":https://admin.fedoraproject.org/accounts authentication plugin. I finally understood it, I think... The Fedora client library didn't support basic HTTP Authentication for TG2 apps so I had to figure out how to integrate that into our authentication plugin. It was quite fun all in all, repoze.who has a very interesting way of doing authentication and writing wsgi middleware is always exciting ;). This patch will hopefully go upstream to python-fedora now.
+
+This next week I'll probably start working on the buildsystem part of Copr. There are a lot of new things to learn there.
+

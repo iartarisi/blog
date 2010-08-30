@@ -5,8 +5,18 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Mon, 23 Aug 2010 15:19:59 +0300</pubDate>
+        <pubDate>Mon, 30 Aug 2010 15:33:54 +0300</pubDate>
         <generator>pyBlee!</generator>
+        <item>
+            <title>the Copr client part II</title>
+            <link>http://mapleoin.bluepink.ro/perma/copr-client-part-2</link>
+            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <description>  &lt;p&gt;I spent this week finishing up the copr client. It now supports all the functionality that the Copr TG &lt;span class="caps"&gt;API&lt;/span&gt; supports. It&amp;#8217;s not much, but it&amp;#8217;s a starting point.&lt;/p&gt;
+&lt;p&gt;I spent a lot of time trying to understand the way repoze.who works and the authentication plugins that we&amp;#8217;re using for the &lt;a href="https://fedorahosted.org/python-fedora/"&gt;python-fedora&lt;/a&gt; &lt;a href="https://admin.fedoraproject.org/accounts"&gt;FAS&lt;/a&gt; authentication plugin. I finally understood it, I think&amp;#8230; The Fedora client library didn&amp;#8217;t support basic &lt;span class="caps"&gt;HTTP&lt;/span&gt; Authentication for TG2 apps so I had to figure out how to integrate that into our authentication plugin. It was quite fun all in all, repoze.who has a very interesting way of doing authentication and writing wsgi middleware is always exciting ;). This patch will hopefully go upstream to python-fedora now.&lt;/p&gt;
+&lt;p&gt;This next week I&amp;#8217;ll probably start working on the buildsystem part of Copr. There are a lot of new things to learn there.&lt;/p&gt;
+ </description>
+            <pubDate>Mon, 30 Aug 2010 10:42 GMT</pubDate>
+        </item>
         <item>
             <title>the Copr client</title>
             <link>http://mapleoin.bluepink.ro/perma/copr-client</link>

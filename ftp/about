@@ -35,11 +35,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things">Copr design - being all things to all people</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -74,9 +74,7 @@ feed
     <div class="post">
         <h2><a href="/about">about</a></h2>
         <div class="entry">
-             <p>This blog is about.</p>
-<p>It&#8217;s running pyblee &#8211; a static blogging system written in python, which is still in a alpha sort of stage. You can watch the show on github, <a href="http://github.com/mapleoin/pyblee/tree/master">here</a> . I&#8217;ll be writing more about it shortly. <br />I used a lot of open-source tools to build it: <em>vim, python, python-textile, python-BeautifulSoup, python-mako, git, gimp, firebug</em>.</p>
-<p>Here&#8217;s my <a href="http://www.goodreads.com/user/show/1826917">reading list on goodreads</a></p>
+             <p>This blog is running pyblee &#8211; a static blogging system written in python. I used a lot of open-source tools to build it: <em>vim, emacs, python, python-textile, python-BeautifulSoup, python-mako, git, gimp, firebug</em>. The sources to all this blog are available <a href="http://github.com/mapleoin/maplepink">on github</a>.</p>
 <p>You can compose my email from the domain name if you want to contact me.</p>
             <br />
         </div>

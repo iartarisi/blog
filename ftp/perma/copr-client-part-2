@@ -10,7 +10,7 @@
 feed
 .xml" />
 <title>Revolution blahg 
-    | FUDCon Berlin
+    | the Copr client part II
 </title>
 </head>
 <body>
@@ -72,24 +72,18 @@ feed
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin">FUDCon Berlin</a></h2>
-        <h3>Monday, June 29, 2009</h3>
+        <h2><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></h2>
+        <h3>Monday, August 30, 2010</h3>
         <div class="entry">
-             <p>I just got back from this year&#8217;s <acronym title="Europe, the Middle East and Africa">EMEA</acronym> <acronym title="Fedora Users and Developers Conference">FUDCON</acronym> in Berlin with <a href="http://nicubunu.blogspot.com">Nicu</a> . I didn&#8217;t have time to write anything while I was there because so much was happening all the time.</p>
-<p><img src="http://fedora.nicubunu.ro/photos/fudcon2009berlin/613-img_1477.jpg.medium.jpeg" alt="" /></p>
-<h3>FUDCon and LinuxTag</h3>
-<p>LinuxTag wasn&#8217;t really the purpose of our visit, but we got free tickets so I checked the place out for a while. There were lots of booths and some speeches (mostly in German). There were also some activities, but I really didn&#8217;t get to any of them since most appeared to be German-only. I was a bit disappointed, <a href="http://mapleoin.bluepink.ro/perma/eLiberatica-aftermath">eLiberatica</a> had way better talks and guests.</p>
-<p>FUDCon was nice. The first day was a little slow to start, but the BarCamp session the next day was very interesting and diverse. More of that would&#8217;ve been nice. Some of the cool topics I enjoyed were: koji at <span class="caps">CERN</span>, git for hackers, Fedora <span class="caps">EKG</span> and UI Design. The last day was mostly random hacking by people who already had something to work on. I did a bit of pkgdb hacking on my own and then went Berlinxploring.</p>
-<h3>Berlin</h3>
-<p>The city was awesome. I haven&#8217;t been to a lot of different countries, but right now Berlin is my favourite. Its public transportation is awesome, the people are polite, friendly and everyone can speak English. There were a lot of trees everywhere, the temperature was really cool and there were wild bunnies in the parks! I separated from the crowd two times to go visit the city and I got to see some stuff I would&#8217;ve missed otherwise. It was also cool because what I did was basically ride the train and get off whenever I would see something interesting. I went to the Brandenburg gate and the Governmental district and also got a closer look of the bombed church. I also went to a cool flea market.</p>
-<h3>German Beer</h3>
-<p>The best part of the whole conference were the nights out at the restaurant, I think. I and Nicu were lucky to tag along to a few people from Red Hat before the majority of people had arrived. We got to see some nice places that way, especially thanks to Jesse&#8217;s iphone. I got to eat indian food, assembly line sushy and we were also at the local Zoo. I soon found out that my English was a bit slow and so I couldn&#8217;t keep up with their constant witty joking so I sort of gave up and switched into listening mode.<br />The nights-at-the-restaurant got better and better as more people arrived. We went to a small restaurant right under the railways for free pizza (thanks Red Hat!) where I met a few of the newly arrived people and had some interesting chats mostly about fedora and Red Hat.<br />The next day we went looking for a Sudanese restaurant, but ended up at a Cuban restaurant with cool waitresses. I got to taste the first real German beer and socialised with some of the other European guys which was really fun. <br />The last night was the best night. We had interesting discussions about fonetics(!), German beer, the Dutch language and <span class="caps">RMS</span> among other things. They also had the greatest dark German beer, which I forgot the name of. Real traditional German beer really doesn&#8217;t compare with any other beer. It&#8217;s a whole different beverage and an awesome one.</p>
-<h3>Conclusion</h3>
-<p>Overall I think it was a great experience. I got to meet a lot of interesting and smart people from all over the world who all shared a passion for their work and for Fedora.<br />So these are sort of the words to <a href="http://fedora.nicubunu.ro/photos/fudcon2009berlin/">Nicu&#8217;s photos</a> which explain the rest, only better.</p>
+             <p>I spent this week finishing up the copr client. It now supports all the functionality that the Copr TG <span class="caps">API</span> supports. It&#8217;s not much, but it&#8217;s a starting point.</p>
+<p>I spent a lot of time trying to understand the way repoze.who works and the authentication plugins that we&#8217;re using for the <a href="https://fedorahosted.org/python-fedora/">python-fedora</a> <a href="https://admin.fedoraproject.org/accounts">FAS</a> authentication plugin. I finally understood it, I think&#8230; The Fedora client library didn&#8217;t support basic <span class="caps">HTTP</span> Authentication for TG2 apps so I had to figure out how to integrate that into our authentication plugin. It was quite fun all in all, repoze.who has a very interesting way of doing authentication and writing wsgi middleware is always exciting ;). This patch will hopefully go upstream to python-fedora now.</p>
+<p>This next week I&#8217;ll probably start working on the buildsystem part of Copr. There are a lot of new things to learn there.</p>
+
         </div>
         <div class="post_tags">Tags:
-                <a href="/tag/fedora.html">fedora</a>
-                <a href="/tag/events.html">events</a>
+                <a href="/tag/copr.html">copr</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+                <a href="/tag/foss.html">foss</a>
         </div>
         <br />
         <div id="disqus_thread"></div>

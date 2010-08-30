@@ -34,11 +34,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things">Copr design - being all things to all people</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -70,6 +70,23 @@ feed
 </div><!--tags-->
 </div><!--sidebar-->
 <div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></h2>
+        <h3>Monday, August 30, 2010</h3>
+        <div class="entry">
+             <p>I spent this week finishing up the copr client. It now supports all the functionality that the Copr TG <span class="caps">API</span> supports. It&#8217;s not much, but it&#8217;s a starting point.</p>
+<p>I spent a lot of time trying to understand the way repoze.who works and the authentication plugins that we&#8217;re using for the <a href="https://fedorahosted.org/python-fedora/">python-fedora</a> <a href="https://admin.fedoraproject.org/accounts">FAS</a> authentication plugin. I finally understood it, I think&#8230; The Fedora client library didn&#8217;t support basic <span class="caps">HTTP</span> Authentication for TG2 apps so I had to figure out how to integrate that into our authentication plugin. It was quite fun all in all, repoze.who has a very interesting way of doing authentication and writing wsgi middleware is always exciting ;). This patch will hopefully go upstream to python-fedora now.</p>
+<p>This next week I&#8217;ll probably start working on the buildsystem part of Copr. There are a lot of new things to learn there.</p>
+
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/copr.html">copr</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+                <a href="/tag/foss.html">foss</a>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2#disqus_thread" class="comments">Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
+    </div>
     <div class="post">
         <h2><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></h2>
         <h3>Monday, August 23, 2010</h3>
@@ -210,32 +227,6 @@ authentication:
                 <a href="/tag/copr.html">copr</a>
         </div>
         <a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder#disqus_thread" class="comments">Comments</a>
-        <img class="separator" alt="post separator" src="/css/separator.png" />
-    </div>
-    <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a></h2>
-        <h3>Thursday, March 18, 2010</h3>
-        <div class="entry">
-             <p>Unul dintre lucrurile care mă enervează cel mai tare ca utilizator desktop la yum e că de fiecare dată când vreau să caut sau să instalez un pachet, trebuie să aștept câteva secunde bune până își actualizează metadatele pentru toate depozitele active. Astăzi am avut timp să caut o metodă de a scăpa de neplăcerea asta și a fost destul de simplu de găsit.</p>
-<p>Rezolvarea nu este să dezactivăm complet actualizarea metadatelor, pentru că am putea încerca să instalăm pachete a căror dependințe au fost actualizate și a căror versiune exactă nu se mai găsește în depozit => <em>dependency hell</em>.</p>
-<p>Se pare că există un program <em>yum-updatesd</em> (<code>su -c &#34;yum install yum-updatesd&#34;</code>) care poate actualiza automat metadatele.</p>
-<p>După ce l-am instalat, putem modifica <code>/etc/yum/yum-updatesd.conf</code> dacă vrem să facem lucruri dubioase, cum ar fi să îl lăsăm să instaleze actualizări automat &#8212; pentru că trăim într-o utopie în care actualizările nu strică niciodată nimic &#8212; sau, mai puțin dubios, doar să le descarce.</p>
-<p>Acum că am terminat cu setările, putem porni serviciul cu:</p>
-<div class="Bash"><div class="highlight"><pre> <span class="nv">$ </span>su -c <span class="s2">&quot;service yum-updatesd start&quot;</span>
- <span class="nv">$ </span>cacamaca
-</pre></div>
-</div>
-<p>Și îl putem pune să se pornească automat la fiecare boot:</p>
-<div class="Bash"><div class="highlight"><pre> <span class="nv">$ </span>su -c <span class="s2">&quot;chkconfig yum-updatesd on&quot;</span>
-</pre></div>
-</div>
-        </div>
-        <div class="post_tags">Tags:
-                <a href="/tag/fedora-ro.html">fedora-ro</a>
-                <a href="/tag/linux.html">linux</a>
-                <a href="/tag/foss.html">foss</a>
-        </div>
-        <a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
 </div>

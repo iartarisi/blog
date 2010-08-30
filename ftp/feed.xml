@@ -5,8 +5,18 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Mon, 23 Aug 2010 15:19:59 +0300</pubDate>
+        <pubDate>Mon, 30 Aug 2010 15:33:54 +0300</pubDate>
         <generator>pyBlee!</generator>
+        <item>
+            <title>the Copr client part II</title>
+            <link>http://mapleoin.bluepink.ro/perma/copr-client-part-2</link>
+            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <description>  &lt;p&gt;I spent this week finishing up the copr client. It now supports all the functionality that the Copr TG &lt;span class="caps"&gt;API&lt;/span&gt; supports. It&amp;#8217;s not much, but it&amp;#8217;s a starting point.&lt;/p&gt;
+&lt;p&gt;I spent a lot of time trying to understand the way repoze.who works and the authentication plugins that we&amp;#8217;re using for the &lt;a href="https://fedorahosted.org/python-fedora/"&gt;python-fedora&lt;/a&gt; &lt;a href="https://admin.fedoraproject.org/accounts"&gt;FAS&lt;/a&gt; authentication plugin. I finally understood it, I think&amp;#8230; The Fedora client library didn&amp;#8217;t support basic &lt;span class="caps"&gt;HTTP&lt;/span&gt; Authentication for TG2 apps so I had to figure out how to integrate that into our authentication plugin. It was quite fun all in all, repoze.who has a very interesting way of doing authentication and writing wsgi middleware is always exciting ;). This patch will hopefully go upstream to python-fedora now.&lt;/p&gt;
+&lt;p&gt;This next week I&amp;#8217;ll probably start working on the buildsystem part of Copr. There are a lot of new things to learn there.&lt;/p&gt;
+ </description>
+            <pubDate>Mon, 30 Aug 2010 10:42 GMT</pubDate>
+        </item>
         <item>
             <title>the Copr client</title>
             <link>http://mapleoin.bluepink.ro/perma/copr-client</link>
@@ -102,25 +112,6 @@ authentication:
 &lt;p&gt;So now I have testing. My project is not supposed to have any web interface at this point, so writing tests is the easiest way to prove that things are actually working.&lt;/p&gt;
 &lt;p&gt;This next week I&amp;#8217;ll probably get some work done on Copr controllers. Implementing the ability to &lt;span class="caps"&gt;CRUD&lt;/span&gt; Coprs and Repos.&lt;/p&gt; </description>
             <pubDate>Sun, 25 Jul 2010 14:00 GMT</pubDate>
-        </item>
-        <item>
-            <title>Cum să actualizezi metadatele yum în mod automat</title>
-            <link>http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
-            <description>  &lt;p&gt;Unul dintre lucrurile care mă enervează cel mai tare ca utilizator desktop la yum e că de fiecare dată când vreau să caut sau să instalez un pachet, trebuie să aștept câteva secunde bune până își actualizează metadatele pentru toate depozitele active. Astăzi am avut timp să caut o metodă de a scăpa de neplăcerea asta și a fost destul de simplu de găsit.&lt;/p&gt;
-&lt;p&gt;Rezolvarea nu este să dezactivăm complet actualizarea metadatelor, pentru că am putea încerca să instalăm pachete a căror dependințe au fost actualizate și a căror versiune exactă nu se mai găsește în depozit =&gt; &lt;em&gt;dependency hell&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Se pare că există un program &lt;em&gt;yum-updatesd&lt;/em&gt; (&lt;code&gt;su -c &amp;#34;yum install yum-updatesd&amp;#34;&lt;/code&gt;) care poate actualiza automat metadatele.&lt;/p&gt;
-&lt;p&gt;După ce l-am instalat, putem modifica &lt;code&gt;/etc/yum/yum-updatesd.conf&lt;/code&gt; dacă vrem să facem lucruri dubioase, cum ar fi să îl lăsăm să instaleze actualizări automat &amp;#8212; pentru că trăim într-o utopie în care actualizările nu strică niciodată nimic &amp;#8212; sau, mai puțin dubios, doar să le descarce.&lt;/p&gt;
-&lt;p&gt;Acum că am terminat cu setările, putem porni serviciul cu:&lt;/p&gt;
-&lt;div class="Bash"&gt;&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;su -c &lt;span class="s2"&gt;&amp;quot;service yum-updatesd start&amp;quot;&lt;/span&gt;
- &lt;span class="nv"&gt;$ &lt;/span&gt;cacamaca
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;Și îl putem pune să se pornească automat la fiecare boot:&lt;/p&gt;
-&lt;div class="Bash"&gt;&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;su -c &lt;span class="s2"&gt;&amp;quot;chkconfig yum-updatesd on&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt; </description>
-            <pubDate>Thu, 18 Mar 2010 14:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
