@@ -1,3 +1,4 @@
+G## -*- coding: utf-8 -*-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -98,7 +99,7 @@ feed
 </pre></div>
 </div>
 <p>Pe lângă faptul că toate tipurile de date au nume și <a href="http://docs.djangoproject.com/en/dev/ref/models/fields/#model-field-types">explicații</a> pe care le poate înțelege oricine, django va folosi datele astea atunci când va construi interfața de administrare.<br />E interesant că trebuie să declari toate tabelele în ordine. La început pusesem Categoria ultima și n-o găsea când vroia să facă ForeignKey-ul de la Post. M-a cam răsfățat OOP-ul.<br />Alt lucru fain e că de pe acum se pregătesc feature-uri interesante cum ar fi URLField.verify_exists care verifică toate url-urile introduse și le refuză dacă primește <a href="http://en.wikipedia.org/wiki/HTTP_404">404</a>. Așa că de-acum n-o să mai poată nimeni să pună <a href="http://en.wikipedia.org/wiki/Metasyntactic_variable">variabile metasintactice</a> de genu: <i>caca</i>, <i>mumu</i> și altele în field-ul ăla!</p>
-<p>Și acum un mysql describe<sup class="footnote"><a href="#fnb71424a8-16b8-4309-9b70-c769bf1b307b">3</a></sup> pentru tabelele rezultate:</p>
+<p>Și acum un mysql describe<sup class="footnote"><a href="#fnc3b1fda5-4749-4066-ae90-92ddd3a8c11a">3</a></sup> pentru tabelele rezultate:</p>
 <div class="MySQL"><div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_category</span><span class="p">;</span>
  <span class="o">+-------+-------------+------+-----+---------+</span>
  <span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">Type</span>        <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
@@ -141,7 +142,7 @@ feed
 </pre></div>
 </div>
 <p>TADA!<br />Trebuie să studiez de ce se strică formatarea (de fapt știu de ce, trebuie să scot textile din blockul ăla), dar ideea de bază e clară.</p>
-<p id="fnb71424a8-16b8-4309-9b70-c769bf1b307b" class="footnote"><sup>3</sup>merci gheorghe!</p>
+<p id="fnc3b1fda5-4749-4066-ae90-92ddd3a8c11a" class="footnote"><sup>3</sup>merci gheorghe!</p>
         </div>
         <div class="post_tags">Tags:
                 <a href="/tag/programming.html">programming</a>
@@ -170,7 +171,7 @@ feed
 </div>
 <div style="clear: right;"></div>
 </div><!-- container -->
-<div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
+<div id="smallprint"><a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.</div>
 
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

@@ -125,13 +125,16 @@ ul {
 .post {
     padding-bottom: 4em;
 }
-#pyblee {
+#smallprint {
     margin: auto;
     color: #898;
     text-align: center;
+    padding-bottom: 1em;
+    font-size: .8em;
 }
-#pyblee a {
-    color: white;
+
+#smallprint a {
+    color: #898;
 }
 
 .entry {

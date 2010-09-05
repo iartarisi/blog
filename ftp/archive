@@ -1,3 +1,4 @@
+G## -*- coding: utf-8 -*-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -261,7 +262,7 @@ feed
 </div>
 <div style="clear: right;"></div>
 </div><!-- container -->
-<div id="pyblee">Powered by <a href="http://mapleoin.bluepink.ro/about">pyblee</a></div>
+<div id="smallprint"><a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.</div>
 
 <script type="text/javascript">
 var disqus_shortname = 'revolutionblahg';
