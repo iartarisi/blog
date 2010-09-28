@@ -5,8 +5,17 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Sun, 05 Sep 2010 14:44:03 +0300</pubDate>
+        <pubDate>Tue, 07 Sep 2010 18:01:16 +0300</pubDate>
         <generator>pyBlee!</generator>
+        <item>
+            <title>FSC: moving to the buildsystem</title>
+            <link>http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem</link>
+            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <description>  &lt;p&gt;I started working on the buildsystem part of copr this week. Right now, I&amp;#8217;m still getting familiar with &lt;a href="http://fedorahosted.org/func"&gt;func&lt;/a&gt;. That&amp;#8217;s what we&amp;#8217;ll be using to communicate with the builder machines: get them running errands and get back status reports at any time. I spent a lot of time getting a virtual machine setup with libvirt; networking especially was a pain (mostly because of my pppoe connection I think).&lt;/p&gt;
+&lt;p&gt;One nice feature of func that I think we&amp;#8217;ll be using a lot is the &lt;a href="https://fedorahosted.org/func/wiki/AsyncUsage"&gt;async mode&lt;/a&gt;. A mock build takes a lot of time, what with all the yumming and compiling. So starting a task via one of the user interfaces and then choosing whether or not to keep watching it and what to watch for will probably be an essential part of the buildsystem&amp;#8217;s functionality.&lt;/p&gt;
+&lt;p&gt;In the meantime, we&amp;#8217;re slowly &lt;a href="https://fedorahosted.org/fedora-infrastructure/ticket/2339"&gt;getting resources&lt;/a&gt; for the deployment of Copr. Toshio got a running instance of the current state of the TG app on &lt;a href="http://publictest1.fedoraproject.org/copr/"&gt;publictest1&lt;/a&gt;. It looks just like a quickstarted TG app, because it doesn&amp;#8217;t have any WebUI. But it can &lt;span class="caps"&gt;CRUD&lt;/span&gt; coprs, handle dependencies between them, handle permissions and &lt;span class="caps"&gt;CRD&lt;/span&gt; packages. Most of the functions require a &lt;a href="http://admin.fedoraproject.org/accounts"&gt;FAS&lt;/a&gt; account, but you don&amp;#8217;t need one to see a &lt;a href="http://publictest1.fedoraproject.org/copr/coprs.json"&gt;list of all the coprs&lt;/a&gt;, or a &lt;a href="http://publictest1.fedoraproject.org/copr/firstcopr/packages.json"&gt;list of packages in a copr&lt;/a&gt;.&lt;/p&gt; </description>
+            <pubDate>Mon, 06 Sep 2010 19:53 GMT</pubDate>
+        </item>
         <item>
             <title>the Copr client part II</title>
             <link>http://mapleoin.bluepink.ro/perma/copr-client-part-2</link>

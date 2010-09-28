@@ -35,11 +35,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things">Copr design - being all things to all people</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -71,6 +71,22 @@ feed
 </div><!--tags-->
 </div><!--sidebar-->
 <div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></h2>
+        <h3>Monday, September  6, 2010</h3>
+        <div class="entry">
+             <p>I started working on the buildsystem part of copr this week. Right now, I&#8217;m still getting familiar with <a href="http://fedorahosted.org/func">func</a>. That&#8217;s what we&#8217;ll be using to communicate with the builder machines: get them running errands and get back status reports at any time. I spent a lot of time getting a virtual machine setup with libvirt; networking especially was a pain (mostly because of my pppoe connection I think).</p>
+<p>One nice feature of func that I think we&#8217;ll be using a lot is the <a href="https://fedorahosted.org/func/wiki/AsyncUsage">async mode</a>. A mock build takes a lot of time, what with all the yumming and compiling. So starting a task via one of the user interfaces and then choosing whether or not to keep watching it and what to watch for will probably be an essential part of the buildsystem&#8217;s functionality.</p>
+<p>In the meantime, we&#8217;re slowly <a href="https://fedorahosted.org/fedora-infrastructure/ticket/2339">getting resources</a> for the deployment of Copr. Toshio got a running instance of the current state of the TG app on <a href="http://publictest1.fedoraproject.org/copr/">publictest1</a>. It looks just like a quickstarted TG app, because it doesn&#8217;t have any WebUI. But it can <span class="caps">CRUD</span> coprs, handle dependencies between them, handle permissions and <span class="caps">CRD</span> packages. Most of the functions require a <a href="http://admin.fedoraproject.org/accounts">FAS</a> account, but you don&#8217;t need one to see a <a href="http://publictest1.fedoraproject.org/copr/coprs.json">list of all the coprs</a>, or a <a href="http://publictest1.fedoraproject.org/copr/firstcopr/packages.json">list of packages in a copr</a>.</p>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/copr.html">copr</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+                <a href="/tag/foss.html">foss</a>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem#disqus_thread" class="comments">Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
+    </div>
     <div class="post">
         <h2><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></h2>
         <h3>Monday, August 30, 2010</h3>
@@ -206,28 +222,6 @@ authentication:
                 <a href="/tag/copr.html">copr</a>
         </div>
         <a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud#disqus_thread" class="comments">Comments</a>
-        <img class="separator" alt="post separator" src="/css/separator.png" />
-    </div>
-    <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a></h2>
-        <h3>Sunday, July 25, 2010</h3>
-        <div class="entry">
-             <p>I started my <a href="https://fedoraproject.org/wiki/Summer_Coding_2010">Fedora Summer Coding</a> last week. Although most people started almost two months ago, I chose (and was allowed to &#8211; Yay, <acronym title="Fedora Summer Coding">FSC</acronym>!) a different schedule because I just finished college last week.</p>
-<p>This summer I&#8217;ll be working on a new project for Fedora &#8211; <a href="https://fedoraproject.org/wiki/Category:Copr">Copr</a>. Fedora Copr will allow any Fedorian to have their own package repository with packages built and hosted by <a href="https://fedoraproject.org/wiki/Infrastructure">Fedora&#8217;s Infrastructure</a>. My mentor this summer will be <a href="http://anonbadger.wordpress.com/">Toshio</a>, I&#8217;ve always enjoyed working with him and this summer will be no different. <a href="https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app">Here</a> is my actual <acronym title="Fedora Summer Coding">FSC</acronym> proposal. Although the things written in that proposal are turning out to be a bit inaccurate, it&#8217;s still a good bird&#8217;s eye view of what I&#8217;m going to do this summer. </p>
-<p>So about the first week. Things started really slow. I did a lot of orientation, certainly more than I thought I would. I hadn&#8217;t used TurboGears2 before, though I had worked with TurboGears 1.x on <a href="https://admin.fedoraproject.org/pkgdb">Fedora&#8217;s pkgdb</a>. When I started out I had only a TG2 automatically generated skeleton app &#8211; well it&#8217;s mostly the same now, though at least I now know a lot more about what&#8217;s in there. The fact that I had to start it up myself meant I had to learn a lot of things about TG2 that I would&#8217;ve normally just copied from other parts of a fully-functional project. And that was a great experience. In a way it&#8217;s fulfilling to be able to <em>pioneer</em> things in this way ;). I&#8217;m trying to only ask my mentor questions about designing the actual app and solve my &#8220;How do I &#8230; in TurboGears/Python?&#8221; questions elsewhere. My mentor has always given me a lot of independence when working on things and that feels really good, though at times I feel inexperienced. There&#8217;s the thought that the project I&#8217;m working on will be used by a lot of technical users and I&#8217;m really not sure what my decisions&#8217; impact will be on the whole project.</p>
-<p>I&#8217;m mostly on time with my <a href="https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app#Timeline">mock-up schedule</a> because I had set the first week for orienteering. I also wrote the DB schema for Coprs, though that was on the second week. That doesn&#8217;t mean I&#8217;m ahead of schedule however, because I&#8217;ll probably have a lot to work on the Copr controllers, and a lot of documenting and designing.</p>
-<p>I&#8217;m proud that I setup testing after a day of wading through the scattered documentation of TurboGears2 testing. There&#8217;s mostly no documentation on testing on the <a href="http://www.turbogears.org/2.0/docs/toc.html">TurboGears2.0 docs website</a>. So I went to the <a href="http://somethingaboutorange.com/mrl/projects/nose/0.11.2/">python nose</a> webpage. But they don&#8217;t have any info on the TurboGears2 web helpers which I needed to use. So I went to <a href="http://pylonsbook.com/en/1.1/testing.html">pylonshq docs about testing</a>, but they use a slightly different syntax because they&#8217;re using paste.fixture. I finally found the <a href="http://turbogears.org/2.1/docs/main/Testing/index.html">TurboGears2.1 testing docs</a> which was what I really needed. It turns out that TurboGears 2.x uses <a href="http://pythonpaste.org/webtest/">WebTest</a>.</p>
-<p>So now I have testing. My project is not supposed to have any web interface at this point, so writing tests is the easiest way to prove that things are actually working.</p>
-<p>This next week I&#8217;ll probably get some work done on Copr controllers. Implementing the ability to <span class="caps">CRUD</span> Coprs and Repos.</p>
-        </div>
-        <div class="post_tags">Tags:
-                <a href="/tag/linux.html">linux</a>
-                <a href="/tag/foss.html">foss</a>
-                <a href="/tag/fedora.html">fedora</a>
-                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
-                <a href="/tag/copr.html">copr</a>
-        </div>
-        <a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder#disqus_thread" class="comments">Comments</a>
         <img class="separator" alt="post separator" src="/css/separator.png" />
     </div>
 </div>

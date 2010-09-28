@@ -35,11 +35,11 @@ tag/copr
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things">Copr design - being all things to all people</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -71,6 +71,22 @@ tag/copr
 </div><!--tags-->
 </div><!--sidebar-->
 <div id="content">
+    <div class="post">
+        <h2><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></h2>
+        <h3>Monday, September  6, 2010</h3>
+        <div class="entry">
+             <p>I started working on the buildsystem part of copr this week. Right now, I&#8217;m still getting familiar with <a href="http://fedorahosted.org/func">func</a>. That&#8217;s what we&#8217;ll be using to communicate with the builder machines: get them running errands and get back status reports at any time. I spent a lot of time getting a virtual machine setup with libvirt; networking especially was a pain (mostly because of my pppoe connection I think).</p>
+<p>One nice feature of func that I think we&#8217;ll be using a lot is the <a href="https://fedorahosted.org/func/wiki/AsyncUsage">async mode</a>. A mock build takes a lot of time, what with all the yumming and compiling. So starting a task via one of the user interfaces and then choosing whether or not to keep watching it and what to watch for will probably be an essential part of the buildsystem&#8217;s functionality.</p>
+<p>In the meantime, we&#8217;re slowly <a href="https://fedorahosted.org/fedora-infrastructure/ticket/2339">getting resources</a> for the deployment of Copr. Toshio got a running instance of the current state of the TG app on <a href="http://publictest1.fedoraproject.org/copr/">publictest1</a>. It looks just like a quickstarted TG app, because it doesn&#8217;t have any WebUI. But it can <span class="caps">CRUD</span> coprs, handle dependencies between them, handle permissions and <span class="caps">CRD</span> packages. Most of the functions require a <a href="http://admin.fedoraproject.org/accounts">FAS</a> account, but you don&#8217;t need one to see a <a href="http://publictest1.fedoraproject.org/copr/coprs.json">list of all the coprs</a>, or a <a href="http://publictest1.fedoraproject.org/copr/firstcopr/packages.json">list of packages in a copr</a>.</p>
+        </div>
+        <div class="post_tags">Tags:
+                <a href="/tag/copr.html">copr</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+                <a href="/tag/foss.html">foss</a>
+        </div>
+        <a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem#disqus_thread" class="comments">Comments</a>
+        <img class="separator" alt="post separator" src="/css/separator.png" />
+    </div>
     <div class="post">
         <h2><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></h2>
         <h3>Monday, August 30, 2010</h3>

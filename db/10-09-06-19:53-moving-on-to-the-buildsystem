@@ -1,0 +1,11 @@
+FSC: moving to the buildsystem
+---
+
+copr, fedora-summer-coding, foss
+---
+
+I started working on the buildsystem part of copr this week. Right now, I'm still getting familiar with "func":http://fedorahosted.org/func. That's what we'll be using to communicate with the builder machines: get them running errands and get back status reports at any time. I spent a lot of time getting a virtual machine setup with libvirt; networking especially was a pain (mostly because of my pppoe connection I think).
+
+One nice feature of func that I think we'll be using a lot is the "async mode":https://fedorahosted.org/func/wiki/AsyncUsage. A mock build takes a lot of time, what with all the yumming and compiling. So starting a task via one of the user interfaces and then choosing whether or not to keep watching it and what to watch for will probably be an essential part of the buildsystem's functionality.
+
+In the meantime, we're slowly "getting resources":https://fedorahosted.org/fedora-infrastructure/ticket/2339 for the deployment of Copr. Toshio got a running instance of the current state of the TG app on "publictest1":http://publictest1.fedoraproject.org/copr/. It looks just like a quickstarted TG app, because it doesn't have any WebUI. But it can CRUD coprs, handle dependencies between them, handle permissions and CRD packages. Most of the functions require a "FAS":http://admin.fedoraproject.org/accounts account, but you don't need one to see a "list of all the coprs":http://publictest1.fedoraproject.org/copr/coprs.json, or a "list of packages in a copr":http://publictest1.fedoraproject.org/copr/firstcopr/packages.json.

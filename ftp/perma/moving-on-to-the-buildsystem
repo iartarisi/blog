@@ -8,10 +8,10 @@ G## -*- coding: utf-8 -*-
 <link rel="stylesheet" type="text/css" href="/css/archive.css" />
 <link rel="shortcut icon" href="/favico.ico" />
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/
-tag/emacs
+feed
 .xml" />
 <title>Revolution blahg 
-    | Emacs la Ceata
+    | FSC: moving to the buildsystem
 </title>
 </head>
 <body>
@@ -73,16 +73,17 @@ tag/emacs
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata">Emacs la Ceata</a></h2>
-        <h3>Tuesday, August 18, 2009</h3>
+        <h2><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></h2>
+        <h3>Monday, September  6, 2010</h3>
         <div class="entry">
-             <p>Să folosesc blogul ăsta și altfel decât până acum.</p>
-<p>Dacă mă are cineva în feed reader și vrea să meargă la o mică (o juma&#8217; de duzină de oameni) prezentare emacs în politehnică, cu oamenii din <a href="http://ceata.org">Ceata</a> (probabil e stricat situl în momentul ăsta), știți cum să mă contactați. Întâlnirea va avea loc mâine probabil după ora 18 în sediul Cetei din unul din căminele din Poli.</p>
-<p>Ceata e o organizație de studenți din Politehnică interesați de tehnologii libere.</p>
+             <p>I started working on the buildsystem part of copr this week. Right now, I&#8217;m still getting familiar with <a href="http://fedorahosted.org/func">func</a>. That&#8217;s what we&#8217;ll be using to communicate with the builder machines: get them running errands and get back status reports at any time. I spent a lot of time getting a virtual machine setup with libvirt; networking especially was a pain (mostly because of my pppoe connection I think).</p>
+<p>One nice feature of func that I think we&#8217;ll be using a lot is the <a href="https://fedorahosted.org/func/wiki/AsyncUsage">async mode</a>. A mock build takes a lot of time, what with all the yumming and compiling. So starting a task via one of the user interfaces and then choosing whether or not to keep watching it and what to watch for will probably be an essential part of the buildsystem&#8217;s functionality.</p>
+<p>In the meantime, we&#8217;re slowly <a href="https://fedorahosted.org/fedora-infrastructure/ticket/2339">getting resources</a> for the deployment of Copr. Toshio got a running instance of the current state of the TG app on <a href="http://publictest1.fedoraproject.org/copr/">publictest1</a>. It looks just like a quickstarted TG app, because it doesn&#8217;t have any WebUI. But it can <span class="caps">CRUD</span> coprs, handle dependencies between them, handle permissions and <span class="caps">CRD</span> packages. Most of the functions require a <a href="http://admin.fedoraproject.org/accounts">FAS</a> account, but you don&#8217;t need one to see a <a href="http://publictest1.fedoraproject.org/copr/coprs.json">list of all the coprs</a>, or a <a href="http://publictest1.fedoraproject.org/copr/firstcopr/packages.json">list of packages in a copr</a>.</p>
         </div>
         <div class="post_tags">Tags:
-                <a href="/tag/emacs.html">emacs</a>
-                <a href="/tag/events.html">events</a>
+                <a href="/tag/copr.html">copr</a>
+                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
+                <a href="/tag/foss.html">foss</a>
         </div>
         <br />
         <div id="disqus_thread"></div>
