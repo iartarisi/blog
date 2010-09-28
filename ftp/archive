@@ -36,11 +36,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -81,6 +81,9 @@ feed
                     <li class="month">
                         <h3 class="month">September</h3>
                         <ul class="days"> 
+                            <li class="day">
+                                28 - <a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a>
+                            </li>
                             <li class="day">
                                 6 - <a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a>
                             </li>
