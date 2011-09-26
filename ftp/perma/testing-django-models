@@ -36,11 +36,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -206,7 +206,7 @@ feed
                 <span class="n">body</span><span class="o">=</span><span class="s">&quot;tralaalal&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s">&quot;ooopsie!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Btw, if you don&#8217;t know the errors (like ValueError &#8212; I didn&#8217;t know it), you can always drop to a <i>manage.py console</i> and try to <code>Post.object.create(name=&#34;name&#34;,body=&#34;tralaalal&#34;, category=&#34;ooopsie!&#34;)</code> and see if you get lucky.</p>
+<p>Btw, if you don&#8217;t know the errors (like ValueError &#8212; I didn&#8217;t know it), you can always drop to a <i>manage.py console</i> and try to <code>Post.object.create(name="name",body="tralaalal", category="ooopsie!")</code> and see if you get lucky.</p>
 <p>Ok, passing on to the Commentator class:</p>
 <div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Commentator</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>

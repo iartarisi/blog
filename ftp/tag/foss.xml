@@ -5,7 +5,7 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Tue, 28 Sep 2010 20:31:30 +0300</pubDate>
+        <pubDate>Mon, 26 Sep 2011 23:14:24 +0300</pubDate>
         <generator>pyBlee!</generator>
         <item>
             <title>Copr final report</title>
@@ -35,8 +35,7 @@
             <author>mapleoin@bluepink.ro (mapleoin)</author>
             <description>  &lt;p&gt;I spent this week finishing up the copr client. It now supports all the functionality that the Copr TG &lt;span class="caps"&gt;API&lt;/span&gt; supports. It&amp;#8217;s not much, but it&amp;#8217;s a starting point.&lt;/p&gt;
 &lt;p&gt;I spent a lot of time trying to understand the way repoze.who works and the authentication plugins that we&amp;#8217;re using for the &lt;a href="https://fedorahosted.org/python-fedora/"&gt;python-fedora&lt;/a&gt; &lt;a href="https://admin.fedoraproject.org/accounts"&gt;FAS&lt;/a&gt; authentication plugin. I finally understood it, I think&amp;#8230; The Fedora client library didn&amp;#8217;t support basic &lt;span class="caps"&gt;HTTP&lt;/span&gt; Authentication for TG2 apps so I had to figure out how to integrate that into our authentication plugin. It was quite fun all in all, repoze.who has a very interesting way of doing authentication and writing wsgi middleware is always exciting ;). This patch will hopefully go upstream to python-fedora now.&lt;/p&gt;
-&lt;p&gt;This next week I&amp;#8217;ll probably start working on the buildsystem part of Copr. There are a lot of new things to learn there.&lt;/p&gt;
- </description>
+&lt;p&gt;This next week I&amp;#8217;ll probably start working on the buildsystem part of Copr. There are a lot of new things to learn there.&lt;/p&gt; </description>
             <pubDate>Mon, 30 Aug 2010 10:42 GMT</pubDate>
         </item>
         <item>
@@ -141,7 +140,7 @@ authentication:
             <author>mapleoin@bluepink.ro (mapleoin)</author>
             <description>  &lt;p&gt;Unul dintre lucrurile care mă enervează cel mai tare ca utilizator desktop la yum e că de fiecare dată când vreau să caut sau să instalez un pachet, trebuie să aștept câteva secunde bune până își actualizează metadatele pentru toate depozitele active. Astăzi am avut timp să caut o metodă de a scăpa de neplăcerea asta și a fost destul de simplu de găsit.&lt;/p&gt;
 &lt;p&gt;Rezolvarea nu este să dezactivăm complet actualizarea metadatelor, pentru că am putea încerca să instalăm pachete a căror dependințe au fost actualizate și a căror versiune exactă nu se mai găsește în depozit =&gt; &lt;em&gt;dependency hell&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Se pare că există un program &lt;em&gt;yum-updatesd&lt;/em&gt; (&lt;code&gt;su -c &amp;#34;yum install yum-updatesd&amp;#34;&lt;/code&gt;) care poate actualiza automat metadatele.&lt;/p&gt;
+&lt;p&gt;Se pare că există un program &lt;em&gt;yum-updatesd&lt;/em&gt; (&lt;code&gt;su -c "yum install yum-updatesd"&lt;/code&gt;) care poate actualiza automat metadatele.&lt;/p&gt;
 &lt;p&gt;După ce l-am instalat, putem modifica &lt;code&gt;/etc/yum/yum-updatesd.conf&lt;/code&gt; dacă vrem să facem lucruri dubioase, cum ar fi să îl lăsăm să instaleze actualizări automat &amp;#8212; pentru că trăim într-o utopie în care actualizările nu strică niciodată nimic &amp;#8212; sau, mai puțin dubios, doar să le descarce.&lt;/p&gt;
 &lt;p&gt;Acum că am terminat cu setările, putem porni serviciul cu:&lt;/p&gt;
 &lt;div class="Bash"&gt;&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;su -c &lt;span class="s2"&gt;&amp;quot;service yum-updatesd start&amp;quot;&lt;/span&gt;
@@ -162,7 +161,7 @@ authentication:
 &lt;p&gt;The fact that &lt;a href="https://admin.fedoraproject.org/pkgdb/users/packages/mapleoin"&gt;this page&lt;/a&gt; is empty has been bugging me for too much time, so I set out to fix it. I also wanted to find out more about the packaging process and the road of a package before it gets accepted into fedora&amp;#8217;s official repos which is a bit complex. This knowledge would also help me better understand the parts of pkgdb which packagers interact with.&lt;/p&gt;
 &lt;p&gt;It was not my first time trying to make a package for fedora. I think this is actually my third time. I&amp;#8217;d given up before, scared by all the different tools and scattered documentation. In a previous life, I had made some &lt;a href="http://aur.archlinux.org/"&gt;AUR&lt;/a&gt; packages, but the experience is a lot different. I&amp;#8217;m now starting to get used to all the different tools that I was scared of before, like mock and rpmlint and I can now find my way around the fedora wiki for package related information. There is a wealth of information in the wiki, but you need a lot of patience.&lt;/p&gt;
 &lt;p&gt;I started slow, with quite a complex application to package: &lt;a href="http://calibre.kovidgoyal.net/"&gt;Calibre&lt;/a&gt;. Having all those different distros is great when you&amp;#8217;re a packager, because you have somewhere to look for help and the Debian package of calibre helped me a lot. It took me about two days to get a somewhat acceptable version of calibre packaged, which I then posted to redhat&amp;#8217;s bugzilla. The following days I found more small apps to be packaged and it became easier and easier for me to do it. Last night for example, I was just browsing &lt;a href="http://news.ycombinator.org"&gt;Hacker News&lt;/a&gt; as usual when I found a link to &lt;a href="http://developers.facebook.com/news.php?blog=1&amp;amp;story=301"&gt;facebook&amp;#8217;s opensourcing of their web server framework&lt;/a&gt; . I just rushed to the download and installation instructions page and I quickly got it packaged. I&amp;#8217;m not saying it&amp;#8217;s perfect, it probably needs a lot of improvement, but it was fun to do. It&amp;#8217;s fun to think that you&amp;#8217;re making things easier for someone and learning a lot at the same time. I now have 5 packages waiting to be reviewed and I&amp;#8217;ve found someone willing to sponsor me into the &lt;strong&gt;packager&lt;/strong&gt; group. Anyone in a package-review mood? ;)&lt;/p&gt;
-&lt;p&gt;My journey into the packaging world has been enlightening so far and the good thing is I&amp;#8217;m just beginning. There&amp;#8217;s a whole new world to be discovered out there and also another part of the fedora community. &lt;/p&gt; </description>
+&lt;p&gt;My journey into the packaging world has been enlightening so far and the good thing is I&amp;#8217;m just beginning. There&amp;#8217;s a whole new world to be discovered out there and also another part of the fedora community.&lt;/p&gt; </description>
             <pubDate>Fri, 11 Sep 2009 10:00 GMT</pubDate>
         </item>
         <item>

@@ -11,7 +11,7 @@ G## -*- coding: utf-8 -*-
 feed
 .xml" />
 <title>Revolution blahg 
-    | Copr final report
+    | SQL and Relation Theory Master Class
 </title>
 </head>
 <body>
@@ -73,22 +73,14 @@ feed
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></h2>
-        <h3>Tuesday, September 28, 2010</h3>
+        <h2><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></h2>
+        <h3>Friday, September 11, 2026</h3>
         <div class="entry">
-             <p><a href="https://fedoraproject.org/wiki/Summer_Coding_2010">Fedora Summer Coding</a> is now over for me and I&#8217;m really glad of what I learned and coded this summer.</p>
-<p>Our initial goal was to develop a TurboGears2 Web app and <span class="caps">JSON</span> <span class="caps">API</span> for <a href="https://fedoraproject.org/wiki/Category:Copr">Fedora Copr</a>. When finished, Copr should provide everyone with a place to build Fedora packages and host custom repositories for everyone to enjoy. This is a project that should prove quite popular in the Fedora Community when it gets released and I&#8217;m glad to have played a role in its development.</p>
-<p>At first I worked on the web app, modeling the database and the relationship between coprs and repos and packages and then developing the <span class="caps">JSON</span> <span class="caps">API</span>. When the midterm came, my mentor and I decided that I should also contribute to the other parts of Copr. The original schedule had a simple command-line client planned, but we went further than that. In the end all of the functionality of the <span class="caps">JSON</span> <span class="caps">API</span> also got implemented in a client library (based on and very similar to <a href="https://fedorahosted.org/python-fedora/">python-fedora</a>) and in a command-line client. I also got to dive into python-fedora&#8217;s and repoze.who&#8217;s internals in order to get basic <span class="caps">HTTP</span> authentication working for TurboGears2.</p>
-<p>My latest work has been on the <a href="https://fedorahosted.org/func/">func</a> module. This is the buildsystem part of Copr. Func minions running this module will be commanded by <a href="https://fedorahosted.org/headhunter">headhunter</a> (Copr&#8217;s scheduler) to build packages in mock and then move them into repositories. The module also creates, updates and deletes package repositories and will check the built packages for Fedora conformance (e.g. licensing) &#8211; this last part is not yet implemented. I got to play with virtual machines and func and <a href="https://fedoraproject.org/wiki/Projects/Mock">mock</a> and <a href="http://createrepo.baseurl.org/">createrepo</a>.</p>
-<p>There is a more synthethic overview of all the different things that got implemented <a href="https://fedoraproject.org/wiki/User:Mapleoin/FSC-Copr-status">on the wiki</a>.</p>
-<p>Overall, I&#8217;m really glad of what I learned this summer. This project really got me involved in a lot of different levels of the architecture of a web service and a lot of different technologies. Some of the things I worked on looked really scary at first, but as I went nearer and read more code the mist slowly vanished.</p>
-<p>My mentor, <a href="http://anonbadger.wordpress.com/">Toshio Kuratomi</a> was great as always. This isn&#8217;t the first project I&#8217;ve had him as my mentor. He was always there to talk to and always had great answers to all of my questions. He had great patience in answering and explaining anything I asked about. Our discussions were mostly about the architecture of the app we were building, but he also gave me great tips on the inner workings of python-fedora or on deploying the web app. I felt I had a lot of liberty to decide the way things will get implemented. Regardless of whether we will ever work together again, Toshio will always be a great inspiration for me as a programmer and as a person.</p>
-        </div>
-        <div class="post_tags">Tags:
-                <a href="/tag/fedora.html">fedora</a>
-                <a href="/tag/copr.html">copr</a>
-                <a href="/tag/fedora-summer-coding.html">fedora-summer-coding</a>
-                <a href="/tag/foss.html">foss</a>
+             <p>This video course is perhaps the best way to meet the famous C. J. Date and his astonishingly comprehensive style. The lectures are a great introduction to database theory while at the same time they lay a very solid foundation for any database practitioners or theorists. The author introduces some very useful theoretical notions that are essential to grasping the more subtle concepts of database design and he does so in a high-class fashion.</p>
+<p>C. J. Date&#8217;s style of explaining and teaching, which can also be seen in his books, is didactic and very thorough while at the same time astonishingly clear. Many times while reading the book that these videos are based on and even afterward while watching the videos, I had to stop in order to reflect at the great volume of information that I had absorbed in a surprisingly simple manner. These videos are full of very deep notions about databases and can really benefit from reviewing at a later time, just to cement the knowledge or reflect on certain topics which come up during everyday practice.</p>
+<p>C. J. Date sets out to demolish <span class="caps">SQL</span> as a language fit for relational theory and databases in general. While going through all the database theory concepts he presents the ideal case and an ideal query language (actually not ideal, but as he demonstrates, the correct ones) contrasting them to generic <span class="caps">SQL</span>. He also posits and sets out to prove, in a very interesting argument, that relational databases are the only way to store data and all other data models <strong>will not endure</strong>. </p>
+<p>These are the days of <span class="caps">NOSQL</span> databases, but I think that the information contained in these lectures will be useful for a lot more time and in a lot more settings than just conventional <span class="caps">SQL</span> databases that are used in the majority of current systems. I oftentimes find myself thinking in relational terms even while designing the redis data model that I&#8217;m currently working on.</p>
+<p>Rating these videos 4 stars is just nit-picking, but I did feel sometimes that the lectures were a bit dull. It is also possible that I got this impression because I was watching too many without interruption :). While the content of the lectures is excellent, the presentation could be improved. Often times I felt that the audience present in the classroom could have done more to improve the dynamism of the lectures. It seemed that the only reason why they were there was so that the presenter wouldn&#8217;t feel alone. I would have enjoyed more challenging questions and especially some skeptical comments from industry veterans perhaps. I&#8217;m sure those would have led to very interesting debates considering the high class of the lecturer and presumably, the attendants.</p>
         </div>
         <br />
         <div id="disqus_thread"></div>

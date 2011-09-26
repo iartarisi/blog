@@ -5,7 +5,7 @@
         <link>http://mapleoin.bluepink.ro/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Tue, 28 Sep 2010 20:31:30 +0300</pubDate>
+        <pubDate>Mon, 26 Sep 2011 23:14:24 +0300</pubDate>
         <generator>pyBlee!</generator>
         <item>
             <title>Cum să actualizezi metadatele yum în mod automat</title>
@@ -13,7 +13,7 @@
             <author>mapleoin@bluepink.ro (mapleoin)</author>
             <description>  &lt;p&gt;Unul dintre lucrurile care mă enervează cel mai tare ca utilizator desktop la yum e că de fiecare dată când vreau să caut sau să instalez un pachet, trebuie să aștept câteva secunde bune până își actualizează metadatele pentru toate depozitele active. Astăzi am avut timp să caut o metodă de a scăpa de neplăcerea asta și a fost destul de simplu de găsit.&lt;/p&gt;
 &lt;p&gt;Rezolvarea nu este să dezactivăm complet actualizarea metadatelor, pentru că am putea încerca să instalăm pachete a căror dependințe au fost actualizate și a căror versiune exactă nu se mai găsește în depozit =&gt; &lt;em&gt;dependency hell&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Se pare că există un program &lt;em&gt;yum-updatesd&lt;/em&gt; (&lt;code&gt;su -c &amp;#34;yum install yum-updatesd&amp;#34;&lt;/code&gt;) care poate actualiza automat metadatele.&lt;/p&gt;
+&lt;p&gt;Se pare că există un program &lt;em&gt;yum-updatesd&lt;/em&gt; (&lt;code&gt;su -c "yum install yum-updatesd"&lt;/code&gt;) care poate actualiza automat metadatele.&lt;/p&gt;
 &lt;p&gt;După ce l-am instalat, putem modifica &lt;code&gt;/etc/yum/yum-updatesd.conf&lt;/code&gt; dacă vrem să facem lucruri dubioase, cum ar fi să îl lăsăm să instaleze actualizări automat &amp;#8212; pentru că trăim într-o utopie în care actualizările nu strică niciodată nimic &amp;#8212; sau, mai puțin dubios, doar să le descarce.&lt;/p&gt;
 &lt;p&gt;Acum că am terminat cu setările, putem porni serviciul cu:&lt;/p&gt;
 &lt;div class="Bash"&gt;&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;su -c &lt;span class="s2"&gt;&amp;quot;service yum-updatesd start&amp;quot;&lt;/span&gt;

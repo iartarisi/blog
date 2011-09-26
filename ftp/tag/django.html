@@ -35,11 +35,11 @@ tag/django
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -205,7 +205,7 @@ tag/django
                 <span class="n">body</span><span class="o">=</span><span class="s">&quot;tralaalal&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s">&quot;ooopsie!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Btw, if you don&#8217;t know the errors (like ValueError &#8212; I didn&#8217;t know it), you can always drop to a <i>manage.py console</i> and try to <code>Post.object.create(name=&#34;name&#34;,body=&#34;tralaalal&#34;, category=&#34;ooopsie!&#34;)</code> and see if you get lucky.</p>
+<p>Btw, if you don&#8217;t know the errors (like ValueError &#8212; I didn&#8217;t know it), you can always drop to a <i>manage.py console</i> and try to <code>Post.object.create(name="name",body="tralaalal", category="ooopsie!")</code> and see if you get lucky.</p>
 <p>Ok, passing on to the Commentator class:</p>
 <div class="Python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Commentator</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -331,7 +331,7 @@ FAILED <span class="o">(</span><span class="nv">errors</span><span class="o">=</
 </pre></div>
 </div>
 <p>Pe lângă faptul că toate tipurile de date au nume și <a href="http://docs.djangoproject.com/en/dev/ref/models/fields/#model-field-types">explicații</a> pe care le poate înțelege oricine, django va folosi datele astea atunci când va construi interfața de administrare.<br />E interesant că trebuie să declari toate tabelele în ordine. La început pusesem Categoria ultima și n-o găsea când vroia să facă ForeignKey-ul de la Post. M-a cam răsfățat OOP-ul.<br />Alt lucru fain e că de pe acum se pregătesc feature-uri interesante cum ar fi URLField.verify_exists care verifică toate url-urile introduse și le refuză dacă primește <a href="http://en.wikipedia.org/wiki/HTTP_404">404</a>. Așa că de-acum n-o să mai poată nimeni să pună <a href="http://en.wikipedia.org/wiki/Metasyntactic_variable">variabile metasintactice</a> de genu: <i>caca</i>, <i>mumu</i> și altele în field-ul ăla!</p>
-<p>Și acum un mysql describe<sup class="footnote"><a href="#fn15c5f2db-a45b-48a6-af39-c9f23902b29d">3</a></sup> pentru tabelele rezultate:</p>
+<p>Și acum un mysql describe<sup class="footnote"><a href="#fn892df545-1ffd-485e-a709-f8c4a6911651">3</a></sup> pentru tabelele rezultate:</p>
 <div class="MySQL"><div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_category</span><span class="p">;</span>
  <span class="o">+-------+-------------+------+-----+---------+</span>
  <span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">Type</span>        <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
@@ -374,7 +374,7 @@ FAILED <span class="o">(</span><span class="nv">errors</span><span class="o">=</
 </pre></div>
 </div>
 <p>TADA!<br />Trebuie să studiez de ce se strică formatarea (de fapt știu de ce, trebuie să scot textile din blockul ăla), dar ideea de bază e clară.</p>
-<p id="fn15c5f2db-a45b-48a6-af39-c9f23902b29d" class="footnote"><sup>3</sup>merci gheorghe!</p>
+<p id="fn892df545-1ffd-485e-a709-f8c4a6911651" class="footnote"><sup>3</sup>merci gheorghe!</p>
         </div>
         <div class="post_tags">Tags:
                 <a href="/tag/programming.html">programming</a>

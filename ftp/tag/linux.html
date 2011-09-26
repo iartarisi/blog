@@ -35,11 +35,11 @@ tag/linux
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -99,7 +99,7 @@ tag/linux
         <div class="entry">
              <p>Unul dintre lucrurile care mă enervează cel mai tare ca utilizator desktop la yum e că de fiecare dată când vreau să caut sau să instalez un pachet, trebuie să aștept câteva secunde bune până își actualizează metadatele pentru toate depozitele active. Astăzi am avut timp să caut o metodă de a scăpa de neplăcerea asta și a fost destul de simplu de găsit.</p>
 <p>Rezolvarea nu este să dezactivăm complet actualizarea metadatelor, pentru că am putea încerca să instalăm pachete a căror dependințe au fost actualizate și a căror versiune exactă nu se mai găsește în depozit => <em>dependency hell</em>.</p>
-<p>Se pare că există un program <em>yum-updatesd</em> (<code>su -c &#34;yum install yum-updatesd&#34;</code>) care poate actualiza automat metadatele.</p>
+<p>Se pare că există un program <em>yum-updatesd</em> (<code>su -c "yum install yum-updatesd"</code>) care poate actualiza automat metadatele.</p>
 <p>După ce l-am instalat, putem modifica <code>/etc/yum/yum-updatesd.conf</code> dacă vrem să facem lucruri dubioase, cum ar fi să îl lăsăm să instaleze actualizări automat &#8212; pentru că trăim într-o utopie în care actualizările nu strică niciodată nimic &#8212; sau, mai puțin dubios, doar să le descarce.</p>
 <p>Acum că am terminat cu setările, putem porni serviciul cu:</p>
 <div class="Bash"><div class="highlight"><pre> <span class="nv">$ </span>su -c <span class="s2">&quot;service yum-updatesd start&quot;</span>
@@ -281,7 +281,7 @@ tag/linux
 <li>Get 6 virtual desktops. </li>
 <li>Set some basic can&#8217;t-live-without-keybindings Ctrl+_number_ for switching between desktops and Alt+T for launching a gnome-terminal.</li>
 <li>Clean up my desktop. I really hate every kind of clutter on my desktop, so I delete everything. Almost everything can just be deleted, except for the Home, Trash and Computer icons. Fire up <code>gconf-editor</code> and go to <em>apps>nautilus>desktop</em> to uncheck everything. While we&#8217;re at it, let&#8217;s also enabling deleting in <em>nautilus</em> (it normally only lets you send stuff to Trash), by checking enable_delete in <em>nautilus>preferences</em>. Nautilus>Edit>Preferences>Behaviour &#8211; always open in browser windows &#8211; so it doesn&#8217;t spam me with 1000 windows to the world.</li>
-<li>Next is <code>&#60;package manager=&#34;manager&#34;&#62; install bash-completion</code> and adding this to my <em>.bashrc</em>: <code>. /etc/bash_completion</code>.</li>
+<li>Next is <code>&#60;package manager="manager"&#62; install bash-completion</code> and adding this to my <em>.bashrc</em>: <code>. /etc/bash_completion</code>.</li>
 <li>Time to get my .vimrc from wherever i happen to be keeping it at the time. you can check it out now <a href="http://mapleoin.fedorapeople.org/vimrc">here</a>.</li>
 <li>Nowadays, as I&#8217;ve got really lazy, I also set up automatic login (you can do that from <em>System>Administration>Login Window</em>. That basically bypasses gdm.</li>
 <li>Get myself into some better groups like: wheel/admin/sudo, storage/disk(so nautilus can mount disks), by editing <code>/etc/group</code>.</li>

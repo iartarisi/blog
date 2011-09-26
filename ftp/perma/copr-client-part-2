@@ -36,11 +36,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
+<li><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
 <li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -79,7 +79,6 @@ feed
              <p>I spent this week finishing up the copr client. It now supports all the functionality that the Copr TG <span class="caps">API</span> supports. It&#8217;s not much, but it&#8217;s a starting point.</p>
 <p>I spent a lot of time trying to understand the way repoze.who works and the authentication plugins that we&#8217;re using for the <a href="https://fedorahosted.org/python-fedora/">python-fedora</a> <a href="https://admin.fedoraproject.org/accounts">FAS</a> authentication plugin. I finally understood it, I think&#8230; The Fedora client library didn&#8217;t support basic <span class="caps">HTTP</span> Authentication for TG2 apps so I had to figure out how to integrate that into our authentication plugin. It was quite fun all in all, repoze.who has a very interesting way of doing authentication and writing wsgi middleware is always exciting ;). This patch will hopefully go upstream to python-fedora now.</p>
 <p>This next week I&#8217;ll probably start working on the buildsystem part of Copr. There are a lot of new things to learn there.</p>
-
         </div>
         <div class="post_tags">Tags:
                 <a href="/tag/copr.html">copr</a>
