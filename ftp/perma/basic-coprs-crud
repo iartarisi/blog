@@ -26,11 +26,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
-<li><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
+<li><a href="http://mapleoin.eu/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-final-report">Copr final report</a></li>
+<li><a href="http://mapleoin.eu/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client-part-2">the Copr client part II</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client">the Copr client</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -63,7 +63,7 @@ feed
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a></h2>
+        <h2><a href="http://mapleoin.eu/perma/basic-coprs-crud">CRUD for Coprs and testing</a></h2>
         <h3>Monday, August  2, 2010</h3>
         <div class="entry">
              <p>This last week I worked on the first controller for the <a href="https://fedoraproject.org/wiki/Category:Copr">Copr</a> <a href="https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app">TG App</a>. There is now a <span class="caps">JSON</span> <span class="caps">API</span> to <span class="caps">CRUD</span> Coprs in the TG App&#8217;s database. It also supports adding/removing Copr dependencies. And everything in this first controller is (mostly?) tested with nose unit tests. The happy thing is I&#8217;m still on schedule, though I&#8217;m not ahead of it anymore, which I actually expected.</p>

@@ -26,11 +26,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
-<li><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
+<li><a href="http://mapleoin.eu/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-final-report">Copr final report</a></li>
+<li><a href="http://mapleoin.eu/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client-part-2">the Copr client part II</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client">the Copr client</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -63,7 +63,7 @@ feed
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a></h2>
+        <h2><a href="http://mapleoin.eu/perma/midterm-report">Fedora Summer Coding midterm</a></h2>
         <h3>Monday, August 16, 2010</h3>
         <div class="entry">
              <p>This midterm scared me when I found out about it on Friday when I looked at the schedule I had set myself. However, I have done the work that I should have done by this point in the project. When I wrote the proposal I had assumed that the buildsystem would already be built before me starting coding on the TG app, but that is not the case. Therefore I could only code the user-facing <span class="caps">JSON</span> interface that interacts with the DB as it would if the buildsystem would provide it with packages and repos. Except that there are no packages and repos at this stage.</p>

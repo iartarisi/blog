@@ -26,11 +26,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
-<li><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
+<li><a href="http://mapleoin.eu/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-final-report">Copr final report</a></li>
+<li><a href="http://mapleoin.eu/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client-part-2">the Copr client part II</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client">the Copr client</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -63,10 +63,10 @@ feed
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2">blog database schema cu capsuni - Part 2</a></h2>
+        <h2><a href="http://mapleoin.eu/perma/blog-database-schema-2">blog database schema cu capsuni - Part 2</a></h2>
         <h3>Monday, September 22, 2008</h3>
         <div class="entry">
-             <p>Tocmai am reușit (am găsit timp &#8212; furat timp) să scriu în django schema din <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema">postul trecut</a>. Simplicity is divine:</p>
+             <p>Tocmai am reușit (am găsit timp &#8212; furat timp) să scriu în django schema din <a href="http://mapleoin.eu/perma/blog-database-schema">postul trecut</a>. Simplicity is divine:</p>
 <div class="Python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">nume</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
@@ -89,7 +89,7 @@ feed
 </pre></div>
 </div>
 <p>Pe lângă faptul că toate tipurile de date au nume și <a href="http://docs.djangoproject.com/en/dev/ref/models/fields/#model-field-types">explicații</a> pe care le poate înțelege oricine, django va folosi datele astea atunci când va construi interfața de administrare.<br />E interesant că trebuie să declari toate tabelele în ordine. La început pusesem Categoria ultima și n-o găsea când vroia să facă ForeignKey-ul de la Post. M-a cam răsfățat OOP-ul.<br />Alt lucru fain e că de pe acum se pregătesc feature-uri interesante cum ar fi URLField.verify_exists care verifică toate url-urile introduse și le refuză dacă primește <a href="http://en.wikipedia.org/wiki/HTTP_404">404</a>. Așa că de-acum n-o să mai poată nimeni să pună <a href="http://en.wikipedia.org/wiki/Metasyntactic_variable">variabile metasintactice</a> de genu: <i>caca</i>, <i>mumu</i> și altele în field-ul ăla!</p>
-<p>Și acum un mysql describe<sup class="footnote"><a href="#fna35cc0cb-9119-41a8-93dc-341d3d037f6f">3</a></sup> pentru tabelele rezultate:</p>
+<p>Și acum un mysql describe<sup class="footnote"><a href="#fn60b2ea2e-5aa1-4384-9bfd-34f31efbae09">3</a></sup> pentru tabelele rezultate:</p>
 <div class="MySQL"><div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">describe</span> <span class="n">revolution</span><span class="p">.</span><span class="n">blahg_category</span><span class="p">;</span>
  <span class="o">+-------+-------------+------+-----+---------+</span>
  <span class="o">|</span> <span class="n">Field</span> <span class="o">|</span> <span class="n">Type</span>        <span class="o">|</span> <span class="no">Null</span> <span class="o">|</span> <span class="k">Key</span> <span class="o">|</span> <span class="k">Default</span> <span class="o">|</span>
@@ -132,7 +132,7 @@ feed
 </pre></div>
 </div>
 <p>TADA!<br />Trebuie să studiez de ce se strică formatarea (de fapt știu de ce, trebuie să scot textile din blockul ăla), dar ideea de bază e clară.</p>
-<p id="fna35cc0cb-9119-41a8-93dc-341d3d037f6f" class="footnote"><sup>3</sup>merci gheorghe!</p>
+<p id="fn60b2ea2e-5aa1-4384-9bfd-34f31efbae09" class="footnote"><sup>3</sup>merci gheorghe!</p>
         </div>
         <div class="post_tags">Tags:
                 <a href="/tag/programming.html">programming</a>

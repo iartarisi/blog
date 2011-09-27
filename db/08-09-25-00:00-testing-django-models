@@ -4,7 +4,7 @@ testing a django blog's models
 programming, django, python
 ---
 
-This post is a continuation of "this post":http://mapleoin.bluepink.ro/perma/blog-database-schema-2/ and I'll be using that schema to write tests on top of. Here it is, for easy reference:
+This post is a continuation of "this post":http://mapleoin.eu/perma/blog-database-schema-2/ and I'll be using that schema to write tests on top of. Here it is, for easy reference:
 
 <pre lang='python'>
 from django.db import models

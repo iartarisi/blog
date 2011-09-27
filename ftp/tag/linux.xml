@@ -2,15 +2,15 @@
 <rss version="1.0">
     <channel>
         <title>Revolution blahg</title>
-        <link>http://mapleoin.bluepink.ro/</link>
+        <link>http://mapleoin.eu/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Tue, 27 Sep 2011 11:48:56 +0300</pubDate>
+        <pubDate>Tue, 27 Sep 2011 12:19:21 +0300</pubDate>
         <generator>pyBlee!</generator>
         <item>
             <title>The late Fedora Summer coder</title>
-            <link>http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/the-late-fedora-summer-coder</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;I started my &lt;a href="https://fedoraproject.org/wiki/Summer_Coding_2010"&gt;Fedora Summer Coding&lt;/a&gt; last week. Although most people started almost two months ago, I chose (and was allowed to &amp;#8211; Yay, &lt;acronym title="Fedora Summer Coding"&gt;FSC&lt;/acronym&gt;!) a different schedule because I just finished college last week.&lt;/p&gt;
 &lt;p&gt;This summer I&amp;#8217;ll be working on a new project for Fedora &amp;#8211; &lt;a href="https://fedoraproject.org/wiki/Category:Copr"&gt;Copr&lt;/a&gt;. Fedora Copr will allow any Fedorian to have their own package repository with packages built and hosted by &lt;a href="https://fedoraproject.org/wiki/Infrastructure"&gt;Fedora&amp;#8217;s Infrastructure&lt;/a&gt;. My mentor this summer will be &lt;a href="http://anonbadger.wordpress.com/"&gt;Toshio&lt;/a&gt;, I&amp;#8217;ve always enjoyed working with him and this summer will be no different. &lt;a href="https://fedoraproject.org/wiki/Summer_Coding_2010_proposal_-_Copr_TG_app"&gt;Here&lt;/a&gt; is my actual &lt;acronym title="Fedora Summer Coding"&gt;FSC&lt;/acronym&gt; proposal. Although the things written in that proposal are turning out to be a bit inaccurate, it&amp;#8217;s still a good bird&amp;#8217;s eye view of what I&amp;#8217;m going to do this summer. &lt;/p&gt;
 &lt;p&gt;So about the first week. Things started really slow. I did a lot of orientation, certainly more than I thought I would. I hadn&amp;#8217;t used TurboGears2 before, though I had worked with TurboGears 1.x on &lt;a href="https://admin.fedoraproject.org/pkgdb"&gt;Fedora&amp;#8217;s pkgdb&lt;/a&gt;. When I started out I had only a TG2 automatically generated skeleton app &amp;#8211; well it&amp;#8217;s mostly the same now, though at least I now know a lot more about what&amp;#8217;s in there. The fact that I had to start it up myself meant I had to learn a lot of things about TG2 that I would&amp;#8217;ve normally just copied from other parts of a fully-functional project. And that was a great experience. In a way it&amp;#8217;s fulfilling to be able to &lt;em&gt;pioneer&lt;/em&gt; things in this way ;). I&amp;#8217;m trying to only ask my mentor questions about designing the actual app and solve my &amp;#8220;How do I &amp;#8230; in TurboGears/Python?&amp;#8221; questions elsewhere. My mentor has always given me a lot of independence when working on things and that feels really good, though at times I feel inexperienced. There&amp;#8217;s the thought that the project I&amp;#8217;m working on will be used by a lot of technical users and I&amp;#8217;m really not sure what my decisions&amp;#8217; impact will be on the whole project.&lt;/p&gt;
@@ -22,8 +22,8 @@
         </item>
         <item>
             <title>Cum să actualizezi metadatele yum în mod automat</title>
-            <link>http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/actualizare-automata-metadata-yum</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;Unul dintre lucrurile care mă enervează cel mai tare ca utilizator desktop la yum e că de fiecare dată când vreau să caut sau să instalez un pachet, trebuie să aștept câteva secunde bune până își actualizează metadatele pentru toate depozitele active. Astăzi am avut timp să caut o metodă de a scăpa de neplăcerea asta și a fost destul de simplu de găsit.&lt;/p&gt;
 &lt;p&gt;Rezolvarea nu este să dezactivăm complet actualizarea metadatelor, pentru că am putea încerca să instalăm pachete a căror dependințe au fost actualizate și a căror versiune exactă nu se mai găsește în depozit =&gt; &lt;em&gt;dependency hell&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Se pare că există un program &lt;em&gt;yum-updatesd&lt;/em&gt; (&lt;code&gt;su -c "yum install yum-updatesd"&lt;/code&gt;) care poate actualiza automat metadatele.&lt;/p&gt;
@@ -41,8 +41,8 @@
         </item>
         <item>
             <title>Cum să peticești un rpm (patch rpm)</title>
-            <link>http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/cum-sa-peticesti-un-rpm</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;O să vă descriu cum am aplicat un petec pentru unul dintre pachetele pentru care sunt responsabil la fedora: calibre, în timp ce așteptam să-mi vină pizza http://www.fedoraproject.ro/am-lansat-fedora-12-avans . Petecul este răspunsul la un bug report: https://bugzilla.redhat.com/show_bug.cgi?id=537525 . Calibre verifică de fiecare dată când este pornit dacă pe situl oficial a apărut o nouă versiune și dacă a apărut, îl anunță pe utilizator printr-un pop-up că trebuie să actualizeze aplicația. Cum fedora are propriul management al pachetelor și deci și al actualizărilor, este recomandat ca pachetele noi să fie instalate folosind yum; deci mesajul trebuie eliminat.&lt;/p&gt;
 &lt;p&gt;Mai întâi trebuie să descărcăm sursele actuale ale rpm-ului (în momentul în care am scris patchul, în repo-uri cea mai recentă versiune era 0.6.21-1, acum ar trebui să fie una cu patchul deja aplicat):&lt;/p&gt;
 &lt;pre&gt;
@@ -187,8 +187,8 @@
         </item>
         <item>
             <title>Linux - After install work</title>
-            <link>http://mapleoin.bluepink.ro/perma/after-install-work</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/after-install-work</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;It&amp;#8217;s distro-hopping season again and I chose debian this time. I might explain my reasons for that somewhere else. Here&amp;#8217;s a list of stuff I need to do on every install in order to get comfy with my new distro. (There&amp;#8217;s a sort of meme floating around).&lt;br /&gt;I use gnome!&lt;/p&gt;
 &lt;p&gt; &lt;ul&gt;
 &lt;li&gt;Get 6 virtual desktops. &lt;/li&gt;

@@ -26,11 +26,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
-<li><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
+<li><a href="http://mapleoin.eu/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-final-report">Copr final report</a></li>
+<li><a href="http://mapleoin.eu/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client-part-2">the Copr client part II</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client">the Copr client</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -63,13 +63,13 @@ feed
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin">FUDCon Berlin</a></h2>
+        <h2><a href="http://mapleoin.eu/perma/fudcon-berlin">FUDCon Berlin</a></h2>
         <h3>Monday, June 29, 2009</h3>
         <div class="entry">
              <p>I just got back from this year&#8217;s <acronym title="Europe, the Middle East and Africa">EMEA</acronym> <acronym title="Fedora Users and Developers Conference">FUDCON</acronym> in Berlin with <a href="http://nicubunu.blogspot.com">Nicu</a> . I didn&#8217;t have time to write anything while I was there because so much was happening all the time.</p>
 <p><img src="http://fedora.nicubunu.ro/photos/fudcon2009berlin/613-img_1477.jpg.medium.jpeg" alt="" /></p>
 <h3>FUDCon and LinuxTag</h3>
-<p>LinuxTag wasn&#8217;t really the purpose of our visit, but we got free tickets so I checked the place out for a while. There were lots of booths and some speeches (mostly in German). There were also some activities, but I really didn&#8217;t get to any of them since most appeared to be German-only. I was a bit disappointed, <a href="http://mapleoin.bluepink.ro/perma/eLiberatica-aftermath">eLiberatica</a> had way better talks and guests.</p>
+<p>LinuxTag wasn&#8217;t really the purpose of our visit, but we got free tickets so I checked the place out for a while. There were lots of booths and some speeches (mostly in German). There were also some activities, but I really didn&#8217;t get to any of them since most appeared to be German-only. I was a bit disappointed, <a href="http://mapleoin.eu/perma/eLiberatica-aftermath">eLiberatica</a> had way better talks and guests.</p>
 <p>FUDCon was nice. The first day was a little slow to start, but the BarCamp session the next day was very interesting and diverse. More of that would&#8217;ve been nice. Some of the cool topics I enjoyed were: koji at <span class="caps">CERN</span>, git for hackers, Fedora <span class="caps">EKG</span> and UI Design. The last day was mostly random hacking by people who already had something to work on. I did a bit of pkgdb hacking on my own and then went Berlinxploring.</p>
 <h3>Berlin</h3>
 <p>The city was awesome. I haven&#8217;t been to a lot of different countries, but right now Berlin is my favourite. Its public transportation is awesome, the people are polite, friendly and everyone can speak English. There were a lot of trees everywhere, the temperature was really cool and there were wild bunnies in the parks! I separated from the crowd two times to go visit the city and I got to see some stuff I would&#8217;ve missed otherwise. It was also cool because what I did was basically ride the train and get off whenever I would see something interesting. I went to the Brandenburg gate and the Governmental district and also got a closer look of the bombed church. I also went to a cool flea market.</p>

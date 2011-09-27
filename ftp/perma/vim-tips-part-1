@@ -26,11 +26,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
-<li><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
+<li><a href="http://mapleoin.eu/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-final-report">Copr final report</a></li>
+<li><a href="http://mapleoin.eu/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client-part-2">the Copr client part II</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client">the Copr client</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -63,7 +63,7 @@ feed
 </div><!--sidebar-->
 <div id="content">
     <div class="post">
-        <h2><a href="http://mapleoin.bluepink.ro/perma/vim-tips-part-1">mapleoin's Vim tips #1</a></h2>
+        <h2><a href="http://mapleoin.eu/perma/vim-tips-part-1">mapleoin's Vim tips #1</a></h2>
         <h3>Tuesday, December  9, 2008</h3>
         <div class="entry">
              <p>Here&#8217;s this week&#8217;s vim tips:</p>

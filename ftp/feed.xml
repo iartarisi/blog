@@ -2,15 +2,15 @@
 <rss version="1.0">
     <channel>
         <title>Revolution blahg</title>
-        <link>http://mapleoin.bluepink.ro/</link>
+        <link>http://mapleoin.eu/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Tue, 27 Sep 2011 11:48:56 +0300</pubDate>
+        <pubDate>Tue, 27 Sep 2011 12:19:21 +0300</pubDate>
         <generator>pyBlee!</generator>
         <item>
             <title>SQL and Relation Theory Master Class</title>
-            <link>http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/sql-and-relational-theory-master</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;This video course is perhaps the best way to meet the famous C. J. Date and his astonishingly comprehensive style. The lectures are a great introduction to database theory while at the same time they lay a very solid foundation for any database practitioners or theorists. The author introduces some very useful theoretical notions that are essential to grasping the more subtle concepts of database design and he does so in a high-class fashion.&lt;/p&gt;
 &lt;p&gt;C. J. Date&amp;#8217;s style of explaining and teaching, which can also be seen in his books, is didactic and very thorough while at the same time astonishingly clear. Many times while reading the book that these videos are based on and even afterward while watching the videos, I had to stop in order to reflect at the great volume of information that I had absorbed in a surprisingly simple manner. These videos are full of very deep notions about databases and can really benefit from reviewing at a later time, just to cement the knowledge or reflect on certain topics which come up during everyday practice.&lt;/p&gt;
 &lt;p&gt;C. J. Date sets out to demolish &lt;span class="caps"&gt;SQL&lt;/span&gt; as a language fit for relational theory and databases in general. While going through all the database theory concepts he presents the ideal case and an ideal query language (actually not ideal, but as he demonstrates, the correct ones) contrasting them to generic &lt;span class="caps"&gt;SQL&lt;/span&gt;. He also posits and sets out to prove, in a very interesting argument, that relational databases are the only way to store data and all other data models &lt;strong&gt;will not endure&lt;/strong&gt;. &lt;/p&gt;
@@ -20,8 +20,8 @@
         </item>
         <item>
             <title>Copr final report</title>
-            <link>http://mapleoin.bluepink.ro/perma/copr-final-report</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/copr-final-report</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;&lt;a href="https://fedoraproject.org/wiki/Summer_Coding_2010"&gt;Fedora Summer Coding&lt;/a&gt; is now over for me and I&amp;#8217;m really glad of what I learned and coded this summer.&lt;/p&gt;
 &lt;p&gt;Our initial goal was to develop a TurboGears2 Web app and &lt;span class="caps"&gt;JSON&lt;/span&gt; &lt;span class="caps"&gt;API&lt;/span&gt; for &lt;a href="https://fedoraproject.org/wiki/Category:Copr"&gt;Fedora Copr&lt;/a&gt;. When finished, Copr should provide everyone with a place to build Fedora packages and host custom repositories for everyone to enjoy. This is a project that should prove quite popular in the Fedora Community when it gets released and I&amp;#8217;m glad to have played a role in its development.&lt;/p&gt;
 &lt;p&gt;At first I worked on the web app, modeling the database and the relationship between coprs and repos and packages and then developing the &lt;span class="caps"&gt;JSON&lt;/span&gt; &lt;span class="caps"&gt;API&lt;/span&gt;. When the midterm came, my mentor and I decided that I should also contribute to the other parts of Copr. The original schedule had a simple command-line client planned, but we went further than that. In the end all of the functionality of the &lt;span class="caps"&gt;JSON&lt;/span&gt; &lt;span class="caps"&gt;API&lt;/span&gt; also got implemented in a client library (based on and very similar to &lt;a href="https://fedorahosted.org/python-fedora/"&gt;python-fedora&lt;/a&gt;) and in a command-line client. I also got to dive into python-fedora&amp;#8217;s and repoze.who&amp;#8217;s internals in order to get basic &lt;span class="caps"&gt;HTTP&lt;/span&gt; authentication working for TurboGears2.&lt;/p&gt;
@@ -33,8 +33,8 @@
         </item>
         <item>
             <title>FSC: moving to the buildsystem</title>
-            <link>http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/moving-on-to-the-buildsystem</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;I started working on the buildsystem part of copr this week. Right now, I&amp;#8217;m still getting familiar with &lt;a href="http://fedorahosted.org/func"&gt;func&lt;/a&gt;. That&amp;#8217;s what we&amp;#8217;ll be using to communicate with the builder machines: get them running errands and get back status reports at any time. I spent a lot of time getting a virtual machine setup with libvirt; networking especially was a pain (mostly because of my pppoe connection I think).&lt;/p&gt;
 &lt;p&gt;One nice feature of func that I think we&amp;#8217;ll be using a lot is the &lt;a href="https://fedorahosted.org/func/wiki/AsyncUsage"&gt;async mode&lt;/a&gt;. A mock build takes a lot of time, what with all the yumming and compiling. So starting a task via one of the user interfaces and then choosing whether or not to keep watching it and what to watch for will probably be an essential part of the buildsystem&amp;#8217;s functionality.&lt;/p&gt;
 &lt;p&gt;In the meantime, we&amp;#8217;re slowly &lt;a href="https://fedorahosted.org/fedora-infrastructure/ticket/2339"&gt;getting resources&lt;/a&gt; for the deployment of Copr. Toshio got a running instance of the current state of the TG app on &lt;a href="http://publictest1.fedoraproject.org/copr/"&gt;publictest1&lt;/a&gt;. It looks just like a quickstarted TG app, because it doesn&amp;#8217;t have any WebUI. But it can &lt;span class="caps"&gt;CRUD&lt;/span&gt; coprs, handle dependencies between them, handle permissions and &lt;span class="caps"&gt;CRD&lt;/span&gt; packages. Most of the functions require a &lt;a href="http://admin.fedoraproject.org/accounts"&gt;FAS&lt;/a&gt; account, but you don&amp;#8217;t need one to see a &lt;a href="http://publictest1.fedoraproject.org/copr/coprs.json"&gt;list of all the coprs&lt;/a&gt;, or a &lt;a href="http://publictest1.fedoraproject.org/copr/firstcopr/packages.json"&gt;list of packages in a copr&lt;/a&gt;.&lt;/p&gt; </description>
@@ -42,8 +42,8 @@
         </item>
         <item>
             <title>the Copr client part II</title>
-            <link>http://mapleoin.bluepink.ro/perma/copr-client-part-2</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/copr-client-part-2</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;I spent this week finishing up the copr client. It now supports all the functionality that the Copr TG &lt;span class="caps"&gt;API&lt;/span&gt; supports. It&amp;#8217;s not much, but it&amp;#8217;s a starting point.&lt;/p&gt;
 &lt;p&gt;I spent a lot of time trying to understand the way repoze.who works and the authentication plugins that we&amp;#8217;re using for the &lt;a href="https://fedorahosted.org/python-fedora/"&gt;python-fedora&lt;/a&gt; &lt;a href="https://admin.fedoraproject.org/accounts"&gt;FAS&lt;/a&gt; authentication plugin. I finally understood it, I think&amp;#8230; The Fedora client library didn&amp;#8217;t support basic &lt;span class="caps"&gt;HTTP&lt;/span&gt; Authentication for TG2 apps so I had to figure out how to integrate that into our authentication plugin. It was quite fun all in all, repoze.who has a very interesting way of doing authentication and writing wsgi middleware is always exciting ;). This patch will hopefully go upstream to python-fedora now.&lt;/p&gt;
 &lt;p&gt;This next week I&amp;#8217;ll probably start working on the buildsystem part of Copr. There are a lot of new things to learn there.&lt;/p&gt; </description>
@@ -51,8 +51,8 @@
         </item>
         <item>
             <title>the Copr client</title>
-            <link>http://mapleoin.bluepink.ro/perma/copr-client</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/copr-client</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;This last week I started working on the command line client to &lt;a href="https://fedoraproject.org/wiki/Category:Copr"&gt;Copr&lt;/a&gt;. Luckily, the &lt;a href="https://fedorahosted.org/python-fedora"&gt;python-fedora&lt;/a&gt; already has a lot of code in place to make the task of writing clients for TurboGears apps a lot easier. Some of &lt;a href="http://admin.fedoraproject.org/pkgdb"&gt;the&lt;/a&gt; &lt;a href="http://admin.fedoraproject.org/updates"&gt;apps&lt;/a&gt; &lt;a href="http://admin.fedoraproject.org/accounts"&gt;in&lt;/a&gt; infrastructure are already using this library, which make for some good examples.&lt;/p&gt;
 &lt;p&gt;So I&amp;#8217;m building a client library and a client um&amp;#8230; command line client. The command line client is basically one big &lt;a href="http://docs.python.org/library/argparse.html"&gt;argparse&lt;/a&gt; application that calls the functions in the client library and sometimes does a bit of formatting on the output. The client library implements a fedora.client.BaseClient that mostly just calls json methods on the Copr server.&lt;/p&gt;
 &lt;p&gt;It&amp;#8217;s all pretty simple. The hard part is deciding what the command line client&amp;#8217;s interface will look like. In argparse parlance, which ones should be the positional arguments and which should be the optional arguments. So far I&amp;#8217;ve been inclined to use something that looks like a VCS&amp;#8217;s interface. Here&amp;#8217;s what it looks like so far:&lt;/p&gt;
@@ -82,8 +82,8 @@ authentication:
         </item>
         <item>
             <title>Ruby koans</title>
-            <link>http://mapleoin.bluepink.ro/perma/ruby-koans</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/ruby-koans</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;I had a great time today with &lt;a href="http://www.rubykoans.com/"&gt;Ruby Koans&lt;/a&gt;. It took me about 5 hours in all. A good way to spend a Sunday afternoon I suppose.&lt;/p&gt;
 &lt;p&gt;These Ruby Koans are a great way to go on a quick journey through a lot of Ruby&amp;#8217;s common features. You basically have to edit tests in order to get them working. It&amp;#8217;s mostly reading tests actually, but the fact that you have to fill in some blanks keeps the mind from wandering. There are also a couple of exercises which imply a bit more coding.&lt;/p&gt;
 &lt;p&gt;I have a good knowledge of Python and have worked with Ruby in the past on a little Rails project. I had forgotten anything I knew about Ruby though. Yesterday, I don&amp;#8217;t think I would&amp;#8217;ve been able to write a foobaz in Ruby without looking for help online. This proved to be a welcome refresher. Solving these koans gives a great tour of Ruby. As I went through them I kept thinking of how I would do those things with Python. I really like Python&amp;#8217;s philosophy and maybe solving all these ruby koans has made me appreciate Python&amp;#8217;s simplicity and predictability a bit more. Ruby allows for a lot more flexibility however and the koans left me to wonder at what amazing feats this language could accomplish.&lt;/p&gt;
@@ -93,8 +93,8 @@ authentication:
         </item>
         <item>
             <title>Fedora Summer Coding midterm</title>
-            <link>http://mapleoin.bluepink.ro/perma/midterm-report</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/midterm-report</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;This midterm scared me when I found out about it on Friday when I looked at the schedule I had set myself. However, I have done the work that I should have done by this point in the project. When I wrote the proposal I had assumed that the buildsystem would already be built before me starting coding on the TG app, but that is not the case. Therefore I could only code the user-facing &lt;span class="caps"&gt;JSON&lt;/span&gt; interface that interacts with the DB as it would if the buildsystem would provide it with packages and repos. Except that there are no packages and repos at this stage.&lt;/p&gt;
 &lt;p&gt;So for this midterm, we&amp;#8217;ve got working Copr &lt;span class="caps"&gt;CRUD&lt;/span&gt;, dependency handling and release/repo editing on a Copr. I also coded the Package &lt;span class="caps"&gt;CRUD&lt;/span&gt;, which basically allows for uploads of SRPMs, stores the info in the db and also allows for information retrieval and deleting packages. Actually building packages and retrieving packagebuilds will have to wait for the buildsystem to be built.&lt;/p&gt;
 &lt;p&gt;After I finish polishing things a bit, I will probably start working on a basic client and then maybe move on to working on the buildsystem part of Copr. That should be loads of fun especially since I haven&amp;#8217;t done anything quite like this before. So it will be hard, but fun :).&lt;/p&gt;

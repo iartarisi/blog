@@ -4,7 +4,7 @@ blog database schema cu capsuni - Part 2
 programming, databases, django, python
 ---
 
-Tocmai am reușit (am găsit timp -- furat timp) să scriu în django schema din "postul trecut":http://mapleoin.bluepink.ro/perma/blog-database-schema. Simplicity is divine:
+Tocmai am reușit (am găsit timp -- furat timp) să scriu în django schema din "postul trecut":http://mapleoin.eu/perma/blog-database-schema. Simplicity is divine:
 
 <pre lang="python">
 from django.db import models

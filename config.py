@@ -9,8 +9,8 @@ postdir = 'perma/'
 
 # rss related information
 title = 'Revolution blahg'
-author = 'mapleoin@bluepink.ro (mapleoin)'
-link = 'http://mapleoin.bluepink.ro/'
+author = 'mapleoin@lavabit.ro (mapleoin)'
+link = 'http://mapleoin.eu/'
 description = "mapleoin's rambling blahg"
 language = 'en'
 

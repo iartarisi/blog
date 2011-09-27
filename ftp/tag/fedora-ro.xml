@@ -2,15 +2,15 @@
 <rss version="1.0">
     <channel>
         <title>Revolution blahg</title>
-        <link>http://mapleoin.bluepink.ro/</link>
+        <link>http://mapleoin.eu/</link>
         <description>mapleoin's rambling blahg</description>
         <language>en</language>
-        <pubDate>Tue, 27 Sep 2011 11:48:56 +0300</pubDate>
+        <pubDate>Tue, 27 Sep 2011 12:19:21 +0300</pubDate>
         <generator>pyBlee!</generator>
         <item>
             <title>Cum să actualizezi metadatele yum în mod automat</title>
-            <link>http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/actualizare-automata-metadata-yum</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;Unul dintre lucrurile care mă enervează cel mai tare ca utilizator desktop la yum e că de fiecare dată când vreau să caut sau să instalez un pachet, trebuie să aștept câteva secunde bune până își actualizează metadatele pentru toate depozitele active. Astăzi am avut timp să caut o metodă de a scăpa de neplăcerea asta și a fost destul de simplu de găsit.&lt;/p&gt;
 &lt;p&gt;Rezolvarea nu este să dezactivăm complet actualizarea metadatelor, pentru că am putea încerca să instalăm pachete a căror dependințe au fost actualizate și a căror versiune exactă nu se mai găsește în depozit =&gt; &lt;em&gt;dependency hell&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Se pare că există un program &lt;em&gt;yum-updatesd&lt;/em&gt; (&lt;code&gt;su -c "yum install yum-updatesd"&lt;/code&gt;) care poate actualiza automat metadatele.&lt;/p&gt;
@@ -28,8 +28,8 @@
         </item>
         <item>
             <title>Cum să peticești un rpm (patch rpm)</title>
-            <link>http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm</link>
-            <author>mapleoin@bluepink.ro (mapleoin)</author>
+            <link>http://mapleoin.eu/perma/cum-sa-peticesti-un-rpm</link>
+            <author>mapleoin@lavabit.ro (mapleoin)</author>
             <description>  &lt;p&gt;O să vă descriu cum am aplicat un petec pentru unul dintre pachetele pentru care sunt responsabil la fedora: calibre, în timp ce așteptam să-mi vină pizza http://www.fedoraproject.ro/am-lansat-fedora-12-avans . Petecul este răspunsul la un bug report: https://bugzilla.redhat.com/show_bug.cgi?id=537525 . Calibre verifică de fiecare dată când este pornit dacă pe situl oficial a apărut o nouă versiune și dacă a apărut, îl anunță pe utilizator printr-un pop-up că trebuie să actualizeze aplicația. Cum fedora are propriul management al pachetelor și deci și al actualizărilor, este recomandat ca pachetele noi să fie instalate folosind yum; deci mesajul trebuie eliminat.&lt;/p&gt;
 &lt;p&gt;Mai întâi trebuie să descărcăm sursele actuale ale rpm-ului (în momentul în care am scris patchul, în repo-uri cea mai recentă versiune era 0.6.21-1, acum ar trebui să fie una cu patchul deja aplicat):&lt;/p&gt;
 &lt;pre&gt;

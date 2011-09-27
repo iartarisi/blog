@@ -26,11 +26,11 @@ feed
 <div id="recent">
 <h4>Recent</h4>
 <ul>
-<li><a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a></li>
-<li><a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a></li>
+<li><a href="http://mapleoin.eu/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-final-report">Copr final report</a></li>
+<li><a href="http://mapleoin.eu/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client-part-2">the Copr client part II</a></li>
+<li><a href="http://mapleoin.eu/perma/copr-client">the Copr client</a></li>
 </ul>
 </div><!--recent-->
 <br />
@@ -72,7 +72,7 @@ feed
                         <h3 class="month">September</h3>
                         <ul class="days"> 
                             <li class="day">
-                                11 - <a href="http://mapleoin.bluepink.ro/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a>
+                                11 - <a href="http://mapleoin.eu/perma/sql-and-relational-theory-master">SQL and Relation Theory Master Class</a>
                             </li>
                         </ul> <!-- days -->
                     </li> <!-- month -->
@@ -82,10 +82,10 @@ feed
                 <h2 class="year">2010</h2>
                 <ul class="months">
                             <li class="day">
-                                28 - <a href="http://mapleoin.bluepink.ro/perma/copr-final-report">Copr final report</a>
+                                28 - <a href="http://mapleoin.eu/perma/copr-final-report">Copr final report</a>
                             </li>
                             <li class="day">
-                                6 - <a href="http://mapleoin.bluepink.ro/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a>
+                                6 - <a href="http://mapleoin.eu/perma/moving-on-to-the-buildsystem">FSC: moving to the buildsystem</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -94,22 +94,22 @@ feed
                         <h3 class="month">August</h3>
                         <ul class="days">
                             <li class="day">
-                                30 - <a href="http://mapleoin.bluepink.ro/perma/copr-client-part-2">the Copr client part II</a>
+                                30 - <a href="http://mapleoin.eu/perma/copr-client-part-2">the Copr client part II</a>
                             </li>
                             <li class="day">
-                                23 - <a href="http://mapleoin.bluepink.ro/perma/copr-client">the Copr client</a>
+                                23 - <a href="http://mapleoin.eu/perma/copr-client">the Copr client</a>
                             </li>
                             <li class="day">
-                                22 - <a href="http://mapleoin.bluepink.ro/perma/ruby-koans">Ruby koans</a>
+                                22 - <a href="http://mapleoin.eu/perma/ruby-koans">Ruby koans</a>
                             </li>
                             <li class="day">
-                                16 - <a href="http://mapleoin.bluepink.ro/perma/midterm-report">Fedora Summer Coding midterm</a>
+                                16 - <a href="http://mapleoin.eu/perma/midterm-report">Fedora Summer Coding midterm</a>
                             </li>
                             <li class="day">
-                                9 - <a href="http://mapleoin.bluepink.ro/perma/copr-design-being-all-things">Copr design - being all things to all people</a>
+                                9 - <a href="http://mapleoin.eu/perma/copr-design-being-all-things">Copr design - being all things to all people</a>
                             </li>
                             <li class="day">
-                                2 - <a href="http://mapleoin.bluepink.ro/perma/basic-coprs-crud">CRUD for Coprs and testing</a>
+                                2 - <a href="http://mapleoin.eu/perma/basic-coprs-crud">CRUD for Coprs and testing</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -118,7 +118,7 @@ feed
                         <h3 class="month">July</h3>
                         <ul class="days">
                             <li class="day">
-                                25 - <a href="http://mapleoin.bluepink.ro/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a>
+                                25 - <a href="http://mapleoin.eu/perma/the-late-fedora-summer-coder">The late Fedora Summer coder</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -127,7 +127,7 @@ feed
                         <h3 class="month">March</h3>
                         <ul class="days">
                             <li class="day">
-                                18 - <a href="http://mapleoin.bluepink.ro/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a>
+                                18 - <a href="http://mapleoin.eu/perma/actualizare-automata-metadata-yum">Cum să actualizezi metadatele yum în mod automat</a>
                             </li>
                         </ul> <!-- days -->
                     </li> <!-- month -->
@@ -140,7 +140,7 @@ feed
                         <h3 class="month">November</h3>
                         <ul class="days">
                             <li class="day">
-                                30 - <a href="http://mapleoin.bluepink.ro/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a>
+                                30 - <a href="http://mapleoin.eu/perma/cum-sa-peticesti-un-rpm">Cum să peticești un rpm (patch rpm)</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -149,10 +149,10 @@ feed
                         <h3 class="month">September</h3>
                         <ul class="days">
                             <li class="day">
-                                18 - <a href="http://mapleoin.bluepink.ro/perma/productive-programmer-review">The Productive Programmer</a>
+                                18 - <a href="http://mapleoin.eu/perma/productive-programmer-review">The Productive Programmer</a>
                             </li>
                             <li class="day">
-                                11 - <a href="http://mapleoin.bluepink.ro/perma/packaging-for-fedora">Beginning packaging for Fedora</a>
+                                11 - <a href="http://mapleoin.eu/perma/packaging-for-fedora">Beginning packaging for Fedora</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -161,7 +161,7 @@ feed
                         <h3 class="month">August</h3>
                         <ul class="days">
                             <li class="day">
-                                18 - <a href="http://mapleoin.bluepink.ro/perma/emacs-in-ceata">Emacs la Ceata</a>
+                                18 - <a href="http://mapleoin.eu/perma/emacs-in-ceata">Emacs la Ceata</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -170,7 +170,7 @@ feed
                         <h3 class="month">June</h3>
                         <ul class="days">
                             <li class="day">
-                                29 - <a href="http://mapleoin.bluepink.ro/perma/fudcon-berlin">FUDCon Berlin</a>
+                                29 - <a href="http://mapleoin.eu/perma/fudcon-berlin">FUDCon Berlin</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -179,7 +179,7 @@ feed
                         <h3 class="month">May</h3>
                         <ul class="days">
                             <li class="day">
-                                24 - <a href="http://mapleoin.bluepink.ro/perma/eLiberatica-aftermath">eLiberatica - the aftermath!</a>
+                                24 - <a href="http://mapleoin.eu/perma/eLiberatica-aftermath">eLiberatica - the aftermath!</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -188,10 +188,10 @@ feed
                         <h3 class="month">April</h3>
                         <ul class="days">
                             <li class="day">
-                                24 - <a href="http://mapleoin.bluepink.ro/perma/fedora-business-cards">Fedora Business Cards</a>
+                                24 - <a href="http://mapleoin.eu/perma/fedora-business-cards">Fedora Business Cards</a>
                             </li>
                             <li class="day">
-                                23 - <a href="http://mapleoin.bluepink.ro/perma/GSOC-it-begins">GSOC - it begins...</a>
+                                23 - <a href="http://mapleoin.eu/perma/GSOC-it-begins">GSOC - it begins...</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -200,7 +200,7 @@ feed
                         <h3 class="month">February</h3>
                         <ul class="days">
                             <li class="day">
-                                3 - <a href="http://mapleoin.bluepink.ro/perma/ultimate-freebsd-desktop">the ultimate FreeBSD desktop (without a mouse)</a>
+                                3 - <a href="http://mapleoin.eu/perma/ultimate-freebsd-desktop">the ultimate FreeBSD desktop (without a mouse)</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -209,7 +209,7 @@ feed
                         <h3 class="month">January</h3>
                         <ul class="days">
                             <li class="day">
-                                11 - <a href="http://mapleoin.bluepink.ro/perma/freemusic">Living with free music for a year</a>
+                                11 - <a href="http://mapleoin.eu/perma/freemusic">Living with free music for a year</a>
                             </li>
                         </ul> <!-- days -->
                     </li> <!-- month -->
@@ -222,10 +222,10 @@ feed
                         <h3 class="month">December</h3>
                         <ul class="days">
                             <li class="day">
-                                19 - <a href="http://mapleoin.bluepink.ro/perma/after-install-work">Linux - After install work</a>
+                                19 - <a href="http://mapleoin.eu/perma/after-install-work">Linux - After install work</a>
                             </li>
                             <li class="day">
-                                9 - <a href="http://mapleoin.bluepink.ro/perma/vim-tips-part-1">mapleoin's Vim tips #1</a>
+                                9 - <a href="http://mapleoin.eu/perma/vim-tips-part-1">mapleoin's Vim tips #1</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -234,7 +234,7 @@ feed
                         <h3 class="month">October</h3>
                         <ul class="days">
                             <li class="day">
-                                19 - <a href="http://mapleoin.bluepink.ro/perma/django-comments-fields">Django comments fields</a>
+                                19 - <a href="http://mapleoin.eu/perma/django-comments-fields">Django comments fields</a>
                             </li>
                         
                         </ul> <!-- days -->
@@ -243,28 +243,28 @@ feed
                         <h3 class="month">September</h3>
                         <ul class="days">
                             <li class="day">
-                                25 - <a href="http://mapleoin.bluepink.ro/perma/testing-django-models">testing a django blog's models</a>
+                                25 - <a href="http://mapleoin.eu/perma/testing-django-models">testing a django blog's models</a>
                             </li>
                             <li class="day">
-                                23 - <a href="http://mapleoin.bluepink.ro/perma/eliminate-rails-caching-gap">Eliminate rails caching gap</a>
+                                23 - <a href="http://mapleoin.eu/perma/eliminate-rails-caching-gap">Eliminate rails caching gap</a>
                             </li>
                             <li class="day">
-                                22 - <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema-2">blog database schema cu capsuni - Part 2</a>
+                                22 - <a href="http://mapleoin.eu/perma/blog-database-schema-2">blog database schema cu capsuni - Part 2</a>
                             </li>
                             <li class="day">
-                                20 - <a href="http://mapleoin.bluepink.ro/perma/despre-procrastinare">despre procrastinare</a>
+                                20 - <a href="http://mapleoin.eu/perma/despre-procrastinare">despre procrastinare</a>
                             </li>
                             <li class="day">
-                                16 - <a href="http://mapleoin.bluepink.ro/perma/blog-database-schema">blog database schema cu capsuni</a>
+                                16 - <a href="http://mapleoin.eu/perma/blog-database-schema">blog database schema cu capsuni</a>
                             </li>
                             <li class="day">
-                                14 - <a href="http://mapleoin.bluepink.ro/perma/incepe-django-rails">Incepe django-rails?</a>
+                                14 - <a href="http://mapleoin.eu/perma/incepe-django-rails">Incepe django-rails?</a>
                             </li>
                             <li class="day">
-                                12 - <a href="http://mapleoin.bluepink.ro/perma/blogging-despre-blogging">Blogging despre blogging</a>
+                                12 - <a href="http://mapleoin.eu/perma/blogging-despre-blogging">Blogging despre blogging</a>
                             </li>
                             <li class="day">
-                                9 - <a href="http://mapleoin.bluepink.ro/perma/stecher-ascutitoare-si-scrisori">Ștecher, ascuțitoare și scrisori imaginare</a>
+                                9 - <a href="http://mapleoin.eu/perma/stecher-ascutitoare-si-scrisori">Ștecher, ascuțitoare și scrisori imaginare</a>
                             </li>
                         </ul> <!-- days -->
                     </li> <!-- month -->
