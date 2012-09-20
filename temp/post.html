@@ -40,13 +40,6 @@
     </div>
     % endfor
 </%def>
-<%def name="xml()">
-% if tag:
-tag/${tag}
-% else:
-feed
-% endif
-</%def>
 <%def name="title()">
     % if len(posts) == 1:
     | ${posts[0].name}
