@@ -1,0 +1,93 @@
+FOSDEM 2012 review
+---
+
+programming, databases, foss, fedora
+---
+
+I went to "FOSDEM":http://fosdem.org this year. Thanks "SUSE":http://suse.com for sponsoring my trip! Here is a short review for the projects that I found interesting at this year's FOSDEM.
+
+h4. SATURDAY
+
+h4. "The Aeolus Project":http://aeolusproject.org/
+
+h5. Francesco Vollero - Red Hat
+
+This is a very interesting project if you can go past how _meta_ it is.  It wants to be an abstraction over all the existing private and public cloud solutions. The aim of the project is to be able to create and control a virtual system throughout its life cycle. It can be converted from one VM image format to another and be deployed/moved from one cloud provider to another. Groups of images can be setup and controlled together. The way resources are managed and billed would also be cloud-independent.
+
+It relies heavily on the DeltaCloud project.
+
+
+h4. Open Clouds with "DeltaCloud":http://deltacloud.apache.org/
+
+h5. Michal Fojtik - Red Hat
+
+DeltaCloud aims to be a RESTful API that is able to abstract all of the other public or private cloud APIs, allowing for the development of cloud-independent software.  The project says it wants to be truly independent (esp. from Red Hat). It was accepted as a top-level Apache project.
+
+
+h4. DMTF CIMI and Apache DeltaCloud
+
+h5. Marios Andreou - Red Hat
+
+The CIMI API is a specification for interacting with various cloud-resources. A lot of very big companies are part of the DMTF Cloud Management Working Group: Red Hat, VMware Inc., Oracle, IBM, Microsoft Corporation, Huawei, Fujitsu, Dell. It is currently being implemented as part of the DeltaCloud API. The presenter also showed some implementation details: a lot of the code is shared between the DeltaCloud and the CIMI API.
+
+
+h4. Infrastructure as an opensource project
+
+h5. Ryan Lane - Wikimedia Foundation
+
+The talk went into some detail about the whole Wikimedia setup. It is built on top of open source projects and aims to be entirely free and available to anyone who wants to know more about it. The speaker presented some of the issues that the Wikimedia organization faced when they decided to give full root access to their machines to volunteers and how to allow for different levels of trust.
+
+
+h4. Orchestration for the cloud - "Juju":https://juju.ubuntu.com/
+
+h5. Dave Walker - Canonical
+
+Juju is a system for building recipes of configurations and packages that can then be deployed on openstack/EC2 systems. The project aims to integrate with tools like chef and puppet to be able to manage deploying, connecting, configuring and running suites of applications in the cloud.
+
+
+h4. OpenStack developers meeting
+
+This was a rather informal discussion. 4 major distros were present: Fedora, Ubuntu, SUSE and Debian, but also some other contributors. Upstream asked about the problems that distributions face, some minor one-time occurrences were discussed briefly. Stefano Maffulli, the openstack community manager was also present and there were some heated discussions about the way the project is governed. There are still a lot of things being discussed behind closed doors. Negotiations about the future of the project and fund-gathering is done with only a few big companies at a very high level. The community, on the other hand, was very vocal about wanting to rule itself with no enterprise interference.
+
+
+h4. Rethinking system and distro development
+
+h5. Lars Wirzenius
+
+Advanced the idea of maintaining groups of packages, all locked at a specific version. Having the maintainers always know which combination of versions a bug comes from would make the whole environment easier to replicate and the bug easier to reproduce. This would also, supposedly, reduce some of the complexities of dealing with dependencies.
+
+These groups of packages would be built directly from the upstream's sources, following rules laid out in a git repository. The speaker also said he wants to get rid of binary packages completely.
+
+If this were to be implemented, distributions could write functional tests against whole systems (continuously built images), rather than individual binary packages and ensure that a full configuration works.
+
+Someone from the audience mentioned that a lot of the ideas in the talk are already implemented in NixOS(nixos.org) (which looks like a very interesting project in itself).
+
+
+h4. SUNDAY
+
+h4. Continuos Integration/ Continuos Delivery
+
+h5. Karanbir Singh - CentOS
+
+The speaker discussed the system which CentOS uses for continuous integration. I liked their laissez-faire approach to which type of functional test language they should be using. They basically allow any type of language/environment to be used when running tests. The only requirement is that the test returns 0 on success and something else on failure. Anyone can write functional tests in any language they want (they just specify the packages as requirements for their test environment). People can choose to maintain different groups of packages along with the tests associated to them.
+
+h4. The Apache "Cassandra":http://cassandra.apache.org Storage Engine
+
+h5. Sylvain Lebresne
+
+
+A lot of interesting concepts about the optimizations that were made in the Cassandra project in order to speed up writes and make reads twice as fast (almost as fast as reads): different levels of caching, queuing writes, merge sorting the read cache with the physical data on reads etc.
+
+
+
+h4. "Freedom, Out of the Box!":http://freedomboxfoundation.org/
+
+h5. Bdale Garbee
+
+An interesting project about making a truly free easily available software as well as hardware system. Some interesting concepts are used in this project like GPG keys for authentication, but also for the trust required to provide a truly decentralized peer based network, free from DNSes.
+
+<hr />
+
+I've been to a few other talks that I can't remember anything from either because of the bad quality of the presentation or because I didn't have the prerequisite knowledge to understand what they were talking about. Next time I should also take notes.
+
+A lot of the talks were recorded and are available over here (with more coming): "FOSDEM 2012 videos":http://video.fosdem.org/2012/. The quality of the recordings (esp. in the main room) is sometimes even better than being there live. The voice is clearer and there is no ambient noise. Also, as it was really cold in most of the rooms - I had to keep my jacket and hat on.
