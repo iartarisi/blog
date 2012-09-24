@@ -44,8 +44,11 @@ class Blog:
         """Runs the posts through the given template"""
         templ = self.temp_lookup.get_template(template)
             
-        return templ.render_unicode(posts = posts, 
-                                    tag = tag).encode(config.encoding)
+        return templ.render_unicode(posts = posts,
+                                    all_posts=self.posts,
+                                    tag_page=tag,
+                                    all_tags=self.tags,
+                                    config=config).encode(config.encoding)
 
     def build_page(self, template, output_file, posts, tag=None):
         """Build a blog page/post
@@ -68,47 +71,6 @@ class Blog:
         f.write(rendered_temp)
         f.close()
         print 'Wrote ' + filename + ' succesfully'
-
-    def base_template(self, base_temp='base.html'):
-        """Update the base template
-        
-           Update: recent posts, page links 
-        """
-        f = codecs.open(config.templatedir+base_temp, 'r', config.encoding)
-        soup = BeautifulSoup(f.read())
-        f.close()
-
-        # update the recent posts
-        recent = soup.find('div', id='recent')
-        rec_html = '<div id="recent">\n<h4>Recent</h4>\n<ul>\n'
-        for post in self.posts[:config.recent]:
-            rec_html += '<li><a href="'+post.url+'">'+post.name+'</a></li>\n'
-        rec_html += '</ul>\n</div>'
-        recent.replaceWith(rec_html)
-
-        # update the page links
-        # FIXME ugly ugly view code should go in the view
-        header = soup.find('div', id='header')
-        h1_html = '<div id="header">\n' + str(header.h1)
-        h1_html += '<a href="/">home</a>\n'
-        h1_html += '<a href="/archive">archive</a>\n'
-        for page in self.pages:
-            if page.slug == page.filename: # FIXME better way to find pages?
-                h1_html += '<a href="/'+page.slug+'">'+page.name+'</a>\n'
-        h1_html += '\n</div>'
-        header.replaceWith(h1_html)
-
-        # update the tags
-        tags = soup.find('div', id='tags')
-        tag_html = '<div id="tags">\n<h4>Tags</h4>\n<ul>\n'
-        for tag in self.tags:
-            tag_html += '<li><a href="/'+config.tagdir+tag+'.html">'+tag \
-                        +'</a></li>\n'
-        tag_html += '</ul>\n</div>'
-        tags.replaceWith(tag_html)
-
-        self.write(config.templatedir+base_temp, str(soup))
-        return (rec_html, h1_html, tag_html) 
 
     def build_rss(self, post_list):
         """Build an rss object and return a rendered rss template"""
@@ -144,11 +106,10 @@ class Blog:
     
     def archive(self):
         """Build an archive page of all the posts, by date"""
-        self.build_page('archive.html', 'archive', self.posts) 
+        self.build_page('archive.html', 'archive.html', self.posts) 
     
     def update_blog(self):
         """Update the entire site, also processing the posts"""
-        self.base_template()
         self.update_site()
         self.index()
         self.archive()
@@ -161,4 +122,4 @@ class Blog:
         for f in files:
             if f[0] != '.': # leave out hidden files
                 post = Post(self.datadir+f)
-                post.write()
+                post.write(self.posts, self.tags)

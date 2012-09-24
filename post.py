@@ -100,22 +100,26 @@ class Post:
                 pre['class'] = lexer.name
         return unicode(soup)
 
-    def write(self):    
+    def write(self, all_posts, all_tags):
         """Output the processed post"""
 
         if self.filename == self.slug: # page
-            db_post = open(self.sitedir+self.slug, 'w')
-            db_post.write(self.template('page.html'))
+            db_post = open(self.sitedir+self.slug+'.html', 'w')
+            db_post.write(self.template('page.html', all_posts, all_tags))
             print 'Page updated: '+self.name
         else:
-            db_post = open(self.sitedir+self.postdir+self.slug, 'w')
-            db_post.write(self.template('post.html'))
+            db_post = open(self.sitedir+self.postdir+self.slug+'.html', 'w')
+            db_post.write(self.template('post.html', all_posts, all_tags))
             # move posts in the directories specific to their tags
             print 'Post added: '+self.name +' -- '+self.pretty_date
         db_post.close()
 
-    def template(self, temp='post.html'):
+    def template(self, temp, all_posts, all_tags):
         """Returns the final html, ready to be rendered"""
         
         templ = self.temp_lookup.get_template(temp)
-        return templ.render_unicode(posts = [self]).encode('utf-8')
+        return templ.render_unicode(posts = [self],
+                                    tag_page=False,
+                                    config=config,
+                                    all_posts=all_posts,
+                                    all_tags=all_tags).encode('utf-8')
