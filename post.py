@@ -62,7 +62,7 @@ class Post:
             raise ValueError, "check the formatting (I'd like a title "+  \
                               + 'and some tags, please!' + file
 
-        self.body = self.highlight(self.markup(self.body))
+        self.body = code_highlight(self.markup(self.body))
         self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
                                           default_filters=['decode.utf8'])
 
@@ -80,25 +80,6 @@ class Post:
 
         # textilize everything else
         return textile(unicode(soup))
-
-    def highlight(self, body):
-        """Syntax highlighting and textilization"""
-        soup = BeautifulSoup(body)
-        preblocks = soup.findAll('pre')
-
-        formatter = formatters.HtmlFormatter()
-        # highlight
-        for pre in preblocks:
-            if pre.has_key('lang'):
-                lexer = lexers.get_lexer_by_name(pre['lang'],
-                                                 encoding=self.encoding)
-                code = ''.join([str(item) for item in pre.contents])
-                code_hl = BeautifulSoup(highlight(code, lexer, formatter))
-                pre.contents = [code_hl]
-                pre.name = 'div'
-                del(pre['lang'])
-                pre['class'] = lexer.name
-        return unicode(soup)
 
     def write(self, all_posts, all_tags):
         """Output the processed post"""
@@ -123,3 +104,29 @@ class Post:
                                     config=config,
                                     all_posts=all_posts,
                                     all_tags=all_tags).encode('utf-8')
+
+
+# the code in _highlight() and highlight() was adapted from the `mynt`
+# project under a BSD license: Copyright (c) 2011, Andrew Fricke
+def _code_highlight(match):
+    language, code = match.groups()
+
+    formatter = formatters.HtmlFormatter()
+    # textile or mako in markup() likes to replace stuff with HTML
+    # entities so we have to undo that for code blocks
+    for pattern, replace in [
+        ('&#34;', '"'), ('&#39;', '\''), ('&amp;', '&'), ('&apos;', '\''),
+        ('&gt;', '>'), ('&lt;', '<'), ('&quot;', '"')]:
+        code = code.replace(pattern, replace)
+
+    lexer = lexers.get_lexer_by_name(language)
+
+    code = highlight(code, lexer, formatter)
+
+    return u'<div class="{0}">{1}</div>'.format(lexer.name, code)
+
+def code_highlight(body):
+    """Syntax highlighting"""
+    return unicode(
+        re.sub(r'<pre[^>]+lang="([^>]+)"[^>]*>(.+?)</pre>',
+               _code_highlight, unicode(body), flags=re.S))
