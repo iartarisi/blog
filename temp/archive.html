@@ -22,6 +22,11 @@
             <li class="year">
                 <h2 class="year">${post.year}</h2><% year = post.year %>
                 <ul class="months">
+                  % if post.month == month:
+                  <li class="month"><% post.month %>
+                    <h3 class="month">${post.month_name}</h3>
+                    <ul class="days">
+                  % endif
     % endif
     % if post.month != month:
         % if (post.month < month): ## the tags aren't closed by year
