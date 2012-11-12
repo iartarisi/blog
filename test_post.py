@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import unittest
@@ -54,7 +53,3 @@ class ProcessingTestCase(InitializationTestCase):
                          '<pre lang="python">import this</pre>'),
                          '<div class="Python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">this</span>\n</pre></div>\n</div>', 
                          "pygments highlight fails!")
-
-
-if __name__ == "__main__":
-    unittest.main()

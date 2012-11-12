@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import unittest
@@ -38,7 +37,3 @@ class InitializationTestCase(unittest.TestCase):
                 self.post.url+'">'+ self.post.name+'</a></li>\n</ul>\n</div>'
         self.assertEqual(links, self.blog.base_template(), 
                          'base template fails!\n'+links+'\n'+self.blog.base_template())
-
-
-if __name__ == "__main__":
-    unittest.main()
