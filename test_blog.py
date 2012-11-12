@@ -33,7 +33,7 @@ class InitializationTestCase(unittest.TestCase):
         os.rmdir(self.datadir)
         os.rmdir(self.sitedir)
 
-    def testBaseTemplate(self):
+    def test_base_template(self):
         links = '<div id="recent">\n<h4>Recent</h4>\n<ul>\n<li><a href="'+ \
                 self.post.url+'">'+ self.post.name+'</a></li>\n</ul>\n</div>'
         self.assertEqual(links, self.blog.base_template(), 

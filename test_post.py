@@ -20,7 +20,7 @@ class InitializationTestCase(unittest.TestCase):
     def tearDown(self):
         os.remove(self.post)
 
-    def testDate(self):
+    def test_date(self):
         self.assertEqual(self.p.year, 2008, "can't read year from filename")
         self.assertEqual(self.p.month, 01, "can't read month from filename")
         self.assertEqual(self.p.day, 1, "can't read day from filename")
@@ -29,33 +29,31 @@ class InitializationTestCase(unittest.TestCase):
         self.assertEqual(self.p.pretty_date, 'Tuesday, January  1, 2008', 
             'prettydate fails')
     
-    def testUrl(self):
+    def test_url(self):
         self.assertEqual(self.p.slug, 'foo-bar', "slug isn't parsed correctly")
         self.assertEqual(self.p.url, config.link + 'perma/foo-bar', "url incorrect!\n" + self.p.url)
     
-    def testName(self):
+    def test_name(self):
         self.assertEqual(self.p.name, 'name', "name incorrectly parsed!")
     
-    def testUnicode(self):
+    def test_unicode(self):
         self.assertRaises(ValueError, Post, self.post, encoding='ascii')
    
-    def testBody(self):
+    def test_body(self):
         self.assertEqual(self.p.body, 
                          ' <h1>foo bar baz b\xc3\xa2\xc8\x99</h1>',
                          'processing fails!' + self.p.body)
 
 class ProcessingTestCase(InitializationTestCase):
-    def testMarkup(self):
+    def test_markup(self):
         self.assertEqual(self.p.markup('h1. pyblee'), "\t<h1>pyblee</h1>", 
                 'markup fails!' + self.p.markup('h1. pyblee'))
     
-    def testHighlight(self):
+    def test_highlight(self):
         self.assertEqual(self.p.highlight(
                          '<pre lang="python">import this</pre>'),
                          '<div class="Python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">this</span>\n</pre></div>\n</div>', 
                          "pygments highlight fails!")
-
-
 
 
 if __name__ == "__main__":
