@@ -11,20 +11,20 @@ import sys
 import getopt
 import codecs
 
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 from blog import Blog
 from post import Post
 from config import encoding, templatedir, site_type
 
 def usage():
-    print __doc__
+    print(__doc__)
 
 def main():
     try:
         opts, args = getopt.getopt(sys.argv[1:], "ht:d:s:p:", 
                 ["title", "help", "datadir=", "sitedir=", "publish="])
-    except getopt.GetoptError, err:
+    except getopt.GetoptError as err:
         usage()
         sys.exit(2)
     for opt, arg in opts:
@@ -34,7 +34,7 @@ def main():
         elif opt in ('-p','--publish'):
             p = Post(arg)
             p.write()
-            print 'Post/page published, you might want to update now'
+            print('Post/page published, you might want to update now.')
 
         elif opt in ('-t','--title'):
             # one-time modification of the template
@@ -52,13 +52,13 @@ def main():
             f.write(str(soup).decode(encoding))
             f.close()
 
-            print 'Title was set to:'+arg
+            print('Title was set to:' + arg)
             sys.exit()
 
         elif opt in ('-d','--datadir'):
-            print arg
+            print(arg)
         elif opt in ('-s','--sitedir'):
-            print arg
+            print(arg)
         else:
             assert False, "unhandled option"
 
@@ -71,10 +71,10 @@ def main():
             blog.archive()
     if args == []:
         if site_type == 'blog':
-            print "--> Updating your blog"
+            print("--> Updating your blog")
             blog.update_blog()
         else:
-            print "--> Updating your site"
+            print("--> Updating your site")
             blog.update_site()
 
 if __name__ == '__main__':

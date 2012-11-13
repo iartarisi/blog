@@ -1,5 +1,8 @@
-BeautifulSoup
+beautifulsoup4
 mako
 pygments
 pytz
 textile
+
+# found someone who ported textile to py3
+-e git+https://github.com/EnigmaCurry/textile-py3k.git#egg=python-textile

@@ -1,0 +1,3 @@
+h1. My static blogging system
+
+This is a python3 project.

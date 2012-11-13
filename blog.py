@@ -17,11 +17,11 @@
 
 import os
 import re
-import codecs
 import cgi
 
+from bs4 import BeautifulSoup
 from mako.lookup import TemplateLookup
-from BeautifulSoup import BeautifulSoup
+
 import config
 from post import Post
 from rss import Rss
@@ -33,9 +33,7 @@ class Blog:
         self.datadir = datadir
         self.sitedir = sitedir
         self.tags = {}
-        # FIXME need to do something about the utf8 constant
-        self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
-                                          default_filters=['decode.utf8'])
+        self.temp_lookup = TemplateLookup(directories=[config.templatedir])
     
         # get posts from database and return a list of them
         files = os.listdir(datadir)
@@ -60,17 +58,18 @@ class Blog:
     def templatize(self, template, posts, tag=None):
         """Runs the posts through the given template"""
         templ = self.temp_lookup.get_template(template)
-            
-        return templ.render_unicode(posts = posts,
-                                    all_posts=self.posts,
-                                    tag_page=tag,
-                                    all_tags=self.tags,
-                                    config=config).encode(config.encoding)
+
+        return templ.render(posts=posts,
+                            all_posts=self.posts,
+                            tag_page=tag,
+                            all_tags=self.tags,
+                            config=config,
+                            encoding=config.encoding)
 
     def build_page(self, template, output_file, posts, tag=None):
         """Build a blog page/post
 
-           Build a blog page/post, using :template: and writing the file to disk
+        Build a blog page/post, using :template: and writing the file to disk
         """
         rendered_template = self.templatize(template, posts, tag)
         self.write(self.sitedir+output_file, rendered_template)
@@ -84,18 +83,17 @@ class Blog:
            
            returns nothing
         """
-        f = open(filename, 'w')
+        f = open(filename, 'w', encoding=config.encoding)
         f.write(rendered_temp)
         f.close()
-        print 'Wrote ' + filename + ' succesfully'
+        print('Wrote {0} succesfully'.format(filename))
 
     def build_rss(self, post_list):
         """Build an rss object and return a rendered rss template"""
         rss = Rss()
         temp = self.temp_lookup.get_template('rss.xml')
         
-        return temp.render_unicode(posts = post_list, 
-                                   rss = rss).encode(config.encoding)
+        return temp.render(posts = post_list, rss = rss)
 
     def rss(self):
         """Give the order to build all the rss pages"""

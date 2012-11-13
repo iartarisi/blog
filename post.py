@@ -15,15 +15,14 @@
 # You should have received a copy of the GNU General Public License
 # along with pyblee.  If not, see <http://www.gnu.org/licenses/>.
 
-import codecs
 import datetime
 import os
 import re
 
+from bs4 import BeautifulSoup, Tag
 from textile import textile
 from mako.lookup import TemplateLookup
 from pygments import formatters, lexers, highlight
-from BeautifulSoup import BeautifulSoup, Tag
 
 import config
 
@@ -57,11 +56,11 @@ class Post:
        
         self.url = config.link + self.postdir + self.slug # + '.html'
         # read file
-        f = codecs.open(postfile, 'r', encoding)
+        f = open(postfile, 'r', encoding=encoding)
         try:
             postu = f.read()
         except UnicodeDecodeError:
-            raise ValueError, 'your config.encoding is bogus %s' % postfile
+            raise ValueError('Your config.encoding is bogus ' + postfile)
         f.close()
 
         # get the post title and the body
@@ -74,10 +73,10 @@ class Post:
                 self.name, self.body = splits
                 self.tags = None
             else:
-                raise ValueError, 'check formatting: '+ file
+                raise ValueError('Check formatting: '+ file)
         except ValueError:
-            raise ValueError, "check the formatting (I'd like a title "+  \
-                              + 'and some tags, please!' + file
+            raise ValueError("Check the formatting (I'd like a title "
+                             "and some tags, please!" + file)
 
         self.body = code_highlight(self.markup(self.body))
         self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
@@ -90,26 +89,27 @@ class Post:
         # add a <notextile> tag inside every pre lang tag
         for pre in preblocks:
             if pre.has_key('lang'):
-                notextile_tag = Tag(soup, "notextile")
-                notextile_tag.insert(0, pre.contents[0])
+                notextile = soup.new_tag('notextile')
+                notextile.insert(0, pre.contents[0])
                 pre.clear()
-                pre.insert(0, notextile_tag)
+                pre.insert(0, notextile)
 
         # textilize everything else
-        return textile(unicode(soup))
+        return textile(repr(soup))
 
     def write(self, all_posts, all_tags):
         """Output the processed post"""
-
         if self.filename == self.slug: # page
-            db_post = open(self.sitedir+self.slug+'.html', 'w')
+            db_post = open(self.sitedir+self.slug+'.html', 'w',
+                           encoding=config.encoding)
             db_post.write(self.template('page.html', all_posts, all_tags))
-            print 'Page updated: '+self.name
+            print('Page updated: ' + self.name)
         else:
-            db_post = open(self.sitedir+self.postdir+self.slug+'.html', 'w')
+            db_post = open(self.sitedir+self.postdir+self.slug+'.html', 'w',
+                           encoding=config.encoding)
             db_post.write(self.template('post.html', all_posts, all_tags))
             # move posts in the directories specific to their tags
-            print 'Post added: '+self.name +' -- '+self.pretty_date
+            print('Post added: {0} -- {1}'.format(self.name, self.pretty_date))
         db_post.close()
 
     def template(self, temp, all_posts, all_tags):
@@ -120,7 +120,7 @@ class Post:
                                     tag_page=False,
                                     config=config,
                                     all_posts=all_posts,
-                                    all_tags=all_tags).encode('utf-8')
+                                    all_tags=all_tags)
 
 
 # the code in _highlight() and highlight() was adapted from the `mynt`
@@ -140,10 +140,9 @@ def _code_highlight(match):
 
     code = highlight(code, lexer, formatter)
 
-    return u'<div class="{0}">{1}</div>'.format(lexer.name, code)
+    return '<div class="{0}">{1}</div>'.format(lexer.name, code)
 
 def code_highlight(body):
     """Syntax highlighting"""
-    return unicode(
-        re.sub(r'<pre[^>]+lang="([^>]+)"[^>]*>(.+?)</pre>',
-               _code_highlight, unicode(body), flags=re.S))
+    return re.sub(r'<pre[^>]+lang="([^>]+)"[^>]*>(.+?)</pre>',
+                  _code_highlight, body, flags=re.S)

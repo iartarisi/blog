@@ -21,22 +21,22 @@ import codecs
 import random
 
 import config
-from post import Post
+import post
 
 class InitializationTestCase(unittest.TestCase):
     def setUp(self):
         self.post = config.datadir + '08-01-01-10:00-foo-bar'
-        f = codecs.open(self.post, 'w')
+        f = open(self.post, 'w', encoding=config.encoding)
         f.write('name\n---\n\nh1. foo bar baz bâș\n')  # it's unicode!
         f.close()
-        self.p = Post(self.post)
+        self.p = post.Post(self.post)
     
     def tearDown(self):
         os.remove(self.post)
 
     def test_date(self):
         self.assertEqual(self.p.year, 2008, "can't read year from filename")
-        self.assertEqual(self.p.month, 01, "can't read month from filename")
+        self.assertEqual(self.p.month, 1, "can't read month from filename")
         self.assertEqual(self.p.day, 1, "can't read day from filename")
 
         self.assertEqual(self.p.month_name, 'January', 'wrong monthname')
@@ -45,18 +45,17 @@ class InitializationTestCase(unittest.TestCase):
     
     def test_url(self):
         self.assertEqual(self.p.slug, 'foo-bar', "slug isn't parsed correctly")
-        self.assertEqual(self.p.url, config.link + 'perma/foo-bar', "url incorrect!\n" + self.p.url)
+        self.assertEqual(self.p.url, config.link + 'perma/foo-bar',
+                         "url incorrect!\n" + self.p.url)
     
     def test_name(self):
         self.assertEqual(self.p.name, 'name', "name incorrectly parsed!")
     
     def test_unicode(self):
-        self.assertRaises(ValueError, Post, self.post, encoding='ascii')
+        self.assertRaises(ValueError, post.Post, self.post, encoding='ascii')
    
     def test_body(self):
-        self.assertEqual(self.p.body, 
-                         ' <h1>foo bar baz b\xc3\xa2\xc8\x99</h1>',
-                         'processing fails!' + self.p.body)
+        self.assertEqual(self.p.body.strip(), '<h1>foo bar baz bâș</h1>')
 
 class ProcessingTestCase(InitializationTestCase):
     def test_markup(self):
@@ -64,7 +63,8 @@ class ProcessingTestCase(InitializationTestCase):
                 'markup fails!' + self.p.markup('h1. pyblee'))
     
     def test_highlight(self):
-        self.assertEqual(self.p.highlight(
-                         '<pre lang="python">import this</pre>'),
-                         '<div class="Python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">this</span>\n</pre></div>\n</div>', 
-                         "pygments highlight fails!")
+        self.assertEqual(
+            post.code_highlight('<pre lang="python">import this</pre>'),
+            '<div class="Python"><div class="highlight">'
+            '<pre><span class="kn">import</span> '
+            '<span class="nn">this</span>\n</pre></div>\n</div>')
