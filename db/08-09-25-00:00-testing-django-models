@@ -48,7 +48,7 @@ def setUp(self):
 def testexist(self):
     # make sure they get to the database
     self.assertEquals(self.cat1.name, "cat1")
-def testunique(self): 
+def testunique(self):
     self.assertRaises(IntegrityError, Category.objects.create, name="cat1")
 </pre>
 
@@ -146,7 +146,7 @@ This test doesn't show the true difference between modified and creation time. M
 Testing for a boolean value is really easy:
 
 <pre lang="python">
- def testpublished(self): 
+ def testpublished(self):
         self.assertEquals(self.post1.published, False)
 </pre>
 
@@ -192,8 +192,8 @@ class CommentatorTest(django.test.TestCase):
         self.assertEquals(self.comtor.email, "hackety@example.com")
         self.assertEquals(self.comtor.website, "example.com")
      def testUnique(self):
-        self.assertRaises(IntegrityError, Commentator.objects.create, 
-                name="hacketyhack", email="new@example.com", 
+        self.assertRaises(IntegrityError, Commentator.objects.create,
+                name="hacketyhack", email="new@example.com",
                 website="example.com")
         self.assertRaises(IntegrityError, Commentator.objects.create,
                 name="nothackety", email="hackety@example.com",
@@ -221,11 +221,11 @@ class CommentTest(django.test.TestCase):
                 category=Category.objects.all()[0])
         self.comtor = Commentator.objects.create(name="hacketyhack",
                 email="hackety@example.com", website="example.com")
-        self.com = Comment.objects.create(body="If the implementation is 
-        easy to explain, it may be a good idea.", 
+        self.com = Comment.objects.create(body="If the implementation is
+        easy to explain, it may be a good idea.",
         post=Post.objects.all()[0], author=Commentator.objects.all()[0])
     def testExist(self):
-        self.assertEquals(self.com.body, "If the implementation is 
+        self.assertEquals(self.com.body, "If the implementation is
         easy to explain, it may be a good idea.")
         self.assertEquals(self.com.post, Post.objects.all()[0])
         self.assertEquals(self.com.author, Commentator.objects.all()[0])
