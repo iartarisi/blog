@@ -1,3 +1,5 @@
 h1. My static blogging system
 
 This is a python3 project.
+
+Syntax highlighting code blocks is done with "pygments":http://pygments.org/ syntax by using @<pre lang="<your lang>"> </pre>@ blocks. *Note:* blank lines inside the @pre@ blocks break the syntax highlighting.
