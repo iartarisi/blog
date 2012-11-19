@@ -1,0 +1,300 @@
+Mocking python's file open() builtin
+---
+
+programming, python
+---
+
+I was working on a method to read some proxy information from several files today and then I wanted to test it.
+
+A _very_ simplified version (the original has all the different files being processed in different functions on different rules and it actually has error handling) of this function is this:
+
+<pre lang='python'>
+SYS_PROXY = '/etc/sysconfig/proxy'
+CURL_PROXY = '/root/.curlrc'
+def get_proxy():
+    with open(SYS_PROXY) as f:
+        contents = f.read()
+        if 'http_proxy' in contents:
+            proxy = contents.split('http_proxy = ')[-1] 
+            if proxy:
+                return proxy
+    with open(CURL_PROXY) as f:
+        contents = f.read()
+        if '--proxy' in contents:
+            proxy = contents.split('--proxy ')[-1] 
+            if proxy:
+                return proxy
+    return os.getenv('http_proxy')
+</pre>
+
+As unit tests should be self-contained, they shouldn't read any files on disk. So we need to mock them. I generally use Michael Foord's "mock":http://www.voidspace.org.uk/python/mock/.
+
+In order to intercept calls to python's "open()":http://docs.python.org/2/library/functions.html#open, we need to mock the @builtins.open@ function:
+
+<pre lang="python">
+TEST_PROXY = 'http://example.com:1111'
+def test_proxy_url_in_sysproxy(self):
+    with mock.patch("builtins.open",
+                    return_value=io.StringIO("http_proxy = " + TEST_PROXY)):
+         self.assertEqual(TEST_PROXY, get_proxy())
+</pre>
+
+We're good so far. Now we add the next natural test: we didn't find anything in sysconfig, but we find the right proxy URL on our second try in CURL_PROXY:
+
+<pre lang="python">
+def test_proxy_url_not_in_sysproxy_but_in_yastproxy(self):
+    with mock.patch("builtins.open", return_value=io.StringIO()):
+        with mock.patch("builtins.open",
+                        return_value=io.StringIO(' --proxy ' + TEST_PROXY)):
+            self.assertEqual(TEST_PROXY, get_proxy())
+</pre>
+
+Urgh. That's starting to look a bit clunky. It's also wrong since the inner @with statement@ ends up overriding the outer one and all we get for our second @open()@ call is a __closed__ file object:
+
+pre. ValueError: I/O operation on closed file.
+
+Not to worry though. @mock@ "side_effect":http://www.voidspace.org.uk/python/mock/mock.html#mock.Mock.side_effect have got us covered!
+
+<pre lang="python">
+def test_proxy_url_not_in_sysproxy_but_in_yastproxy(self):
+    with mock.patch("builtins.open",
+                    side_effect=[io.StringIO(),
+                                 io.StringIO(' --proxy ' + TEST_PROXY)]):
+        self.assertEqual(TEST_PROXY, get_proxy())
+</pre>
+
+The code looks cleaner now. A bit. And at least it works. But the list we pass in to @side_effect@ makes another issue pop up. We now seem to be dependent on the order that the files are opened and read. That seems clunky. If we had to refactor our code to change the order that we read files in @get_proxy()@ we would also had to change all our tests. Also it's not quite obvious why we're setting our return values as side effects.
+
+Ideally we'd have a way to assign each result to a filename and then not have to care about the order in which the files are open. In real life we would have two files with different contents anyway.
+
+So let's implement that method. We, of course, want to make it a context manager.
+
+<pre lang="python">
+@contextmanager
+def mock_open(filename, contents=None):
+    def mock_file(*args):
+        if args[0] == filename:
+            return io.StringIO(contents)
+        else:
+            return open(*args)
+    with mock.patch('builtins.open', mock_file):
+        yield
+</pre>
+
+So we only intercept the filename that we want to mock and let everything else pass through to @builtins.open()@. The @yield@ is there because a contextmanager should be a generator function. Everything before the @yield@ gets executed when entering the @with mock_open ...@ statement, then the content of the @with@ block is executed and then everything after the @yield@ in our mock_open function (there's nothing there in our case).
+
+<pre lang="python">
+def test_proxy_url_not_in_sysproxy_but_in_yastproxy(self):
+    with mock_open(SYS_PROXY):
+        with mock_open(CURL_PROXY, ' --proxy ' + TEST_PROXY):
+            self.assertEqual(TEST_PROXY, get_proxy())
+</pre>
+
+Looks good.
+
+pre. RuntimeError: maximum recursion depth exceeded in comparison
+
+Oops. It seems that we got into infinite recursion because we're calling the mocked @open()@ from the mocking function. We have to make sure that once we've mocked a call to @open()@, there's no way we're going to go through that mock again. Thankfully, the mock library provides methods to turn mocking on and off without using the @with mock.patch@ context manager. Take a look at @mock.patch@'s "start and stop methods":http://www.voidspace.org.uk/python/mock/patch.html#patch-methods-start-and-stop.
+
+<pre lang="python">
+@contextmanager
+def mock_open(filename, contents=None):
+    def mock_file(*args):
+        if args[0] == filename:
+            return io.StringIO(contents)
+        else:
+            mocked_file.stop()
+            open_file = open(*args)
+            mocked_file.start()
+            return open_file
+    mocked_file = mock.patch('builtins.open', mock_file)
+    mocked_file.start()
+    yield
+    mocked_file.stop()
+</pre>
+
+So we had to replace the @with mock.patch@ statement with manually @start()@-ing and @stop()@-ing the mocking functionality before and after the @yield@. That's basically what the @with@ statement was doing, we just needed the indentifier so we can use it in the @else@ branch.
+
+In the @else@ branch we turn off the mocking before calling @open()@ (that's what was causing us to go in the infinite loop). After we've called @open()@, we go back to mocking @open()@, in case there will be a future call that we actually do want to mock.
+
+Test code now looks the same as before:
+
+<pre lang="python">
+def test_proxy_url_not_in_sysproxy_but_in_yastproxy(self):
+    with mock_open(SYS_PROXY):
+        with mock_open(CURL_PROXY, ' --proxy ' + TEST_PROXY):
+            self.assertEqual(TEST_PROXY, get_proxy())
+</pre>
+
+But this time it works. So we could all go home now.
+
+But say we wanted to ensure that no files were opened inside the @with mock_open@ block other than the ones we mocked. It seems like a pretty sensible thing to do. Unit tests should be completely self-contained so you want to ensure they won't be opening any files on the system. This would also catch some bugs that might only later pop-up on your CI server's test runs, because of a custom development machine configuration.
+
+The problem is pretty simple if you use only one @with mock_open@ block, but once you start using more than one nested contest managers you have a problem. You need to have a way to communicate between the different context-managers. Ideally you'd have a way for each context-manager to say to the others (after it's finished processing): _hey, I finished my work here, but some dude opened a file which I didn't mock. Did you mock it?_.
+
+So how do we solve that? We'll use @global@ variables! No. Just kidding.
+
+We'll use exceptions. Simply make the inner statement raise a custom @NotMocked@ exception and let the enclosing context managers catch.If none of the enclosing context managers mock the file that was opened in the inner block, they just let the user deal with the exception.
+
+So the exception can be a normal @Exception@ subclass, but we need an extra bit of information, the @filename@ that wasn't mocked. I'll also hardcode an error message in there:
+
+<pre lang='python'>
+class NotMocked(Exception):
+    def __init__(self, filename):
+        super(NotMocked, self).__init__(
+            "The file %s was opened, but not mocked." % filename)
+        self.filename = filename
+</pre>
+
+The updated @mock_open@ code looks like this:
+
+<pre lang='python'>
+@contextmanager
+def mock_open(filename, contents=None, complain=True):
+    open_files = []
+    def mock_file(*args):
+        if args[0] == filename:
+            f = io.StringIO(contents)
+            f.name = filename
+        else:
+            mocked_file.stop()
+            f = open(*args)
+            mocked_file.start()
+            open_files.append(f.name)
+        return f
+    mocked_file = mock.patch('builtins.open', mock_file)
+    mocked_file.start()
+    try:
+        yield
+    except NotMocked as e:
+        if e.filename != filename:
+            raise
+    mocked_file.stop()
+    for open_file in open_files:
+        if complain:
+            raise NotMocked(open_file)
+</pre>
+
+So we're recording all the files that were opened in the @open_files@ list. Then after all the code inside the @with@ block was executed, we go through the @open_files@ list and raise a @NotMocked@ exception for each of those file names. We also added a new @complain@ parameter just in case someone would like to turn this functionality off (maybe they want to use file fixtures after all).
+
+The StringIO objects now also have a @name@ attribute. It's a bit tricky to see why this is needed since at first sight those objects never get into the open_files list. But when we have nested @with mock_open@ blocks the file returned by the @open()@ function in @mock_file@ might actually have been mocked by an enclosing context manager and its type would then be @StringIO@.
+
+The @try: except:@ block around @yield@ is for the enclosing context managers. When they get a @NotMocked@ exception by running the code inside them, they check if it's the file they're mocking, in which case they ignore it. (Basically telling the nested context manager: _I've got you covered._). If the @NotMocked@ exception was raised on a file that's different than the one they're mocking, they simply re-raise it for someone else to deal with (either an enclosing context-manager) or the user.
+
+If we now added another @open()@ call in our initial @get_proxy()@ function, or inside the with statement in the test case,
+
+<pre lang='python'>
+def test_proxy_url_not_in_sysproxy_but_in_yastproxy(self):
+    with mock_open(SYS_PROXY):
+        with mock_open(CURL_PROXY, ' --proxy ' + TEST_PROXY):
+            self.assertEqual(TEST_PROXY, get_proxy())
+            open('/dev/null')
+</pre>
+
+we'd get this error:
+
+pre. NotMocked: The file /dev/null was opened, but not mocked.
+
+Cool. Now how about the opposite? I had to refactor a lot of these test cases and at some point I wasn't sure that all those assertions made sense. Was I really hitting all the files I had mocked? Well we could just add another check in our @mock_open()@ code to see if all the files that were mocked, were actually accessed
+ by the test code:
+
+<pre lang='python'>
+@contextmanager
+def mock_open(filename, contents=None, complain=True):
+    open_files = []
+    def mock_file(*args):
+        if args[0] == filename:
+            f = io.StringIO(contents)
+            f.name = filename
+        else:
+            print(filename)
+            mocked_file.stop()
+            f = open(*args)
+            mocked_file.start()
+        open_files.append(f.name)
+        return f
+    mocked_file = mock.patch('builtins.open', mock_file)
+    mocked_file.start()
+    try:
+        yield
+    except NotMocked as e:
+        if e.filename != filename:
+            raise
+    mocked_file.stop()
+    try:
+        open_files.remove(filename)
+    except ValueError:
+        raise AssertionError("The file %s was not opened." % filename)
+    for f_name in open_files:
+        if complain:
+            raise NotMocked(f_name)
+</pre>
+
+We now track mocked files as @open_files@, too. Then at the end, we simply check if the file that we were supposed to be mocking (passed in as the @filename@ argument) was indeed opened.
+
+The gotcha here is that we need to raise this exception before @NotMocked@, otherwise we risk the code not ever getting to the file-not-opened check. I guess this is where the difference between using exceptions when something exceptional occured vs. when you want to communicate with the enclosing function becomes obvious.
+
+If we now added another @mock_open@ that we weren't using to the test code:
+
+<pre lang='python'>
+def test_proxy_url_not_in_sysproxy_but_in_yastproxy(self):
+    with mock_open(SYS_PROXY):
+        with mock_open(CURL_PROXY, ' --proxy ' + TEST_PROXY):
+            with mock_open('/dev/null'):
+                get_proxy()
+                self.assertEqual(TEST_PROXY, get_proxy())
+</pre>
+
+We'd get:
+
+pre. AssertionError: The file /dev/null was not opened.
+
+So that's about it, we now have a rock-solid @mock_open@ function for mocking the builtin @open()@.
+
+Before we set it free, we need to add a nice docstring to it:
+
+<pre lang='python'>
+@contextmanager
+def mock_open(filename, contents=None, complain=True):
+    """Mock the open() builtin function on a specific filename
+.
+    Let execution pass through to open() on files different than
+    :filename:. Return a StringIO with :contents: if the file was
+    matched. If the :contents: parameter is not given or if it is None,
+    a StringIO instance simulating an empty file is returned.
+.
+    If :complain: is True (default), will raise an AssertionError if
+    :filename: was not opened in the enclosed block. A NotMocked
+    exception will be raised if open() was called with a file that was
+    not mocked by mock_open.
+.
+    """
+    open_files = []
+    def mock_file(*args):
+        if args[0] == filename:
+            f = io.StringIO(contents)
+            f.name = filename
+        else:
+            print(filename)
+            mocked_file.stop()
+            f = open(*args)
+            mocked_file.start()
+        open_files.append(f.name)
+        return f
+    mocked_file = mock.patch('builtins.open', mock_file)
+    mocked_file.start()
+    try:
+        yield
+    except NotMocked as e:
+        if e.filename != filename:
+            raise
+    mocked_file.stop()
+    try:
+        open_files.remove(filename)
+    except ValueError:
+        if complain:
+            raise AssertionError("The file %s was not opened." % filename)
+    for f_name in open_files:
+        if complain:
+            raise NotMocked(f_name)
+</pre>
