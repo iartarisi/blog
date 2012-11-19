@@ -43,5 +43,7 @@
 <%def name="title()">
     % if len(posts) == 1:
     | ${posts[0].name}
+    % elif tag_page:
+    | Articles tagged ${tag_page}
     % endif
 </%def>
