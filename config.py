@@ -9,7 +9,7 @@ postdir = 'perma/'
 
 # rss related information
 title = 'Revolution blahg'
-author = 'mapleoin@lavabit.ro (mapleoin)'
+author = 'mapleoin@lavabit.com (mapleoin)'
 link = 'http://mapleoin.eu/'
 description = "mapleoin's rambling blahg"
 language = 'en'
