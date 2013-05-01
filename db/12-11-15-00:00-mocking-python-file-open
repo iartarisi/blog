@@ -275,7 +275,6 @@ def mock_open(filename, contents=None, complain=True):
             f = io.StringIO(contents)
             f.name = filename
         else:
-            print(filename)
             mocked_file.stop()
             f = open(*args)
             mocked_file.start()
