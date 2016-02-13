@@ -3,3 +3,16 @@ h1. My static blogging system
 This is a python3 project.
 
 Syntax highlighting code blocks is done with "pygments":http://pygments.org/ syntax by using @<pre lang="<your lang>"> </pre>@ blocks. *Note:* blank lines inside the @pre@ blocks break the syntax highlighting.
+
+h3. Run it
+
+Blog post sources are stored in @db/@.
+
+Create a directory called @ftp@ (yeah, I'm that old) where all the static blog files will be output. That directory is not included in this repository because it is usually a symlink to a different repository or subrepository.
+
+Then do something like this:
+
+<pre lang="bash">
+$ pip install -r pip-requires
+$ ./pyblee.py
+</pre>
