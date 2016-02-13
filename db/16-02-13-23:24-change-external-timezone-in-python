@@ -1,0 +1,16 @@
+Change the system timezone for the python interpreter
+---
+
+programming, python, timezones, TIL
+---
+
+Wrapping my head around timezones is hard. And testing the implications of working with different timezones is especially difficult since I now live in GMT (which is mostly the same as UTC).
+
+I found a way to change the timezone, that is used by most of python's stdlib, by changing the @TZ@ environment variable:
+
+<pre lang="bash">
+$ python -c 'import time; print(time.tzname)'
+('GMT', 'BST')
+$ TZ='Europe/Stockholm' python -c 'import time; print(time.tzname)'
+('CET', 'CEST')
+</pre>
