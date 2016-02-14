@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-"""usage: pyblee [-s|--sitedir=SITEDIR] [-d|--datadir=DATADIR]
+"""usage: pyblee
 
 Example usage:
     -t "Doomsday Blog" - sets the title
-    -p db/newpost - publishes a new post in the set file 
+    -p db/newpost - publishes a new post in the set file
 """
 
 import sys
@@ -22,8 +22,8 @@ def usage():
 
 def main():
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "ht:d:s:p:", 
-                ["title", "help", "datadir=", "sitedir=", "publish="])
+        opts, args = getopt.getopt(
+            sys.argv[1:], "ht:d:s:p:", ["title", "help", "publish="])
     except getopt.GetoptError as err:
         usage()
         sys.exit(2)
@@ -54,11 +54,6 @@ def main():
 
             print('Title was set to:' + arg)
             sys.exit()
-
-        elif opt in ('-d','--datadir'):
-            print(arg)
-        elif opt in ('-s','--sitedir'):
-            print(arg)
         else:
             assert False, "unhandled option"
 
