@@ -39,7 +39,7 @@ def test_proxy_url_in_sysproxy(self):
          self.assertEqual(TEST_PROXY, get_proxy())
 </pre>
 
-We're good so far. Now we add the next natural test: we didn't find anything in sysconfig, but we find the right proxy URL on our second try in CURL_PROXY:
+We're good so far. Now we add the next natural test: we didn't find anything in sysconfig, but we find the right proxy URL on our second try in @CURL_PROXY@:
 
 <pre lang="python">
 def test_proxy_url_not_in_sysproxy_but_in_yastproxy(self):
