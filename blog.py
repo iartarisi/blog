@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2012 Ionuț Arțăriși <mapleoin@lavabit.com>
+# Copyright (c) 2012-2016 Ionuț Arțăriși <ionut@artarisi.eu>
 # This file is part of pyblee.
 
 # pyblee is free software: you can redistribute it and/or modify
@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with pyblee.  If not, see <http://www.gnu.org/licenses/>.
 
+from collections import OrderedDict
 import os
 import re
 import cgi
@@ -54,6 +55,9 @@ class Blog:
                 page = Post(datadir+f)
                 self.pages.append(page)
 
+        # sort by tag name, ignoring capitalization
+        self.tags = OrderedDict(
+            sorted(self.tags.items(), key=lambda t: t[0].lower()))
 
     def templatize(self, template, posts, tag=None):
         """Runs the posts through the given template"""
