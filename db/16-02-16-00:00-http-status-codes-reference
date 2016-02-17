@@ -1,0 +1,11 @@
+HTTP Status Codes Reference
+---
+
+TIL, REST, API
+---
+
+I've been using this reference for HTTP status codes lately: "http://www.restapitutorial.com/httpstatuscodes.html":http://www.restapitutorial.com/httpstatuscodes.html
+
+It's nice to be able to see all of them on one page and expand only the interesting ones.
+
+Just found it the other day from someone mentioning it on StackOverflow. I notice now that it's easily googleable. I hadn't found it before because I always go straight to "Wikipedia":https://en.wikipedia.org/wiki/HTTP_418.
