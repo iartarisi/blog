@@ -1,0 +1,15 @@
+AST literal_eval
+---
+
+TIL, python, programming
+---
+
+<blockquote>
+Safely evaluate an expression node or a Unicode or Latin-1 encoded string containing a Python literal or container display. The string or node provided may only consist of the following Python literal structures: strings, numbers, tuples, lists, dicts, booleans, and None.
+
+This can be used for safely evaluating strings containing Python values from untrusted sources without the need to parse the values oneself. It is not capable of evaluating arbitrarily complex expressions, for example involving operators or indexing.
+
+<cite>--From python's <a href="https://docs.python.org/library/ast.html#ast.literal_eval">ast library</a></cite>
+</blockquote>
+
+I used to discredit everything that meant converting a string to an arbitrary data structure. This is a nice third option which seems like it would be useful in the majority of cases.
