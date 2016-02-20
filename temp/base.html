@@ -19,25 +19,6 @@
     <a href="/archive">archive</a>
     <a href="/about">about</a>
   </div>
-<div id="sidebar">
-<div id="recent">
-<h4>Recent</h4>
-<ul>
-  % for post in all_posts[:config.recent]:
-  <li><a href="${ post.url }">${ post.name }</a></li>
-  % endfor
-</ul>
-</div><!--recent-->
-<br />
-<div id="tags">
-<h4>Tags</h4>
-<ul>
-  % for tag in all_tags:
-  <li><a href="/${ config.tagdir }${ tag }.html">${ tag }</a></li>
-  % endfor
-</ul>
-</div><!--tags-->
-</div><!--sidebar-->
 <div id="content">${self.content()}</div>
 <div style="clear: right;"></div>
 </div><!-- container -->
