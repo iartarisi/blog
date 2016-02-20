@@ -1,7 +1,7 @@
 about
 ---
 
-All the content on this site is available under a "Creative Commons Attribution 3.0":http://creativecommons.org/licenses/by/3.0/ license. The website design is original and under copyright), the brushes used for the top foliage graphic are from "Obsidian Dawn":http://www.obsidiandawn.com/, the brush used for the article separator was created by "hawksmont":http://hawksmont.com.
+All the content on this site is available under a "Creative Commons Attribution 3.0":http://creativecommons.org/licenses/by/3.0/ license. The website design is original and under copyright.
 
 This blog is running pyblee - a static blogging system written in python. I used a lot of open-source tools to build it: _vim, emacs, python, python-textile, python-BeautifulSoup, python-mako, git, gimp, firebug_. The sources to this blog are available in "this repository":http://github.com/mapleoin/blog.
 
