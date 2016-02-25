@@ -1,0 +1,35 @@
+Run py.test test case inside any python class
+---
+
+TIL, py.test, python, testing
+---
+
+I wanted a way to run the current test I was editing when I know the name of the method, but I'm too lazy to scroll up and see which class it's defined in and then have to type that out as well. So I found a way for py.test to run any test in any class in a file by just giving it the name of that test or part of its name.
+
+Instead of typing:
+
+<pre>
+$ py.test path/to/my/test/test_file.py::MySuperLongClassNameTest::test_my_thing
+</pre>
+
+I can just type:
+
+<pre>
+$ py.test path/to/my/test/test_file.py -k test_my_thing
+</pre>
+
+Or even:
+
+<pre>
+$ py.test path/to/my/test/test_file.py -k test_my
+</pre>
+
+Or even:
+
+<pre>
+$ py.test path/to/my/test/test_file.py -k "thing or stuff"
+</pre>
+
+Woo py.test!
+
+FWIW, @nosetests@ can also do this with the @-m@ option which supports regexp. But AFAIK it does not support the human-friendly @" or "@ interface like in the last example above.
