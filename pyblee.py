@@ -41,7 +41,7 @@ def main():
         elif opt in ('-t', '--title'):
             # one-time modification of the template
             f = codecs.open(templatedir+'base.html', 'r', encoding)
-            soup = BeautifulSoup(f.read())
+            soup = BeautifulSoup(f.read(), 'html.parser')
             f.close()
 
             tag = soup.find('title')

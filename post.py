@@ -87,7 +87,7 @@ class Post:
 
     def markup(self, body):
         """Uses textile to return a formatted unicode string"""
-        soup = BeautifulSoup(body)
+        soup = BeautifulSoup(body, 'html.parser')
         preblocks = soup.findAll('pre')
         # add a <notextile> tag inside every pre lang tag
         for pre in preblocks:
