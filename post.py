@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2012 Ionuț Arțăriși <mapleoin@lavabit.com>
+# Copyright (c) 2012-2016 Ionuț Arțăriși <ionut@artarisi.eu>
 # This file is part of pyblee.
 
 # pyblee is free software: you can redistribute it and/or modify
@@ -19,15 +19,16 @@ import datetime
 import os
 import re
 
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup
 from textile import textile
 from mako.lookup import TemplateLookup
 from pygments import formatters, lexers, highlight
 
 import config
 
+
 class Post:
-    def __init__(self, postfile, sitedir=config.sitedir, 
+    def __init__(self, postfile, sitedir=config.sitedir,
                  postdir=config.postdir, encoding=config.encoding):
         """Initializes a Post object with these fields: date, slug, body
 
@@ -40,21 +41,22 @@ class Post:
         self.postdir = postdir
         self.encoding = encoding
         self.filename = os.path.split(postfile)[1]
-       
-        if re.match('((\d{2}-){3})', self.filename): # post or page? 
+
+        if re.match('((\d{2}-){3})', self.filename):  # post or page?
             y, m, d, H, M, self.slug = re.match(
                 '(\d{2})-(\d{2})-(\d{2})-(\d{2}):(\d{2})-(.*)',
                 self.filename).groups()
-            date = datetime.datetime(int('20'+y),int(m),int(d), int(H), int(M))
+            date = datetime.datetime(
+                int('20'+y), int(m), int(d),  int(H),  int(M))
             # lots of date formatting:
-            (self.day, self.month, self.year)=(date.day, date.month, date.year)
+            self.day, self.month, self.year = date.day, date.month, date.year
             self.month_name = date.strftime('%B')
             self.pretty_date = date.strftime('%A, %B %e, %Y')
             self.pub_date = date.strftime("%a, %d %b %Y %H:%M GMT")
         else:
             self.slug = self.filename
-       
-        self.url = config.link + self.postdir + self.slug # + '.html'
+
+        self.url = config.link + self.postdir + self.slug  # + '.html'
         # read file
         f = open(postfile, 'r', encoding=encoding)
         try:
@@ -73,14 +75,15 @@ class Post:
                 self.name, self.body = splits
                 self.tags = None
             else:
-                raise ValueError('Check formatting: '+ file)
+                raise ValueError('Check formatting: ' + file)
         except ValueError:
             raise ValueError("Check the formatting (I'd like a title "
                              "and some tags, please!" + file)
 
         self.body = code_highlight(self.markup(self.body))
-        self.temp_lookup = TemplateLookup(directories=[config.templatedir], 
-                                          default_filters=['decode.utf8'])
+        self.temp_lookup = TemplateLookup(
+            directories=[config.templatedir],
+            default_filters=['decode.utf8'])
 
     def markup(self, body):
         """Uses textile to return a formatted unicode string"""
@@ -88,7 +91,7 @@ class Post:
         preblocks = soup.findAll('pre')
         # add a <notextile> tag inside every pre lang tag
         for pre in preblocks:
-            if pre.has_key('lang'):
+            if 'lang' in pre:
                 notextile = soup.new_tag('notextile')
                 notextile.insert(0, pre.contents[0])
                 pre.clear()
@@ -99,7 +102,7 @@ class Post:
 
     def write(self, all_posts, all_tags):
         """Output the processed post"""
-        if self.filename == self.slug: # page
+        if self.filename == self.slug:  # page
             db_post = open(self.sitedir+self.slug+'.html', 'w',
                            encoding=config.encoding)
             db_post.write(self.template('page.html', all_posts, all_tags))
@@ -114,9 +117,9 @@ class Post:
 
     def template(self, temp, all_posts, all_tags):
         """Returns the final html, ready to be rendered"""
-        
+
         templ = self.temp_lookup.get_template(temp)
-        return templ.render_unicode(posts = [self],
+        return templ.render_unicode(posts=[self],
                                     tag_page=False,
                                     config=config,
                                     all_posts=all_posts,
@@ -133,7 +136,8 @@ def _code_highlight(match):
     # entities so we have to undo that for code blocks
     for pattern, replace in [
         ('&#34;', '"'), ('&#39;', '\''), ('&amp;', '&'), ('&apos;', '\''),
-        ('&gt;', '>'), ('&lt;', '<'), ('&quot;', '"')]:
+        ('&gt;', '>'), ('&lt;', '<'), ('&quot;', '"')
+    ]:
         code = code.replace(pattern, replace)
 
     lexer = lexers.get_lexer_by_name(language)
@@ -141,6 +145,7 @@ def _code_highlight(match):
     code = highlight(code, lexer, formatter)
 
     return '<div class="{0}">{1}</div>'.format(lexer.name, code)
+
 
 def code_highlight(body):
     """Syntax highlighting"""

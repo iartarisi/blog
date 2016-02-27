@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2012 Ionuț Arțăriși <mapleoin@lavabit.com>
+# Copyright (c) 2012-2016 Ionuț Arțăriși <ionut@artarisi.eu>
 # This file is part of pyblee.
 
 # pyblee is free software: you can redistribute it and/or modify
@@ -23,6 +23,7 @@ import config
 from blog import Blog
 from post import Post
 
+
 class InitializationTestCase(unittest.TestCase):
     def setUp(self):
         self.datadir = 'testdata/'
@@ -34,12 +35,13 @@ class InitializationTestCase(unittest.TestCase):
                  encoding=config.encoding)
         f.write('name\n---\n\nh1. foo bar baz bâș\n')
         f.close()
-        self.post = Post(self.datadir+'01-01-01-10:00-post', sitedir=self.sitedir)
+        self.post = Post(
+            self.datadir+'01-01-01-10:00-post', sitedir=self.sitedir)
         self.post.write([self.post], [])
         self.blog = Blog(self.datadir, self.sitedir)
-        self.template = Template("TEST: ${posts[0].body}", 
-                            default_filters=['decode.utf8'])
-    
+        self.template = Template(
+            "TEST: ${posts[0].body}", default_filters=['decode.utf8'])
+
     def tearDown(self):
         os.remove(self.datadir+'01-01-01-10:00-post')
         os.remove(self.sitedir+config.postdir+'post.html')

@@ -20,22 +20,22 @@ import html
 import os
 import re
 
-from bs4 import BeautifulSoup
 from mako.lookup import TemplateLookup
 
 import config
 from post import Post
 from rss import Rss
 
+
 class Blog:
     def __init__(self, datadir=config.datadir, sitedir=config.sitedir):
         """Get the posts into self.posts, and build the temp_lookup"""
-       
+
         self.datadir = datadir
         self.sitedir = sitedir
         self.tags = {}
         self.temp_lookup = TemplateLookup(directories=[config.templatedir])
-    
+
         # get posts from database and return a list of them
         files = os.listdir(datadir)
         files.sort(reverse=True)
@@ -51,7 +51,7 @@ class Blog:
                             self.tags[tag] = [post]
                         else:
                             self.tags[tag].append(post)
-            elif f[0] != '.': # not hidden -> page
+            elif f[0] != '.':  # not hidden -> page
                 page = Post(datadir+f)
                 self.pages.append(page)
 
@@ -77,14 +77,14 @@ class Blog:
         """
         rendered_template = self.templatize(template, posts, tag)
         self.write(self.sitedir+output_file, rendered_template)
-        
+
     def write(self, filename, rendered_temp):
         """Write the template to the specified file
-            
+
            Arguments:
-           :file: a file to be written to in the sitedir 
-           :rendered_temp: string (FIXME: should it be utf-ed?) 
-           
+           :file: a file to be written to in the sitedir
+           :rendered_temp: string (FIXME: should it be utf-ed?)
+
            returns nothing
         """
         f = open(filename, 'w', encoding=config.encoding)
@@ -96,8 +96,8 @@ class Blog:
         """Build an rss object and return a rendered rss template"""
         rss = Rss()
         temp = self.temp_lookup.get_template('rss.xml')
-        
-        return temp.render(posts = post_list, rss = rss)
+
+        return temp.render(posts=post_list, rss=rss)
 
     def rss(self):
         """Give the order to build all the rss pages"""
@@ -105,28 +105,30 @@ class Blog:
         # FIXME: this is tightly coupled b/c it changes the posts'
         for post in self.posts:
             post.body = html.escape(post.body, quote=False)
-       
+
         for tag in self.tags:
-            self.write(self.sitedir+config.tagdir+tag+'.xml', 
-                    self.build_rss(self.tags[tag]))
-        self.write(self.sitedir+'feed.xml', 
-                self.build_rss(self.posts[:config.posts_no]))
+            self.write(self.sitedir+config.tagdir+tag+'.xml',
+                       self.build_rss(self.tags[tag]))
+        self.write(self.sitedir+'feed.xml',
+                   self.build_rss(self.posts[:config.posts_no]))
 
     def build_tags(self):
         """Build the pages relevant to each tag"""
         for tag in self.tags:
-            self.build_page('post.html', config.tagdir+tag+'.html', 
-                    self.tags[tag], tag=tag)
+            self.build_page(
+                'post.html', config.tagdir+tag+'.html',
+                self.tags[tag], tag=tag)
 
     def index(self):
         """Build the index page if it doesn't already exist"""
-        self.build_page('post.html', 'index.html', 
-                self.posts[:config.posts_no])     
-    
+        self.build_page(
+            'post.html', 'index.html',
+            self.posts[:config.posts_no])
+
     def archive(self):
         """Build an archive page of all the posts, by date"""
-        self.build_page('archive.html', 'archive.html', self.posts) 
-    
+        self.build_page('archive.html', 'archive.html', self.posts)
+
     def update_blog(self):
         """Update the entire site, also processing the posts"""
         self.update_site()
@@ -139,6 +141,6 @@ class Blog:
         """Updates only the static pages"""
         files = os.listdir(self.datadir)
         for f in files:
-            if f[0] != '.': # leave out hidden files
+            if f[0] != '.':  # leave out hidden files
                 post = Post(self.datadir+f)
                 post.write(self.posts, self.tags)

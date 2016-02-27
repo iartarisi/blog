@@ -1,5 +1,5 @@
 sitedir = 'ftp/'
-datadir = 'db/' 
+datadir = 'db/'
 templatedir = 'temp/'
 encoding = 'utf-8'
 
@@ -14,7 +14,7 @@ link = 'http://mapleoin.github.io/'
 description = "mapleoin's rambling blahg"
 language = 'en'
 
-posts_no = 7 # number of posts on the first page
-recent = 5 # number of posts in the recent links div
+posts_no = 7  # number of posts on the first page
+recent = 5  # number of posts in the recent links div
 
-site_type = 'blog' # blog or no_blog
+site_type = 'blog'  # blog or no_blog

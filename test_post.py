@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2012 Ionuț Arțăriși <mapleoin@lavabit.com>
+# Copyright (c) 2012-2016 Ionuț Arțăriși <ionut@artarisi.eu>
 # This file is part of pyblee.
 
 # pyblee is free software: you can redistribute it and/or modify
@@ -17,11 +17,10 @@
 
 import unittest
 import os
-import codecs
-import random
 
 import config
 import post
+
 
 class InitializationTestCase(unittest.TestCase):
     def setUp(self):
@@ -30,7 +29,7 @@ class InitializationTestCase(unittest.TestCase):
         f.write('name\n---\n\nh1. foo bar baz bâș\n')  # it's unicode!
         f.close()
         self.p = post.Post(self.post)
-    
+
     def tearDown(self):
         os.remove(self.post)
 
@@ -40,28 +39,32 @@ class InitializationTestCase(unittest.TestCase):
         self.assertEqual(self.p.day, 1, "can't read day from filename")
 
         self.assertEqual(self.p.month_name, 'January', 'wrong monthname')
-        self.assertEqual(self.p.pretty_date, 'Tuesday, January  1, 2008', 
+        self.assertEqual(
+            self.p.pretty_date, 'Tuesday, January  1, 2008',
             'prettydate fails')
-    
+
     def test_url(self):
         self.assertEqual(self.p.slug, 'foo-bar', "slug isn't parsed correctly")
         self.assertEqual(self.p.url, config.link + 'perma/foo-bar',
                          "url incorrect!\n" + self.p.url)
-    
+
     def test_name(self):
         self.assertEqual(self.p.name, 'name', "name incorrectly parsed!")
-    
+
     def test_unicode(self):
         self.assertRaises(ValueError, post.Post, self.post, encoding='ascii')
-   
+
     def test_body(self):
         self.assertEqual(self.p.body.strip(), '<h1>foo bar baz bâș</h1>')
 
+
 class ProcessingTestCase(InitializationTestCase):
     def test_markup(self):
-        self.assertEqual(self.p.markup('h1. pyblee'), "\t<h1>pyblee</h1>", 
-                'markup fails!' + self.p.markup('h1. pyblee'))
-    
+        self.assertEqual(
+            self.p.markup('h1. pyblee'),
+            "\t<h1>pyblee</h1>",
+            'markup fails!' + self.p.markup('h1. pyblee'))
+
     def test_highlight(self):
         self.assertEqual(
             post.code_highlight('<pre lang="python">import this</pre>'),

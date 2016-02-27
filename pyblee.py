@@ -17,26 +17,28 @@ from blog import Blog
 from post import Post
 from config import encoding, templatedir, site_type
 
+
 def usage():
     print(__doc__)
+
 
 def main():
     try:
         opts, args = getopt.getopt(
             sys.argv[1:], "ht:d:s:p:", ["title", "help", "publish="])
-    except getopt.GetoptError as err:
+    except getopt.GetoptError:
         usage()
         sys.exit(2)
     for opt, arg in opts:
-        if opt in ('-h','--help'):
+        if opt in ('-h', '--help'):
             usage()
             sys.exit()
-        elif opt in ('-p','--publish'):
+        elif opt in ('-p', '--publish'):
             p = Post(arg)
             p.write()
             print('Post/page published, you might want to update now.')
 
-        elif opt in ('-t','--title'):
+        elif opt in ('-t', '--title'):
             # one-time modification of the template
             f = codecs.open(templatedir+'base.html', 'r', encoding)
             soup = BeautifulSoup(f.read())
@@ -45,10 +47,10 @@ def main():
             tag = soup.find('title')
             tag.contents[0].replaceWith(arg + '${self.title()}')
 
-            tag = soup.find('a','title')
+            tag = soup.find('a', 'title')
             tag.contents[0].replaceWith(arg)
-            
-            f = codecs.open(templatedir+'base.html','w',encoding)
+
+            f = codecs.open(templatedir+'base.html', 'w', encoding)
             f.write(str(soup).decode(encoding))
             f.close()
 
