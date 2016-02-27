@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<rss version="1.0">
+<rss version="2.0">
     <channel>
         <title>${rss.title}</title>
         <link>${rss.link}</link>
@@ -11,7 +11,7 @@
         <item>
             <title>${post.name}</title>
             <link>${post.url}</link>
-            <author>${rss.author}</author>
+            <guid>${post.url}</guid>
             <description> ${post.body} </description>
             <pubDate>${post.pub_date}</pubDate>
         </item>
