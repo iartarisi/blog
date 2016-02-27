@@ -16,3 +16,12 @@ Then do something like this:
 $ pip install -r pip-requires
 $ ./pyblee.py
 </pre>
+
+
+h3. Tests
+
+Run tests with @py.test@:
+
+<pre lang="bash">
+$ py.test test_*
+</pre>
