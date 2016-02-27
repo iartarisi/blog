@@ -16,9 +16,9 @@
 # along with pyblee.  If not, see <http://www.gnu.org/licenses/>.
 
 from collections import OrderedDict
+import html
 import os
 import re
-import cgi
 
 from bs4 import BeautifulSoup
 from mako.lookup import TemplateLookup
@@ -104,7 +104,7 @@ class Blog:
         # cleanup here, so it gets done once and only for rss
         # FIXME: this is tightly coupled b/c it changes the posts'
         for post in self.posts:
-            post.body = cgi.escape(post.body)
+            post.body = html.escape(post.body, quote=False)
        
         for tag in self.tags:
             self.write(self.sitedir+config.tagdir+tag+'.xml', 

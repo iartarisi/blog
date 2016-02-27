@@ -1,5 +1,5 @@
-import cgi
 from datetime import datetime
+import html
 
 from mako.lookup import TemplateLookup
 
@@ -10,7 +10,7 @@ class Rss:
     def __init__(self):
         self.title = config.title
         self.author = config.author
-        self.description = cgi.escape(config.description)
+        self.description = html.escape(config.description, quote=False)
         self.link = config.link
         self.language = config.language
         
