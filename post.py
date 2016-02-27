@@ -91,7 +91,7 @@ class Post:
         preblocks = soup.findAll('pre')
         # add a <notextile> tag inside every pre lang tag
         for pre in preblocks:
-            if 'lang' in pre:
+            if 'lang' in pre.attrs:
                 notextile = soup.new_tag('notextile')
                 notextile.insert(0, pre.contents[0])
                 pre.clear()
