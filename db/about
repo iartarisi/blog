@@ -3,6 +3,8 @@ about
 
 All the content on this site is available under a "Creative Commons Attribution 3.0":http://creativecommons.org/licenses/by/3.0/ license. The website design is original and under copyright.
 
+A lot of the inspiration for this blog, and my continued interest in programming, come from "why the lucky stiff":https://en.wikipedia.org/wiki/Why_the_lucky_stiff. This might partly explain the random jokes. The blog's title uses the word _blahg_, which was how @_why@ referred to weblogs. The other part of the name comes from an electronic jazz band called "Revolution Void":https://en.wikipedia.org/wiki/Revolution_Void which I was "listening to":/perma/freemusic at the time this blog was started.
+
 This blog is running pyblee - a static blogging system written in python. I used a lot of open-source tools to build it: _vim, emacs, python, python-textile, python-BeautifulSoup, python-mako, git, gimp, firebug_. The sources to this blog are available in "this repository":http://github.com/mapleoin/blog.
 
 Here's my "github profile":http://github.com/mapleoin. You can also figure out how to contact me there.
