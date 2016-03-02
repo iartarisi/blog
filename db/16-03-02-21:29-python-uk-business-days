@@ -1,0 +1,77 @@
+Python UK business days with pandas
+---
+
+TIL, programming, python, pandas
+---
+
+Here's how to calculate UK business days (well at least for England & Wales) using "pandas":htpp://pandas.pydata.org 's holiday calendar.
+
+First you'll need this calendar for UK holidays:
+
+<pre lang="python">
+from pandas.tseries.holiday import (
+    AbstractHolidayCalendar, DateOffset, EasterMonday,
+    GoodFriday, Holiday, MO,
+    next_monday, next_monday_or_tuesday)
+class EnglandAndWalesHolidayCalendar(AbstractHolidayCalendar):
+    rules = [
+        Holiday('New Years Day', month=1, day=1, observance=next_monday),
+        GoodFriday,
+        EasterMonday,
+        Holiday('Early May bank holiday',
+                month=5, day=1, offset=DateOffset(weekday=MO(1))),
+        Holiday('Spring bank holiday',
+                month=5, day=31, offset=DateOffset(weekday=MO(-1))),
+        Holiday('Summer bank holiday',
+                month=8, day=31, offset=DateOffset(weekday=MO(-1))),
+        Holiday('Christmas Day', month=12, day=25, observance=next_monday),
+        Holiday('Boxing Day',
+                month=12, day=26, observance=next_monday_or_tuesday)
+    ]
+</pre>
+
+
+It was tested with the dates from "gov.uk":https://www.gov.uk/bank-holidays so should be fine to use, but please let me know if you find anything wrong with it.
+
+Now you can do stuff like:
+
+<pre lang="python">
+from datetime import date
+from pandas.tseries.offsets import CDay
+business = CDay(calendar=EnglandAndWalesHolidayCalendar())
+>>> date.today()
+datetime.date(2016, 3, 2)
+>>> five_business_days_later = date.today() + 5 * business
+>>> five_business_days_later
+Timestamp('2016-03-09 00:00:00')
+>>> five_business_days_later.date()
+datetime.date(2016, 3, 9)
+>>> date.today() - business
+>>> date(2016, 12, 25) + business
+Timestamp('2016-12-28 00:00:00')
+</pre>
+
+You can also just retrieve the UK holidays for a specific year as a list of datetime objects using e.g.:
+
+<pre lang="python">
+>>> holidays = EnglandAndWalesHolidayCalendar().holidays(
+    start=date(2016, 1, 1),
+    end=date(2016, 12, 31))
+>>> holidays.tolist()
+[Timestamp('2016-01-01 00:00:00'), Timestamp('2016-03-25 00:00:00'), Timestamp('2016-03-28 00:00:00'), Timestamp('2016-05-02 00:00:00'), Timestamp('2016-05-30 00:00:00'), Timestamp('2016-08-29 00:00:00'), Timestamp('2016-12-26 00:00:00'), Timestamp('2016-12-27 00:00:00')
+>>> holidays.to_pydatetime()
+array([datetime.datetime(2016, 1, 1, 0, 0),
+       datetime.datetime(2016, 3, 25, 0, 0),
+       datetime.datetime(2016, 3, 28, 0, 0),
+       datetime.datetime(2016, 5, 2, 0, 0),
+       datetime.datetime(2016, 5, 30, 0, 0),
+       datetime.datetime(2016, 8, 29, 0, 0),
+       datetime.datetime(2016, 12, 26, 0, 0),
+       datetime.datetime(2016, 12, 27, 0, 0)], dtype=object)
+>>> h.to_native_types()
+['2016-01-01', '2016-03-25', '2016-03-28', '2016-05-02', '2016-05-30', '2016-08-29', '2016-12-26', '2016-12-27']
+</pre>
+
+Pandas has all sorts of funny stuff you can do with "series":http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html and "time series":http://pandas.pydata.org/pandas-docs/stable/timeseries.html in particular. Also check @pandas@'s docs about "Custom Business Days":http://pandas.pydata.org/pandas-docs/stable/timeseries.html#custom-business-days-experimental especially the warning about possible timezone issues.
+
+If you don't need the power of @pandas@ or you just don't like it (maybe because it pulls in a bazillion dependencies and includes a gazillion modules), "workalendar":https://github.com/novafloss/workalendar looks pretty good.
