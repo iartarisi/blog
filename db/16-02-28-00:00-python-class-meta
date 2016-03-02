@@ -28,7 +28,7 @@ Now for the longer story. I did some software archaeology, which should totally 
 
 From there we can see how Django models were declared before the introduction of the internal @class Meta@. A Django Model class had a few special attributes. The @db_table@ attribute held the SQL table name. A @fields@ attribute was a tuple (!) of instances of field types (e.g. @CharField@, @IntegerField@, @ForeignKey@). These mapped to SQL table columns. One other interesting attribute was @admin@ which was mostly used to describe how that model would behave in django's admin interface. Now all these classes were defined in the @django.core.meta@ package i.e. @meta.Model@, @meta.CharField@, @meta.ForeignKey@, @meta.Admin@. _That's so meta!_ (and probably where the name came from in the end)
 
-In a @django-developers@ mailing list thread from July 2005 titled ??"Cleaner approach to ORM fields description":https://groups.google.com/forum/#!msg/django-developers/IZdH8K8IbLA/AIJGlt8d3icJ?? user @deelan@ suggests bringing some of "SQLObject":https://en.wikipedia.org/wiki/SQLObject's ideas to Django's ORM. This seems to be the first seed of the idea of having an inner class in Django to store part of a model's attributes:
+In a @django-developers@ mailing list thread from July 2005 titled ??"Cleaner approach to ORM fields description":https://groups.google.com/forum/#!msg/django-developers/IZdH8K8IbLA/AIJGlt8d3icJ?? user @deelan@ suggests bringing some of "SQLObject":https://en.wikipedia.org/wiki/SQLObject 's ideas to Django's ORM. This seems to be the first seed of the idea of having an inner class in Django to store part of a model's attributes:
 
 bq. it's desiderable to avoid name clashes between fields, so it would be
 good to have a way to wrap fields into a private namespace.
@@ -102,7 +102,7 @@ h4. That's it. Almost...
 
 Anyway, so that's the end of the story of how Django got its @class Meta@. Now what if I told you that all of this had already happened more than one year before in the SQLObject project? Remember that first post to @django-developers@ which said Django models should hold some of its attributes in a separate inner class like SQLObject already does?
 
-In April 2014, Ian Bicking (creator of SQLObject) sent an email to the @sqlobject-discuss@ mailing list:
+In April 2004, Ian Bicking (creator of SQLObject) sent an email to the @sqlobject-discuss@ mailing list:
 
 bq. There's a bunch of metadata right now that is being stored in various instance variables, all ad hoc like, and with no introspective interfaces.  I'd like to consolidate these into a single object/class that is separated from the SQLObject class.  This way I don't have to worry about name clashes, and I don't feel like every added little interface will be polluting people's classes.  (Though most of the public methods that are there now will remain methods of the SQLObject subclasses, just like they are now)  So I'm looking for feedback on how that should work.
 ??-- Ian Bicking, "Metadata container":https://sourceforge.net/p/sqlobject/mailman/message/7522562/??
@@ -119,11 +119,11 @@ class Contact(SQLObject):
 
 SQLObject's community did not seem nearly as animated as Django's. There were a couple of emails on the @sqlobject-discuss@ mailing list from Ian Bicking which included the proposal and asked for feedback. I suspect some discussion happened through some other channels, but this community was neither as big nor as good at docummenting its functioning as Django. (And sourceforge's interface to the mailing list archives and cvs logs does not make this easy to navigate).
 
-A year later, Ian Bicking takes part in the @django-developers@ mailinglist discussion where he makes some small syntax suggestions, but it does not seem that he made any other contributions to the design of the django models API.
+A year later, Ian Bicking takes part in the @django-developers@ mailinglist discussion where he makes some small syntax suggestions, but it does not seem that he made any other contributions to the design of this part of the Django models API.
 
 h4. Conclusion
 
-As far as I could tell, Ian Bicking is the originator of the idea of storing metadata in a *metadata container* inner class. Although it was the Django project which settled on the @class Meta@ name popularised it outside of its own community.
+As far as I could tell, Ian Bicking is the originator of the idea of storing metadata in a *metadata container* inner class. Although it was the Django project which settled on the @class Meta@ name and popularised it outside of its own community.
 
 Anyway, that's the end of the story. To me, it shows just how awesome open source and the open internet can be. The fact that I was able to find all of this 11 years later, complete with the original source code, commit logs and all the discussion around the implementation on the issue tracker, mailing lists and IRC logs is just amazing community work and puts a tear in my eye.
 
