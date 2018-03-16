@@ -4,7 +4,7 @@ The origins of the class Meta idiom in python
 python, django, foss
 ---
 
-So I keep finding this @class Meta@ idiom in python APIs lately. Found it in "factory-boy":http://factoryboy.readthedocs.org/en/latest/index.html and "WTForms":https://wtforms.readthedocs.org/en/latest/meta.html and I suspected they both got it from "Django":https://docs.djangoproject.com/en/1.9/topics/db/models/#meta-options, but I googled and couldn't find any explanations of the reason for it or where it came from or why they're all it @class Meta@. So here it is!
+So I keep finding this @class Meta@ idiom in python APIs lately. Found it in "factory-boy":http://factoryboy.readthedocs.org/en/latest/index.html and "WTForms":https://wtforms.readthedocs.org/en/latest/meta.html and I suspected they both got it from "Django":https://docs.djangoproject.com/en/1.9/topics/db/models/#meta-options, but I googled and couldn't find any explanations of the reason for it or where it came from or why they all call it @class Meta@. So here it is!
 
 h4. TL;DR What it is
 
