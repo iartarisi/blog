@@ -1,5 +1,10 @@
-beautifulsoup4
-mako
-pygments
-pytz
-textile
+beautifulsoup4==4.6.0
+html5lib==1.0.1
+Mako==1.0.7
+MarkupSafe==1.0
+pkg-resources==0.0.0
+Pygments==2.2.0
+pytz==2018.3
+six==1.11.0
+textile==3.0.0
+webencodings==0.5.1
