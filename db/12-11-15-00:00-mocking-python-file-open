@@ -251,6 +251,8 @@ pre. AssertionError: The file /dev/null was not opened.
 
 EDIT: Eric Moyer found a bug (and suggested a fix) in this implementation. When the same file is opened multiple times, the @open_files@ list will contain the filename multiple times, but it will only get @remove@-ed once. This can be easily solved by making the @open_files@ list a set instead.
 
+EDIT (March 14, 2018): Santiago Castro found another bug (and suggested a fix) in this implementation. If the call to builtins.open() raises an error, the mock will stay stopped for future calls. We need to wrap it in a try-finally block.
+
 So that's about it, we now have a rock-solid @mock_open@ function for mocking the builtin @open()@.
 
 Before we set it free, we need to add a nice docstring to it:
@@ -278,8 +280,10 @@ def mock_open(filename, contents=None, complain=True):
             f.name = filename
         else:
             mocked_file.stop()
-            f = open(*args)
-            mocked_file.start()
+            try:
+                f = open(*args)
+            finally:
+                mocked_file.start()
         open_files.add(f.name)
         return f
     mocked_file = mock.patch('builtins.open', mock_file)
