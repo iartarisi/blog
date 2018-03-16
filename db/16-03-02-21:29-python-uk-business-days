@@ -4,7 +4,7 @@ Python UK business days with pandas
 TIL, programming, python, pandas
 ---
 
-Here's how to calculate UK business days (well at least for England & Wales) using "pandas":htpp://pandas.pydata.org 's holiday calendar.
+Here's how to calculate UK business days (well at least for England & Wales) using "pandas":http://pandas.pydata.org's holiday calendar.
 
 First you'll need this calendar for UK holidays:
 
